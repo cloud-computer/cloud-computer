@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+
+  filerun-db:
+    image: mariadb:10.1
+    environment:
+      MYSQL_ROOT_PASSWORD: filerun
+      MYSQL_USER: filerun
+      MYSQL_PASSWORD: filerun
+      MYSQL_DATABASE: filerun
+    volumes:
+      - CLOUD_COMPUTER_FILERUN_DB:/var/lib/mysql
+
+  filerun:
+    image: cloudnativecomputer/filerun
+    environment:
+      FR_DB_HOST: filerun-db
+      FR_DB_PORT: 3306
+      FR_DB_NAME: filerun
+      FR_DB_USER: filerun
+      FR_DB_PASS: filerun
+      APACHE_RUN_USER: www-data
+      APACHE_RUN_USER_ID: 1000
+      APACHE_RUN_GROUP: www-data
+      APACHE_RUN_GROUP_ID: 1000
+    depends_on:
+      - filerun-db
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:files.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=80
+    volumes:
+      - CLOUD_COMPUTER_CLOUDSTORAGE:/user-files/.cloudstorage
+
+volumes:
+  CLOUD_COMPUTER_CLOUDSTORAGE:
+  CLOUD_COMPUTER_FILERUN_DB:

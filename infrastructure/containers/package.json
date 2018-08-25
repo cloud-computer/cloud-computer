@@ -13,6 +13,7 @@
     "build:cloud-computer": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --build-arg CONTAINER_BUILD_DATE=$(date +%s) --build-arg CONTAINER_GIT_SHA=$(git rev-parse HEAD | cut -b 1-7) --tag $CLOUD_COMPUTER_IMAGE $PWD/cloud-computer",
     "build:darktable": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/darktable $PWD/darktable",
     "build:dispatch": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/dispatch $PWD/dispatch",
+    "build:filerun": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/filerun $PWD/filerun",
     "build:gnumeric": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/gnumeric $PWD/gnumeric",
     "build:krita": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/krita $PWD/krita",
     "build:kicad": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/kicad $PWD/kicad",

@@ -216,6 +216,11 @@ RUN zsh -c $HOME/.tmux/plugins/tpm/bin/install_plugins
 # Cache zsh plugins
 RUN zsh -c "source $HOME/.zshrc"
 
+# Symlink cloud storage
+RUN ln -s /cloud-computer/cloudstorage/cloud-storage/accounts/dropbox $HOME/Dropbox && \
+  ln -s /cloud-computer/cloudstorage/cloud-storage/accounts/google $HOME/Google\ Drive && \
+  ln -s /cloud-computer/cloudstorage/cloud-storage/accounts/onedrive $HOME/OneDrive
+
 # Record container build metadata
 ARG CONTAINER_BUILD_DATE
 ARG CONTAINER_GIT_SHA
