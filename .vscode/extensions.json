@@ -1,0 +1,28 @@
+{
+  "recommendations": [
+    "DavidAnson.vscode-markdownlint",
+    "donjayamanne.githistory",
+    "GitHub.vscode-pull-request-github",
+    "mariusalchimavicius.json-to-ts",
+    "mauve.terraform",
+    "ms-vscode.typescript-javascript-grammar",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "MS-vsliveshare.vsliveshare",
+    "PeterJausovec.vscode-docker",
+    "ramyaraoa.show-offset",
+    "rbbit.typescript-hero",
+    "richie5um2.vscode-sort-json",
+    "foxundermoon.shell-format",
+    "philfontaine.autolaunch",
+    "sburg.vscode-javascript-booster",
+    "sleistner.vscode-fileutils",
+    "stringham.move-ts",
+    "Sword.vscode-surround",
+    "tyriar.sort-lines",
+    "tyriar.vscode-terminal-here",
+    "visualstudioexptteam.vscodeintellicode",
+    "waderyan.gitblame",
+    "wk-j.save-and-run",
+    "ziyasal.vscode-open-in-github"
+  ]
+}

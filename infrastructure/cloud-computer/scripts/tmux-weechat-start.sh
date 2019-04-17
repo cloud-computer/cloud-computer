@@ -1,0 +1,21 @@
+TARGET_GROUP=weechat
+
+# Create a new tmux session
+yarn tmux new-session \
+  -d \
+  -s $TARGET_GROUP
+
+# Prepare weechat environment
+. $CLOUD_COMPUTER_CREDENTIALS/weechat.env
+
+# Set session environment variables
+yarn tmux set-environment -t $TARGET_GROUP CLOUD_COMPUTER_FREENODE_PASSWORD $CLOUD_COMPUTER_FREENODE_PASSWORD
+yarn tmux set-environment -t $TARGET_GROUP CLOUD_COMPUTER_FREENODE_USERNAME $CLOUD_COMPUTER_FREENODE_USERNAME
+yarn tmux set-environment -t $TARGET_GROUP CLOUD_COMPUTER_GITTER_TOKEN $CLOUD_COMPUTER_GITTER_TOKEN
+yarn tmux set-environment -t $TARGET_GROUP CLOUD_COMPUTER_GITTER_USERNAME $CLOUD_COMPUTER_GITTER_USERNAME
+yarn tmux set-environment -t $TARGET_GROUP CLOUD_COMPUTER_MATRIX_PASSWORD $CLOUD_COMPUTER_MATRIX_PASSWORD
+yarn tmux set-environment -t $TARGET_GROUP CLOUD_COMPUTER_MATRIX_USERNAME $CLOUD_COMPUTER_MATRIX_USERNAME
+yarn tmux set-environment -t $TARGET_GROUP CLOUD_COMPUTER_SLACK_KUBERNETES_TOKEN $CLOUD_COMPUTER_SLACK_KUBERNETES_TOKEN
+
+# Start the process in the tmux session
+yarn tmux send-keys -t $TARGET_GROUP weechat C-m

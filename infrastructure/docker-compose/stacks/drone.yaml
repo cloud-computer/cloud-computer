@@ -1,0 +1,57 @@
+version: '3.5'
+
+networks:
+  backend:
+    driver: bridge
+
+services:
+
+  # drone continuous integration
+
+  drone:
+    image: drone/drone:1.0.0-rc.6
+    restart: always
+    tty: true
+    labels:
+      namespace: drone
+      tier: ci
+    environment:
+      DRONE_DATABASE_DRIVER: postgres
+      DRONE_DATABASE_DATASOURCE: postgres://ijqjutbe:4VlXLr4E3PXZxragm5dxKV49V90gxLRR@otto.db.elephantsql.com:5432/ijqjutbe?sslmode=disable
+      DRONE_GIT_ALWAYS_AUTH: 'true'
+      DRONE_GITHUB_SERVER: https://github.com
+      DRONE_GITHUB_CLIENT_ID: a1a213ad5cfd72135673
+      DRONE_GITHUB_CLIENT_SECRET: e7e4f0fce56c792fe9485ae0a8d6fa4c9b47afab
+      DRONE_RUNNER_CAPACITY: 5
+      DRONE_SERVER_HOST: drone-$CLOUD_COMPUTER_HOST_DNS
+      DRONE_SERVER_PROTO: https
+      DRONE_TLS_AUTOCERT: 'true'
+      USERNAME: sabrehagen
+      PASSWORD: $CLOUD_COMPUTER_GITHUB_TOKEN
+      VIRTUAL_HOST: drone-$CLOUD_COMPUTER_HOST_DNS
+    expose:
+      - 80
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - CLOUD_COMPUTER_BACKEND:$CLOUD_COMPUTER_BACKEND
+      - CLOUD_COMPUTER_YARN:$CLOUD_COMPUTER_YARN
+    networks:
+      - backend
+
+  drone.webhooks:
+    image: cloud-computer/cloud-computer:latest
+    command: relay forward --bucket cloud-computer-drone
+    restart: always
+    tty: true
+    labels:
+      namespace: drone
+      tier: ci
+    environment:
+      RELAY_KEY: 5e478708-d0b1-4427-b76a-3c8874d19b66
+      RELAY_SECRET: CHxIJxmFEMAZ
+    networks:
+      - backend
+
+volumes:
+  CLOUD_COMPUTER_BACKEND:
+  CLOUD_COMPUTER_YARN:

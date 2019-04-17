@@ -1,0 +1,13 @@
+{
+  "author": "Jackson Delahunt",
+  "description": "The Cloud Computer Environment Certificates",
+  "license": "MIT",
+  "name": "@cloud-computer/certificates",
+  "repository": "git@github.com:cloud-computer/cloud-computer.git",
+  "scripts": {
+    "bootstrap": "scripts/bootstrap.sh",
+    "clean": "scripts/clean.sh",
+    "import": "scripts/import.sh"
+  },
+  "version": "0.0.1"
+}

@@ -1,0 +1,15 @@
+{
+  "author": "Jackson Delahunt",
+  "description": "The Cloud Computer Cloudflare Automation",
+  "license": "MIT",
+  "name": "@cloud-computer/cloudflare",
+  "repository": "git@github.com:cloud-computer/cloud-computer.git",
+  "scripts": {
+    "clean": "scripts/clean.sh",
+    "delete-record": "scripts/delete-record.sh",
+    "get-record": "scripts/get-record.sh",
+    "list-records": "scripts/list-records.sh",
+    "set-record": "scripts/set-record.sh"
+  },
+  "version": "0.0.1"
+}

@@ -1,0 +1,9 @@
+.vs/slnx.sqlite
+build
+lerna-*
+node_modules
+nohup.out
+package-lock.json
+yarn-error*
+.idea
+.DS_Store

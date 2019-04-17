@@ -1,0 +1,48 @@
+version: '3.5'
+
+networks:
+  backend:
+    driver: bridge
+
+services:
+
+  grafana:
+    image: grafana/grafana:latest
+    restart: always
+    labels:
+      namespace: grafana
+      tier: cloud-computer
+    environment:
+      GF_SERVER_ROOT_URL: https://grafana-$CLOUD_COMPUTER_HOST_DNS
+      VIRTUAL_HOST: grafana-$CLOUD_COMPUTER_HOST_DNS
+    expose:
+      - 3000
+    volumes:
+      - CLOUD_COMPUTER_GRAFANA:/var/lib/grafana
+    networks:
+      - backend
+
+  loki:
+    image: grafana/loki:latest
+    command: -config.file=/etc/loki/local-config.yaml
+    environment:
+      VIRTUAL_HOST: loki-$CLOUD_COMPUTER_HOST_DNS:3100
+    expose:
+      - 3100
+    networks:
+      backend:
+        aliases:
+          - loki
+
+  promtail:
+    image: grafana/promtail:latest
+    command: -config.file=/etc/promtail/docker-config.yaml
+    volumes:
+      - /var/log:/var/log
+    networks:
+      backend:
+        aliases:
+          - promtail
+
+volumes:
+  CLOUD_COMPUTER_GRAFANA:

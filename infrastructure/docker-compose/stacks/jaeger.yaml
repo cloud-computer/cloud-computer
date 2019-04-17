@@ -1,0 +1,39 @@
+version: '3.5'
+
+networks:
+  backend:
+    driver: bridge
+
+services:
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.8
+    restart: always
+    labels:
+      namespace: jaeger
+      tier: cloud-computer
+    environment:
+      VIRTUAL_HOST: jaeger-ingest-$CLOUD_COMPUTER_HOST_DNS:14268,jaeger-$CLOUD_COMPUTER_HOST_DNS:16686
+    expose:
+      - 5778
+      - 14268
+      - 16686
+    volumes:
+      - CLOUD_COMPUTER_BACKEND:$CLOUD_COMPUTER_BACKEND
+      - CLOUD_COMPUTER_CERTIFICATES:$CLOUD_COMPUTER_CERTIFICATES:ro
+      - CLOUD_COMPUTER_CODE:$CLOUD_COMPUTER_CODE
+      - CLOUD_COMPUTER_CODE_SERVER:$CLOUD_COMPUTER_CODE_SERVER
+      - CLOUD_COMPUTER_FRONTEND:$CLOUD_COMPUTER_FRONTEND
+      - CLOUD_COMPUTER_SLACKBOT:$CLOUD_COMPUTER_SLACKBOT
+      - CLOUD_COMPUTER_TMUX:$CLOUD_COMPUTER_TMUX
+    networks:
+      - backend
+
+volumes:
+  CLOUD_COMPUTER_BACKEND:
+  CLOUD_COMPUTER_CERTIFICATES:
+  CLOUD_COMPUTER_CODE:
+  CLOUD_COMPUTER_CODE_SERVER:
+  CLOUD_COMPUTER_FRONTEND:
+  CLOUD_COMPUTER_SLACKBOT:
+  CLOUD_COMPUTER_TMUX:

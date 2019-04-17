@@ -1,0 +1,15 @@
+{
+  "author": "Jackson Delahunt",
+  "description": "The Cloud Computer Google Cloud SDK",
+  "license": "MIT",
+  "name": "@cloud-computer/gcloud",
+  "repository": "git@github.com:cloud-computer/cloud-computer.git",
+  "scripts": {
+    "bootstrap": "scripts/bootstrap.sh",
+    "auth": "yarn gcloud auth activate-service-account --key-file ../credentials/cloud-computer.json && yarn gcloud config set project $CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT",
+    "gcloud": "scripts/gcloud.sh",
+    "instances": "echo; yarn gcloud compute instances list --format='table(name:label=Name, labels.owner-name:label=dns, networkInterfaces[0].accessConfigs[0].natIP:label=IP, creationTimestamp.date('%b-%d'):label=Created)'; echo",
+    "ssh": "yarn instances | tail -n +3 | yarn ipt | cut -f 1 -d ' ' | cut -c 2- | xargs gcloud compute ssh --zone australia-southeast1-a"
+  },
+  "version": "0.0.1"
+}

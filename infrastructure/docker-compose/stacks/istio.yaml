@@ -1,0 +1,158 @@
+version: '3.5'
+
+networks:
+  backend:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
+
+services:
+
+  etcd:
+    image: quay.io/coreos/etcd:latest
+    command: [
+      '/usr/local/bin/etcd',
+      '-advertise-client-urls=http://0.0.0.0:2379',
+      '-listen-client-urls=http://0.0.0.0:2379'
+    ]
+    labels:
+      namespace: istio
+      tier: cloud-computer
+    ports:
+      - 2379:2379
+      - 2380:2380
+      - 4001:4001
+    environment:
+      - KIALI_USERNAME_BASE64=amFja3Nvbgo=
+      - KIALI_PASSPHRASE_BASE64=c3RlbW4K
+    networks:
+      backend:
+        aliases:
+          - etcd
+
+  istio-apiserver:
+    image: gcr.io/google_containers/kube-apiserver-amd64:v1.7.3
+    command: [
+      'kube-apiserver',
+      '--etcd-servers', 'http://etcd:2379',
+      '--service-cluster-ip-range', '10.99.0.0/16',
+      '--insecure-port', '8080',
+      '-v', '2',
+      '--insecure-bind-address', '0.0.0.0'
+    ]
+    labels:
+      namespace: istio
+      tier: cloud-computer
+    ports:
+      - 8080:8080
+    privileged: true
+    environment:
+      - SERVICE_IGNORE=1
+    networks:
+      backend:
+        ipv4_address: 172.28.0.13
+        aliases:
+          - apiserver
+
+  consul:
+    image: consul:1.3.0
+    entrypoint:
+      - docker-entrypoint.sh
+    command: [
+      'agent',
+      '-bootstrap',
+      '-server',
+      '-ui',
+      '-grpc-port',
+      '8502'
+    ]
+    labels:
+      namespace: istio
+      tier: cloud-computer
+    ports:
+      - 8500:8500
+      - 8400:8400
+      - 8502:8502
+    environment:
+      - SERVICE_IGNORE=1
+      - DNS_RESOLVES=consul
+      - DNS_PORT=8600
+      - CONSUL_DATA_DIR=/consul/data
+      - CONSUL_CONFIG_DIR=/consul/config
+    networks:
+      backend:
+        aliases:
+          - consul
+    volumes:
+      - ./consul_config:/consul/config
+
+  registrator:
+    image: gliderlabs/registrator:latest
+    command: [
+      '-internal',
+      '-retry-attempts=-1',
+      'consul://consul:8500'
+    ]
+    labels:
+      namespace: istio
+      tier: cloud-computer
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+    networks:
+      backend:
+
+  pilot:
+    image: istio/pilot:1.1.0-rc.2
+    command: [
+      'discovery',
+      '--httpAddr', ':15007',
+      '--registries', 'Consul',
+      '--consulserverURL', 'http://consul:8500',
+      '--kubeconfig', '/etc/istio/config/kubeconfig',
+      '--secureGrpcAddr', '',
+    ]
+    labels:
+      namespace: istio
+      tier: cloud-computer
+    expose:
+      - 15003
+      - 15005
+      - 15007
+    ports:
+      - 8081:15007
+    networks:
+      backend:
+        aliases:
+          - istio-pilot
+    volumes:
+      - ./kubeconfig:/etc/istio/config/kubeconfig
+
+  zipkin:
+    image: docker.io/openzipkin/zipkin:2.7
+    labels:
+      namespace: istio
+      tier: cloud-computer
+    ports:
+      - 9411:9411
+    networks:
+      backend:
+        aliases:
+          - zipkin
+
+  kiali:
+    image: kiali/kiali:latest
+    labels:
+      namespace: istio
+      tier: cloud-computer
+    environment:
+      AUTH_STRATEGY: anonymous
+      ISTIO_NAMESPACE: istio-system
+      KUBERNETES_SERVICE_HOST: apiserver
+      KUBERNETES_SERVICE_PORT: 8080
+    ports:
+      - 20000:20000
+    networks:
+      backend:
+        aliases:
+          - kiali

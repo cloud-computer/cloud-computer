@@ -1,0 +1,33 @@
+{
+  "author": "Jackson Delahunt",
+  "dependencies": {
+    "@cloud-computer/yarn": "1.14.0-1",
+    "fs-extra": "^7.0.1",
+    "jaeger-client": "^3.14.4"
+  },
+  "description": "The Cloud Computer Yarn Shim",
+  "devDependencies": {
+    "@cloud-computer/jest-config": "^0.0.1",
+    "@cloud-computer/nodemon": "^0.0.1",
+    "@cloud-computer/tsconfig": "^0.0.1",
+    "typescript": "^3.3.4000"
+  },
+  "license": "MIT",
+  "main": "build",
+  "name": "@cloud-computer/yarn-shim",
+  "repository": "git@github.com:cloud-computer/cloud-computer.git",
+  "scripts": {
+    "bootstrap": "scripts/bootstrap.sh",
+    "build": "yarn build:typescript",
+    "build:typescript": "tsc",
+    "build:watch": "yarn build:typescript --watch",
+    "clean": "scripts/clean.sh",
+    "link:global": "scripts/link-global.sh",
+    "logs": "scripts/logs.sh",
+    "test": "jest -i",
+    "test:watch": "yarn test --watch",
+    "unlink:global": "scripts/unlink-global.sh",
+    "watch": "nodemon --config node_modules/@cloud-computer/nodemon/nodemon.json"
+  },
+  "version": "0.0.1"
+}
