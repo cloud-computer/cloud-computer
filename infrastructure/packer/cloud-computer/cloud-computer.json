@@ -1,0 +1,32 @@
+{
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "/cloud-computer/credentials/cloud-computer.json",
+      "source_image_family": "ubuntu-minimal-1810",
+      "project_id": "$CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT",
+      "zone": "australia-southeast1-a",
+      "instance_name": "packer-cloud-computer-{{timestamp}}",
+      "image_name": "cloud-computer",
+      "ssh_username": "root"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "setup.sh",
+      "destination": "/setup.sh"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "/setup.sh"
+      ]
+    }
+  ],
+
+  "variables": {
+    "project_id": "{{env `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT`}}"
+  }
+}

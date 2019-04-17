@@ -1,0 +1,91 @@
+{
+  "contributors": [
+    "Jackson Delahunt <jackson@jacksondelahunt.com> (https://jacksondelahunt.com)"
+  ],
+  "devDependencies": {
+    "@cloud-computer/jest-config": "^0.0.1",
+    "@cloud-computer/nodemon": "^0.0.1",
+    "@cloud-computer/tslint-config": "^0.0.1",
+    "@stemn/tsc-path-prefix": "^1.0.0",
+    "husky": "^1.3.1",
+    "lerna": "^3.13.1",
+    "rebase-editor": "^2.0.5",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.13.1",
+    "typescript": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=11.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "infrastructure/git/scripts/pre-commit.sh $HUSKY_GIT_PARAMS",
+      "pre-push": "infrastructure/git/scripts/pre-push.sh $HUSKY_GIT_PARAMS"
+    }
+  },
+  "license": "MIT",
+  "name": "@cloud-computer/cloud-computer",
+  "private": true,
+  "repository": "git@github.com:cloud-computer/cloud-computer.git",
+  "scripts": {
+    "apps": "echo code terminal desktop frontend majestic drone jaeger",
+    "bootstrap": "yarn bootstrap:backend; yarn bootstrap:frontend",
+    "bootstrap:backend": "scripts/bootstrap-backend.sh",
+    "bootstrap:frontend": "cd /cloud-computer/frontend; npm run install:all",
+    "build": "yarn lerna run build | tsc-path-prefix",
+    "build:clean": "yarn lerna exec --ignore @cloud-computer/yarn-shim --ignore @cloud-computer/cloud-computer 'rm -rf build'",
+    "build:cloud-computer": "DOCKER_HOST=localhost yarn --cwd infrastructure/containers build:cloud-computer",
+    "build:local": "yarn --cwd libraries/types build:watch & yarn --cwd libraries/schemas build:watch & wait",
+    "build:typescript": "yarn lerna run build:typescript --no-bail | tsc-path-prefix",
+    "build:watch": "FORCE_COLOR=1 yarn lerna run build:watch --parallel | tsc-path-prefix",
+    "clean": "yarn lerna clean --ignore @cloud-computer/yarn --yes && yarn build:clean && yarn lerna run --no-bail --ignore @cloud-computer/docker clean",
+    "code:install-extensions": "cat .vscode/extensions.json | grep '    ' | tr -d , | xargs -n 1 code-server --install-extension",
+    "create:cloud-computer": "yarn --cwd infrastructure/yarn link:global; hash -r; yarn --cwd infrastructure/cloud-computer run create",
+    "destroy:cloud-computer": "yarn --cwd infrastructure/cloud-computer destroy",
+    "docker": "yarn --cwd infrastructure/docker docker",
+    "docker:dashboard": "yarn docker:exec:terminal yarn --cwd infrastructure/cloud-computer tmux:dashboard:attach",
+    "docker:dashboard:web": "yarn --cwd infrastructure/cloud-computer dashboard:web",
+    "docker:exec": "yarn --cwd infrastructure/cloud-computer exec:tty",
+    "docker:exec:terminal": "yarn --cwd infrastructure/cloud-computer exec:tty:terminal",
+    "docker:logs": "yarn --cwd infrastructure/cloud-computer logs:follow",
+    "docker:ps": "yarn --cwd infrastructure/docker ps:pretty",
+    "docker:ps:long": "yarn --cwd infrastructure/docker ps:long",
+    "docker:pull": "yarn --cwd infrastructure/docker pull",
+    "docker:shell": "yarn --cwd infrastructure/cloud-computer shell",
+    "docker:start": "yarn --cwd infrastructure/docker-compose start",
+    "docker:stop": "yarn --cwd infrastructure/docker-compose stop",
+    "docker:sync": "yarn --cwd infrastructure/cloud-computer sync",
+    "docker:sync:watch": "yarn --cwd infrastructure/cloud-computer sync:watch",
+    "docker:tmux": "yarn docker:exec:terminal yarn --cwd infrastructure/cloud-computer tmux",
+    "gcloud": "yarn --cwd infrastructure/gcloud gcloud",
+    "gcloud:instances": "yarn --cwd infrastructure/gcloud instances",
+    "git:dashboard": "yarn --cwd infrastructure/git dashboard",
+    "hosts:insert": "yarn --cwd infrastructure/terraform hosts:insert",
+    "lerna:link": "yarn lerna link --force-local",
+    "links": "scripts/links.sh",
+    "open": "scripts/open.sh",
+    "open:all": "scripts/open-all.sh",
+    "open:app": "scripts/open-app.sh",
+    "recycle": "yarn --cwd infrastructure/cloud-computer recycle",
+    "recycle:terraform": "yarn --cwd infrastructure/cloud-computer recycle:clean",
+    "recycle:clean": "yarn destroy:cloud-computer; yarn clean; yarn create:cloud-computer",
+    "shell": "DOCKER_HOST=localhost yarn --cwd infrastructure/cloud-computer shell",
+    "terraform": "yarn --cwd infrastructure/terraform terraform",
+    "terraform:destroy": "yarn --cwd infrastructure/terraform destroy",
+    "terraform:recycle": "yarn --cwd infrastructure/terraform recycle",
+    "terraform:restart": "yarn --cwd infrastructure/terraform restart",
+    "terraform:ssh": "yarn --cwd infrastructure/terraform ssh:cloud-computer",
+    "terraform:sync": "yarn --cwd infrastructure/terraform sync",
+    "test": "jest",
+    "test:majestic": "majestic --dev --port 2000",
+    "test:watch": "yarn test --watch --colors --onlyChanged",
+    "tmux": "yarn --cwd infrastructure/cloud-computer tmux",
+    "update": "yarn upgrade-interactive --latest"
+  },
+  "version": "0.0.1",
+  "workspaces": [
+    "infrastructure/*",
+    "libraries/*",
+    "services/*"
+  ]
+}

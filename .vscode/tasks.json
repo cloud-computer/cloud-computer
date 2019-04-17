@@ -1,0 +1,35 @@
+{
+  "tasks": [
+    {
+      "args": [
+        "docker:sync:watch"
+      ],
+      "auto": true,
+      "command": "yarn",
+      "isBackground": true,
+      "label": "Sync To Cloud Computer",
+      "presentation": {
+        "reveal": "never"
+      },
+      "problemMatcher": [],
+      "promptOnClose": false,
+      "type": "process"
+    },
+    {
+      "args": [
+        "build:local"
+      ],
+      "auto": true,
+      "command": "yarn",
+      "isBackground": true,
+      "label": "Build Local Utilities",
+      "presentation": {
+        "reveal": "never"
+      },
+      "problemMatcher": [],
+      "promptOnClose": false,
+      "type": "process"
+    }
+  ],
+  "version": "0.0.1"
+}

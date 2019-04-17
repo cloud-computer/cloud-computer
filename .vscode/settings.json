@@ -1,0 +1,28 @@
+{
+  "breadcrumbs.enabled": false,
+  "debug.inlineValues": true,
+  "debug.node.autoAttach": "off",
+  "editor.formatOnPaste": true,
+  "editor.tabSize": 2,
+  "files.associations": {
+    "*.pipeline": "yaml"
+  },
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/CVS": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "tslint.autoFixOnSave": true,
+  "tslint.packageManager": "yarn",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "typescriptHero.imports.organizeOnSave": true,
+  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "terminal.integrated.splitCwd": "workspaceRoot"
+}
