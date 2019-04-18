@@ -12,7 +12,7 @@ The cloud computer requires zero human interaction to deploy once cloud access c
 
 2. Run `yarn create:cloud-computer`.
 
-3. Open `https://terminal.your-domain.com` to access the CLI or `https://desktop.your-domain.com` to access the desktop environment.
+3. Open `https://terminal.your-domain.com` to access the terminal user interface or `https://desktop.your-domain.com` to access the desktop environment.
 
 ## Configuration
 
