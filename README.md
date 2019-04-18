@@ -12,7 +12,7 @@ The cloud computer requires zero human interaction to deploy once cloud access c
 
 2. Run `yarn create:cloud-computer`.
 
-3. Open `https://terminal.your-domain.com`.
+3. Open `https://terminal.your-domain.com` to access the CLI or `https://desktop.your-domain.com` to access the desktop environment.
 
 ## Configuration
 
@@ -48,5 +48,6 @@ The cloud computer is built on 100% open source technologies.
 
 ## Screenshots
 
+![Desktop](https://user-images.githubusercontent.com/1094600/56347945-c2dc7900-6208-11e9-8ed2-0bbff2fee6a8.png)
 ![Terminal](https://user-images.githubusercontent.com/1094600/56299607-b2c88900-6177-11e9-912b-40ea25d690e3.png)
 ![Jaeger](https://raw.githubusercontent.com/kawing-ho/kawing-ho.github.io/master/assets/images/startup-yarn-2.png)
