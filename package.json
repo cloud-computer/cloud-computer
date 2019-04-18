@@ -30,7 +30,7 @@
   "scripts": {
     "apps": "echo code terminal desktop frontend majestic drone jaeger",
     "bootstrap": "yarn bootstrap:backend; yarn bootstrap:frontend",
-    "bootstrap:backend": "scripts/bootstrap-backend.sh",
+    "bootstrap:backend": "yarn; yarn lerna:link; yarn ignore-secret-changes",
     "bootstrap:frontend": "cd /cloud-computer/frontend; npm run install:all",
     "build": "yarn lerna run build | tsc-path-prefix",
     "build:clean": "yarn lerna exec --ignore @cloud-computer/yarn-shim --ignore @cloud-computer/cloud-computer 'rm -rf build'",
@@ -61,6 +61,7 @@
     "gcloud:instances": "yarn --cwd infrastructure/gcloud instances",
     "git:dashboard": "yarn --cwd infrastructure/git dashboard",
     "hosts:insert": "yarn --cwd infrastructure/terraform hosts:insert",
+    "ignore-secret-changes": "scripts/ignore-secret-changes.sh",
     "lerna:link": "yarn lerna link --force-local",
     "links": "scripts/links.sh",
     "open": "scripts/open.sh",

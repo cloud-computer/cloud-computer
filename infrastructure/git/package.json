@@ -9,7 +9,8 @@
     "clean": "scripts/clean.sh",
     "clone": "scripts/clone.sh",
     "dashboard": "grv",
-    "environment": "scripts/environment.sh"
+    "environment": "scripts/environment.sh",
+    "ignore-changes": "git update-index --assume-unchanged $@"
   },
   "version": "0.0.1"
 }
