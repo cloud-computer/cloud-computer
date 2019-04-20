@@ -1,5 +1,5 @@
 # Export cloud computer shell environment
-export $(yarn --cwd ../cloud-computer environment)
+eval "$(yarn --cwd ../cloud-computer environment)"
 
 # Generate an rsa keypair for accessing the cloud computer host vm
 yarn --cwd ../docker docker run \

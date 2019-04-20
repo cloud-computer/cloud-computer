@@ -1,11 +1,11 @@
 # Point shell context to the current environment's terraform host
-export $(yarn --cwd ../terraform environment)
+eval "$(yarn --cwd ../terraform environment)"
 
 # Export cloud computer shell environment
-export $(yarn --cwd ../cloud-computer environment)
+eval "$(yarn --cwd ../cloud-computer environment)"
 
 # Point shell context to the local docker host
-export $(DOCKER_HOST=localhost yarn --cwd ../docker environment)
+eval "$(DOCKER_HOST=localhost yarn --cwd ../docker environment)"
 
 # Provide the ip address of the cloud computer to kubectl
 CLOUD_COMPUTER_DEVELOPMENT_ENVIRONMENT_IP=$(yarn --cwd ../terraform ip)

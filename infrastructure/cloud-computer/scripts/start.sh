@@ -1,5 +1,5 @@
 # Export cloud computer shell environment
-export $(yarn environment)
+eval "$(yarn environment)"
 
 # Bootstrap the cloud computer host
 yarn bootstrap:remote-host

@@ -1,5 +1,5 @@
 # Export cloud computer shell environment
-export $(yarn environment)
+eval "$(yarn environment)"
 
 # Stop the cloud computer dashboard
 yarn tmux:dashboard:stop

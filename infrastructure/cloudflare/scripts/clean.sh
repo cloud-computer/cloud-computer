@@ -1,5 +1,5 @@
 # Export cloud computer shell environment
-export $(yarn --cwd ../cloud-computer environment)
+eval "$(yarn --cwd ../cloud-computer environment)"
 
 DNS_RECORDS=$(yarn list-records | grep $CLOUD_COMPUTER_HOST_DNS)
 

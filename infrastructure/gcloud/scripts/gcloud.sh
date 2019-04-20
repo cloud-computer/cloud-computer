@@ -1,5 +1,5 @@
 # Export cloud computer shell environment
-export $(yarn --cwd ../cloud-computer environment)
+eval "$(yarn --cwd ../cloud-computer environment)"
 
 yarn --cwd ../docker docker run \
   --env CLOUDSDK_CONFIG=$CLOUD_COMPUTER_GCLOUD \

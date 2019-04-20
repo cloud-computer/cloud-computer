@@ -1,11 +1,11 @@
 # Point shell context to the current environment's terraform host
-export $(yarn --cwd ../terraform environment)
+eval "$(yarn --cwd ../terraform environment)"
 
 # Export cloud computer shell environment
-export $(yarn --cwd ../cloud-computer environment)
+eval "$(yarn --cwd ../cloud-computer environment)"
 
 # Export local git config
-export $(yarn --cwd ../git environment)
+eval "$(yarn --cwd ../git environment)"
 
 # Make the cloud computer aware of its address
 export CLOUD_COMPUTER_DEVELOPMENT_ENVIRONMENT_IP=$(yarn --cwd ../terraform ip)

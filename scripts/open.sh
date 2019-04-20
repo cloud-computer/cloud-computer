@@ -1,5 +1,5 @@
 # Export stemn shell environment
-export $(yarn --cwd infrastructure/development-environment environment)
+eval "$(yarn --cwd infrastructure/development-environment environment)"
 
 # Prompt which app to open in app mode
 yarn apps | \

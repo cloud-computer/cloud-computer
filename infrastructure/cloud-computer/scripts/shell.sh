@@ -1,11 +1,11 @@
 # Export cloud computer shell environment
-export $(yarn environment)
+eval "$(yarn environment)"
 
 # Export local git config
-export $(yarn --cwd ../git environment)
+eval "$(yarn --cwd ../git environment)"
 
 # Point shell context to the current environment's terraform host
-export $(yarn --cwd ../terraform environment)
+eval "$(yarn --cwd ../terraform environment)"
 
 yarn --cwd ../docker docker run \
   --env CLOUDSDK_CONFIG=$CLOUD_COMPUTER_GCLOUD \

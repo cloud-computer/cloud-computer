@@ -9,7 +9,7 @@
     "bootstrap": "scripts/bootstrap.sh",
     "clean": "yarn --cwd ../docker-compose stop; yarn clean:volumes",
     "clean:volumes": "docker volume ls | grep CLOUD_COMPUTER_ | cut -b 15- | xargs docker volume rm",
-    "docker": "export $(yarn --cwd ../terraform environment); export $(yarn environment); docker",
+    "docker": "eval $(yarn --cwd ../terraform environment); eval $(yarn environment); docker",
     "environment": "scripts/environment.sh",
     "ps": "yarn docker ps --filter name=${COMPOSE_PROJECT_NAME:-cloud-computer}",
     "ps:aq": "yarn ps -aq",

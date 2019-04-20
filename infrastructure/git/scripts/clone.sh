@@ -1,5 +1,5 @@
 # Export cloud computer shell environment
-export $(yarn --cwd ../cloud-computer environment)
+eval "$(yarn --cwd ../cloud-computer environment)"
 
 # Local repository branch
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)

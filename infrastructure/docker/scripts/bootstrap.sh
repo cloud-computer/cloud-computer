@@ -1,5 +1,5 @@
 # Point shell context to the current environment's docker host and volumes
-export $(yarn environment)
+eval "$(yarn environment)"
 
 # Create the CLOUD_COMPUTER_DOCKER volume and take ownership of it
 docker run \

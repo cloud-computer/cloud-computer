@@ -1,5 +1,5 @@
 # Export cloud computer shell environment
-export $(yarn --cwd ../cloud-computer environment)
+eval "$(yarn --cwd ../cloud-computer environment)"
 
 CREDENTIALS_CONTAINER="${COMPOSE_PROJECT_NAME}_cloud-computer-credentials-$(date +%M%S)"
 

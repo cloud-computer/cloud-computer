@@ -1,5 +1,5 @@
 # Point shell context to the current environment's terraform host
-export $(yarn --cwd ../terraform environment)
+eval "$(yarn --cwd ../terraform environment)"
 
 # Recreate the cloud computer host
 yarn --cwd ../terraform restart

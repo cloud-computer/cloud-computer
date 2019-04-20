@@ -1,8 +1,8 @@
 # Export cloud computer shell environment
-export $(yarn --cwd ../cloud-computer environment)
+eval "$(yarn --cwd ../cloud-computer environment)"
 
 # Point shell context to the local docker host
-export $(DOCKER_HOST=localhost yarn --cwd ../docker environment)
+eval "$(DOCKER_HOST=localhost yarn --cwd ../docker environment)"
 
 yarn --cwd ../docker docker run \
   --env CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT=$CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT \

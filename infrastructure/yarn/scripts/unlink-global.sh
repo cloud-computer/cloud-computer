@@ -1,7 +1,7 @@
 # The cloud computer yarn shim
 CLOUD_COMPUTER_YARN=$(dirname $(readlink -f $0))/../bin/cloud-computer-yarn.js
 
-# Yarn installs to /usr/bin, so use /usr/local/bin to get found first in PATH
+# Yarn installs to /usr/bin, so use /usr/local/bin to appear first in PATH
 SYSTEM_YARN=/usr/local/bin/yarn
 
 # Early exit if yarn is not our symlink

@@ -1,8 +1,10 @@
+REPO_ROOT=$(dirname $(readlink -f $0))/../..
+
 # Point shell context to the current environment's terraform host
-export $(yarn environment)
+eval "$(yarn environment)"
 
 # Export cloud computer shell environment
-export $(yarn --cwd ../cloud-computer environment)
+eval "$(yarn --cwd ../cloud-computer environment)"
 
 # Check for an ip cached in the hosts file
 TERRAFORM_TARGET_IP=$(yarn --cwd ../hosts get-host $TERRAFORM_TARGET-$CLOUD_COMPUTER_HOST_DNS)

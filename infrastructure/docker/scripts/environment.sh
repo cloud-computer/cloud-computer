@@ -1,8 +1,8 @@
 # Point shell context to the current environment's terraform host
-export $(yarn --cwd ../terraform environment)
+eval "$(yarn --cwd ../terraform environment)"
 
 # Export cloud computer shell environment
-export $(yarn --cwd ../cloud-computer environment)
+eval "$(yarn --cwd ../cloud-computer environment)"
 
 # Always connect to localhost via the unix socket
 if [ "$DOCKER_HOST" = "localhost" ]; then
@@ -20,6 +20,6 @@ elif [ -z "$DOCKER_HOST" ]; then
 
 fi
 
-echo DOCKER_CERT_PATH=$DOCKER_CERT_PATH
-echo DOCKER_HOST=$DOCKER_HOST
-echo DOCKER_TLS_VERIFY=$DOCKER_TLS_VERIFY
+echo export DOCKER_CERT_PATH=$DOCKER_CERT_PATH
+echo export DOCKER_HOST=$DOCKER_HOST
+echo export DOCKER_TLS_VERIFY=$DOCKER_TLS_VERIFY

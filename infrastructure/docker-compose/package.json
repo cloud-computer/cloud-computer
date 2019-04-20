@@ -26,7 +26,7 @@
     "down:grafana": "yarn compose -f stacks/grafana.yaml down",
     "down:jaeger": "yarn compose -f stacks/jaeger.yaml down",
     "down:terminal": "yarn compose -f stacks/terminal.yaml down",
-    "hosts": "export $(yarn --cwd ../cloud-computer environment); cat stacks/*.yaml | grep VIRTUAL_HOST | grep CLOUD_COMPUTER_HOST_DNS | sed -E -e \"s/VIRTUAL_HOST://\" -e \"s/:[0-9]{4,5}//g\" | tr , \\\\n | sort | uniq | sed -e 's;$CLOUD_COMPUTER_HOST_DNS;'\"$CLOUD_COMPUTER_HOST_DNS\"';'",
+    "hosts": "eval \"$(yarn --cwd ../cloud-computer environment)\"; cat stacks/*.yaml | grep VIRTUAL_HOST | grep CLOUD_COMPUTER_HOST_DNS | sed -E -e \"s/VIRTUAL_HOST://\" -e \"s/:[0-9]{4,5}//g\" | tr , \\\\n | sort | uniq | sed -e 's;$CLOUD_COMPUTER_HOST_DNS;'\"$CLOUD_COMPUTER_HOST_DNS\"';'",
     "hosts:insert": "scripts/hosts-insert.sh",
     "recycle": "yarn stop; yarn --cwd ../containers pull:cloud-computer; yarn start",
     "reload": "yarn --cwd ../docker ps:q --filter name=cloud-computer | xargs -n 1 -P $(cat /proc/cpuinfo | grep processor | wc -l) yarn --cwd ../docker docker restart",

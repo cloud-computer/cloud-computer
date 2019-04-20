@@ -1,5 +1,5 @@
 # Export cloud computer shell environment
-export $(yarn environment)
+eval "$(yarn environment)"
 
 # The container that starts the tmux server will run all subsequent tmux commands, not the container that issued the command.
 yarn tmux new-session -d -s tmux-server zsh 2>/dev/null
