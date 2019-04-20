@@ -1,0 +1,8 @@
+{
+  "lerna": "3.4.3",
+  "log-level": "silent",
+  "npmClient": "yarn",
+  "stream": true,
+  "useWorkspaces": true,
+  "version": "independent"
+}

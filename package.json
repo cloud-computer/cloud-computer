@@ -12,7 +12,7 @@
     "rebase-editor": "^2.0.5",
     "ts-node": "^8.0.3",
     "tslint": "^5.13.1",
-    "typescript": "^3.2.4"
+    "typescript": "^3.4.4"
   },
   "engines": {
     "node": ">=11.0.0"
@@ -38,7 +38,7 @@
     "build:local": "yarn --cwd libraries/types build:watch & yarn --cwd libraries/schemas build:watch & wait",
     "build:typescript": "yarn lerna run build:typescript --no-bail | tsc-path-prefix",
     "build:watch": "FORCE_COLOR=1 yarn lerna run build:watch --parallel | tsc-path-prefix",
-    "clean": "yarn lerna clean --ignore @cloud-computer/yarn --yes && yarn build:clean && yarn lerna run --no-bail clean",
+    "clean": "yarn lerna clean --ignore @cloud-computer/yarn-shim --yes && yarn build:clean && yarn lerna run --no-bail clean",
     "code:install-extensions": "cat .vscode/extensions.json | grep '    ' | tr -d , | xargs -n 1 code-server --install-extension",
     "create:cloud-computer": "yarn --cwd infrastructure/yarn link:global; hash -r; yarn --cwd infrastructure/cloud-computer run create",
     "destroy:cloud-computer": "yarn --cwd infrastructure/cloud-computer destroy",
