@@ -22,15 +22,6 @@ yarn --cwd ../docker docker run \
   cloud-computer/cloud-computer:latest \
   zsh -c "$GIT_CLEAN; git clone https://github.com/cloud-computer/cloud-computer.git --branch $GIT_BRANCH --depth 1 --single-branch .; $GIT_FETCH; $TAKE_OWNERSHIP" &
 
-# Clone cloud-computer code server repository
-yarn --cwd ../docker docker run \
-  --rm \
-  --user root \
-  --volume $CLOUD_COMPUTER_CODE_SERVER_VOLUME:$CLOUD_COMPUTER_CODE_SERVER \
-  --workdir $CLOUD_COMPUTER_CODE_SERVER \
-  cloud-computer/cloud-computer:latest \
-  zsh -c "$GIT_CLEAN; git clone https://github.com/codercom/code-server.git --branch master --depth 1 --single-branch .; $GIT_FETCH; $TAKE_OWNERSHIP" &
-
 # Clone cloud-computer frontend repository
 yarn --cwd ../docker docker run \
   --rm \
@@ -38,7 +29,7 @@ yarn --cwd ../docker docker run \
   --volume $CLOUD_COMPUTER_FRONTEND_VOLUME:$CLOUD_COMPUTER_FRONTEND \
   --workdir $CLOUD_COMPUTER_FRONTEND \
   cloud-computer/cloud-computer:latest \
-  zsh -c "$GIT_CLEAN; git clone https://github.com/cloud-computer/frontend.git --branch staging --depth 1 --single-branch .; $GIT_FETCH; $TAKE_OWNERSHIP" &
+  zsh -c "$GIT_CLEAN; git clone https://github.com/cloud-computer/frontend.git --branch master --depth 1 --single-branch .; $GIT_FETCH; $TAKE_OWNERSHIP" &
 
 # Clone cloud-computer slackbot repository
 yarn --cwd ../docker docker run \
