@@ -8,7 +8,7 @@ services:
 
   code:
     image: cloud-computer/cloud-computer:latest
-    command: code-server --cert $CLOUD_COMPUTER_CERTIFICATES/cert.pem --cert-key $CLOUD_COMPUTER_CERTIFICATES/key.pem --data-dir $CLOUD_COMPUTER_CODE --no-auth $CLOUD_COMPUTER_BACKEND
+    command: code-server --data-dir $CLOUD_COMPUTER_CODE --no-auth $CLOUD_COMPUTER_BACKEND
     restart: always
     tty: true
     labels:

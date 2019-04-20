@@ -1,5 +1,5 @@
 # Export cloud computer shell environment
-eval "$(yarn --cwd ../cloud-computer environment)"
+export $(yarn --cwd ../cloud-computer environment)
 
 CERTIFICATES_CONTAINER="${COMPOSE_PROJECT_NAME}_cloud-computer-certificates-$(date +%M%S)"
 
@@ -10,13 +10,6 @@ yarn --cwd ../docker docker run \
   --volume $CLOUD_COMPUTER_CERTIFICATES_VOLUME:$CLOUD_COMPUTER_CERTIFICATES \
   cloud-computer/cloud-computer:latest \
   sleep infinity
-
-# Copy cloudflare tls root certificate from the repository to the CLOUD_COMPUTER_CERTIFICATES volume
-cat $PWD/ca.pem | \
-  yarn --cwd ../docker docker exec \
-  --interactive \
-  $CERTIFICATES_CONTAINER \
-  zsh -c "cat > $CLOUD_COMPUTER_CERTIFICATES/ca.pem" &
 
 # Copy cloud computer tls certificate from the repository to the CLOUD_COMPUTER_CERTIFICATES volume
 cat $PWD/cert.pem | \

@@ -29,11 +29,6 @@ variable "CLOUD_COMPUTER_HOST_USER" {
   description = "The username of the user that created the instance."
 }
 
-variable "tls_ca_cert_path" {
-  description = "Path to file containing CA TLS certificate."
-  default = "/cloud-computer/certificates/ca.pem"
-}
-
 output "ip" {
   value = "${google_compute_instance.cloud-computer.network_interface.0.access_config.0.nat_ip}"
 }
