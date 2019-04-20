@@ -7,14 +7,18 @@ provider "google" {
   project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
 }
 
+locals {
+  environment_name = "cloud-computer-${var.CLOUD_COMPUTER_HOST_ID}"
+}
+
 resource "tls_private_key" "cloud-computer" {
   count = "1"
   algorithm = "RSA"
   rsa_bits  = 4096
 }
 
-locals {
-  environment_name = "cloud-computer-${var.CLOUD_COMPUTER_HOST_ID}"
+resource "google_storage_bucket" "cloud-computer" {
+  name = "terraform/${var.CLOUD_COMPUTER_HOST_ID}"
 }
 
 resource "google_compute_instance" "cloud-computer" {
