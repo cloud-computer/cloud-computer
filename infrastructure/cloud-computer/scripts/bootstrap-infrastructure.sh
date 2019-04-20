@@ -85,11 +85,5 @@ yarn --cwd ../git clone &
 # Wait for docker volume population to complete in parallel
 wait
 
-# Authenticate local machine with services
-yarn --cwd ../credentials auth &
-
-# Wait for setup tasks to complete in parallel
-wait
-
 # Bootstrap terraform configuration
 yarn --cwd ../terraform bootstrap

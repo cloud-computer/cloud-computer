@@ -10,4 +10,4 @@ yarn --cwd ../docker docker run \
   chown -R cloud:cloud $CLOUD_COMPUTER_CREDENTIALS
 
 # Exclude user credentials from being committed
-yarn --cwd ../git ignore-changes cloud-provider.json
+yarn --cwd ../git ignore-changes ../../infrastructure/credentials/cloud-provider.json

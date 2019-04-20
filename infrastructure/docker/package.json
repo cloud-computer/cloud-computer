@@ -5,7 +5,6 @@
   "name": "@cloud-computer/docker",
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
-    "auth": "yarn docker login -u _json_key -p \"$(cat ../credentials/cloud-computer.json)\" https://asia.gcr.io",
     "bootstrap": "scripts/bootstrap.sh",
     "clean": "yarn --cwd ../docker-compose stop; yarn clean:volumes",
     "clean:volumes": "docker volume ls | grep CLOUD_COMPUTER_ | cut -b 15- | xargs docker volume rm",
