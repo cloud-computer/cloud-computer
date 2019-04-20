@@ -253,7 +253,7 @@ RUN useradd \
   $USER
 
 # Add user configuration files
-COPY .conkyrc .gitconfig .gotty .tmux.conf .weechat.conf .zlogin .zshenv .zshrc $HOME/
+COPY .conkyrc .gitconfig .gotty .tmux.conf .zlogin .zshenv .zshrc $HOME/
 
 # Configure lazygit
 RUN mkdir -p $HOME/.config/jesseduffield/lazygit && \
