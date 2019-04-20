@@ -252,9 +252,6 @@ RUN yarn global add \
   rebase-editor \
   tldr
 
-# Add system binaries
-COPY weechat.sh /usr/local/bin/weechat
-
 # Enable password-less sudo for the sudo group
 RUN echo "%sudo ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
 

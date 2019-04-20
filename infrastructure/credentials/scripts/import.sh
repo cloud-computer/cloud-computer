@@ -12,49 +12,22 @@ yarn --cwd ../docker docker run \
   cloud-computer/cloud-computer:latest \
   sleep infinity
 
-# Copy google credentials from the repository to the CLOUD_COMPUTER_CREDENTIALS volume
-cat $PWD/cloud-computer.json | \
+# Copy cloud provider credentials from the repository to the CLOUD_COMPUTER_CREDENTIALS volume
+cat $PWD/cloud-provider.json | \
   yarn --cwd ../docker docker exec \
   --interactive \
   $CREDENTIALS_CONTAINER \
-  zsh -c "cat > $CLOUD_COMPUTER_CREDENTIALS/cloud-computer.json" &
-
-# Copy private key from the repository to the CLOUD_COMPUTER_CREDENTIALS volume
-cat $PWD/cloud-computer.prv | \
-  yarn --cwd ../docker docker exec \
-  --interactive \
-  $CREDENTIALS_CONTAINER \
-  zsh -c "cat > $CLOUD_COMPUTER_CREDENTIALS/cloud-computer.prv" &
-
-# Copy private key from the repository to the CLOUD_COMPUTER_CREDENTIALS volume
-cat $PWD/cloud-computer.pub | \
-  yarn --cwd ../docker docker exec \
-  --interactive \
-  $CREDENTIALS_CONTAINER \
-  zsh -c "cat > $CLOUD_COMPUTER_CREDENTIALS/cloud-computer.pub" &
-
-# Copy weechat user credentials from the repository to the CLOUD_COMPUTER_CREDENTIALS volume
-cat $PWD/weechat.env | \
-  yarn --cwd ../docker docker exec \
-  --interactive \
-  $CREDENTIALS_CONTAINER \
-  zsh -c "cat > $CLOUD_COMPUTER_CREDENTIALS/weechat.env" &
+  zsh -c "cat > $CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json" &
 
 # Copy docker registry credentials from the repository to the CLOUD_COMPUTER_DOCKER volume
 cat $PWD/docker.json | \
   yarn --cwd ../docker docker exec \
   --interactive \
   $CREDENTIALS_CONTAINER \
-  zsh -c "cat > $CLOUD_COMPUTER_DOCKER/config.json" &
+  zsh -c "cat > $CLOUD_COMPUTER_DOCKER/docker.json" &
 
 # Wait for copies to complete in parallel
 wait
-
-# Restrict private key permissions
-yarn --cwd ../docker docker exec \
-  --interactive \
-  $CREDENTIALS_CONTAINER \
-  chmod 600 $CLOUD_COMPUTER_CREDENTIALS/cloud-computer.prv
 
 # Remove the temporary container
 yarn --cwd ../docker docker rm \

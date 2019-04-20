@@ -1,10 +1,5 @@
-# Load cloud computer ssh keys if present
-if [ -d $CLOUD_COMPUTER_CREDENTIALS ]; then
-  ssh-add $CLOUD_COMPUTER_CREDENTIALS/cloud-computer.prv >/dev/null 2>&1
-fi
-
 # Print mesasge of the day
-/bin/cat $HOME/.motd
+ascii CLOUD COMPUTER
 
 # Print container build info if present
 if [ ! -z "$CONTAINER_BUILD_DATE" ]; then
@@ -26,12 +21,3 @@ fi
 
 # Log current working directory structure
 tree -L 1 -d
-
-# Unlock ssh private key
-eval $(keychain --eval id_rsa 2>/dev/null)
-
-# Make unlocked key available to tmux clients
-if [ ! -z "$SSH_AUTH_SOCK" ]; then
-  tmux set-environment -g SSH_AGENT_PID $SSH_AGENT_PID
-  tmux set-environment -g SSH_AUTH_SOCK $SSH_AUTH_SOCK
-fi

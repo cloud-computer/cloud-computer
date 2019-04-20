@@ -11,6 +11,12 @@ resource "random_id" "instance_id" {
   byte_length = 2
 }
 
+resource "tls_private_key" "cloud-computer" {
+  count = "1"
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
 locals {
   environment_name = "cloud-computer-${var.CLOUD_COMPUTER_HOST_ID}-${random_id.instance_id.hex}"
 }
@@ -43,14 +49,14 @@ resource "google_compute_instance" "cloud-computer" {
   }
 
   metadata {
-    ssh-keys = "root:${file("${var.public_key_path}")}"
+    ssh-keys = "root:${tls_private_key.cloud-computer.private_key_pem}"
   }
 
   provisioner "remote-exec" {
     connection {
       type = "ssh"
       user = "root"
-      private_key = "${file("${var.private_key_path}")}"
+      private_key = "${tls_private_key.cloud-computer.public_key_openssh}"
       agent = false
     }
 

@@ -18,16 +18,6 @@ variable "machine_type" {
   default = "custom-6-30720"
 }
 
-variable "private_key_path" {
-  description = "Path to file containing SSH private key."
-  default = "/cloud-computer/credentials/cloud-computer.prv"
-}
-
-variable "public_key_path" {
-  description = "Path to file containing SSH public key fingerprint."
-  default = "/cloud-computer/credentials/cloud-computer.pub"
-}
-
 variable "CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT" {
   description = "The cloud provider project to create the machine in."
 }
