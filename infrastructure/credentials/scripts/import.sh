@@ -17,17 +17,7 @@ cat $PWD/cloud-provider.json | \
   yarn --cwd ../docker docker exec \
   --interactive \
   $CREDENTIALS_CONTAINER \
-  zsh -c "cat > $CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json" &
-
-# Copy docker registry credentials from the repository to the CLOUD_COMPUTER_DOCKER volume
-cat $PWD/docker.json | \
-  yarn --cwd ../docker docker exec \
-  --interactive \
-  $CREDENTIALS_CONTAINER \
-  zsh -c "cat > $CLOUD_COMPUTER_DOCKER/docker.json" &
-
-# Wait for copies to complete in parallel
-wait
+  zsh -c "cat > $CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json"
 
 # Remove the temporary container
 yarn --cwd ../docker docker rm \
