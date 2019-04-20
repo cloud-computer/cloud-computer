@@ -105,7 +105,7 @@ RUN wget -O bat.deb -qnv https://github.com/sharkdp/bat/releases/download/v0.9.0
   rm bat.deb
 
 # Install ctop
-RUN wget -O /usr/local/bin/ctop -qnv https://github.com/bcicen/ctop/releases/download/v0.7.1/ctop-0.7.1-linux-amd64 && \
+RUN wget -O /usr/local/bin/ctop -qnv https://github.com/bcicen/ctop/releases/download/v0.7.2/ctop-0.7.2-linux-amd64 && \
   chmod +x /usr/local/bin/ctop
 
 # Install define
