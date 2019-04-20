@@ -104,12 +104,6 @@ RUN wget -O bat.deb -qnv https://github.com/sharkdp/bat/releases/download/v0.9.0
   dpkg -i bat.deb && \
   rm bat.deb
 
-# Install code server
-RUN curl -fsSL https://github.com/codercom/code-server/releases/download/1.32.0-310/code-server-1.32.0-310-linux-x64.tar.gz | \
-  tar -C /tmp -xzf - && \
-  mv /tmp/code-server*/code-server /usr/local/bin && \
-  rm -rf /tmp/code-server*
-
 # Install ctop
 RUN wget -O /usr/local/bin/ctop -qnv https://github.com/bcicen/ctop/releases/download/v0.7.1/ctop-0.7.1-linux-amd64 && \
   chmod +x /usr/local/bin/ctop
@@ -135,15 +129,6 @@ RUN wget -qnv -O fd.deb https://github.com/sharkdp/fd/releases/download/v7.3.0/f
 # Install fzf
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git /opt/fzf && \
   /opt/fzf/install --bin
-
-# Install google cloud SDK
-RUN export CLOUD_SDK_REPO="cloud-sdk-cosmic" && \
-  echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | \
-  tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
-  curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
-  apt-key add - && \
-  apt-get update -qq && \
-  apt-get install -qq google-cloud-sdk
 
 # Install git dashboard
 RUN curl -fsSL https://github.com/jesseduffield/lazygit/releases/download/v0.7.2/lazygit_0.7.2_Linux_x86_64.tar.gz | \
@@ -285,7 +270,7 @@ RUN chmod +x $HOME/.config/openbox/autostart && \
 # Cache tmux plugins
 RUN /opt/tpm/bin/install_plugins
 
-# Take ownership of user's directory and applications directory
+# Take ownership of user's home and applications directory
 RUN chown -R $USER:$USER $HOME /opt
 
 # Cache zsh plugins

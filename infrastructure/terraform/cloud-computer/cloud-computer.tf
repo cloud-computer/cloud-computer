@@ -7,10 +7,6 @@ provider "google" {
   project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
 }
 
-resource "random_id" "instance_id" {
-  byte_length = 2
-}
-
 resource "tls_private_key" "cloud-computer" {
   count = "1"
   algorithm = "RSA"
@@ -18,7 +14,7 @@ resource "tls_private_key" "cloud-computer" {
 }
 
 locals {
-  environment_name = "cloud-computer-${var.CLOUD_COMPUTER_HOST_ID}-${random_id.instance_id.hex}"
+  environment_name = "cloud-computer-${var.CLOUD_COMPUTER_HOST_ID}"
 }
 
 resource "google_compute_instance" "cloud-computer" {
@@ -53,29 +49,10 @@ resource "google_compute_instance" "cloud-computer" {
   }
 
   provisioner "remote-exec" {
-    connection {
-      type = "ssh"
-      user = "root"
-      private_key = "${tls_private_key.cloud-computer.public_key_openssh}"
-      agent = false
-    }
-
     inline = [
       "# Install docker",
       "apt-get update -qq",
       "apt-get install -qq docker.io",
-
-      "# Supply docker daemon configuration using cloud computer certificates",
-      "echo '${file("${var.docker_config_path}")}' > /etc/docker/daemon.json",
-      "echo '${file("${var.tls_ca_cert_path}")}' > /etc/docker/ca.pem",
-      "echo '${file("${var.tls_cert_path}")}' > /etc/docker/cert.pem",
-      "echo '${file("${var.tls_key_path}")}' > /etc/docker/key.pem",
-
-      "# Override default docker daemon config",
-      "mkdir -p /etc/systemd/system/docker.service.d",
-      "printf '[Service]\nExecStart=\nExecStart=/usr/bin/dockerd' > /etc/systemd/system/docker.service.d/override.conf",
-      "systemctl daemon-reload",
-      "service docker restart",
 
       "# Make the docker socket accessible to the docker group",
       "chown :999 /var/run/docker.sock",
@@ -101,9 +78,7 @@ resource "google_compute_firewall" "cloud-computer" {
   allow {
     ports = [
       "22",
-      "80",
       "443",
-      "2375",
     ]
     protocol = "tcp"
   }
