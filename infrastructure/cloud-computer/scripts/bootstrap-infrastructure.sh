@@ -16,9 +16,6 @@ yarn --cwd ../credentials bootstrap &
 # Bootstrap docker configuration
 yarn --cwd ../docker bootstrap &
 
-# Bootstrap gcloud configuration
-yarn --cwd ../gcloud bootstrap &
-
 # Bootstrap git configuration
 yarn --cwd ../git bootstrap &
 

@@ -17,8 +17,6 @@
     "recycle": "yarn destroy; yarn run create",
     "refresh": "yarn terraform refresh >/dev/null 2>&1 || true; yarn hosts:insert",
     "restart": "yarn taint; yarn apply",
-    "ssh": "yarn ssh:exec bash",
-    "ssh:exec": "scripts/ssh.sh",
     "sync": "scripts/sync.sh",
     "taint": "yarn terraform taint google_compute_instance.cloud-computer",
     "terraform": "scripts/terraform.sh"

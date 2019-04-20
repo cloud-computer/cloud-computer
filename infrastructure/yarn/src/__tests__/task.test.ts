@@ -10,14 +10,14 @@ describe('Task API', () => {
       args: [
         '--cwd',
         'infrastructure/terraform',
-        'ssh',
+        'bootstrap',
       ],
       pwd: repositoryRoot,
     });
 
     expect(task.cwd).toBe('infrastructure/terraform');
-    expect(task.name).toBe('ssh');
-    expect(task.command).toBe('yarn ssh:exec bash');
+    expect(task.name).toBe('bootstrap');
+    expect(task.command).toBe('scripts/bootstrap.sh');
 
   });
 
