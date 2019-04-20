@@ -5,10 +5,10 @@ eval "$(yarn --cwd ../cloud-computer environment)"
 eval "$(DOCKER_HOST=localhost yarn --cwd ../docker environment)"
 
 yarn --cwd ../docker docker run \
-  --env GOOGLE_APPLICATION_CREDENTIALS=$CLOUD_COMPUTER_CREDENTIALS/cloud-computer.json \
+  --env GOOGLE_APPLICATION_CREDENTIALS=$CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json \
   --env TF_CLI_ARGS_apply="-auto-approve -lock=false" \
   --env TF_CLI_ARGS_destroy="-auto-approve -lock=false" \
-  --env TF_CLI_ARGS_init="-backend-config bucket=$CLOUD_COMPUTER_HOST_ID prefix=terraform/$CLOUD_COMPUTER_HOST_ID -lock=false" \
+  --env TF_CLI_ARGS_init="-backend-config bucket=$CLOUD_COMPUTER_HOST_ID -backend-config prefix=terraform/$CLOUD_COMPUTER_HOST_ID -lock=false" \
   --env TF_CLI_ARGS_refresh="-lock=false" \
   --env TF_CLI_ARGS_taint="-lock=false" \
   --env TF_DATA_DIR=$CLOUD_COMPUTER_TERRAFORM \
