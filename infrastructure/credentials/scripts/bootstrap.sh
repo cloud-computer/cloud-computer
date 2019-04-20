@@ -10,4 +10,4 @@ yarn --cwd ../docker docker run \
   chown -R cloud:cloud $CLOUD_COMPUTER_CREDENTIALS
 
 # Exclude user credentials from being committed
-git update-index --assume-unchanged weechat.env
+yarn --cwd ../git ignore-changes ../credentials/cloud-provider.json

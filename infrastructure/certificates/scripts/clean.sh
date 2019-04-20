@@ -10,6 +10,3 @@ yarn --cwd ../docker docker run \
   --volume $CLOUD_COMPUTER_CERTIFICATES_VOLUME:$CLOUD_COMPUTER_CERTIFICATES \
   cloud-computer/cloud-computer:latest \
   zsh -c "rm -rf $CLOUD_COMPUTER_CERTIFICATES/*"
-
-# Remove kubeconfigs containing embedded certificates
-yarn --cwd ../kubectl clean

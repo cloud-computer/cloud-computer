@@ -19,9 +19,6 @@ yarn --cwd ../docker bootstrap &
 # Bootstrap git configuration
 yarn --cwd ../git bootstrap &
 
-# Bootstrap kubectl configuration
-yarn --cwd ../kubectl bootstrap &
-
 # Bootstrap yarn configuration
 yarn --cwd ../yarn bootstrap &
 
@@ -87,9 +84,6 @@ yarn --cwd ../git clone &
 
 # Wait for docker volume population to complete in parallel
 wait
-
-# Generate kubectl configuration
-yarn --cwd ../kubectl generate &
 
 # Authenticate local machine with services
 yarn --cwd ../credentials auth &

@@ -15,7 +15,6 @@ antigen bundle fzf
 antigen bundle git
 antigen bundle git-auto-fetch
 antigen bundle gnu-utils
-antigen bundle kubectl
 antigen bundle ubuntu
 
 # Bundles from third parties

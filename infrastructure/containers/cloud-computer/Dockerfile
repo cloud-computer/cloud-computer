@@ -163,11 +163,6 @@ RUN wget -qnv -O jump.deb https://github.com/gsamokovarov/jump/releases/download
   dpkg -i jump.deb && \
   rm jump.deb
 
-# Install kubectl
-RUN curl -fsSL -O https://storage.googleapis.com/kubernetes-release/release/$(curl -fsSL https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
-  chmod +x kubectl && \
-  mv kubectl /usr/local/bin
-
 # Install kube prompt
 RUN wget -qnv -O kube-prompt.zip https://github.com/c-bata/kube-prompt/releases/download/v1.0.5/kube-prompt_v1.0.5_linux_amd64.zip && \
   unzip kube-prompt.zip && rm kube-prompt.zip && \
