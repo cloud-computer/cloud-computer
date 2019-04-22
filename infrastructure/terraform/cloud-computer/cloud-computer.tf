@@ -17,10 +17,6 @@ resource "tls_private_key" "cloud-computer" {
   rsa_bits  = 4096
 }
 
-resource "google_storage_bucket" "cloud-computer" {
-  name = "terraform/${var.CLOUD_COMPUTER_HOST_ID}"
-}
-
 resource "google_compute_instance" "cloud-computer" {
   allow_stopping_for_update = true
   machine_type = "${var.machine_type}"

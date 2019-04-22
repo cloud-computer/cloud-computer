@@ -40,7 +40,7 @@
     "build:watch": "FORCE_COLOR=1 yarn lerna run build:watch --parallel | tsc-path-prefix",
     "clean": "yarn lerna clean --ignore @cloud-computer/yarn-shim --yes && yarn build:clean && yarn lerna run --no-bail clean",
     "code:install-extensions": "cat .vscode/extensions.json | grep '    ' | tr -d , | xargs -n 1 code-server --install-extension",
-    "create:cloud-computer": "yarn --cwd infrastructure/yarn link:global; hash -r; yarn --cwd infrastructure/cloud-computer run create",
+    "create:cloud-computer": "yarn --cwd infrastructure/cloud-computer run create",
     "destroy:cloud-computer": "yarn --cwd infrastructure/cloud-computer destroy",
     "docker": "yarn --cwd infrastructure/docker docker",
     "docker:dashboard": "yarn docker:exec:terminal yarn --cwd infrastructure/cloud-computer tmux:dashboard:attach",
