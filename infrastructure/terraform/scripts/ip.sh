@@ -1,5 +1,3 @@
-REPO_ROOT=$(dirname $(readlink -f $0))/../..
-
 # Point shell context to the current environment's terraform host
 eval "$(yarn environment)"
 

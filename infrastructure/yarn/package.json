@@ -24,6 +24,7 @@
     "clean": "scripts/clean.sh",
     "link:global": "scripts/link-global.sh",
     "logs": "scripts/logs.sh",
+    "readlink-f": "scripts/readlink-f.sh",
     "test": "jest -i",
     "test:watch": "yarn test --watch",
     "unlink:global": "scripts/unlink-global.sh",
