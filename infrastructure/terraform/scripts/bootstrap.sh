@@ -17,11 +17,16 @@ yarn --cwd ../credentials run import
 
 # Ensure the terraform backend storage bucket exists
 yarn --cwd ../docker docker run \
-  --env GOOGLE_APPLICATION_CREDENTIALS=$CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json \
+  --entrypoint bash \
   --rm \
   --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
+  -it \
   google/cloud-sdk:latest \
-  gsutil mb gs://terraform
+  -c "\
+    gcloud auth activate-service-account --key-file $CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json; \
+    gcloud config set project $(yarn --cwd ../credentials project); \
+    gsutil mb gs://terraform; \
+  "
 
 # Sync with remote terraform state in cloud storage
 yarn sync
