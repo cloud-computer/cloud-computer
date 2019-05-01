@@ -12,12 +12,20 @@
     ]
   },
   "dependencies": {
+    "grommet": "^2.6.6",
+    "grommet-icons": "^4.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-github-login": "^1.0.3",
+    "reakit": "^0.16.0",
+    "styled-components": "^4.2.0"
+  },
+  "devDependencies": {
     "@types/jest": "24.0.12",
     "@types/node": "11.13.8",
     "@types/react": "16.8.15",
     "@types/react-dom": "16.8.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "@types/styled-components": "^4.1.14",
     "react-scripts": "3.0.0",
     "typescript": "3.4.5"
   },
@@ -32,5 +40,5 @@
     "start": "react-scripts start",
     "test": "react-scripts test"
   },
-  "version": "0.1.0"
+  "version": "0.0.1"
 }

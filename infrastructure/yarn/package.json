@@ -10,7 +10,7 @@
     "@cloud-computer/jest-config": "^0.0.1",
     "@cloud-computer/nodemon": "^0.0.1",
     "@cloud-computer/tsconfig": "^0.0.1",
-    "typescript": "^3.4.4"
+    "typescript": "^3.4.5"
   },
   "license": "MIT",
   "main": "build",
