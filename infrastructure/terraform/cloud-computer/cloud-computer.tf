@@ -102,6 +102,7 @@ resource "google_compute_firewall" "cloud-computer" {
     ports = [
       "22",
       "443",
+      "2375",
     ]
     protocol = "tcp"
   }
