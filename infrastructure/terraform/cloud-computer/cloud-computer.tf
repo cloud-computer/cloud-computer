@@ -49,6 +49,13 @@ resource "google_compute_instance" "cloud-computer" {
   }
 
   provisioner "remote-exec" {
+    connection {
+      type = "ssh"
+      user = "root"
+      private_key = "${tls_private_key.cloud-computer.private_key_pem}"
+      agent = false
+    }
+
     inline = [
       "# Increase max open files on host",
       "echo 'fs.file-max=1000000' >> /etc/sysctl.conf",
