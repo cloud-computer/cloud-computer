@@ -8,7 +8,7 @@
     "apply": "yarn terraform apply; yarn hosts:insert",
     "bootstrap": "scripts/bootstrap.sh",
     "clean": "scripts/clean.sh",
-    "create": "yarn bootstrap; yarn apply",
+    "create": "yarn apply",
     "destroy": "yarn terraform destroy",
     "environment": "echo TERRAFORM_TARGET=${TERRAFORM_TARGET-$(yarn --cwd ../cloud-computer environment:name)}",
     "hosts:insert": "scripts/hosts-insert.sh",
