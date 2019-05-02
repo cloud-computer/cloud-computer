@@ -20,14 +20,14 @@ resource "tls_private_key" "cloud-computer" {
 resource "google_compute_instance" "cloud-computer" {
   allow_stopping_for_update = true
   machine_type = "${var.machine_type}"
-  name = "ubuntu-minimal-1810"
+  name = "${local.environment_name}"
   project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
   tags = ["${local.environment_name}"]
   zone = "${var.machine_region}-a"
 
   boot_disk {
     initialize_params {
-      image = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}/cloud-computer"
+      image = "ubuntu-minimal-1810"
       type = "pd-ssd"
       size = "100"
     }
