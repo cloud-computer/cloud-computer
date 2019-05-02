@@ -5,17 +5,19 @@ eval "$(yarn --cwd ../cloud-computer environment)"
 eval "$(DOCKER_HOST=localhost yarn --cwd ../docker environment)"
 
 yarn --cwd ../docker docker run \
+  --env GOOGLE_APPLICATION_CREDENTIALS=$CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json \
   --env TF_CLI_ARGS_apply="-auto-approve -lock=false" \
   --env TF_CLI_ARGS_destroy="-auto-approve -lock=false" \
-  --env TF_CLI_ARGS_init="-backend-config bucket=cloud-computer -backend-config prefix=terraform/$CLOUD_COMPUTER_HOST_ID -lock=false" \
+  --env TF_CLI_ARGS_init="-backend-config bucket=cloud-computer-$CLOUD_COMPUTER_HOST_USER -backend-config prefix=terraform -lock=false" \
   --env TF_CLI_ARGS_refresh="-lock=false" \
   --env TF_CLI_ARGS_taint="-lock=false" \
   --env TF_DATA_DIR=$CLOUD_COMPUTER_TERRAFORM \
   --env TF_IN_AUTOMATION=true \
+  --env TF_LOG=TRACE \
+  --env TF_VAR_CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT=$CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT \
   --env TF_VAR_CLOUD_COMPUTER_HOST_ID=$CLOUD_COMPUTER_HOST_ID \
   --env TF_VAR_CLOUD_COMPUTER_HOST_NAME=$CLOUD_COMPUTER_HOST_NAME \
   --env TF_VAR_CLOUD_COMPUTER_HOST_USER=$CLOUD_COMPUTER_HOST_USER \
-  --env TF_VAR_CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT=$CLOUD_COMPUTER_HOST_USER \
   --rm \
   --volume /var/run/docker.sock:/var/run/docker.sock \
   --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND \

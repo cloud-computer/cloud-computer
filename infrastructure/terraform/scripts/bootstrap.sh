@@ -25,7 +25,7 @@ yarn --cwd ../docker docker run \
   -c "\
     gcloud auth activate-service-account --key-file $CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json; \
     gcloud config set project $(yarn --cwd ../credentials project); \
-    gsutil mb gs://terraform; \
+    gsutil mb gs://cloud-computer-$CLOUD_COMPUTER_HOST_USER; \
   "
 
 # Sync with remote terraform state in cloud storage
