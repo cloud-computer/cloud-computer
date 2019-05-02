@@ -6,6 +6,9 @@
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
     "clean": "scripts/clean.sh",
+    "cloudflare-email": "scripts/cloudflare-email.sh",
+    "cloudflare-token": "scripts/cloudflare-token.sh",
+    "cloudflare-zone": "scripts/cloudflare-zone.sh",
     "delete-record": "scripts/delete-record.sh",
     "get-record": "scripts/get-record.sh",
     "list-records": "scripts/list-records.sh",

@@ -6,9 +6,9 @@ HOSTNAME=$1
 
 # Get the record matching the given HOSTNAME and IP
 get_record () {
-  curl "https://api.cloudflare.com/client/v4/zones/$CLOUD_COMPUTER_CLOUDFLARE_ZONE/dns_records?type=A&name=$HOSTNAME" \
-    --header "X-Auth-Email: $CLOUD_COMPUTER_CLOUDFLARE_EMAIL" \
-    --header "X-Auth-Key: $CLOUD_COMPUTER_CLOUDFLARE_TOKEN" \
+  curl "https://api.cloudflare.com/client/v4/zones/$(yarn cloudflare-zone)/dns_records?type=A&name=$HOSTNAME" \
+    --header "X-Auth-Email: $(yarn cloudflare-email)" \
+    --header "X-Auth-Key: $(yarn cloudflare-token)" \
     --header "Content-Type: application/json" \
     --request GET \
     --silent | \

@@ -7,10 +7,10 @@ IP=$2
 
 # Create the record for the given HOSTNAME and IP
 create_record () {
-  curl "https://api.cloudflare.com/client/v4/zones/$CLOUD_COMPUTER_CLOUDFLARE_ZONE/dns_records" \
+  curl "https://api.cloudflare.com/client/v4/zones/$(yarn cloudflare-zone)/dns_records" \
     --data '{"type":"A","name":'\"$HOSTNAME\"',"content":'\"$IP\"',"ttl":1,"priority":10,"proxied":true}' \
-    --header "X-Auth-Email: $CLOUD_COMPUTER_CLOUDFLARE_EMAIL" \
-    --header "X-Auth-Key: $CLOUD_COMPUTER_CLOUDFLARE_TOKEN" \
+    --header "X-Auth-Email: $(yarn cloudflare-email)" \
+    --header "X-Auth-Key: $(yarn cloudflare-token)" \
     --header "Content-Type: application/json" \
     --output /dev/null \
     --request POST \
@@ -20,10 +20,10 @@ create_record () {
 # Update the record matching the given HOSTNAME and IP
 update_record () {
   RECORD_ID=$1
-  curl "https://api.cloudflare.com/client/v4/zones/$CLOUD_COMPUTER_CLOUDFLARE_ZONE/dns_records/$RECORD_ID" \
+  curl "https://api.cloudflare.com/client/v4/zones/$(yarn cloudflare-zone)/dns_records/$RECORD_ID" \
     --data '{"type":"A","name":'\"$HOSTNAME\"',"content":'\"$IP\"',"ttl":1,"priority":10,"proxied":true}' \
-    --header "X-Auth-Email: $CLOUD_COMPUTER_CLOUDFLARE_EMAIL" \
-    --header "X-Auth-Key: $CLOUD_COMPUTER_CLOUDFLARE_TOKEN" \
+    --header "X-Auth-Email: $(yarn cloudflare-email)" \
+    --header "X-Auth-Key: $(yarn cloudflare-token)" \
     --header "Content-Type: application/json" \
     --output /dev/null \
     --request PUT \
