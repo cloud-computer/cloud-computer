@@ -34,7 +34,6 @@ The cloud computer is built on 100% open source technologies.
 - [Istio](https://github.com/istio/istio)
 - [Jaeger](https://github.com/jaegertracing/jaeger)
 - [Nginx](https://github.com/nginx/nginx)
-- [Packer](https://github.com/hashicorp/packer)
 - [Prometheus](https://github.com/prometheus/prometheus)
 - [Terraform](https://github.com/hashicorp/terraform)
 - [Tmux](https://github.com/tmux/tmux)

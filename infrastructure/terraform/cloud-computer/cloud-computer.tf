@@ -20,7 +20,7 @@ resource "tls_private_key" "cloud-computer" {
 resource "google_compute_instance" "cloud-computer" {
   allow_stopping_for_update = true
   machine_type = "${var.machine_type}"
-  name = "${local.environment_name}"
+  name = "ubuntu-minimal-1810"
   project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
   tags = ["${local.environment_name}"]
   zone = "${var.machine_region}-a"
@@ -50,6 +50,22 @@ resource "google_compute_instance" "cloud-computer" {
 
   provisioner "remote-exec" {
     inline = [
+      "# Increase max open files on host",
+      "echo 'fs.file-max=1000000' >> /etc/sysctl.conf",
+
+      "# Increase max open file watchers on host",
+      "echo 'fs.inotify.max_user_watches=1000000' >> /etc/sysctl.conf",
+
+      "# Support ipv4 forwarding in docker",
+      "echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.conf",
+
+      "# Increase max virtual memory maps",
+      "echo 'vm.max_map_count=262144' >> /etc/sysctl.conf",
+
+      "# Increase file descriptor limit",
+      "echo '* soft nofile 1000000' >> /etc/security/limits.conf",
+      "echo '* hard nofile 1000000' >> /etc/security/limits.conf",
+
       "# Install docker",
       "apt-get update -qq",
       "apt-get install -qq docker.io",

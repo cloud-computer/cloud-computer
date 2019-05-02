@@ -173,12 +173,6 @@ RUN wget -qnv -O kube-prompt.zip https://github.com/c-bata/kube-prompt/releases/
 RUN curl -fsSL https://gist.githubusercontent.com/sabrehagen/b07846cdb0d373ad5e6a4c7567d5f390/raw/61b7273546d9b187c6ee77a902cd2d078de83fc7/install.sh | bash - && \
   apt-get install -qq nodejs
 
-# Install packer
-RUN curl -fsSL https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_linux_amd64.zip > packer.zip && \
-  unzip packer.zip && \
-  mv packer /usr/local/bin && \
-  rm packer.zip
-
 # Install terraform
 RUN curl -fsSL https://raw.githubusercontent.com/GoogleCloudPlatform/terraform-google-examples/master/terraform-install.sh | bash && \
   mv $HOME/bin/terraform /usr/local/bin && \
