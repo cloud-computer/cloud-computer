@@ -45,7 +45,7 @@ resource "google_compute_instance" "cloud-computer" {
   }
 
   metadata {
-    ssh-keys = "root:${tls_private_key.cloud-computer.private_key_pem}"
+    ssh-keys = "root:${tls_private_key.cloud-computer.public_key_openssh}"
   }
 
   provisioner "remote-exec" {
