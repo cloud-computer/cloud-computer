@@ -66,17 +66,12 @@ RUN apt-get update -qq && \
   openbox \
   openssl \
   perl \
-  proxytunnel \
   python \
   python-pip \
-  rofi \
   rubygems \
   software-properties-common \
   ssh \
-  strace \
   stress \
-  sqlite3 \
-  sxhkd \
   sudo \
   tmux \
   tree \
@@ -189,6 +184,10 @@ RUN git clone https://github.com/tmux-plugins/tpm /opt/tpm --depth 1 && \
 RUN wget -qnv -O /usr/local/bin/tmux-notify https://raw.githubusercontent.com/ssterling/tmux-notify/master/tmux-notify.sh && \
   chmod +x /usr/local/bin/tmux-notify
 
+# Install traefik
+RUN wget -O /usr/local/bin/traefik -nv https://github.com/containous/traefik/releases/download/v1.7.9/traefik_linux-amd64 && \
+  chmod +x /usr/local/bin/traefik
+
 # Install webhookrelay
 RUN wget -qnv -O /usr/local/bin/relay https://storage.googleapis.com/webhookrelay/downloads/relay-linux-amd64 && \
   chmod +x /usr/local/bin/relay
@@ -205,14 +204,14 @@ RUN mkdir -p $HOME/.weechat/python/autoload && \
   ln -s $HOME/.weechat/python/wee_slack.py $HOME/.weechat/python/autoload && \
   pip install websocket-client
 
+# Install xeventbind
+RUN wget -qnv -O /usr/local/bin/xeventbind https://github.com/sabrehagen/dotfiles-bin/raw/master/.bin/xeventbind && \
+  chmod +x /usr/local/bin/xeventbind
+
 # Install yarn
 RUN curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list && \
   apt-get update -qq && apt-get install -qq yarn
-
-# Install xeventbind
-RUN wget -qnv -O /usr/local/bin/xeventbind https://github.com/sabrehagen/dotfiles-bin/raw/master/.bin/xeventbind && \
-  chmod +x /usr/local/bin/xeventbind
 
 # Install yarn based utilities
 RUN yarn global add \

@@ -77,8 +77,8 @@ resource "google_compute_instance" "cloud-computer" {
       "apt-get update -qq",
       "apt-get install -qq docker.io",
 
-      "# Make the docker socket accessible to the docker group",
-      "chown :999 /var/run/docker.sock",
+      "# Start the cloud computer environment",
+      "docker run cloudnativecomputer/cloud-computer",
     ]
   }
 

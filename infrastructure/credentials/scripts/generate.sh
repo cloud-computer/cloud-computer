@@ -7,5 +7,5 @@ yarn --cwd ../docker docker run \
   --name $CREDENTIALS_CONTAINER \
   --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
   --volume $CLOUD_COMPUTER_DOCKER_VOLUME:$CLOUD_COMPUTER_DOCKER \
-  cloud-computer/cloud-computer:latest \
+  cloudnativecomputer/cloud-computer:latest \
   sleep infinity

@@ -6,7 +6,7 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
-  cloud-computer/cloud-computer:latest \
+  cloudnativecomputer/cloud-computer:latest \
   chown -R cloud:cloud $CLOUD_COMPUTER_CREDENTIALS
 
 # Exclude user credentials from being committed

@@ -8,7 +8,7 @@ yarn --cwd ../docker docker run \
   --detach \
   --name $CERTIFICATES_CONTAINER \
   --volume $CLOUD_COMPUTER_CERTIFICATES_VOLUME:$CLOUD_COMPUTER_CERTIFICATES \
-  cloud-computer/cloud-computer:latest \
+  cloudnativecomputer/cloud-computer:latest \
   sleep infinity
 
 # Copy cloud computer tls certificate from the repository to the CLOUD_COMPUTER_CERTIFICATES volume

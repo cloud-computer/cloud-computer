@@ -8,5 +8,5 @@ eval "$(DOCKER_HOST=localhost yarn --cwd ../docker environment)"
 yarn --cwd ../docker docker run \
   --rm \
   --volume $CLOUD_COMPUTER_HOME_VOLUME:$CLOUD_COMPUTER_HOME \
-  cloud-computer/cloud-computer:latest \
+  cloudnativecomputer/cloud-computer:latest \
   zsh -c "rm -rf $CLOUD_COMPUTER_HOME/*"

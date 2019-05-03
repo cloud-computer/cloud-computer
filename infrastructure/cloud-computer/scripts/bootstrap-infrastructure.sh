@@ -27,7 +27,7 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_CODE_VOLUME:$CLOUD_COMPUTER_CODE \
-  cloud-computer/cloud-computer:latest \
+  cloudnativecomputer/cloud-computer:latest \
   chown -R cloud:cloud $CLOUD_COMPUTER_CODE &
 
 # Create the CLOUD_COMPUTER_GITHUB volume and take ownership of it
@@ -35,7 +35,7 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_GITHUB_VOLUME:$CLOUD_COMPUTER_GITHUB \
-  cloud-computer/cloud-computer:latest \
+  cloudnativecomputer/cloud-computer:latest \
   chown -R cloud:cloud $CLOUD_COMPUTER_GITHUB &
 
 # Create the CLOUD_COMPUTER_HOME volume and take ownership of it
@@ -43,7 +43,7 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_HOME_VOLUME:$CLOUD_COMPUTER_HOME \
-  cloud-computer/cloud-computer:latest \
+  cloudnativecomputer/cloud-computer:latest \
   chown -R cloud:cloud $CLOUD_COMPUTER_HOME &
 
 # Create the CLOUD_COMPUTER_NODEMON volume and take ownership of it
@@ -51,7 +51,7 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_NODEMON_VOLUME:$CLOUD_COMPUTER_NODEMON \
-  cloud-computer/cloud-computer:latest \
+  cloudnativecomputer/cloud-computer:latest \
   chown -R cloud:cloud $CLOUD_COMPUTER_NODEMON &
 
 # Create the CLOUD_COMPUTER_TMUX volume and take ownership of it
@@ -59,7 +59,7 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_TMUX_VOLUME:$CLOUD_COMPUTER_TMUX \
-  cloud-computer/cloud-computer:latest \
+  cloudnativecomputer/cloud-computer:latest \
   chown -R cloud:cloud $CLOUD_COMPUTER_TMUX &
 
 # Create the CLOUD_COMPUTER_X11 volume and take ownership of it
@@ -67,7 +67,7 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_X11_VOLUME:$CLOUD_COMPUTER_X11 \
-  cloud-computer/cloud-computer:latest \
+  cloudnativecomputer/cloud-computer:latest \
   chown -R cloud:cloud $CLOUD_COMPUTER_X11 &
 
 # Wait for ownership changes to complete in parallel

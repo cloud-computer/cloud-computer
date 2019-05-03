@@ -66,7 +66,7 @@ const createSyncContainer = async (repositoriesToSync: string[]) => {
   const syncContainer = await docker.container.create({
     Binds: repositoriesToSync.map(repositoryVolumeName),
     Cmd: ['sleep', 'infinity'],
-    Image: 'cloud-computer/cloud-computer:latest',
+    Image: 'cloudnativecomputer/cloud-computer:latest',
     name: syncContainerName,
   });
 

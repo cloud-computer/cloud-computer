@@ -39,7 +39,7 @@ services:
       - backend
 
   drone.webhooks:
-    image: cloud-computer/cloud-computer:latest
+    image: cloudnativecomputer/cloud-computer:latest
     command: relay forward --bucket cloud-computer-drone
     restart: always
     tty: true
