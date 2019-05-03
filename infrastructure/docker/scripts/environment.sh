@@ -15,7 +15,7 @@ elif [ -z "$DOCKER_HOST" ]; then
 
   # Use tls when connecting to a remote host
   DOCKER_CERT_PATH=$PWD/../certificates
-  DOCKER_HOST=$TERRAFORM_TARGET-$CLOUD_COMPUTER_HOST_DNS:2375
+  DOCKER_HOST=$CLOUD_COMPUTER_HOST_DNS:2375
   DOCKER_TLS_VERIFY=1
 
 fi
