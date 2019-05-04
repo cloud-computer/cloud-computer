@@ -6,7 +6,7 @@ networks:
 
 services:
 
-  ingress:
+  traefik:
     image: cloudnativecomputer/cloud-computer:latest
     command:
       - traefik

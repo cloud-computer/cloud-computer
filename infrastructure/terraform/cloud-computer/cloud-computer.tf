@@ -77,8 +77,13 @@ resource "google_compute_instance" "cloud-computer" {
       "apt-get update -qq",
       "apt-get install -qq docker.io docker-compose",
 
+      "# Get the cloud computer applications",
+      "curl https://raw.githubusercontent.com/cloud-computer/cloud-computer/master/infrastructure/docker-compose/stacks/traefik.yaml > traefik.yaml",
+      "curl https://raw.githubusercontent.com/cloud-computer/cloud-computer/master/infrastructure/docker-compose/stacks/terminal.yaml > terminal.yaml",
+      "curl https://raw.githubusercontent.com/cloud-computer/cloud-computer/master/infrastructure/docker-compose/stacks/xpra.yaml > xpra.yaml",
+
       "# Start the cloud computer environment",
-      "docker run cloudnativecomputer/cloud-computer",
+      "docker-compose -f traefik.yaml -f terminal.yaml -f xpra.yaml up -d",
     ]
   }
 
