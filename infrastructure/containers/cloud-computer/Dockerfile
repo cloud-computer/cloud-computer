@@ -221,7 +221,6 @@ RUN yarn global add \
   github-email \
   imgur-uploader-cli \
   kubebox \
-  majestic \
   rebase-editor \
   tldr
 

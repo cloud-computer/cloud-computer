@@ -4,9 +4,6 @@ eval "$(yarn environment)"
 # Start the jest tests
 yarn tmux:jest:start &
 
-# Start the majjestic interface
-yarn tmux:majestic:start &
-
 # Start the frontend build
 yarn tmux:frontend:build:start &
 

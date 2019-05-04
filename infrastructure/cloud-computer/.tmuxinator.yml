@@ -17,13 +17,6 @@ windows:
       panes:
         - yarn tmux:jest:attach
         - yarn logs:jest
-  - continuous-integration:
-      layout: tiled
-      panes:
-        - yarn logs:drone
-        - yarn ctop:drone
-        - yarn logs:drone:containers
-        - htop
   - ingress:
       layout: tiled
       panes:

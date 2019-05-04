@@ -21,7 +21,7 @@
   "private": true,
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
-    "apps": "echo code terminal desktop frontend majestic drone jaeger",
+    "apps": "echo code terminal desktop frontend jaeger",
     "bootstrap": "yarn bootstrap:backend; yarn bootstrap:frontend",
     "bootstrap:backend": "yarn; yarn lerna:link; yarn ignore-secret-changes",
     "bootstrap:frontend": "cd /cloud-computer/frontend; npm run install:all",
@@ -66,7 +66,6 @@
     "terraform:restart": "yarn --cwd infrastructure/terraform restart",
     "terraform:sync": "yarn --cwd infrastructure/terraform sync",
     "test": "jest",
-    "test:majestic": "majestic --dev --port 2000",
     "test:watch": "yarn test --watch --colors --onlyChanged",
     "tmux": "yarn --cwd infrastructure/cloud-computer tmux",
     "update": "yarn upgrade-interactive --latest"
