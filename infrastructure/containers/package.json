@@ -5,7 +5,7 @@
   "name": "@cloud-computer/containers",
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
-    "build": "yarn build:cloud-computer; yarn build:cloud-computer-ingress",
+    "build": "yarn build:cloud-computer",
     "build:cloud-computer": "yarn --cwd ../docker docker build --build-arg CONTAINER_BUILD_DATE=$(date +%s) --build-arg CONTAINER_GIT_SHA=$(git rev-parse HEAD | cut -b 1-7) --tag cloudnativecomputer/cloud-computer:latest $PWD/cloud-computer",
     "pull:cloud-computer": "yarn --cwd ../docker docker pull cloudnativecomputer/cloud-computer:latest",
     "push:cloud-computer": "yarn --cwd ../docker docker push cloudnativecomputer/cloud-computer:latest",
