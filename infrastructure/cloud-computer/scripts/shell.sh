@@ -41,7 +41,6 @@ yarn --cwd ../docker docker run \
   --name ${COMPOSE_PROJECT_NAME}_shell-$(date +%M%S) \
   --rm \
   --tty \
-  --volume /etc/hosts:/etc/hosts \
   --volume /var/run/docker.sock:/var/run/docker.sock \
   --volume $HOME/.ssh:$CLOUD_COMPUTER_HOME/.ssh \
   --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND \
