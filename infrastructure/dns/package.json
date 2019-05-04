@@ -12,7 +12,8 @@
     "dns-zone": "scripts/dns-zone.sh",
     "get-record": "scripts/get-record.sh",
     "list-records": "scripts/list-records.sh",
-    "set-record": "scripts/set-record.sh"
+    "set-record": "scripts/set-record.sh",
+    "update": "scripts/update.sh"
   },
   "version": "0.0.1"
 }
