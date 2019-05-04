@@ -1,0 +1,36 @@
+version: '3.5'
+
+networks:
+  backend:
+    driver: bridge
+
+services:
+
+  xpra:
+    image: sabrehagen/x11-bridge:latest
+    restart: always
+    tty: true
+    labels:
+      namespace: xpra
+      tier: cloud-computer
+    environment:
+      MODE: tcp
+      VIRTUAL_HOST: desktop-$CLOUD_COMPUTER_HOST_DNS:10000
+      XPRA_ENABLE_CRYPTO: 0
+      XPRA_ENCODING: png
+      XPRA_MOUSE_ECHO: 0
+      XPRA_HTML: 1
+    expose:
+      - 10000
+    volumes:
+      - CLOUD_COMPUTER_X11:$CLOUD_COMPUTER_X11
+    networks:
+      - backend
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:10000']
+      interval: 20s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  CLOUD_COMPUTER_X11:

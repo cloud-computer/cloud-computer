@@ -6,25 +6,6 @@ networks:
 
 services:
 
-  # cloud computer bootstrap
-
-  ingress:
-    image: cloud-computer/cloud-computer-ingress:latest
-    restart: always
-    labels:
-      namespace: ingress
-      tier: cloud-computer
-    environment:
-      VIRTUAL_HOST_SPECIFIC_PORT: 'true'
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-      - CLOUD_COMPUTER_CERTIFICATES:$CLOUD_COMPUTER_CERTIFICATES:ro
-    ports:
-      - 443:443
-      - 8443:8443
-    networks:
-      - backend
-
   terminal:
     image: cloudnativecomputer/cloud-computer:latest
     command: yarn --cwd infrastructure/cloud-computer tmux:server
@@ -80,32 +61,6 @@ services:
     extra_hosts:
       - cloud-computer-${CLOUD_COMPUTER_HOST_DNS}:${CLOUD_COMPUTER_DEVELOPMENT_ENVIRONMENT_IP}
 
-  xpra:
-    image: sabrehagen/x11-bridge:latest
-    restart: always
-    tty: true
-    labels:
-      namespace: xpra
-      tier: cloud-computer
-    environment:
-      MODE: tcp
-      VIRTUAL_HOST: desktop-$CLOUD_COMPUTER_HOST_DNS:10000
-      XPRA_ENABLE_CRYPTO: 0
-      XPRA_ENCODING: png
-      XPRA_MOUSE_ECHO: 0
-      XPRA_HTML: 1
-    expose:
-      - 10000
-    volumes:
-      - CLOUD_COMPUTER_X11:$CLOUD_COMPUTER_X11
-    networks:
-      - backend
-    healthcheck:
-      test: ['CMD', 'curl', '-f', 'http://localhost:10000']
-      interval: 20s
-      timeout: 5s
-      retries: 5
-
   container-logs:
     image: gliderlabs/logspout:latest
     restart: always
@@ -119,29 +74,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - backend
-
-  netdata:
-    image: netdata/netdata:latest
-    command: -D -u ubuntu
-    restart: always
-    labels:
-      namespace: monitoring
-      tier: cloud-computer
-    environment:
-      PGID: 1000
-      VIRTUAL_HOST: netdata-$CLOUD_COMPUTER_HOST_DNS
-    expose:
-      - 19999
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - backend
-    cap_add:
-      - SYS_PTRACE
-    security_opt:
-      - apparmor:unconfined
 
 volumes:
   CLOUD_COMPUTER_BACKEND:

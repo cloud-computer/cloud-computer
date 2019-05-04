@@ -1,0 +1,30 @@
+version: '3.5'
+
+networks:
+  backend:
+    driver: bridge
+
+services:
+
+  netdata:
+    image: netdata/netdata:latest
+    command: -D -u ubuntu
+    restart: always
+    labels:
+      namespace: monitoring
+      tier: cloud-computer
+    environment:
+      PGID: 1000
+      VIRTUAL_HOST: netdata-$CLOUD_COMPUTER_HOST_DNS
+    expose:
+      - 19999
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - backend
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined

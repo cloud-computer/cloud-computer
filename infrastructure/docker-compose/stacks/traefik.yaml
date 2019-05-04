@@ -1,0 +1,40 @@
+version: '3'
+
+networks:
+  backend:
+    driver: bridge
+
+services:
+
+  ingress:
+    image: cloudnativecomputer/cloud-computer:latest
+    command:
+      - traefik
+      - --entrypoints=Name:http Address::80 Redirect.EntryPoint:https
+      - --entrypoints=Name:https Address::443 TLS
+      - --defaultentrypoints=http,https
+      - --acme
+      - --acme.email=jackson@cloud-computer.dev
+      - --acme.storage=acme.json
+      - --acme.entryPoint=https
+      - --acme.onHostRule=true
+      - --acme.httpChallenge.entryPoint=http
+      - --docker
+      - --docker.endpoint=unix:///var/run/docker.sock
+      - --docker.domain=cloud-computer.dev
+      - --docker.watch=true
+      - --docker.exposedByDefault=false
+      - --logLevel=DEBUG
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:traefik.jackson.cloud-computer.dev
+      - traefik.port=8080
+      - traefik.protocol=http
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - backend

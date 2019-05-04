@@ -75,7 +75,7 @@ resource "google_compute_instance" "cloud-computer" {
 
       "# Install docker",
       "apt-get update -qq",
-      "apt-get install -qq docker.io",
+      "apt-get install -qq docker.io docker-compose",
 
       "# Start the cloud computer environment",
       "docker run cloudnativecomputer/cloud-computer",
