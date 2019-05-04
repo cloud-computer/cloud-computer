@@ -7,9 +7,6 @@ eval "$(yarn --cwd ../cloud-computer environment)"
 # Export local git config
 eval "$(yarn --cwd ../git environment)"
 
-# Make the cloud computer aware of its address
-export CLOUD_COMPUTER_DEVELOPMENT_ENVIRONMENT_IP=$(yarn --cwd ../terraform ip)
-
 yarn --cwd ../docker docker run \
   --env COMPOSE_PROJECT_NAME \
   --env DOCKER_CONFIG=$CLOUD_COMPUTER_DOCKER \
@@ -21,7 +18,6 @@ yarn --cwd ../docker docker run \
   --env CLOUD_COMPUTER_BACKEND \
   --env CLOUD_COMPUTER_CERTIFICATES \
   --env CLOUD_COMPUTER_CREDENTIALS \
-  --env CLOUD_COMPUTER_DEVELOPMENT_ENVIRONMENT_IP \
   --env CLOUD_COMPUTER_CODE \
   --env CLOUD_COMPUTER_CODE_SERVER \
   --env CLOUD_COMPUTER_DOCKER \

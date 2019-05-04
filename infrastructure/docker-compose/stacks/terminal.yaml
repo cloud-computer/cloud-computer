@@ -58,8 +58,6 @@ services:
       - CLOUD_COMPUTER_YARN:$CLOUD_COMPUTER_YARN
     networks:
       - backend
-    extra_hosts:
-      - cloud-computer-${CLOUD_COMPUTER_HOST_DNS}:${CLOUD_COMPUTER_DEVELOPMENT_ENVIRONMENT_IP}
 
   container-logs:
     image: gliderlabs/logspout:latest
