@@ -27,7 +27,7 @@ resource "google_compute_instance" "cloud-computer" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-minimal-1810"
+      image = "ubuntu-minimal-1904"
       type = "pd-ssd"
       size = "100"
     }
@@ -73,17 +73,13 @@ resource "google_compute_instance" "cloud-computer" {
       "echo '* soft nofile 1000000' >> /etc/security/limits.conf",
       "echo '* hard nofile 1000000' >> /etc/security/limits.conf",
 
-      "# Install docker",
+      "# Install bootstrap utilities",
       "apt-get update -qq",
-      "apt-get install -qq docker.io docker-compose",
+      "apt-get install -qq docker.io docker-compose git yarn",
 
-      "# Get the cloud computer applications",
-      "curl https://raw.githubusercontent.com/cloud-computer/cloud-computer/master/infrastructure/docker-compose/stacks/traefik.yaml > traefik.yaml",
-      "curl https://raw.githubusercontent.com/cloud-computer/cloud-computer/master/infrastructure/docker-compose/stacks/terminal.yaml > terminal.yaml",
-      "curl https://raw.githubusercontent.com/cloud-computer/cloud-computer/master/infrastructure/docker-compose/stacks/xpra.yaml > xpra.yaml",
-
-      "# Start the cloud computer environment",
-      "docker-compose -f traefik.yaml -f terminal.yaml -f xpra.yaml up -d",
+      "# Bootstrap the cloud computer",
+      "git clone https://github.com/cloud-computer/cloud-computer",
+      "yarn --cwd cloud-computer/docker-compose up",
     ]
   }
 

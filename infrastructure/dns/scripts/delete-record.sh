@@ -15,9 +15,9 @@ delete_record () {
 
   EXISTING_RECORD_ID=$(echo "$EXISTING_RECORD" | jq .id --raw-output)
 
-  curl "https://api.cloudflare.com/client/v4/zones/$(yarn cloudflare-zone)/dns_records/$EXISTING_RECORD_ID" \
-    --header "X-Auth-Email: $(yarn cloudflare-email)" \
-    --header "X-Auth-Key: $(yarn cloudflare-token)" \
+  curl "https://api.cloudflare.com/client/v4/zones/$(yarn dns-zone)/dns_records/$EXISTING_RECORD_ID" \
+    --header "X-Auth-Email: $(yarn dns-email)" \
+    --header "X-Auth-Key: $(yarn dns-token)" \
     --header "Content-Type: application/json" \
     --output /dev/null \
     --request DELETE \

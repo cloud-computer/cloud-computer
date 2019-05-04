@@ -51,7 +51,6 @@
     "docker:sync:watch": "yarn --cwd infrastructure/cloud-computer sync:watch",
     "docker:tmux": "yarn docker:exec:terminal yarn --cwd infrastructure/cloud-computer tmux",
     "git:dashboard": "yarn --cwd infrastructure/git dashboard",
-    "hosts:insert": "yarn --cwd infrastructure/terraform hosts:insert",
     "lerna:link": "yarn lerna link --force-local",
     "links": "scripts/links.sh",
     "open": "scripts/open.sh",

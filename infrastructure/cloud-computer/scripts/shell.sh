@@ -1,14 +1,14 @@
+# Point shell context to the current environment's terraform host
+eval "$(yarn --cwd ../terraform environment)"
+
 # Export cloud computer shell environment
 eval "$(yarn environment)"
 
 # Export local git config
 eval "$(yarn --cwd ../git environment)"
 
-# Point shell context to the current environment's terraform host
-eval "$(yarn --cwd ../terraform environment)"
-
 yarn --cwd ../docker docker run \
-  --env DISPLAY=$CLOUD_COMPUTER_XEPHYR_DISPLAY \
+  --env COMPOSE_PROJECT_NAME \
   --env DOCKER_CONFIG=$CLOUD_COMPUTER_DOCKER \
   --env DOCKER_HOST=unix:///var/run/docker.sock \
   --env GIT_AUTHOR_EMAIL \

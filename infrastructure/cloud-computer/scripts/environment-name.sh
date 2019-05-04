@@ -1,5 +1,5 @@
-# Pick docker environment in order of availability:
-# 1. Cloud Development Environment
+# Pick docker target in order of availability:
+# 1. Cloud Computer
 # 2. Local Machine
 
 if [ ! -z "$TERRAFORM_TARGET" ]; then

@@ -14,7 +14,6 @@ yarn --cwd ../docker docker run \
   --env GIT_AUTHOR_NAME \
   --env GIT_COMMITTER_EMAIL \
   --env GIT_COMMITTER_NAME \
-  --env IMAGE_TAG \
   --env CLOUD_COMPUTER_BACKEND \
   --env CLOUD_COMPUTER_CERTIFICATES \
   --env CLOUD_COMPUTER_CREDENTIALS \

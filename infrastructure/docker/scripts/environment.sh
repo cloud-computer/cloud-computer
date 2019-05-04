@@ -1,6 +1,3 @@
-# Point shell context to the current environment's terraform host
-eval "$(yarn --cwd ../terraform environment)"
-
 # Export cloud computer shell environment
 eval "$(yarn --cwd ../cloud-computer environment)"
 

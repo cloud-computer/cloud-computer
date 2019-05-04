@@ -1,15 +1,15 @@
 {
   "author": "Jackson Delahunt",
-  "description": "The Cloud Computer Cloudflare Automation",
+  "description": "The Cloud Computer DNS Automation",
   "license": "MIT",
-  "name": "@cloud-computer/cloudflare",
+  "name": "@cloud-computer/dns",
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
     "clean": "scripts/clean.sh",
-    "cloudflare-email": "scripts/cloudflare-email.sh",
-    "cloudflare-token": "scripts/cloudflare-token.sh",
-    "cloudflare-zone": "scripts/cloudflare-zone.sh",
     "delete-record": "scripts/delete-record.sh",
+    "dns-email": "scripts/dns-email.sh",
+    "dns-token": "scripts/dns-token.sh",
+    "dns-zone": "scripts/dns-zone.sh",
     "get-record": "scripts/get-record.sh",
     "list-records": "scripts/list-records.sh",
     "set-record": "scripts/set-record.sh"
