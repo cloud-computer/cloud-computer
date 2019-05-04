@@ -11,4 +11,4 @@ eval "$(DOCKER_HOST=localhost yarn --cwd ../docker environment)"
 yarn terraform init
 
 # Sync with remote terraform state in cloud storage
-yarn refresh
+yarn terraform refresh

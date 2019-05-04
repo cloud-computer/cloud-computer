@@ -12,7 +12,7 @@
     "environment": "echo TERRAFORM_TARGET=${TERRAFORM_TARGET-$(yarn --cwd ../cloud-computer environment:name)}",
     "ip": "yarn output ip 2>/dev/null",
     "output": "yarn terraform output",
-    "recycle": "yarn destroy; yarn run create",
+    "recycle": "yarn destroy; yarn apply",
     "restart": "yarn taint; yarn apply",
     "sync": "scripts/sync.sh",
     "taint": "yarn terraform taint google_compute_instance.cloud-computer",

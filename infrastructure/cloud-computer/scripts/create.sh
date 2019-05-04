@@ -5,7 +5,7 @@ export TERRAFORM_TARGET=${TERRAFORM_TARGET-cloud-computer}
 yarn bootstrap:local-host
 
 # Create the cloud computer host
-yarn --cwd ../terraform run create
+yarn --cwd ../terraform apply
 
 # Start the cloud computer
 yarn start
