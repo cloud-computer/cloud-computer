@@ -6,9 +6,9 @@
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
     "bootstrap": "scripts/bootstrap.sh",
-    "clean": "yarn --cwd ../docker-compose stop; yarn clean:volumes",
+    "clean": "yarn --cwd ../docker-compose down; yarn clean:volumes",
     "clean:volumes": "docker volume ls | grep CLOUD_COMPUTER_ | cut -b 15- | xargs docker volume rm",
-    "docker": "eval $(yarn --cwd ../terraform environment); eval $(yarn environment); docker",
+    "docker": "scripts/docker.sh",
     "environment": "scripts/environment.sh",
     "ps": "yarn docker ps --filter name=${COMPOSE_PROJECT_NAME:-cloud-computer}",
     "ps:aq": "yarn ps -aq",

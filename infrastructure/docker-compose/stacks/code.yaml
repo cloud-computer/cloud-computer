@@ -7,7 +7,7 @@ networks:
 services:
 
   code:
-    image: cloudnativecomputer/cloud-computer:latest
+    image: codercom/code-server:latest
     command: code-server --data-dir $CLOUD_COMPUTER_CODE --no-auth $CLOUD_COMPUTER_BACKEND
     restart: always
     tty: true

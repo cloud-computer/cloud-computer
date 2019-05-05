@@ -73,17 +73,8 @@ yarn --cwd ../docker docker run \
 # Wait for ownership changes to complete in parallel
 wait
 
-# Copy certificates into docker volume
-yarn --cwd ../certificates run import &
-
-# Copy credentials into docker volume
-yarn --cwd ../credentials run import &
-
 # Clone repositories into docker volumes
-yarn --cwd ../git clone &
-
-# Wait for docker volume population to complete in parallel
-wait
+yarn --cwd ../git clone
 
 # Bootstrap terraform configuration
 yarn --cwd ../terraform bootstrap

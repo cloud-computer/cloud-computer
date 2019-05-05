@@ -12,9 +12,6 @@ yarn --cwd ../docker docker run \
   cloudnativecomputer/cloud-computer:latest \
   chown -R cloud:cloud $CLOUD_COMPUTER_TERRAFORM
 
-# Import credentials so terraform can access google cloud api
-yarn --cwd ../credentials run import
-
 # Ensure the terraform backend storage bucket exists
 yarn --cwd ../docker docker run \
   --entrypoint bash \

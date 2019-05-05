@@ -52,9 +52,9 @@
     "start": "scripts/start.sh",
     "sync": "scripts/sync.sh",
     "sync:clean": "scripts/sync.sh --clean",
-    "sync:stop": "export $(yarn environment); yarn --cwd ../docker docker rm -f $(yarn --cwd ../docker docker ps -aq --filter name=${COMPOSE_PROJECT_NAME:-cloud-computer}_cloud-computer-sync)",
-    "sync:watch": "export $(yarn --cwd ../docker environment); node build/sync.js",
-    "tmux": "export $(yarn environment); touch $CLOUD_COMPUTER_TMUX/.tmux.sock; TMUX= tmux -S $CLOUD_COMPUTER_TMUX/.tmux.sock",
+    "sync:stop": "eval $(yarn environment); yarn --cwd ../docker docker rm -f $(yarn --cwd ../docker docker ps -aq --filter name=${COMPOSE_PROJECT_NAME:-cloud-computer}_cloud-computer-sync)",
+    "sync:watch": "eval $(yarn --cwd ../docker environment); node build/sync.js",
+    "tmux": "eval $(yarn environment); touch $CLOUD_COMPUTER_TMUX/.tmux.sock; TMUX= tmux -S $CLOUD_COMPUTER_TMUX/.tmux.sock",
     "tmux:dashboard:attach": "yarn tmux new-session -s environment-dashboard-$CLOUD_COMPUTER_TMUX_SESSION_ID-$(date +%M%S) -t environment-dashboard",
     "tmux:dashboard:start": "yarn tmux new-session -d -s environment-dashboard zsh && tmuxinator start dashboard",
     "tmux:dashboard:stop": "yarn tmux:kill-clients; yarn tmux kill-session -t environment-dashboard 2>/dev/null",
@@ -75,7 +75,7 @@
     "tmux:xephyr:attach": "scripts/tmux-xephyr-attach.sh",
     "tmux:xephyr:start": "scripts/tmux-xephyr-start.sh",
     "tmux:xephyr:stop": "yarn tmux kill-session -t xephyr 2>/dev/null",
-    "watch": "export $(yarn --cwd ../docker environment); nodemon --config node_modules/@cloud-computer/nodemon/nodemon.json"
+    "watch": "eval $(yarn --cwd ../docker environment); nodemon --config node_modules/@cloud-computer/nodemon/nodemon.json"
   },
   "version": "0.0.1"
 }

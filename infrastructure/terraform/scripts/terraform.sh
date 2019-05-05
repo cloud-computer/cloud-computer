@@ -2,7 +2,7 @@
 eval "$(yarn --cwd ../cloud-computer environment)"
 
 # Point shell context to the local docker host
-eval "$(DOCKER_HOST=localhost yarn --cwd ../docker environment)"
+export DOCKER_HOST=localhost
 
 yarn --cwd ../docker docker run \
   --env GOOGLE_APPLICATION_CREDENTIALS=$CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json \
