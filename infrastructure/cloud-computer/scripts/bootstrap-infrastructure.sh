@@ -1,6 +1,9 @@
 # Export cloud computer shell environment
 eval "$(yarn environment)"
 
+# Install yarn dependencies
+yarn install
+
 # Install yarn shim
 yarn --cwd ../yarn link:global
 
