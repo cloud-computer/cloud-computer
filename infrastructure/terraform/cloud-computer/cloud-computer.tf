@@ -77,10 +77,13 @@ resource "google_compute_instance" "cloud-computer" {
       "apt-get update -qq",
       "apt-get install -qq docker.io docker-compose git yarn",
 
-      "# Bootstrap the cloud computer",
+      "# Clone the cloud computer",
       "git clone https://github.com/cloud-computer/cloud-computer",
       "cd cloud-computer",
-      "yarn --cwd infrastructure/docker-compose up",
+
+      "# Start the services necessary to bootstrap",
+      "yarn --cwd infrastructure/docker-compose up:docker",
+      "yarn --cwd infrastructure/docker-compose up:traefik",
     ]
   }
 

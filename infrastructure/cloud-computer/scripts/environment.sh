@@ -1,8 +1,10 @@
+sanitise () { echo "$1" | tr '[:upper:]' '[:lower:]' | sed -E 's;[^a-z0-9_-];;g'; }
+
+# Set the docker compose environment
 COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME-cloud-computer}
 echo export COMPOSE_PROJECT_NAME=$COMPOSE_PROJECT_NAME
 
-sanitise () { echo "$1" | tr '[:upper:]' '[:lower:]' | sed -E 's;[^a-z0-9_-];;g'; }
-
+# Set the cloud computer environment
 CLOUD_COMPUTER_DOMAIN_NAME=${CLOUD_COMPUTER_DOMAIN_NAME-cloud-computer.dev}
 CLOUD_COMPUTER_HOST_NAME=${CLOUD_COMPUTER_HOST_NAME-$(sanitise $HOSTNAME)}
 CLOUD_COMPUTER_HOST_USER=${CLOUD_COMPUTER_HOST_USER-$(sanitise $USER)}

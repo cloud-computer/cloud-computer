@@ -7,9 +7,8 @@ networks:
 services:
 
   traefik:
-    image: cloudnativecomputer/cloud-computer:latest
+    image: traefik
     command:
-      - traefik
       - --entrypoints=Name:http Address::80 Redirect.EntryPoint:https
       - --entrypoints=Name:https Address::443 TLS
       - --defaultentrypoints=http,https

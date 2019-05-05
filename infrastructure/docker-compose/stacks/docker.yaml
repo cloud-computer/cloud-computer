@@ -1,0 +1,40 @@
+version: '3.5'
+
+networks:
+  backend:
+    driver: bridge
+
+services:
+
+  docker-socket-proxy:
+    image: sjawhar/docker-socket-proxy
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+    expose:
+      - 2376
+    secrets:
+      - source: ca_cert
+        target: ca.pem
+        mode: 0444
+      - source: server_cert
+        target: server-cert.pem
+        mode: 0444
+      - source: server_key
+        target: server-key.pem
+        mode: 0400
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+secrets:
+  ca_cert:
+    external: true
+  server_cert:
+    external: true
+  server_key:
+    external: true
