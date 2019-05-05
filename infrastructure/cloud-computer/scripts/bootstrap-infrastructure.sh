@@ -8,16 +8,16 @@ yarn --cwd ../yarn link:global
 hash -r
 
 # Bootstrap credentials configuration
-yarn --cwd ../credentials bootstrap
+yarn --cwd ../credentials bootstrap &
 
 # Bootstrap docker configuration
-yarn --cwd ../docker bootstrap
+yarn --cwd ../docker bootstrap &
 
 # Bootstrap git configuration
-yarn --cwd ../git bootstrap
+yarn --cwd ../git bootstrap &
 
 # Bootstrap yarn configuration
-yarn --cwd ../yarn bootstrap
+yarn --cwd ../yarn bootstrap &
 
 # Create the CLOUD_COMPUTER_CODE volume and take ownership of it
 yarn --cwd ../docker docker run \
@@ -25,7 +25,7 @@ yarn --cwd ../docker docker run \
   --user root \
   --volume $CLOUD_COMPUTER_CODE_VOLUME:$CLOUD_COMPUTER_CODE \
   cloudnativecomputer/cloud-computer:latest \
-  chown -R cloud:cloud $CLOUD_COMPUTER_CODE
+  chown -R cloud:cloud $CLOUD_COMPUTER_CODE &
 
 # Create the CLOUD_COMPUTER_GITHUB volume and take ownership of it
 yarn --cwd ../docker docker run \
@@ -33,7 +33,7 @@ yarn --cwd ../docker docker run \
   --user root \
   --volume $CLOUD_COMPUTER_GITHUB_VOLUME:$CLOUD_COMPUTER_GITHUB \
   cloudnativecomputer/cloud-computer:latest \
-  chown -R cloud:cloud $CLOUD_COMPUTER_GITHUB
+  chown -R cloud:cloud $CLOUD_COMPUTER_GITHUB &
 
 # Create the CLOUD_COMPUTER_HOME volume and take ownership of it
 yarn --cwd ../docker docker run \
@@ -41,7 +41,7 @@ yarn --cwd ../docker docker run \
   --user root \
   --volume $CLOUD_COMPUTER_HOME_VOLUME:$CLOUD_COMPUTER_HOME \
   cloudnativecomputer/cloud-computer:latest \
-  chown -R cloud:cloud $CLOUD_COMPUTER_HOME
+  chown -R cloud:cloud $CLOUD_COMPUTER_HOME &
 
 # Create the CLOUD_COMPUTER_NODEMON volume and take ownership of it
 yarn --cwd ../docker docker run \
@@ -49,7 +49,7 @@ yarn --cwd ../docker docker run \
   --user root \
   --volume $CLOUD_COMPUTER_NODEMON_VOLUME:$CLOUD_COMPUTER_NODEMON \
   cloudnativecomputer/cloud-computer:latest \
-  chown -R cloud:cloud $CLOUD_COMPUTER_NODEMON
+  chown -R cloud:cloud $CLOUD_COMPUTER_NODEMON &
 
 # Create the CLOUD_COMPUTER_TMUX volume and take ownership of it
 yarn --cwd ../docker docker run \
@@ -57,7 +57,7 @@ yarn --cwd ../docker docker run \
   --user root \
   --volume $CLOUD_COMPUTER_TMUX_VOLUME:$CLOUD_COMPUTER_TMUX \
   cloudnativecomputer/cloud-computer:latest \
-  chown -R cloud:cloud $CLOUD_COMPUTER_TMUX
+  chown -R cloud:cloud $CLOUD_COMPUTER_TMUX &
 
 # Create the CLOUD_COMPUTER_X11 volume and take ownership of it
 yarn --cwd ../docker docker run \
@@ -65,7 +65,10 @@ yarn --cwd ../docker docker run \
   --user root \
   --volume $CLOUD_COMPUTER_X11_VOLUME:$CLOUD_COMPUTER_X11 \
   cloudnativecomputer/cloud-computer:latest \
-  chown -R cloud:cloud $CLOUD_COMPUTER_X11
+  chown -R cloud:cloud $CLOUD_COMPUTER_X11 &
+
+# Wait for ownership changes to complete in parallel
+wait
 
 # Clone repositories into docker volumes
 yarn --cwd ../git clone
