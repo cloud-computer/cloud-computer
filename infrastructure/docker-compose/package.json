@@ -26,13 +26,13 @@
     "restart:xpra": "yarn down:xpra; yarn up:xpra",
     "rm": "yarn --cwd ../docker docker rm -f \"$@\" 2>/dev/null",
     "up": "yarn up:terminal; yarn up:code & yarn up:jaeger & yarn up:grafana & wait",
-    "up:code": "yarn compose -f stacks/code.yaml up -d",
-    "up:docker": "yarn compose -f stacks/docker.yaml up -d",
-    "up:grafana": "yarn compose -f stacks/grafana.yaml up -d",
-    "up:jaeger": "yarn compose -f stacks/jaeger.yaml up -d",
-    "up:terminal": "yarn compose -f stacks/terminal.yaml up -d",
-    "up:traefik": "yarn compose -f stacks/traefik.yaml up -d",
-    "up:xpra": "yarn compose -f stacks/xpra.yaml up -d"
+    "up:code": "yarn compose -f stacks/code.yaml up --detach --quiet-pull",
+    "up:docker": "yarn compose -f stacks/docker.yaml up --detach --quiet-pull",
+    "up:grafana": "yarn compose -f stacks/grafana.yaml up --detach --quiet-pull",
+    "up:jaeger": "yarn compose -f stacks/jaeger.yaml up --detach --quiet-pull",
+    "up:terminal": "yarn compose -f stacks/terminal.yaml up --detach --quiet-pull",
+    "up:traefik": "yarn compose -f stacks/traefik.yaml up --detach --quiet-pull",
+    "up:xpra": "yarn compose -f stacks/xpra.yaml up --detach --quiet-pull"
   },
   "version": "0.0.1"
 }

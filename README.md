@@ -46,9 +46,9 @@ The cloud computer is built on 100% open source technologies.
 
 ### Why Yarn?
 
-Yarn is a JavaScript industry standard package manager and task runner. It could be seen as overkill to use Yarn instead of shell scripts to automate the cloud computer operations. Yarn was chosen for its ability to leverage open source utilities in the JavaScript ecosystem, and for the modular structure it imposes using `package.json` files. These features solve two of the greatest pain points experienced in modern web development; frictionless reuse of open source code, and a maintainable project structure that can be navigated and automated programmatically.
+Yarn is the package manager for the web. It is also a task runner. It could be seen as overkill to use Yarn instead of shell scripts to automate the cloud computer operations. Yarn was chosen for its ability to leverage open source utilities in the JavaScript ecosystem, and for the modular structure it imposes using `package.json` files. These features solve two of the greatest pain points experienced in modern web development; frictionless reuse of open source code, and a maintainable project structure that can be navigated and automated programmatically.
 
-Using Yarn creates a single point of entry for all automated operations. This single point of entry greatly simplifies tracing of cloud computer operations. To provide visibility on these operations, Jaeger has been used for tracing using the instrumented version of Yarn in `@cloud-computer/yarn-shim`. A Screenshot of trace output is below.
+Using Yarn creates a single point of entry for all automated operations. This single point of entry greatly simplifies tracing of cloud computer operations. To provide visibility on these operations, Jaeger visualizes OpenTracing data captured using the shim in `@cloud-computer/yarn-shim`. A Screenshot of trace output is below.
 
 ## Screenshots
 

@@ -30,7 +30,7 @@
     "build:local": "yarn --cwd libraries/types build:watch & yarn --cwd libraries/schemas build:watch & wait",
     "build:typescript": "yarn lerna run build:typescript --no-bail | tsc-path-prefix",
     "build:watch": "FORCE_COLOR=1 yarn lerna run build:watch --parallel | tsc-path-prefix",
-    "clean": "yarn lerna clean --ignore @cloud-computer/yarn-shim --yes && yarn lerna run --ignore @cloud-computer/yarn-shim --no-bail clean",
+    "clean": "yarn lerna clean --ignore @cloud-computer/yarn-shim --ignore @cloud-computer/yarn --yes && yarn lerna run --ignore @cloud-computer/yarn-shim --ignore @cloud-computer/yarn --no-bail clean",
     "code:install-extensions": "cat .vscode/extensions.json | grep '    ' | tr -d , | xargs -n 1 code-server --install-extension",
     "create:cloud-computer": "yarn --cwd infrastructure/cloud-computer run create",
     "destroy:cloud-computer": "yarn --cwd infrastructure/cloud-computer destroy",

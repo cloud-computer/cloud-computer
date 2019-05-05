@@ -73,12 +73,15 @@ resource "google_compute_instance" "cloud-computer" {
       "echo '* soft nofile 1000000' >> /etc/security/limits.conf",
       "echo '* hard nofile 1000000' >> /etc/security/limits.conf",
 
+      "# Install Docker",
+      "curl -fsSL get.docker.com | CHANNEL=test sh",
+
       "# Install bootstrap utilities",
       "apt-get update -qq",
-      "apt-get install -qq docker.io docker-compose git yarn",
+      "apt-get install -qq git yarn",
 
       "# Clone the cloud computer",
-      "git clone https://github.com/cloud-computer/cloud-computer",
+      "git clone git@github.com:cloud-computer/cloud-computer",
       "cd cloud-computer",
 
       "# Bootstrap docker",
