@@ -97,10 +97,10 @@ resource "google_compute_instance" "cloud-computer" {
     inline = [
       "# Add dockerhub registry mirror",
       "printf DOCKER_OPTS=$DOCKER_OPTS --registry-mirror=https://mirror.gcr.io >> /etc/default/docker",
-      "systemctl restart docker",
+      "sudo systemctl restart docker",
 
       "# Alias docker run",
-      "alias docker_run=docker run --rm --interactive --tty --volume CLOUD_COMPUTER_BOOTSTRAP:/cloud-computer --workdir /cloud-computer",
+      "alias docker_run=\"docker run --rm --interactive --tty --volume CLOUD_COMPUTER_BOOTSTRAP:/cloud-computer --workdir /cloud-computer\"",
 
       "# Clone the cloud computer",
       "docker_run git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer cloud-computer",
