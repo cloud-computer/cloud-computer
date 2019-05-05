@@ -13,6 +13,10 @@ resource "tls_private_key" "cloud-computer" {
   rsa_bits  = 4096
 }
 
+resource "random_id" "instance_id" {
+  byte_length = 2
+}
+
 locals {
   environment_name = "cloud-computer-${var.CLOUD_COMPUTER_HOST_ID}-${random_id.instance_id.hex}"
 }
