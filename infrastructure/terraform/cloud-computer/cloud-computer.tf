@@ -8,8 +8,8 @@ provider "google" {
 }
 
 resource "tls_private_key" "cloud-computer" {
-  count = "1"
   algorithm = "RSA"
+  count = "1"
   rsa_bits  = 4096
 }
 
@@ -25,6 +25,7 @@ resource "google_compute_firewall" "cloud-computer" {
   name = "${local.environment_name}"
   network = "${google_compute_network.cloud-computer.name}"
   project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
+  target_tags = ["${local.environment_name}"]
 
   allow {
     protocol = "icmp"
@@ -33,11 +34,11 @@ resource "google_compute_firewall" "cloud-computer" {
   allow {
     ports = [
       "22",
+      "80",
+      "443",
     ]
     protocol = "tcp"
   }
-
-  target_tags = ["${local.environment_name}"]
 }
 
 resource "google_compute_network" "cloud-computer" {
@@ -47,8 +48,8 @@ resource "google_compute_network" "cloud-computer" {
 }
 
 resource "google_compute_subnetwork" "cloud-computer" {
-  name = "${local.environment_name}"
   ip_cidr_range = "10.2.0.0/16"
+  name = "${local.environment_name}"
   network = "${google_compute_network.cloud-computer.name}"
   project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
   region = "${var.machine_region}"
@@ -64,16 +65,10 @@ resource "google_compute_instance" "cloud-computer" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-minimal-1904"
+      image = "cos-stable-74-11895-86-0"
       type = "pd-ssd"
       size = "100"
     }
-  }
-
-  network_interface {
-    access_config {}
-    subnetwork = "${google_compute_subnetwork.cloud-computer.name}"
-    subnetwork_project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
   }
 
   labels {
@@ -85,6 +80,12 @@ resource "google_compute_instance" "cloud-computer" {
     ssh-keys = "root:${tls_private_key.cloud-computer.public_key_openssh}"
   }
 
+  network_interface {
+    access_config {}
+    subnetwork = "${google_compute_subnetwork.cloud-computer.name}"
+    subnetwork_project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
+  }
+
   provisioner "remote-exec" {
     connection {
       type = "ssh"
@@ -94,45 +95,18 @@ resource "google_compute_instance" "cloud-computer" {
     }
 
     inline = [
-      "# Increase max open files on host",
-      "echo 'fs.file-max=1000000' >> /etc/sysctl.conf",
-
-      "# Increase max open file watchers on host",
-      "echo 'fs.inotify.max_user_watches=1000000' >> /etc/sysctl.conf",
-
-      "# Support ipv4 forwarding in docker",
-      "echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.conf",
-
-      "# Increase max virtual memory maps",
-      "echo 'vm.max_map_count=262144' >> /etc/sysctl.conf",
-
-      "# Increase file descriptor limit",
-      "echo '* soft nofile 1000000' >> /etc/security/limits.conf",
-      "echo '* hard nofile 1000000' >> /etc/security/limits.conf",
-
-      "# Install Docker",
-      "curl -fsSL get.docker.com | CHANNEL=test sh",
-
-      "# Install bootstrap utilities",
-      "apt-get update -qq",
-      "apt-get install -qq git yarnpkg",
+      "# Alias docker run",
+      "alias docker_run=docker run --rm --interactive --tty --volume CLOUD_COMPUTER_BOOTSTRAP:/cloud-computer --workdir /cloud-computer",
 
       "# Clone the cloud computer",
-      "git clone --branch master --depth 1 --single-branch --quiet https://github.com/cloud-computer/cloud-computer",
-      "cd cloud-computer",
+      "docker_run git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer cloud-computer",
 
       "# Bootstrap docker",
-      "yarn --cwd infrastructure/docker bootstrap",
+      "docker_run yarn --cwd infrastructure/docker bootstrap",
 
       "# Expose the docker socket",
-      "yarn --cwd infrastructure/docker-compose up:docker",
-      "yarn --cwd infrastructure/docker-compose up:traefik",
-    ]
-  }
-
-  service_account {
-    scopes = [
-      "https://www.googleapis.com/auth/compute.readonly",
+      "docker_run yarn --cwd infrastructure/docker-compose up:docker",
+      "docker_run yarn --cwd infrastructure/docker-compose up:traefik",
     ]
   }
 }
