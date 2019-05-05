@@ -7,14 +7,28 @@ provider "google" {
   project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
 }
 
-locals {
-  environment_name = "cloud-computer-${var.CLOUD_COMPUTER_HOST_ID}"
-}
-
 resource "tls_private_key" "cloud-computer" {
   count = "1"
   algorithm = "RSA"
   rsa_bits  = 4096
+}
+
+locals {
+  environment_name = "cloud-computer-${var.CLOUD_COMPUTER_HOST_ID}"
+}
+
+resource "google_compute_network" "cloud-computer" {
+  auto_create_subnetworks = false
+  name = "${local.environment_name}"
+  project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
+}
+
+resource "google_compute_subnetwork" "cloud-computer" {
+  name = "${local.environment_name}"
+  ip_cidr_range = "10.2.0.0/16"
+  network = "${google_compute_network.cloud-computer.name}"
+  project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
+  region = "${var.machine_region}"
 }
 
 resource "google_compute_instance" "cloud-computer" {
@@ -78,7 +92,7 @@ resource "google_compute_instance" "cloud-computer" {
 
       "# Install bootstrap utilities",
       "apt-get update -qq",
-      "apt-get install -qq git yarn",
+      "apt-get install -qq git yarnpkg",
 
       "# Clone the cloud computer",
       "git clone --branch master --depth 1 --single-branch --quiet https://github.com/cloud-computer/cloud-computer",
@@ -87,7 +101,7 @@ resource "google_compute_instance" "cloud-computer" {
       "# Bootstrap docker",
       "yarn --cwd infrastructure/docker bootstrap",
 
-      "# Start the base services",
+      "# Expose the docker socket",
       "yarn --cwd infrastructure/docker-compose up:docker",
       "yarn --cwd infrastructure/docker-compose up:traefik",
     ]
@@ -98,38 +112,4 @@ resource "google_compute_instance" "cloud-computer" {
       "https://www.googleapis.com/auth/compute.readonly",
     ]
   }
-}
-
-resource "google_compute_firewall" "cloud-computer" {
-  name = "${local.environment_name}"
-  network = "${google_compute_network.cloud-computer.name}"
-  project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
-
-  allow {
-    protocol = "icmp"
-  }
-
-  allow {
-    ports = [
-      "22",
-      "443",
-    ]
-    protocol = "tcp"
-  }
-
-  target_tags = ["${local.environment_name}"]
-}
-
-resource "google_compute_subnetwork" "cloud-computer" {
-  name = "${local.environment_name}"
-  ip_cidr_range = "10.2.0.0/16"
-  network = "${google_compute_network.cloud-computer.name}"
-  project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
-  region = "${var.machine_region}"
-}
-
-resource "google_compute_network" "cloud-computer" {
-  auto_create_subnetworks = false
-  name = "${local.environment_name}"
-  project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
 }
