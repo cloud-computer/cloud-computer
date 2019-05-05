@@ -1,5 +1,5 @@
-# Export cloud computer shell environment
-eval "$(yarn --cwd ../cloud-computer environment)"
+# Export cloud computer dns environment
+eval "$(yarn environment)"
 
 # Command line arguments
 HOSTNAME=$1

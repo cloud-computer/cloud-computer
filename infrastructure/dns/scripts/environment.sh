@@ -1,0 +1,3 @@
+echo export CLOUD_COMPUTER_DNS_EMAIL=
+echo export CLOUD_COMPUTER_DNS_TOKEN=
+echo export CLOUD_COMPUTER_DNS_ZONE=

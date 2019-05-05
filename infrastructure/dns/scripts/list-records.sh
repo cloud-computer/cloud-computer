@@ -1,5 +1,5 @@
-# Export cloud computer shell environment
-eval "$(yarn --cwd ../cloud-computer environment)"
+# Export cloud computer dns environment
+eval "$(yarn environment)"
 
 # List all dns records
 list_records () {

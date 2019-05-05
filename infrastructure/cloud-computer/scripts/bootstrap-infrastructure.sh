@@ -10,6 +10,9 @@ hash -r
 # Bootstrap credentials configuration
 yarn --cwd ../credentials bootstrap &
 
+# Bootstrap dns configuration
+yarn --cwd ../dns bootstrap &
+
 # Bootstrap docker configuration
 yarn --cwd ../docker bootstrap &
 

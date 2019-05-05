@@ -5,11 +5,10 @@
   "name": "@cloud-computer/dns",
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
+    "bootstrap": "scripts/bootstrap.sh",
     "clean": "scripts/clean.sh",
     "delete-record": "scripts/delete-record.sh",
-    "dns-email": "echo dns-email",
-    "dns-token": "echo dns-token",
-    "dns-zone": "echo dns-zone",
+    "environment": "scripts/environment.sh",
     "get-record": "scripts/get-record.sh",
     "list-records": "scripts/list-records.sh",
     "set-record": "scripts/set-record.sh",
