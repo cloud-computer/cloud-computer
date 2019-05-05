@@ -169,10 +169,10 @@
     tslint-config-standard "~8.0.1"
     tslint-eslint-rules "~5.4.0"
 
-"@cloud-computer/yarn@1.14.0-1":
-  version "1.14.0-1"
-  resolved "https://registry.yarnpkg.com/@cloud-computer/yarn/-/yarn-1.14.0-1.tgz#32333e611c73c0abcded95a4e40fc132dc1fac21"
-  integrity sha512-XP2LTYu1N2iZ2+lZyBefGXGS+qkIGvW0ZzKD+OLsJ/FHxqJv7OAYA59YtnGlIAez8cBrs8lDLEmhnAtRoyLgng==
+"@cloud-computer/yarn@1.14.1":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@cloud-computer/yarn/-/yarn-1.14.1.tgz#a01c9aa0ca763feb2fdadf411b1fb4651b58bc58"
+  integrity sha512-mIStwsi15m8IYQnZfRZj1KgHRvaY//Pd3wxBQinDmIhslcbHkEpUiXaticfAO497SsT6MGRcrA5RcQrvCuEZEg==
   dependencies:
     "@zkochan/cmd-shim" "^3.1.0"
     babel-runtime "^6.26.0"
