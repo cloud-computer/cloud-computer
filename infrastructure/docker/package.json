@@ -5,7 +5,6 @@
   "name": "@cloud-computer/docker",
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
-    "bootstrap": "scripts/bootstrap.sh",
     "clean": "yarn docker volume ls | grep CLOUD_COMPUTER_ | cut -b 15- | xargs yarn docker volume rm",
     "docker": "scripts/docker.sh",
     "environment": "scripts/environment.sh",

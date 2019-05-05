@@ -13,9 +13,6 @@ yarn --cwd ../credentials bootstrap &
 # Bootstrap dns configuration
 yarn --cwd ../dns bootstrap &
 
-# Bootstrap docker configuration
-yarn --cwd ../docker bootstrap &
-
 # Bootstrap git configuration
 yarn --cwd ../git bootstrap &
 

@@ -108,9 +108,6 @@ resource "google_compute_instance" "cloud-computer" {
       "# Clone the cloud computer",
       "docker_run git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer cloud-computer",
 
-      "# Bootstrap docker",
-      "docker_run yarn --cwd infrastructure/docker bootstrap",
-
       "# Expose the docker socket",
       "docker_run yarn --cwd infrastructure/docker-compose up:docker",
       "docker_run yarn --cwd infrastructure/docker-compose up:traefik",
