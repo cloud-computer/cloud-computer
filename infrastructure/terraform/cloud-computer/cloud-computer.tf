@@ -65,7 +65,7 @@ resource "google_compute_instance" "cloud-computer" {
 
   boot_disk {
     initialize_params {
-      image = "cos-stable-74-11895-86-0"
+      image = "cos-stable/cos-stable-74-11895-86-0"
       type = "pd-ssd"
       size = "100"
     }
