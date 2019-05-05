@@ -95,11 +95,8 @@ resource "google_compute_instance" "cloud-computer" {
     }
 
     inline = [
-      "# Become root",
-      "sudo su",
-
       "# Add dockerhub registry mirror",
-      "printf DOCKER_OPTS=$DOCKER_OPTS --registry-mirror=https://mirror.gcr.io >> /etc/default/docker",
+      "echo \"DOCKER_OPTS=$DOCKER_OPTS --registry-mirror=https://mirror.gcr.io\" | sudo tee -a /etc/default/docker",
       "systemctl restart docker",
 
       "# Alias docker run",

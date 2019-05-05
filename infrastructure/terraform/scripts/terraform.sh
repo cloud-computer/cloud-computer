@@ -13,7 +13,6 @@ yarn --cwd ../docker docker run \
   --env TF_CLI_ARGS_taint="-lock=false" \
   --env TF_DATA_DIR=$CLOUD_COMPUTER_TERRAFORM \
   --env TF_IN_AUTOMATION=true \
-  --env TF_LOG=TRACE \
   --env TF_VAR_CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT=$(yarn --cwd ../credentials project) \
   --env TF_VAR_CLOUD_COMPUTER_HOST_ID=$CLOUD_COMPUTER_HOST_ID \
   --env TF_VAR_CLOUD_COMPUTER_HOST_NAME=$CLOUD_COMPUTER_HOST_NAME \
