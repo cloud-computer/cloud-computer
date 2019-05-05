@@ -6,7 +6,7 @@
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
     "bootstrap": "scripts/bootstrap.sh",
-    "clean": "docker volume ls | grep CLOUD_COMPUTER_ | cut -b 15- | xargs docker volume rm",
+    "clean": "yarn docker volume ls | grep CLOUD_COMPUTER_ | cut -b 15- | xargs yarn docker volume rm",
     "docker": "scripts/docker.sh",
     "environment": "scripts/environment.sh",
     "ps": "yarn docker ps --filter name=${COMPOSE_PROJECT_NAME:-cloud-computer}",

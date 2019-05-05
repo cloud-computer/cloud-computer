@@ -41,7 +41,6 @@ yarn --cwd ../docker docker run \
   --rm \
   --volume /var/run/docker.sock:/var/run/docker.sock \
   --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND \
-  --volume $CLOUD_COMPUTER_CERTIFICATES_VOLUME:$CLOUD_COMPUTER_CERTIFICATES \
   --volume $CLOUD_COMPUTER_DOCKER_VOLUME:$CLOUD_COMPUTER_DOCKER \
   --workdir $CLOUD_COMPUTER_BACKEND/infrastructure/docker-compose \
   wernight/docker-compose "$@"
