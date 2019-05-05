@@ -4,7 +4,7 @@ eval $(yarn --cwd ../cloud-computer environment)
 DOCKER_CERTIFICATES_IMPORT_CONTAINER="${COMPOSE_PROJECT_NAME}_cloud-computer-docker-certificates-import-$(date +%M%S)"
 
 # Create the CLOUD_COMPUTER_DOCKER volume and take ownership of it
-docker run \
+yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_DOCKER_VOLUME:$CLOUD_COMPUTER_DOCKER \

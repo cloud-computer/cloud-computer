@@ -1,9 +1,9 @@
 # Export cloud computer shell environment
 eval "$(yarn --cwd ../cloud-computer environment)"
 
-# Always connect to localhost via the unix socket
 if [ "$DOCKER_HOST" = "localhost" ]; then
 
+  # Always connect to localhost via the unix socket
   DOCKER_CERT_PATH=
   DOCKER_HOST=unix:///var/run/docker.sock
   DOCKER_TLS_VERIFY=
@@ -20,5 +20,7 @@ fi
 export DOCKER_CERT_PATH=$DOCKER_CERT_PATH
 export DOCKER_HOST=$DOCKER_HOST
 export DOCKER_TLS_VERIFY=$DOCKER_TLS_VERIFY
+
+echo xxxxxxxxxxxxxxxxxxxxxxx $DOCKER_HOST
 
 docker "$@"
