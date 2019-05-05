@@ -56,7 +56,7 @@
     "sync:watch": "eval $(yarn --cwd ../docker environment); node build/sync.js",
     "tmux": "eval $(yarn environment); touch $CLOUD_COMPUTER_TMUX/.tmux.sock; TMUX= tmux -S $CLOUD_COMPUTER_TMUX/.tmux.sock",
     "tmux:dashboard:attach": "yarn tmux new-session -s environment-dashboard-$CLOUD_COMPUTER_TMUX_SESSION_ID-$(date +%M%S) -t environment-dashboard",
-    "tmux:dashboard:start": "yarn tmux new-session -d -s environment-dashboard zsh && tmuxinator start dashboard",
+    "tmux:dashboard:start": "yarn tmux new-session -d -s environment-dashboard zsh; tmuxinator start dashboard",
     "tmux:dashboard:stop": "yarn tmux:kill-clients; yarn tmux kill-session -t environment-dashboard 2>/dev/null",
     "tmux:dashboard:web:start": "yarn tmux new-session -d -s web-dashboard gotty zsh -c 'yarn --cwd infrastructure/cloud-computer tmux:dashboard:attach'",
     "tmux:dashboard:web:stop": "yarn tmux kill-session -t web-dashboard 2>/dev/null",
