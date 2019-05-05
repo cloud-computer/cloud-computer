@@ -12,7 +12,7 @@ elif [ -z "$DOCKER_HOST" ]; then
 
   # Use tls when connecting to a remote host
   DOCKER_CERT_PATH=$PWD
-  DOCKER_HOST=docker.$CLOUD_COMPUTER_HOST_DNS
+  DOCKER_HOST=docker.$CLOUD_COMPUTER_HOST_DNS:443
   DOCKER_TLS_VERIFY=1
 
 fi

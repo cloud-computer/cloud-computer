@@ -7,9 +7,9 @@
   "scripts": {
     "clean": "scripts/clean.sh",
     "delete-record": "scripts/delete-record.sh",
-    "dns-email": "scripts/dns-email.sh",
-    "dns-token": "scripts/dns-token.sh",
-    "dns-zone": "scripts/dns-zone.sh",
+    "dns-email": "echo dns-email",
+    "dns-token": "echo dns-token",
+    "dns-zone": "echo dns-zone",
     "get-record": "scripts/get-record.sh",
     "list-records": "scripts/list-records.sh",
     "set-record": "scripts/set-record.sh",
