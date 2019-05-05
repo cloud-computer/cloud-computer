@@ -79,7 +79,7 @@ resource "google_compute_instance" "cloud-computer" {
 
       "# Bootstrap the cloud computer",
       "git clone https://github.com/cloud-computer/cloud-computer",
-      "yarn --cwd cloud-computer/docker-compose up",
+      "yarn --cwd cloud-computer/infrastructure/docker-compose up",
     ]
   }
 

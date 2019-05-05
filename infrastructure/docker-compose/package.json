@@ -12,7 +12,7 @@
     "down:jaeger": "yarn compose -f stacks/jaeger.yaml down",
     "down:terminal": "yarn compose -f stacks/terminal.yaml down",
     "reload": "yarn --cwd ../docker ps:q --filter name=cloud-computer | xargs -n 1 -P $(cat /proc/cpuinfo | grep processor | wc -l) yarn --cwd ../docker docker restart",
-    "restart": "yarn down; yarn start",
+    "restart": "yarn down; yarn up",
     "restart:code": "yarn down:code; yarn up:code",
     "restart:grafana": "yarn down:grafana; yarn up:grafana",
     "restart:istio": "yarn down:istio; yarn up:istio",

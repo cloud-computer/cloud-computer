@@ -1,3 +1,6 @@
+# Point shell context to the current environment's terraform host
+eval "$(yarn --cwd ../terraform environment)"
+
 # Ensure the latest cloud computer container is available
 yarn --cwd ../containers pull:cloud-computer
 

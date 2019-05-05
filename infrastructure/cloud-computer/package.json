@@ -42,6 +42,7 @@
     "logs:follow": "yarn --cwd ../docker docker logs --follow --tail=5",
     "logs:ingress": "yarn logs:follow ${COMPOSE_PROJECT_NAME:-cloud-computer}_ingress.cloud_computer_1",
     "nodemon:restart": "yarn --cwd ../docker docker run --rm --volume $CLOUD_COMPUTER_NODEMON_VOLUME:$CLOUD_COMPUTER_NODEMON cloudnativecomputer/cloud-computer:latest touch $CLOUD_COMPUTER_NODEMON/restart",
+    "restart": "scripts/restart.sh",
     "recycle": "scripts/recycle.sh",
     "recycle:clean": "scripts/recycle-clean.sh",
     "services:restart": "yarn services:stop; yarn services:start",

@@ -1,8 +1,11 @@
 # Point shell context to the current environment's terraform host
 eval "$(yarn --cwd ../terraform environment)"
 
-# Recreate the cloud computer host
-yarn --cwd ../terraform restart
+# Destroy the current cloud computer host
+yarn --cwd ../terraform destroy
 
-# Prepare the cloud computer on the new host
-yarn start
+# Clean the local host
+yarn --cwd ../.. clean
+
+# Create a new cloud computer host
+yarn run create
