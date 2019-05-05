@@ -7,9 +7,6 @@ yarn --cwd ../yarn link:global
 # Clear the shell resolve history to enable the yarn shim
 hash -r
 
-# Bootstrap certificates configuration
-yarn --cwd ../certificates bootstrap &
-
 # Bootstrap credentials configuration
 yarn --cwd ../credentials bootstrap &
 
