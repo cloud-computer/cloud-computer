@@ -81,7 +81,7 @@ resource "google_compute_instance" "cloud-computer" {
       "apt-get install -qq git yarn",
 
       "# Clone the cloud computer",
-      "git clone https://github.com/cloud-computer/cloud-computer",
+      "git clone --branch master --depth 1 --single-branch --quiet https://github.com/cloud-computer/cloud-computer",
       "cd cloud-computer",
 
       "# Bootstrap docker",
