@@ -4,7 +4,7 @@ eval "$(yarn environment)"
 # Export cloud computer shell environment
 eval "$(yarn --cwd ../cloud-computer environment)"
 
-# Reinitialize backend
+# Initialize backend
 yarn terraform init
 
 # Sync with remote terraform state in cloud storage
