@@ -26,7 +26,7 @@ services:
       - --logLevel=DEBUG
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:traefik.jackson.cloud-computer.dev
+      - traefik.frontend.rule=Host:traefik.$CLOUD_COMPUTER_HOST_DNS
       - traefik.port=8080
       - traefik.protocol=http
     restart: always

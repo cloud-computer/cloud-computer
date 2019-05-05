@@ -14,6 +14,11 @@ services:
       - -lmlocal2
     environment:
       CERTS_DIR: $STEMN_DOCKER
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:docker.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8080
+      - traefik.protocol=http
     volumes:
       - $STEMN_DOCKER_VOLUME:$STEMN_DOCKER:ro
       - /var/run/docker.sock:/var/run/docker.sock
