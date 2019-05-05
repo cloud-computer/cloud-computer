@@ -13,8 +13,23 @@ resource "tls_private_key" "cloud-computer" {
   rsa_bits  = 4096
 }
 
-locals {
-  environment_name = "cloud-computer-${var.CLOUD_COMPUTER_HOST_ID}"
+resource "google_compute_firewall" "cloud-computer" {
+  name = "${local.environment_name}"
+  network = "${google_compute_network.cloud-computer.name}"
+  project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
+
+  allow {
+    protocol = "icmp"
+  }
+
+  allow {
+    ports = [
+      "22",
+    ]
+    protocol = "tcp"
+  }
+
+  target_tags = ["${local.environment_name}"]
 }
 
 resource "google_compute_network" "cloud-computer" {
