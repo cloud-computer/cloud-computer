@@ -29,6 +29,14 @@ variable "CLOUD_COMPUTER_HOST_USER" {
   description = "The username of the user that created the instance."
 }
 
+variable "CLOUD_COMPUTER_IMAGE" {
+  description = "The cloud computer docker image name."
+}
+
+variable "CLOUD_COMPUTER_REPOSITORY" {
+  description = "The cloud computer docker repository name."
+}
+
 output "ip" {
   value = "${google_compute_instance.cloud-computer.network_interface.0.access_config.0.nat_ip}"
 }
