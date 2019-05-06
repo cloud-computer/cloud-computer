@@ -57,4 +57,4 @@ yarn --cwd ../docker docker run \
   --volume $CLOUD_COMPUTER_X11_VOLUME:$CLOUD_COMPUTER_X11 \
   --volume $CLOUD_COMPUTER_YARN_VOLUME:$CLOUD_COMPUTER_YARN \
   --workdir $CLOUD_COMPUTER_BACKEND \
-  cloudnativecomputer/cloud-computer:latest zsh --login
+  $CLOUD_COMPUTER_REPOSITORY/$CLOUD_COMPUTER_IMAGE:latest zsh --login

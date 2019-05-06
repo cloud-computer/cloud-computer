@@ -24,5 +24,5 @@ yarn --cwd ../docker docker run \
   --volume $CLOUD_COMPUTER_KUBECONFIGS_VOLUME:$CLOUD_COMPUTER_KUBECONFIGS \
   --volume $CLOUD_COMPUTER_TERRAFORM_VOLUME:$CLOUD_COMPUTER_TERRAFORM \
   --workdir $CLOUD_COMPUTER_BACKEND/infrastructure/terraform/cloud-computer \
-  cloudnativecomputer/cloud-computer:latest \
+  $CLOUD_COMPUTER_REPOSITORY/$CLOUD_COMPUTER_IMAGE:latest \
   terraform "$@"

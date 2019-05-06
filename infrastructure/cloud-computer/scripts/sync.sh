@@ -14,7 +14,7 @@ yarn --cwd ../docker docker run \
   --volume /var/run/docker.sock:/var/run/docker.sock \
   --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND \
   --workdir $CLOUD_COMPUTER_BACKEND \
-  cloudnativecomputer/cloud-computer:latest \
+  $CLOUD_COMPUTER_REPOSITORY/$CLOUD_COMPUTER_IMAGE:latest \
   sleep infinity
 
 # Clean the remote environment and pull remote git before syncing locally changed files across

@@ -7,7 +7,7 @@ networks:
 services:
 
   terminal:
-    image: cloudnativecomputer/cloud-computer:latest
+    image: $CLOUD_COMPUTER_REPOSITORY/$CLOUD_COMPUTER_IMAGE:latest
     command: yarn --cwd infrastructure/cloud-computer tmux:server
     working_dir: $CLOUD_COMPUTER_BACKEND
     restart: always

@@ -103,11 +103,11 @@ resource "google_compute_instance" "cloud-computer" {
       "alias docker_run=\"docker run --rm --interactive --tty --volume CLOUD_COMPUTER_BOOTSTRAP:/cloud-computer --workdir /cloud-computer\"",
 
       "# Clone the cloud computer",
-      "docker_run git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer cloud-computer",
+      "docker_run registry.hub.docker.com/alpine/git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer cloud-computer /cloud-computer",
 
       "# Expose the docker socket",
-      "docker_run yarn --cwd infrastructure/docker-compose up:docker",
-      "docker_run yarn --cwd infrastructure/docker-compose up:traefik",
+      "docker_run registry.hub.docker.com/library/node yarn --cwd infrastructure/docker-compose up:docker",
+      "docker_run registry.hub.docker.com/library/node yarn --cwd infrastructure/docker-compose up:traefik",
     ]
   }
 }

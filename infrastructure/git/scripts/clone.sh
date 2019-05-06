@@ -19,7 +19,7 @@ yarn --cwd ../docker docker run \
   --user root \
   --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND \
   --workdir $CLOUD_COMPUTER_BACKEND \
-  cloudnativecomputer/cloud-computer:latest \
+  $CLOUD_COMPUTER_REPOSITORY/$CLOUD_COMPUTER_IMAGE:latest \
   zsh -c "$GIT_CLEAN; git clone https://github.com/cloud-computer/cloud-computer.git --branch $GIT_BRANCH --depth 1 --single-branch .; $GIT_FETCH; $TAKE_OWNERSHIP" &
 
 # Clone cloud-computer frontend repository
@@ -28,7 +28,7 @@ yarn --cwd ../docker docker run \
   --user root \
   --volume $CLOUD_COMPUTER_FRONTEND_VOLUME:$CLOUD_COMPUTER_FRONTEND \
   --workdir $CLOUD_COMPUTER_FRONTEND \
-  cloudnativecomputer/cloud-computer:latest \
+  $CLOUD_COMPUTER_REPOSITORY/$CLOUD_COMPUTER_IMAGE:latest \
   zsh -c "$GIT_CLEAN; git clone https://github.com/cloud-computer/frontend.git --branch master --depth 1 --single-branch .; $GIT_FETCH; $TAKE_OWNERSHIP" &
 
 # Clone cloud-computer slackbot repository
@@ -37,7 +37,7 @@ yarn --cwd ../docker docker run \
   --user root \
   --volume $CLOUD_COMPUTER_SLACKBOT_VOLUME:$CLOUD_COMPUTER_SLACKBOT \
   --workdir $CLOUD_COMPUTER_SLACKBOT \
-  cloudnativecomputer/cloud-computer:latest \
+  $CLOUD_COMPUTER_REPOSITORY/$CLOUD_COMPUTER_IMAGE:latest \
   zsh -c "$GIT_CLEAN; git clone https://github.com/cloud-computer/slackbot.git --depth 1 .; $GIT_FETCH; $TAKE_OWNERSHIP" &
 
 # Wait for clones to complete in parallel
