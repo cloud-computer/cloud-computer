@@ -13,7 +13,7 @@ services:
       - -dd
       - -lmlocal2
     environment:
-      CERTS_DIR: $STEMN_DOCKER
+      CERTS_DIR: $CLOUD_COMPUTER_DOCKER
     expose:
       - 2376
     labels:
@@ -22,5 +22,5 @@ services:
       - traefik.port=2376
       - traefik.protocol=https
     volumes:
-      - $STEMN_DOCKER_VOLUME:$STEMN_DOCKER:ro
+      - $CLOUD_COMPUTER_DOCKER_VOLUME:$CLOUD_COMPUTER_DOCKER:ro
       - /var/run/docker.sock:/var/run/docker.sock

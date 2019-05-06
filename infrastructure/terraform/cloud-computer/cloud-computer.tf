@@ -95,15 +95,16 @@ resource "google_compute_instance" "cloud-computer" {
     }
 
     inline = [
-      "# Add dockerhub registry mirror",
-      "echo \"DOCKER_OPTS=$DOCKER_OPTS --registry-mirror=https://mirror.gcr.io\" | sudo tee -a /etc/default/docker",
-      "sudo systemctl restart docker",
+      "# Set environment state",
+      "export DOCKER_HOST=unix:///var/run/docker.sock",
+      "export CLOUD_COMPUTER_BACKEND=${var.CLOUD_COMPUTER_BACKEND}",
+      "export CLOUD_COMPUTER_BACKEND_VOLUME=${var.CLOUD_COMPUTER_BACKEND_VOLUME}",
 
       "# Alias docker run",
-      "alias docker_run=\"docker run --rm --interactive --tty --volume CLOUD_COMPUTER_BOOTSTRAP:/cloud-computer --workdir /cloud-computer\"",
+      "alias docker_run=\"docker run --env DOCKER_HOST --interactive --rm --tty --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_BACKEND\"",
 
       "# Clone the cloud computer",
-      "docker_run alpine/git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer /cloud-computer",
+      "docker_run alpine/git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer $CLOUD_COMPUTER_BACKEND",
 
       "# Expose the docker socket",
       "docker_run ${var.CLOUD_COMPUTER_REPOSITORY}/bootstrap yarn --cwd infrastructure/docker-compose up:docker",

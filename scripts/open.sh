@@ -5,4 +5,4 @@ eval "$(yarn --cwd infrastructure/development-environment environment)"
 yarn apps | \
   tr \  \\n | \
   yarn ipt | \
-  xargs -n 1 -I% nohup google-chrome --app=https://%-$STEMN_HOST_DNS >/dev/null 2>&1
+  xargs -n 1 -I% nohup google-chrome --app=https://%-$CLOUD_COMPUTER_HOST_DNS >/dev/null 2>&1

@@ -5,4 +5,4 @@ eval "$(yarn --cwd infrastructure/development-environment environment)"
 echo
 yarn apps | \
   tr \  \\n | \
-  xargs -n 1 -I% echo https://%-$STEMN_HOST_DNS
+  xargs -n 1 -I% echo https://%-$CLOUD_COMPUTER_HOST_DNS

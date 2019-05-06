@@ -13,6 +13,14 @@ variable "machine_type" {
   default = "custom-2-8192"
 }
 
+variable "CLOUD_COMPUTER_BACKEND" {
+  description = "The cloud computer repoisitory path."
+}
+
+variable "CLOUD_COMPUTER_BACKEND_VOLUME" {
+  description = "The cloud computer repoisitory volume name."
+}
+
 variable "CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT" {
   description = "The cloud provider project to create the machine in."
 }
