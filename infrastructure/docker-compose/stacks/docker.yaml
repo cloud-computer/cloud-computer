@@ -9,7 +9,7 @@ services:
   docker:
     image: sjawhar/docker-socket-proxy
     restart: always
-    command: 
+    command:
       - -dd
       - -lmlocal2
     environment:
@@ -22,7 +22,7 @@ services:
       - traefik.port=2376
       - traefik.protocol=https
     volumes:
-      - $CLOUD_COMPUTER_DOCKER_VOLUME:$CLOUD_COMPUTER_DOCKER:ro
+      - CLOUD_COMPUTER_DOCKER:$CLOUD_COMPUTER_DOCKER:ro
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - backend
