@@ -100,7 +100,7 @@ resource "google_compute_instance" "cloud-computer" {
       "export CLOUD_COMPUTER_BACKEND_VOLUME=${var.CLOUD_COMPUTER_BACKEND_VOLUME}",
       "export CLOUD_COMPUTER_HOST_ID=${var.CLOUD_COMPUTER_HOST_ID}",
 
-      "# Target the docker unix socket",
+      "# Target the local docker socket",
       "export DOCKER_HOST=unix:///var/run/docker.sock",
 
       "# Alias docker run",
