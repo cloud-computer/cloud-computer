@@ -7,22 +7,16 @@ networks:
 services:
 
   docker:
-    image: sjawhar/docker-socket-proxy:latest
+    image: bobtfish/docker-socket-http-proxy
     restart: always
-    command:
-      - -dd
-      - -lmlocal2
-    environment:
-      CERTS_DIR: $CLOUD_COMPUTER_BACKEND/infrastructure/docker
-      SERVER_CERT: cert.pem
-      SERVER_KEY: key.pem
-    ports:
-      - 2376:2376
+    expose:
+      - 2375
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:docker.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=2375
+      - traefik.protocol=http
     volumes:
-      - CLOUD_COMPUTER_BACKEND:$CLOUD_COMPUTER_BACKEND:ro
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - backend
-
-volumes:
-  CLOUD_COMPUTER_BACKEND:
