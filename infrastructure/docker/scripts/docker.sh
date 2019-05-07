@@ -15,4 +15,4 @@ fi
 
 export DOCKER_HOST=$DOCKER_HOST
 
-docker "$@"
+docker --tls "$@"
