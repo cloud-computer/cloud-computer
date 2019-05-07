@@ -24,11 +24,6 @@ services:
       - --docker.watch=true
       - --docker.exposedByDefault=false
       - --logLevel=DEBUG
-    labels:
-      - traefik.enable=true
-      - traefik.frontend.rule=Host:traefik.$CLOUD_COMPUTER_HOST_DNS
-      - traefik.port=8080
-      - traefik.protocol=http
     restart: always
     ports:
       - 80:80

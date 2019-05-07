@@ -8,10 +8,10 @@ yarn --cwd ../containers pull:cloud-computer
 yarn bootstrap:infrastructure
 
 # Start a terminal in the cloud computer
-yarn --cwd ../docker-compose apply:terminal
+yarn --cwd ../docker-compose up:terminal
 
-# Bootstrap the cloud computer codebase
+# Bootstrap the cloud computer repository
 yarn exec:tty:terminal yarn bootstrap
 
-# Start a cloud computer container build to populate the docker image cache
-yarn exec:tty:terminal yarn --cwd infrastructure/cloud-computer tmux new-session -d -s docker-cache-populate yarn --cwd ../containers sync:cloud-computer
+# Populate the cloud computer docker image build cache in the background
+yarn exec:tty:terminal yarn --cwd infrastructure/cloud-computer tmux new-session -d -s docker-build-cache-populate yarn --cwd ../containers sync:cloud-computer
