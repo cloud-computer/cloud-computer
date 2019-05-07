@@ -13,7 +13,7 @@ services:
       - -dd
       - -lmlocal2
     environment:
-      CERTS_DIR: $CLOUD_COMPUTER_DOCKER
+      CERTS_DIR: $CLOUD_COMPUTER_BACKEND/infrastructure/docker
     expose:
       - 2376
     labels:
@@ -22,10 +22,10 @@ services:
       - traefik.port=2376
       - traefik.protocol=https
     volumes:
-      - CLOUD_COMPUTER_DOCKER:$CLOUD_COMPUTER_DOCKER:ro
+      - CLOUD_COMPUTER_BACKEND:$CLOUD_COMPUTER_BACKEND:ro
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - backend
 
 volumes:
-  CLOUD_COMPUTER_DOCKER:
+  CLOUD_COMPUTER_BACKEND:
