@@ -26,3 +26,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - backend
+
+volumes:
+  CLOUD_COMPUTER_DOCKER:
