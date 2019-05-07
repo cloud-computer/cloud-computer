@@ -95,10 +95,13 @@ resource "google_compute_instance" "cloud-computer" {
     }
 
     inline = [
-      "# Set environment state",
-      "export DOCKER_HOST=unix:///var/run/docker.sock",
+      "# Set cloud computer environment",
       "export CLOUD_COMPUTER_BACKEND=${var.CLOUD_COMPUTER_BACKEND}",
       "export CLOUD_COMPUTER_BACKEND_VOLUME=${var.CLOUD_COMPUTER_BACKEND_VOLUME}",
+      "export CLOUD_COMPUTER_HOST_ID=${var.CLOUD_COMPUTER_HOST_ID}",
+
+      "# Target the docker unix socket",
+      "export DOCKER_HOST=unix:///var/run/docker.sock",
 
       "# Alias docker run",
       "alias docker_run=\"docker run --env DOCKER_HOST --interactive --rm --tty --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_BACKEND\"",
