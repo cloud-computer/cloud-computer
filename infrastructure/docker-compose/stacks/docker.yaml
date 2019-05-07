@@ -14,6 +14,7 @@ services:
       - -lmlocal2
     environment:
       CERTS_DIR: $CLOUD_COMPUTER_BACKEND/infrastructure/docker
+      LISTEN_SECURE: false
       SERVER_CERT: cert.pem
       SERVER_KEY: key.pem
     expose:
