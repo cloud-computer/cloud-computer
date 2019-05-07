@@ -104,7 +104,7 @@ resource "google_compute_instance" "cloud-computer" {
       "export DOCKER_HOST=unix:///var/run/docker.sock",
 
       "# Alias docker run",
-      "alias docker_run=\"docker run --env DOCKER_HOST --interactive --rm --tty --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_BACKEND\"",
+      "alias docker_run=\"docker run --env CLOUD_COMPUTER_HOST_ID --env DOCKER_HOST --interactive --rm --tty --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_BACKEND\"",
 
       "# Clone the cloud computer",
       "docker_run alpine/git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer $CLOUD_COMPUTER_BACKEND",
