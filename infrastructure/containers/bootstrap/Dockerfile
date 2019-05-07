@@ -1,2 +1,6 @@
 FROM docker
-RUN apk add git yarn
+
+# Bootstrap utilities
+RUN apk add \
+  git \
+  yarn
