@@ -239,20 +239,8 @@ RUN useradd \
   --shell /bin/zsh \
   $USER
 
-# Add user configuration files
-COPY .conkyrc .gitconfig .gotty .tmux.conf .zlogin .zshenv .zshrc $HOME/
-
-# Configure lazygit
-RUN mkdir -p $HOME/.config/jesseduffield/lazygit && \
-  echo 'reporting: "off"' > $HOME/.config/jesseduffield/lazygit/config.yml
-
-# Configure openbox
-RUN mkdir -p $HOME/.config/openbox
-COPY .openbox.conf $HOME/.config/openbox/autostart
-COPY .openbox.xml $HOME/.config/openbox/rc.xml
-RUN chmod +x $HOME/.config/openbox/autostart && \
-  git clone https://github.com/addy-dclxvi/openbox-theme-collections $HOME/.themes && \
-  wget -qnv -O $HOME/.config/openbox/wallpaper.png https://images.unsplash.com/photo-1474910569322-ddc4a7368b8f
+# Clone dotfiles
+RUN vcsh clone https://github.com/cloud-computer/dotfiles
 
 # Cache tmux plugins
 RUN /opt/tpm/bin/install_plugins
