@@ -16,13 +16,8 @@ services:
       CERTS_DIR: $CLOUD_COMPUTER_BACKEND/infrastructure/docker
       SERVER_CERT: cert.pem
       SERVER_KEY: key.pem
-    expose:
-      - 2376
-    labels:
-      - traefik.enable=true
-      - traefik.frontend.rule=Host:docker.$CLOUD_COMPUTER_HOST_DNS
-      - traefik.port=2376
-      - traefik.protocol=https
+    ports:
+      - 2376:2376
     volumes:
       - CLOUD_COMPUTER_BACKEND:$CLOUD_COMPUTER_BACKEND:ro
       - /var/run/docker.sock:/var/run/docker.sock
