@@ -39,3 +39,6 @@ services:
       - CLOUD_COMPUTER_TRAEFIK:/cloud-computer
     networks:
       - backend
+
+volumes:
+  CLOUD_COMPUTER_TRAEFIK:
