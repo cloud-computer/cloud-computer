@@ -36,7 +36,7 @@ services:
       - 443:443
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - CLOUD_COMPUTER_TRAEFIK:/traefik/acme.json
+      - CLOUD_COMPUTER_TRAEFIK:/traefik
     networks:
       - backend
 
