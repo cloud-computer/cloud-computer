@@ -15,7 +15,7 @@ services:
       - --defaultentrypoints=http,https
       - --acme
       - --acme.email=jackson@cloud-computer.dev
-      - --acme.storage=/traefik/acme.json
+      - --acme.storage=/var/run/traefik/acme.json
       - --acme.entryPoint=https
       - --acme.onHostRule=true
       - --acme.httpChallenge.entryPoint=http
@@ -36,7 +36,7 @@ services:
       - 443:443
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - CLOUD_COMPUTER_TRAEFIK:/traefik
+      - CLOUD_COMPUTER_TRAEFIK:/var/run/traefik
     networks:
       - backend
 
