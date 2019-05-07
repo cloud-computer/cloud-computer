@@ -7,14 +7,14 @@ networks:
 services:
 
   docker:
-    image: sjawhar/docker-socket-proxy
+    image: sjawhar/docker-socket-proxy:latest
     restart: always
     command:
       - -dd
       - -lmlocal2
     environment:
       CERTS_DIR: $CLOUD_COMPUTER_BACKEND/infrastructure/docker
-      LISTEN_SECURE: false
+      LISTEN_SECURE: 'false'
       SERVER_CERT: cert.pem
       SERVER_KEY: key.pem
     expose:
