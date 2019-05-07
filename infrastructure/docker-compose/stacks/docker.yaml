@@ -7,8 +7,18 @@ networks:
 services:
 
   docker:
-    image: bobtfish/docker-socket-http-proxy
+    image: tecnativa/docker-socket-proxy
     restart: always
+    environment:
+      AUTH: '1'
+      BUILD: '1'
+      CONTAINERS: '1'
+      EXEC: '1'
+      IMAGES: '1'
+      NETWORKS: '1'
+      POST: '1'
+      SYSTEM: '1'
+      VOLUMES: '1'
     expose:
       - 2375
     labels:
