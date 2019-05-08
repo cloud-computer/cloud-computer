@@ -65,7 +65,7 @@ resource "google_compute_instance" "cloud-computer" {
 
   boot_disk {
     initialize_params {
-      image = "coreos-cloud/coreos-dev"
+      image = "cos-cloud/cos-dev"
       type = "pd-ssd"
       size = "100"
     }
