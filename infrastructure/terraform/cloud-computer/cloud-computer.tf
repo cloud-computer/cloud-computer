@@ -104,7 +104,7 @@ resource "google_compute_instance" "cloud-computer" {
       "echo $CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS",
 
       "# Alias docker run",
-      "alias docker_run=\"docker run --env CLOUD_COMPUTER_HOST_ID --env DOCKER_HOST=localhost --interactive --rm --tty --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_BACKEND ${var.CLOUD_COMPUTER_REGISTRY}/bootstrap\"",
+      "alias docker_run=\"docker run --env CLOUD_COMPUTER_HOST_ID --env CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS --env DOCKER_HOST=localhost --interactive --rm --tty --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_BACKEND ${var.CLOUD_COMPUTER_REGISTRY}/cloud-computer\"",
 
       "# Clone the cloud computer",
       "docker_run git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer $CLOUD_COMPUTER_BACKEND",
