@@ -77,7 +77,7 @@ resource "google_compute_instance" "cloud-computer" {
   }
 
   metadata {
-    ssh-keys = "root:${tls_private_key.cloud-computer.public_key_openssh}"
+    ssh-keys = "core:${tls_private_key.cloud-computer.public_key_openssh}"
   }
 
   network_interface {
@@ -91,7 +91,7 @@ resource "google_compute_instance" "cloud-computer" {
       agent = false
       private_key = "${tls_private_key.cloud-computer.private_key_pem}"
       type = "ssh"
-      user = "root"
+      user = "core"
     }
 
     inline = [
@@ -116,7 +116,7 @@ resource "google_compute_instance" "cloud-computer" {
       "# Cache the cloud computer image",
       "docker pull ${var.CLOUD_COMPUTER_REPOSITORY}/cloud-computer &",
 
-      "# Hack: Wait until dns has updated, then restart let's encrypt request",
+      "# Hack: Wait for dns to update, then restart let's encrypt certificate request",
       "(sleep 15 && docker ps -q | xargs docker restart) &",
     ]
   }
