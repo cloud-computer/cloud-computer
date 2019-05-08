@@ -10,7 +10,8 @@
     "clone": "scripts/clone.sh",
     "dashboard": "grv",
     "environment": "scripts/environment.sh",
-    "ignore-changes": "git update-index --assume-unchanged"
+    "ignore-changes": "git update-index --assume-unchanged",
+    "pull": "scripts/pull.sh"
   },
   "version": "0.0.1"
 }
