@@ -17,3 +17,9 @@ docker_run git clone --branch master --depth 1 --quiet --single-branch https://g
 # Expose the docker socket
 docker_run yarn --cwd infrastructure/docker-compose up:docker
 docker_run yarn --cwd infrastructure/docker-compose up:traefik
+
+# Cache the cloud computer image
+docker pull ${var.CLOUD_COMPUTER_REPOSITORY}/cloud-computer &
+
+# Hack: Wait until dns has updated, then restart let's encrypt request
+sleep 15 && docker ps -q | xargs docker restart &
