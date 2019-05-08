@@ -77,7 +77,7 @@ resource "google_compute_instance" "cloud-computer" {
   }
 
   metadata {
-    ssh-keys = "core:${tls_private_key.cloud-computer.public_key_openssh}"
+    ssh-keys = "ubuntu:${tls_private_key.cloud-computer.public_key_openssh}"
   }
 
   network_interface {
@@ -91,7 +91,7 @@ resource "google_compute_instance" "cloud-computer" {
       agent = false
       private_key = "${tls_private_key.cloud-computer.private_key_pem}"
       type = "ssh"
-      user = "core"
+      user = "ubuntu"
     }
 
     inline = [
