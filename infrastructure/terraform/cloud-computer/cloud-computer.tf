@@ -106,15 +106,11 @@ resource "google_compute_instance" "cloud-computer" {
       "# Clone the cloud computer",
       "docker_run git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer $CLOUD_COMPUTER_BACKEND",
 
-      "# Expose the docker socket",
-      "docker_run yarn --cwd infrastructure/docker-compose up:docker",
-      "docker_run yarn --cwd infrastructure/docker-compose up:traefik",
-
-      "# Cache the cloud computer image",
-      "docker pull ${var.CLOUD_COMPUTER_REGISTRY}/cloud-computer &",
+      "# Start the cloud computer",
+      "docker_run yarn --cwd infrastructure/cloud-computer start",
 
       "# Hack: Wait for dns to update, then restart let's encrypt certificate request",
-      "(sleep 15 && docker ps -q | xargs docker restart) &",
+      "(sleep 30 && docker restart cloud-computer_traefik_1) &",
     ]
   }
 }

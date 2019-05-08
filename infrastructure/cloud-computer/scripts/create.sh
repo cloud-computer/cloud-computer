@@ -3,6 +3,3 @@ yarn bootstrap:local-host
 
 # Create the cloud computer host
 yarn --cwd ../terraform apply
-
-# Start the cloud computer
-yarn start
