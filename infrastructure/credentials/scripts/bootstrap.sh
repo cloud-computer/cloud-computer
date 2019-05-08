@@ -8,7 +8,7 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
-  $CLOUD_COMPUTER_REPOSITORY/$CLOUD_COMPUTER_IMAGE:latest \
+  $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
   chown -R cloud:cloud $CLOUD_COMPUTER_CREDENTIALS
 
 # Create a container for accessing the CLOUD_COMPUTER_CREDENTIALS volume
@@ -16,7 +16,7 @@ yarn --cwd ../docker docker run \
   --detach \
   --name $CREDENTIALS_IMPORT_CONTAINER \
   --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
-  $CLOUD_COMPUTER_REPOSITORY/$CLOUD_COMPUTER_IMAGE:latest \
+  $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
   sleep infinity
 
 # Copy cloud provider credentials from the repository to the CLOUD_COMPUTER_CREDENTIALS volume

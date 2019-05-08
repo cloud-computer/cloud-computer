@@ -41,7 +41,7 @@ variable "CLOUD_COMPUTER_IMAGE" {
   description = "The cloud computer docker image name."
 }
 
-variable "CLOUD_COMPUTER_REPOSITORY" {
+variable "CLOUD_COMPUTER_REGISTRY" {
   description = "The cloud computer docker repository name."
 }
 

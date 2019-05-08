@@ -1,9 +1,5 @@
 version: '3.5'
 
-networks:
-  backend:
-    driver: bridge
-
 services:
 
   xpra:
@@ -24,8 +20,6 @@ services:
       - 10000
     volumes:
       - CLOUD_COMPUTER_X11:$CLOUD_COMPUTER_X11
-    networks:
-      - backend
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:10000']
       interval: 20s

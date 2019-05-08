@@ -1,9 +1,5 @@
 version: '3.5'
 
-networks:
-  backend:
-    driver: bridge
-
 services:
 
   netdata:
@@ -22,8 +18,6 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - backend
     cap_add:
       - SYS_PTRACE
     security_opt:

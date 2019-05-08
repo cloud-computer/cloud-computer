@@ -1,13 +1,9 @@
 version: '3.5'
 
-networks:
-  backend:
-    driver: bridge
-
 services:
 
   terminal:
-    image: $CLOUD_COMPUTER_REPOSITORY/$CLOUD_COMPUTER_IMAGE:latest
+    image: $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest
     command: yarn --cwd infrastructure/cloud-computer tmux:server
     working_dir: $CLOUD_COMPUTER_BACKEND
     restart: always
@@ -53,8 +49,6 @@ services:
       - CLOUD_COMPUTER_TMUX:$CLOUD_COMPUTER_TMUX
       - CLOUD_COMPUTER_X11:$CLOUD_COMPUTER_X11
       - CLOUD_COMPUTER_YARN:$CLOUD_COMPUTER_YARN
-    networks:
-      - backend
 
   container-logs:
     image: gliderlabs/logspout:latest
@@ -67,8 +61,6 @@ services:
       ALLOW_TTY: 'true'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - backend
 
 volumes:
   CLOUD_COMPUTER_BACKEND:

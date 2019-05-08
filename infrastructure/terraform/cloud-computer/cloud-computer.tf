@@ -101,7 +101,7 @@ resource "google_compute_instance" "cloud-computer" {
       "export CLOUD_COMPUTER_HOST_ID=${var.CLOUD_COMPUTER_HOST_ID}",
 
       "# Alias docker run",
-      "alias docker_run=\"docker run --env CLOUD_COMPUTER_HOST_ID --env DOCKER_HOST=localhost --interactive --rm --tty --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_BACKEND ${var.CLOUD_COMPUTER_REPOSITORY}/bootstrap\"",
+      "alias docker_run=\"docker run --env CLOUD_COMPUTER_HOST_ID --env DOCKER_HOST=localhost --interactive --rm --tty --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_BACKEND ${var.CLOUD_COMPUTER_REGISTRY}/bootstrap\"",
 
       "# Clone the cloud computer",
       "docker_run git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer $CLOUD_COMPUTER_BACKEND",
@@ -111,7 +111,7 @@ resource "google_compute_instance" "cloud-computer" {
       "docker_run yarn --cwd infrastructure/docker-compose up:traefik",
 
       "# Cache the cloud computer image",
-      "docker pull ${var.CLOUD_COMPUTER_REPOSITORY}/cloud-computer &",
+      "docker pull ${var.CLOUD_COMPUTER_REGISTRY}/cloud-computer &",
 
       "# Hack: Wait for dns to update, then restart let's encrypt certificate request",
       "(sleep 15 && docker ps -q | xargs docker restart) &",

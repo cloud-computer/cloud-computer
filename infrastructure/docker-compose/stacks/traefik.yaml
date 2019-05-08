@@ -1,9 +1,5 @@
 version: '3.5'
 
-networks:
-  backend:
-    driver: bridge
-
 services:
 
   traefik:
@@ -37,8 +33,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - CLOUD_COMPUTER_TRAEFIK:/var/run/traefik
-    networks:
-      - backend
 
 volumes:
   CLOUD_COMPUTER_TRAEFIK:

@@ -1,9 +1,5 @@
 version: '3.5'
 
-networks:
-  backend:
-    driver: bridge
-
 services:
 
   code:
@@ -40,8 +36,6 @@ services:
       - CLOUD_COMPUTER_FRONTEND:$CLOUD_COMPUTER_FRONTEND
       - CLOUD_COMPUTER_SLACKBOT:$CLOUD_COMPUTER_SLACKBOT
       - CLOUD_COMPUTER_TMUX:$CLOUD_COMPUTER_TMUX
-    networks:
-      - backend
 
 volumes:
   CLOUD_COMPUTER_BACKEND:
