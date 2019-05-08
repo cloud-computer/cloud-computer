@@ -6,7 +6,6 @@ eval "$(yarn --cwd ../git environment)"
 
 yarn --cwd ../docker docker run \
   --env COMPOSE_PROJECT_NAME \
-  --env DOCKER_CONFIG=$CLOUD_COMPUTER_DOCKER \
   --env GIT_AUTHOR_EMAIL \
   --env GIT_AUTHOR_NAME \
   --env GIT_COMMITTER_EMAIL \
@@ -16,7 +15,6 @@ yarn --cwd ../docker docker run \
   --env CLOUD_COMPUTER_CREDENTIALS \
   --env CLOUD_COMPUTER_CODE \
   --env CLOUD_COMPUTER_CODE_SERVER \
-  --env CLOUD_COMPUTER_DOCKER \
   --env CLOUD_COMPUTER_FRONTEND \
   --env CLOUD_COMPUTER_GITHUB \
   --env CLOUD_COMPUTER_GITHUB_TOKEN \
@@ -37,6 +35,5 @@ yarn --cwd ../docker docker run \
   --rm \
   --volume /var/run/docker.sock:/var/run/docker.sock \
   --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND \
-  --volume $CLOUD_COMPUTER_DOCKER_VOLUME:$CLOUD_COMPUTER_DOCKER \
   --workdir $CLOUD_COMPUTER_BACKEND/infrastructure/docker-compose \
   wernight/docker-compose "$@"
