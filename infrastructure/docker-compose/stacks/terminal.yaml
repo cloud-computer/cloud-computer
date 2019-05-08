@@ -26,10 +26,9 @@ services:
     expose:
       - 8080
     labels:
-      - traefik.enable=true
-      - traefik.frontend.rule=Host:terminal.$CLOUD_COMPUTER_HOST_DNS
-      - traefik.port8080
-      - traefik.protocol=http
+      - virtual.host=terminal.$CLOUD_COMPUTER_HOST_DNS
+      - virtual.port=8080
+      - virtual.tls-email=jackson@cloud-computer.dev
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - CLOUD_COMPUTER_BACKEND:$CLOUD_COMPUTER_BACKEND

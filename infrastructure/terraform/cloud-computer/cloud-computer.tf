@@ -113,7 +113,7 @@ resource "google_compute_instance" "cloud-computer" {
       "docker_run yarn --cwd infrastructure/cloud-computer start",
 
       "# Hack: Wait for dns to update, then restart let's encrypt certificate request",
-      "(sleep 30 && docker restart cloud-computer_traefik_1) &",
+      "(sleep 30 && docker restart cloud-computer_ingress_1) &",
     ]
   }
 }

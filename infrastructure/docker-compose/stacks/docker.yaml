@@ -18,9 +18,8 @@ services:
     expose:
       - 2375
     labels:
-      - traefik.enable=true
-      - traefik.frontend.rule=Host:docker.$CLOUD_COMPUTER_HOST_DNS
-      - traefik.port=2375
-      - traefik.protocol=http
+      - virtual.host=docker.$CLOUD_COMPUTER_HOST_DNS
+      - virtual.port=2375
+      - virtual.tls-email=jackson@cloud-computer.dev
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

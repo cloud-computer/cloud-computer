@@ -184,10 +184,6 @@ RUN git clone https://github.com/tmux-plugins/tpm /opt/tpm --depth 1 && \
 RUN wget -qnv -O /usr/local/bin/tmux-notify https://raw.githubusercontent.com/ssterling/tmux-notify/master/tmux-notify.sh && \
   chmod +x /usr/local/bin/tmux-notify
 
-# Install traefik
-RUN wget -O /usr/local/bin/traefik -nv https://github.com/containous/traefik/releases/download/v1.7.9/traefik_linux-amd64 && \
-  chmod +x /usr/local/bin/traefik
-
 # Install webhookrelay
 RUN wget -qnv -O /usr/local/bin/relay https://storage.googleapis.com/webhookrelay/downloads/relay-linux-amd64 && \
   chmod +x /usr/local/bin/relay
