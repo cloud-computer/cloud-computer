@@ -5,7 +5,7 @@ eval "$(yarn environment)"
 yarn bootstrap:remote-host
 
 # Deploy the cloud computer containers
-yarn --cwd ../docker-compose start
+yarn --cwd ../docker-compose up
 
 # Start the cloud computer services
 yarn exec:tty:terminal yarn --cwd infrastructure/cloud-computer yarn services:start

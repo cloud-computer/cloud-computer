@@ -33,7 +33,6 @@ yarn --cwd ../docker docker run \
   --env CLOUD_COMPUTER_X11 \
   --env CLOUD_COMPUTER_XEPHYR_DISPLAY \
   --env CLOUD_COMPUTER_YARN \
-  --env DOCKER_HOST \
   --interactive \
   --rm \
   --volume /var/run/docker.sock:/var/run/docker.sock \

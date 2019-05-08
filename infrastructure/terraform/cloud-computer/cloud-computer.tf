@@ -98,7 +98,10 @@ resource "google_compute_instance" "cloud-computer" {
       "# Set cloud computer environment",
       "export CLOUD_COMPUTER_BACKEND=${var.CLOUD_COMPUTER_BACKEND}",
       "export CLOUD_COMPUTER_BACKEND_VOLUME=${var.CLOUD_COMPUTER_BACKEND_VOLUME}",
+      "export CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS='${file("${var.cloud_provider_credentials_path}")}'",
       "export CLOUD_COMPUTER_HOST_ID=${var.CLOUD_COMPUTER_HOST_ID}",
+
+      "echo $CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS",
 
       "# Alias docker run",
       "alias docker_run=\"docker run --env CLOUD_COMPUTER_HOST_ID --env DOCKER_HOST=localhost --interactive --rm --tty --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_BACKEND ${var.CLOUD_COMPUTER_REGISTRY}/bootstrap\"",
