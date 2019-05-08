@@ -223,8 +223,8 @@ RUN yarn global add \
 # Enable password-less sudo for the sudo group
 RUN echo "%sudo ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
 
-# Create the docker group with the conventional docker group id
-ENV DOCKER_GROUP 999
+# Create the docker group with the host os group id
+ENV DOCKER_GROUP 233
 RUN groupmod --gid $DOCKER_GROUP docker
 
 # Create a non-root user for safe operation
