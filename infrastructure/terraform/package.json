@@ -5,7 +5,7 @@
   "name": "@cloud-computer/terraform",
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
-    "apply": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn terraform apply; yarn --cwd ../dns set-record *.$CLOUD_COMPUTER_HOST_DNS $(yarn ip)",
+    "apply": "scripts/apply.sh",
     "bootstrap": "scripts/bootstrap.sh",
     "clean": "scripts/clean.sh",
     "destroy": "yarn terraform destroy",
