@@ -10,8 +10,9 @@
     "clone": "scripts/clone.sh",
     "dashboard": "grv",
     "environment": "scripts/environment.sh",
+    "git": "scripts/git.sh",
     "ignore-changes": "git update-index --assume-unchanged",
-    "pull": "scripts/pull.sh"
+    "pull": "yarn git pull"
   },
   "version": "0.0.1"
 }

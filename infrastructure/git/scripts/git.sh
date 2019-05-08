@@ -1,10 +1,9 @@
 # Export cloud computer shell environment
 eval "$(yarn --cwd ../cloud-computer environment)"
 
-# Create the CLOUD_COMPUTER_BACKEND volume and take ownership of it
 yarn --cwd ../docker docker run \
   --rm \
-  --user root \
   --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND \
+  --workdir $CLOUD_COMPUTER_BACKEND \
   $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
-  chown -R cloud:cloud $CLOUD_COMPUTER_BACKEND
+  git "$@"

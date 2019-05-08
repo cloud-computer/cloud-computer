@@ -4,7 +4,7 @@ services:
 
   code:
     image: codercom/code-server:latest
-    command: code-server --data-dir $CLOUD_COMPUTER_CODE --no-auth $CLOUD_COMPUTER_BACKEND
+    command: code-server --data-dir $CLOUD_COMPUTER_BACKEND --no-auth $CLOUD_COMPUTER_BACKEND
     restart: always
     tty: true
     labels:
@@ -26,16 +26,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - CLOUD_COMPUTER_BACKEND:$CLOUD_COMPUTER_BACKEND
-      - CLOUD_COMPUTER_CODE:$CLOUD_COMPUTER_CODE
-      - CLOUD_COMPUTER_CODE_SERVER:$CLOUD_COMPUTER_CODE_SERVER
-      - CLOUD_COMPUTER_FRONTEND:$CLOUD_COMPUTER_FRONTEND
-      - CLOUD_COMPUTER_SLACKBOT:$CLOUD_COMPUTER_SLACKBOT
       - CLOUD_COMPUTER_TMUX:$CLOUD_COMPUTER_TMUX
 
 volumes:
   CLOUD_COMPUTER_BACKEND:
-  CLOUD_COMPUTER_CODE:
-  CLOUD_COMPUTER_CODE_SERVER:
-  CLOUD_COMPUTER_FRONTEND:
-  CLOUD_COMPUTER_SLACKBOT:
   CLOUD_COMPUTER_TMUX:

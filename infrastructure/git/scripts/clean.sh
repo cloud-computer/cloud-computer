@@ -3,5 +3,3 @@ eval "$(yarn --cwd ../cloud-computer environment)"
 
 # Remove cloned git volumes
 yarn --cwd ../docker docker volume rm $CLOUD_COMPUTER_BACKEND_VOLUME
-yarn --cwd ../docker docker volume rm $CLOUD_COMPUTER_FRONTEND_VOLUME
-yarn --cwd ../docker docker volume rm $CLOUD_COMPUTER_SLACKBOT_VOLUME

@@ -22,22 +22,6 @@ yarn --cwd ../git bootstrap &
 # Bootstrap yarn configuration
 yarn --cwd ../yarn bootstrap &
 
-# Create the CLOUD_COMPUTER_CODE volume and take ownership of it
-yarn --cwd ../docker docker run \
-  --rm \
-  --user root \
-  --volume $CLOUD_COMPUTER_CODE_VOLUME:$CLOUD_COMPUTER_CODE \
-  $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
-  chown -R cloud:cloud $CLOUD_COMPUTER_CODE &
-
-# Create the CLOUD_COMPUTER_GITHUB volume and take ownership of it
-yarn --cwd ../docker docker run \
-  --rm \
-  --user root \
-  --volume $CLOUD_COMPUTER_GITHUB_VOLUME:$CLOUD_COMPUTER_GITHUB \
-  $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
-  chown -R cloud:cloud $CLOUD_COMPUTER_GITHUB &
-
 # Create the CLOUD_COMPUTER_HOME volume and take ownership of it
 yarn --cwd ../docker docker run \
   --rm \
