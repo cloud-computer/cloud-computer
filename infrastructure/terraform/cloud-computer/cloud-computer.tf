@@ -65,7 +65,7 @@ resource "google_compute_instance" "cloud-computer" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-minimal-1904"
+      image = "coreos-cloud/coreos-stable"
       type = "pd-ssd"
       size = "100"
     }
@@ -100,9 +100,6 @@ resource "google_compute_instance" "cloud-computer" {
       "export CLOUD_COMPUTER_BACKEND_VOLUME=${var.CLOUD_COMPUTER_BACKEND_VOLUME}",
       "export CLOUD_COMPUTER_HOST_ID=${var.CLOUD_COMPUTER_HOST_ID}",
 
-      "# Install Docker",
-      "curl -fsSL get.docker.com | CHANNEL=test sh",
-
       "# Target the local docker socket",
       "export DOCKER_HOST=unix:///var/run/docker.sock",
 
@@ -120,7 +117,7 @@ resource "google_compute_instance" "cloud-computer" {
       "docker pull ${var.CLOUD_COMPUTER_REPOSITORY}/cloud-computer &",
 
       "# Hack: Wait until dns has updated, then restart let's encrypt request",
-      "sleep 15 && docker ps -q | xargs docker restart &",
+      "(sleep 15 && docker ps -q | xargs docker restart) &",
     ]
   }
 }

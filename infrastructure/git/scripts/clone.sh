@@ -42,6 +42,3 @@ yarn --cwd ../docker docker run \
 
 # Wait for clones to complete in parallel
 wait
-
-# Sync local changes to cloud-computer after cloning
-yarn --cwd ../cloud-computer sync
