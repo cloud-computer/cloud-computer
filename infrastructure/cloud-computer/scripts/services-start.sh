@@ -16,8 +16,8 @@ yarn tmux:xephyr:start &
 # Wait for services to start in parallel
 wait
 
-# Start the cloud computer dashboard
+# Start the cloud computer terminal dashboard
 yarn tmux:dashboard:start
 
-# Start the cloud computer dashboard web interface
-yarn tmux:dashboard:web:start
+# Start the cloud computer terminal web interface
+yarn tmux:gotty:start
