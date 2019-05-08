@@ -1,6 +1,3 @@
-# Point shell context to the current environment's terraform host
-eval "$(yarn --cwd ../terraform environment)"
-
 # Pull cloud computer container onto remote host
 yarn --cwd ../containers pull:cloud-computer
 

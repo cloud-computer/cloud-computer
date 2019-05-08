@@ -1,6 +1,3 @@
-# Point shell context to the current environment's terraform host
-eval "$(yarn --cwd ../terraform environment)"
-
 # Export cloud computer shell environment
 eval "$(yarn --cwd ../cloud-computer environment)"
 
@@ -36,7 +33,6 @@ yarn --cwd ../docker docker run \
   --env CLOUD_COMPUTER_X11 \
   --env CLOUD_COMPUTER_XEPHYR_DISPLAY \
   --env CLOUD_COMPUTER_YARN \
-  --env TERRAFORM_TARGET \
   --interactive \
   --rm \
   --volume /var/run/docker.sock:/var/run/docker.sock \

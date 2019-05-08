@@ -9,7 +9,6 @@
     "bootstrap": "scripts/bootstrap.sh",
     "clean": "scripts/clean.sh",
     "destroy": "yarn terraform destroy",
-    "environment": "echo TERRAFORM_TARGET=${TERRAFORM_TARGET-$(yarn --cwd ../cloud-computer environment:name)}",
     "ip": "yarn output ip 2>/dev/null",
     "output": "yarn terraform output",
     "recycle": "yarn destroy; yarn apply",
