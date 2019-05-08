@@ -90,7 +90,7 @@ resource "google_compute_instance" "cloud-computer" {
     connection {
       agent = false
       private_key = "${tls_private_key.cloud-computer.private_key_pem}"
-      script_path = "/root/bootstrap.sh"
+      script_path = "/home/core/bootstrap.sh"
       type = "ssh"
       user = "core"
     }
