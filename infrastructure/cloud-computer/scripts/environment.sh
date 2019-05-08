@@ -23,7 +23,6 @@ echo export CLOUD_COMPUTER_XEPHYR_DISPLAY=:15
 echo export CLOUD_COMPUTER_XPRA_DISPLAY=:14
 
 echo export CLOUD_COMPUTER_BACKEND=/cloud-computer/cloud-computer
-echo export CLOUD_COMPUTER_CERTIFICATES=/cloud-computer/certificates
 echo export CLOUD_COMPUTER_CODE=/cloud-computer/code
 echo export CLOUD_COMPUTER_CODE_SERVER=/cloud-computer/cloud-computer-code
 echo export CLOUD_COMPUTER_CREDENTIALS=/cloud-computer/credentials
