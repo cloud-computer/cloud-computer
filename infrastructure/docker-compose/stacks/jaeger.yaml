@@ -8,8 +8,6 @@ services:
     labels:
       namespace: jaeger
       tier: cloud-computer
-    environment:
-      VIRTUAL_HOST: jaeger-ingest-$CLOUD_COMPUTER_HOST_DNS:14268,jaeger-$CLOUD_COMPUTER_HOST_DNS:16686
     expose:
       - 5778
       - 14268

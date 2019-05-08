@@ -26,12 +26,13 @@ services:
       CLOUD_COMPUTER_HOST_NAME: $CLOUD_COMPUTER_HOST_NAME
       CLOUD_COMPUTER_HOST_USER: $CLOUD_COMPUTER_HOST_USER
       CLOUD_COMPUTER_TMUX: $CLOUD_COMPUTER_TMUX
-      VIRTUAL_HOST: terminal-$CLOUD_COMPUTER_HOST_DNS:8080,debug-terminal-$CLOUD_COMPUTER_HOST_DNS:9229,frontend-$CLOUD_COMPUTER_HOST_DNS:3000
     expose:
-      - 2000
-      - 3000
       - 8080
-      - 9229
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:terminal.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port8080
+      - traefik.protocol=http
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - CLOUD_COMPUTER_BACKEND:$CLOUD_COMPUTER_BACKEND
