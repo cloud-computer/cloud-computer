@@ -108,6 +108,7 @@ resource "google_compute_instance" "cloud-computer" {
 
       "# Expose the docker socket",
       "docker_run yarn --cwd infrastructure/docker-compose up:docker",
+      "docker_run yarn --cwd infrastructure/docker-compose up:terminal",
       "docker_run yarn --cwd infrastructure/docker-compose up:traefik",
 
       "# Cache the cloud computer image",
