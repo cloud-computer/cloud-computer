@@ -5,7 +5,7 @@ eval "$(yarn --cwd ../cloud-computer environment)"
 yarn terraform apply
 
 # Update dns to point to terraform host
-yarn --cwd ../dns set-record *.$CLOUD_COMPUTER_HOST_DNS $(yarn ip)
+yarn --cwd ../dns update
 
 # Wait for host to become accessible by dns
 until curl --output /dev/null --silent https://terminal.$CLOUD_COMPUTER_HOST_DNS; do
