@@ -8,4 +8,7 @@ yarn terraform apply
 yarn --cwd ../dns set-record *.$CLOUD_COMPUTER_HOST_DNS $(yarn ip)
 
 # Wait for host to become accessible by dns
-until curl --silent --output /dev/null https://docker.$CLOUD_COMPUTER_HOST_DNS; do sleep 1; done
+until curl --output /dev/null --silent https://terminal.$CLOUD_COMPUTER_HOST_DNS; do
+  echo "Waiting for cloud computer to become DNS accessible..."
+  sleep 5
+done
