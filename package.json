@@ -22,9 +22,7 @@
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
     "apps": "echo code terminal desktop frontend jaeger",
-    "bootstrap": "yarn bootstrap:backend; yarn bootstrap:frontend",
-    "bootstrap:backend": "yarn; yarn lerna:link; yarn ignore-secret-changes",
-    "bootstrap:frontend": "cd /cloud-computer/frontend; npm run install:all",
+    "bootstrap": "yarn; yarn lerna:link",
     "build": "yarn lerna run build | tsc-path-prefix",
     "build:cloud-computer": "DOCKER_HOST=localhost yarn --cwd infrastructure/containers build:cloud-computer",
     "build:local": "yarn --cwd libraries/types build:watch & yarn --cwd libraries/schemas build:watch & wait",

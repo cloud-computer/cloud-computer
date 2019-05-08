@@ -19,8 +19,6 @@
   "name": "@cloud-computer/cloud-computer",
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
-    "bootstrap:backend": "yarn exec:tty:terminal yarn bootstrap:backend",
-    "bootstrap:frontend": "yarn exec:tty:terminal yarn bootstrap:frontend",
     "bootstrap:infrastructure": "scripts/bootstrap-infrastructure.sh",
     "bootstrap:local-host": "scripts/bootstrap-local-host.sh",
     "bootstrap:remote-host": "scripts/bootstrap-remote-host.sh",
