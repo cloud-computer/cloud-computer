@@ -65,7 +65,7 @@ resource "google_compute_instance" "cloud-computer" {
 
   boot_disk {
     initialize_params {
-      image = "gce-uefi-images/cos-dev"
+      image = "coreos-cloud/coreos-stable"
       type = "pd-ssd"
       size = "100"
     }
@@ -90,7 +90,6 @@ resource "google_compute_instance" "cloud-computer" {
     connection {
       agent = false
       private_key = "${tls_private_key.cloud-computer.private_key_pem}"
-      script_path = "/var/lib/docker/bootstrap.sh"
       type = "ssh"
       user = "core"
     }
