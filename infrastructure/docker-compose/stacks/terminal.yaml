@@ -5,7 +5,7 @@ services:
   terminal:
     image: $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest
     command: yarn --cwd infrastructure/cloud-computer tmux:server
-    working_dir: $CLOUD_COMPUTER_BACKEND
+    working_dir: $CLOUD_COMPUTER_REPOSITORY
     restart: always
     tty: true
     labels:
@@ -31,10 +31,10 @@ services:
       - virtual.tls-email=jackson@cloud-computer.dev
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - CLOUD_COMPUTER_BACKEND:$CLOUD_COMPUTER_BACKEND
       - CLOUD_COMPUTER_CREDENTIALS:$CLOUD_COMPUTER_CREDENTIALS
       - CLOUD_COMPUTER_HOME:$CLOUD_COMPUTER_HOME
       - CLOUD_COMPUTER_NODEMON:$CLOUD_COMPUTER_NODEMON
+      - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY
       - CLOUD_COMPUTER_TERRAFORM:$CLOUD_COMPUTER_TERRAFORM
       - CLOUD_COMPUTER_TMUX:$CLOUD_COMPUTER_TMUX
       - CLOUD_COMPUTER_X11:$CLOUD_COMPUTER_X11
@@ -53,10 +53,10 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
 volumes:
-  CLOUD_COMPUTER_BACKEND:
   CLOUD_COMPUTER_CREDENTIALS:
   CLOUD_COMPUTER_HOME:
   CLOUD_COMPUTER_NODEMON:
+  CLOUD_COMPUTER_REPOSITORY:
   CLOUD_COMPUTER_TERRAFORM:
   CLOUD_COMPUTER_TMUX:
   CLOUD_COMPUTER_X11:

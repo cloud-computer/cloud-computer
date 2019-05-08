@@ -3,7 +3,7 @@ eval "$(yarn --cwd ../cloud-computer environment)"
 
 yarn --cwd ../docker docker run \
   --rm \
-  --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND \
-  --workdir $CLOUD_COMPUTER_BACKEND \
+  --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY \
+  --workdir $CLOUD_COMPUTER_REPOSITORY \
   $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
   git "$@"

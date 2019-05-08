@@ -17,9 +17,8 @@ services:
       - virtual.port=16686
       - virtual.tls-email=jackson@cloud-computer.dev
     volumes:
-      - CLOUD_COMPUTER_BACKEND:$CLOUD_COMPUTER_BACKEND
       - CLOUD_COMPUTER_TMUX:$CLOUD_COMPUTER_TMUX
 
 volumes:
-  CLOUD_COMPUTER_BACKEND:
+  CLOUD_COMPUTER_REPOSITORY:
   CLOUD_COMPUTER_TMUX:

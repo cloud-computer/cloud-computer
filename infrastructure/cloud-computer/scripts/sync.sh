@@ -7,13 +7,13 @@ GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 # Create a unique sync identifier
 SYNC_CONTAINER=${COMPOSE_PROJECT_NAME}-sync-$HOSTNAME-$(date +%M%S)
 
-# Sync to the CLOUD_COMPUTER_BACKEND volume using a temporary container
+# Sync to the CLOUD_COMPUTER_REPOSITORY volume using a temporary container
 yarn --cwd ../docker docker run \
   --detach \
   --name $SYNC_CONTAINER \
   --volume /var/run/docker.sock:/var/run/docker.sock \
-  --volume $CLOUD_COMPUTER_BACKEND_VOLUME:$CLOUD_COMPUTER_BACKEND \
-  --workdir $CLOUD_COMPUTER_BACKEND \
+  --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY \
+  --workdir $CLOUD_COMPUTER_REPOSITORY \
   $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
   sleep infinity
 
@@ -35,7 +35,7 @@ git status --porcelain | \
   sed -E 's;.{3};\./;' | \
   tar --directory ../.. --files-from - -cvO | \
   yarn --cwd ../docker docker exec --interactive $SYNC_CONTAINER \
-  tar Cxf $CLOUD_COMPUTER_BACKEND -
+  tar Cxf $CLOUD_COMPUTER_REPOSITORY -
 
 # Remove the temporary sync container
 yarn --cwd ../docker docker rm -f $SYNC_CONTAINER
