@@ -12,6 +12,11 @@ services:
       - 5778
       - 14268
       - 16686
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:jaeger.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=16686
+      - traefik.protocol=http
     volumes:
       - CLOUD_COMPUTER_BACKEND:$CLOUD_COMPUTER_BACKEND
       - CLOUD_COMPUTER_CODE:$CLOUD_COMPUTER_CODE

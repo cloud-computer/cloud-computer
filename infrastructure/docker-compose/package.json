@@ -25,7 +25,7 @@
     "restart:traefik": "yarn down:traefik; yarn up:traefik",
     "restart:xpra": "yarn down:xpra; yarn up:xpra",
     "rm": "yarn --cwd ../docker docker rm -f \"$@\" 2>/dev/null",
-    "up": "yarn up:terminal; yarn up:code & yarn up:jaeger & yarn up:grafana & wait",
+    "up": "yarn up:terminal; yarn up:code & yarn up:jaeger & yarn up:grafana & wait; yarn up:traefik",
     "up:code": "yarn compose -f stacks/code.yaml up --detach --quiet-pull",
     "up:docker": "yarn compose -f stacks/docker.yaml up --detach --quiet-pull",
     "up:grafana": "yarn compose -f stacks/grafana.yaml up --detach --quiet-pull",
