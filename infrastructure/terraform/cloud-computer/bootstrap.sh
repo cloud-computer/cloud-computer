@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Set cloud computer environment
 export CLOUD_COMPUTER_BACKEND=${var.CLOUD_COMPUTER_BACKEND}
 export CLOUD_COMPUTER_BACKEND_VOLUME=${var.CLOUD_COMPUTER_BACKEND_VOLUME}
