@@ -53,7 +53,6 @@ RUN apt-get update -qq && \
   vcsh \
   vim \
   wget \
-  yarnpkg \
   zsh
 
 # Install antigen
@@ -102,6 +101,11 @@ RUN curl -fsSL https://raw.githubusercontent.com/GoogleCloudPlatform/terraform-g
 # Install tmux plugin manager
 RUN git clone https://github.com/tmux-plugins/tpm /opt/tpm --depth 1 && \
   ln -s /opt/tpm/tpm /usr/local/bin
+
+# Install yarn
+RUN curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+  echo "deb https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+  apt-get update -qq && apt-get install -qq yarn
 
 # Install yarn based utilities
 RUN yarn global add \
