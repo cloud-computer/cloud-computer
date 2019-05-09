@@ -2,7 +2,7 @@
 eval "$(yarn --cwd ../cloud-computer environment)"
 
 # Create the static ip before creating the host
-yarn terraform apply $(yarn workdir) -target=google_compute_address.cloud-computer
+yarn terraform apply -target=google_compute_address.cloud-computer $(yarn workdir)
 
 # Point dns to cloud computer ip
 yarn --cwd ../dns update
