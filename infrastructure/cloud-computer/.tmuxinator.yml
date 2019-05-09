@@ -21,10 +21,6 @@ windows:
       layout: tiled
       panes:
         - yarn logs:ingress
-  - frontend:
-      layout: even-horizontal
-      panes:
-        - yarn tmux:frontend:build:attach
   - communication:
       layout: tiled
       panes:
