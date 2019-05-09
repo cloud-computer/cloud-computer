@@ -57,7 +57,7 @@ yarn --cwd ../docker docker run \
 # Wait for ownership changes to complete in parallel
 wait
 
-# Clone repositories into docker volumes
+# Clone cloud computer repository into docker volume
 yarn --cwd ../git clone
 
 # Bootstrap terraform configuration
