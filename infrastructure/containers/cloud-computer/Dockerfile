@@ -49,6 +49,7 @@ RUN apt-get update -qq && \
   openssl \
   tmux \
   tree \
+  unzip \
   vcsh \
   vim \
   wget \
