@@ -7,6 +7,7 @@
     "@cloud-computer/nodemon": "^0.0.1",
     "@cloud-computer/tslint-config": "^0.0.1",
     "@stemn/tsc-path-prefix": "^1.0.0",
+    "ipt": "^2.1.1",
     "lerna": "^3.13.4",
     "rebase-editor": "^2.0.5",
     "ts-node": "^8.0.3",
