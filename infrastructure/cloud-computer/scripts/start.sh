@@ -8,4 +8,4 @@ yarn bootstrap:remote-host
 yarn --cwd ../docker-compose up
 
 # Start the cloud computer services
-yarn exec:tty:terminal yarn --cwd infrastructure/cloud-computer yarn services:start
+yarn exec:tty:terminal yarn --cwd infrastructure/cloud-computer yarn services:start &

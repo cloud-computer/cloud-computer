@@ -56,8 +56,6 @@
     "tmux:dashboard:stop": "yarn tmux:kill-clients; yarn tmux kill-session -t environment-dashboard 2>/dev/null",
     "tmux:desktop:start": "scripts/tmux-desktop-start.sh",
     "tmux:desktop:stop": "scripts/tmux-desktop-stop.sh",
-    "tmux:frontend:build:attach": "scripts/tmux-frontend-build-attach.sh",
-    "tmux:frontend:build:start": "scripts/tmux-frontend-build-start.sh",
     "tmux:gotty:start": "yarn tmux new-session -d -s gotty gotty zsh -c 'yarn --cwd infrastructure/cloud-computer tmux:dashboard:attach'",
     "tmux:gotty:stop": "yarn tmux kill-session -t gotty 2>/dev/null",
     "tmux:jest:attach": "scripts/tmux-jest-attach.sh",

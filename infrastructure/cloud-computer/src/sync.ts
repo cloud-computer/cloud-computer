@@ -19,8 +19,6 @@ const docker = DOCKER_HOST
 
 const repositories: string[] = [
   'cloud-computer',
-  'frontend',
-  'slackbot',
 ];
 
 const repositoriesFolder = `${__dirname}/../../../..`;

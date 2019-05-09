@@ -4,9 +4,6 @@ eval "$(yarn environment)"
 # Start the jest tests
 yarn tmux:jest:start &
 
-# Start the frontend build
-yarn tmux:frontend:build:start &
-
 # Start the weechat client
 yarn tmux:weechat:start &
 

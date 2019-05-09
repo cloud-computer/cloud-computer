@@ -21,7 +21,7 @@
   "private": true,
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
-    "apps": "echo code terminal desktop frontend jaeger",
+    "apps": "echo code desktop jaeger terminal",
     "bootstrap": "yarn; yarn lerna:link",
     "build": "yarn lerna run build | tsc-path-prefix",
     "build:cloud-computer": "DOCKER_HOST=localhost yarn --cwd infrastructure/containers build:cloud-computer",
