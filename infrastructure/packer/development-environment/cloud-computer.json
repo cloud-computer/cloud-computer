@@ -1,0 +1,27 @@
+{
+  "builders": [
+    {
+      "account_file": "/cloud-computer/credentials/cloud-provider.json",
+      "image_name": "{{user `CLOUD_COMPUTER_IMAGE` }}",
+      "instance_name": "cloud-computer-packer-{{timestamp}}",
+      "project_id": "{{user `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT` }}",
+      "source_image_family": "coreos-cloud/coreos-stable",
+      "ssh_username": "root",
+      "type": "googlecompute",
+      "zone": "australia-southeast1-a"
+    }
+  ],
+  "provisioners": [
+    {
+      "inline": [
+        "docker pull {{user `CLOUD_COMPUTER_REGISTRY` }}/{{user `CLOUD_COMPUTER_IMAGE` }}"
+      ],
+      "type": "shell"
+    }
+  ],
+  "variables": {
+    "CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT": "{{env `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT`}}",
+    "CLOUD_COMPUTER_IMAGE": "{{env `CLOUD_COMPUTER_IMAGE`}}",
+    "CLOUD_COMPUTER_REGISTRY": "{{env `CLOUD_COMPUTER_REGISTRY`}}"
+  }
+}

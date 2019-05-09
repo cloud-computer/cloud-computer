@@ -1,0 +1,14 @@
+{
+  "author": "Jackson Delahunt",
+  "description": "The Cloud Computer Packer Image",
+  "license": "MIT",
+  "name": "@cloud-computer/packer",
+  "repository": "git@github.com:cloud-computer/cloud-computer.git",
+  "scripts": {
+    "bootstrap": "yarn --cwd ../cloud-computer bootstrap:local-host",
+    "build": "scripts/build.sh",
+    "inspect": "yarn packer inspect cloud-computer.json",
+    "packer": "scripts/packer.sh"
+  },
+  "version": "0.0.1"
+}
