@@ -13,7 +13,7 @@ yarn --cwd ../docker docker run \
   chown -R cloud:cloud $CLOUD_COMPUTER_TERRAFORM
 
 # If we are on a cloud computer, skip creation of cloud computer state bucket
-if [ -z $CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS ]; then
+if [ -z "$CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS" ]; then
 
   # Ensure the terraform backend storage bucket exists
   yarn --cwd ../docker docker run \
