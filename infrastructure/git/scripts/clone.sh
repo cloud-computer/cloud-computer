@@ -11,10 +11,4 @@ yarn --cwd ../docker docker run \
   --user root \
   --workdir $CLOUD_COMPUTER_REPOSITORY \
   $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
-  zsh -c "git clone https://github.com/cloud-computer/cloud-computer.git --branch $GIT_BRANCH --depth 1 --single-branch .; chown -R cloud:cloud ." 2>/dev/null
-
-# Restore refs after shallow clone
-yarn git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
-
-# Fetch refs after shallow clone
-yarn git fetch --depth 1
+  zsh -c "git clone https://github.com/cloud-computer/cloud-computer.git --branch $GIT_BRANCH --single-branch .; chown -R cloud:cloud ." 2>/dev/null
