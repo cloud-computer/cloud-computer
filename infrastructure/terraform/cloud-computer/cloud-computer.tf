@@ -106,18 +106,16 @@ resource "google_compute_instance" "cloud-computer" {
       "export CLOUD_COMPUTER_REPOSITORY_VOLUME=${var.CLOUD_COMPUTER_REPOSITORY_VOLUME}",
       "export CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS='${file("${var.cloud_provider_credentials_path}")}'",
       "export CLOUD_COMPUTER_HOST_ID=${var.CLOUD_COMPUTER_HOST_ID}",
+      "export CLOUD_COMPUTER_YARN_JAEGER_TRACE=${var.CLOUD_COMPUTER_YARN_JAEGER_TRACE}",
 
       "# Alias docker run",
-      "alias docker_run=\"docker run --env CLOUD_COMPUTER_HOST_ID --env CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS --env DOCKER_HOST=localhost --interactive --rm --tty --user root --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_REPOSITORY ${var.CLOUD_COMPUTER_REGISTRY}/cloud-computer\"",
+      "alias docker_run=\"docker run --env CLOUD_COMPUTER_HOST_ID --env CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS --env CLOUD_COMPUTER_YARN_JAEGER_TRACE --env DOCKER_HOST=localhost --interactive --rm --tty --user root --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_REPOSITORY ${var.CLOUD_COMPUTER_REGISTRY}/cloud-computer\"",
 
       "# Clone the cloud computer",
       "docker_run git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer $CLOUD_COMPUTER_REPOSITORY",
 
       "# Start the cloud computer",
       "docker_run yarn --cwd infrastructure/cloud-computer start",
-
-      "# Hack: Wait for dns to update, then restart let's encrypt certificate request",
-      "(sleep 30 && docker restart cloud-computer_ingress_1) &",
     ]
   }
 }

@@ -45,6 +45,11 @@ variable "CLOUD_COMPUTER_REPOSITORY_VOLUME" {
   description = "The cloud computer repoisitory volume name."
 }
 
+variable "CLOUD_COMPUTER_YARN_JAEGER_TRACE" {
+  description = "The current cloud computer jaeger trace id."
+  default = ""
+}
+
 output "ip" {
   value = "${google_compute_address.cloud-computer.address}"
 }
