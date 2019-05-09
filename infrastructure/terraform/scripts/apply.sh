@@ -2,7 +2,7 @@
 eval "$(yarn --cwd ../cloud-computer environment)"
 
 # Apply the terraform configuration
-yarn terraform apply $CLOUD_COMPUTER_REPOSITORY/infrastructure/terraform/cloud-computer
+yarn terraform apply $(yarn workdir)
 
 # Update dns to point to terraform host
 yarn --cwd ../dns update

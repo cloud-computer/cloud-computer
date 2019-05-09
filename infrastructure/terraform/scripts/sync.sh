@@ -1,8 +1,5 @@
-# Export cloud computer shell environment
-eval "$(yarn --cwd ../cloud-computer environment)"
-
 # Initialize backend
-yarn terraform init
+yarn terraform init $(yarn workdir)
 
 # Sync with remote terraform state in cloud storage
-yarn terraform refresh
+yarn terraform refresh $(yarn workdir)
