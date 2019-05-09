@@ -13,6 +13,6 @@ yarn --cwd ../docker docker run \
   --rm \
   --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY \
   --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
-  --workdir $CLOUD_COMPUTER_REPOSITORY/infrastructure/packer/$TERRAFORM_TARGET \
+  --workdir $CLOUD_COMPUTER_REPOSITORY/infrastructure/packer \
   $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
   packer "$@"
