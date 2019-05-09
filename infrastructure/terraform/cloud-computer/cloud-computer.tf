@@ -5,6 +5,7 @@ terraform {
 provider "google" {
   credentials = "${file("${var.cloud_provider_credentials_path}")}"
   project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
+  region = "${var.machine_region}"
 }
 
 resource "tls_private_key" "cloud-computer" {
@@ -56,7 +57,6 @@ resource "google_compute_subnetwork" "cloud-computer" {
   name = "${local.environment_name}"
   network = "${google_compute_network.cloud-computer.name}"
   project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
-  region = "${var.machine_region}"
 }
 
 resource "google_compute_instance" "cloud-computer" {
