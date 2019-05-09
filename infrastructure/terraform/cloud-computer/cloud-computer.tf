@@ -21,6 +21,10 @@ locals {
   environment_name = "cloud-computer-${var.CLOUD_COMPUTER_HOST_ID}-${random_id.instance_id.hex}"
 }
 
+resource "google_compute_address" "cloud-computer" {
+  name = "ipv4-address"
+}
+
 resource "google_compute_firewall" "cloud-computer" {
   name = "${local.environment_name}"
   network = "${google_compute_network.cloud-computer.name}"
@@ -81,7 +85,9 @@ resource "google_compute_instance" "cloud-computer" {
   }
 
   network_interface {
-    access_config {}
+    access_config {
+      nat_ip = "${google_compute_address.cloud-computer.address}"
+    }
     subnetwork = "${google_compute_subnetwork.cloud-computer.name}"
     subnetwork_project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
   }

@@ -1,11 +1,14 @@
 # Export cloud computer shell environment
 eval "$(yarn --cwd ../cloud-computer environment)"
 
-# Apply the terraform configuration
-yarn terraform apply $(yarn workdir)
+# Create the static ip before creating the host
+yarn terraform apply $(yarn workdir) -target=google_compute_address.cloud-computer
 
-# Update dns to point to terraform host
+# Point dns to cloud computer ip
 yarn --cwd ../dns update
+
+# Create the cloud computer host
+yarn terraform apply $(yarn workdir)
 
 # Wait for host to become accessible by dns
 until curl --output /dev/null --silent https://terminal.$CLOUD_COMPUTER_HOST_DNS; do
