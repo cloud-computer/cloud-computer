@@ -1,7 +1,7 @@
 {
   "builders": [
     {
-      "account_file": "/cloud-computer/credentials/cloud-provider.json",
+      "account_file": "{{user `CLOUD_COMPUTER_CREDENTIALS` }}/cloud-provider.json",
       "image_name": "{{user `CLOUD_COMPUTER_IMAGE` }}",
       "instance_name": "cloud-computer-packer-{{timestamp}}",
       "project_id": "{{user `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT` }}",
