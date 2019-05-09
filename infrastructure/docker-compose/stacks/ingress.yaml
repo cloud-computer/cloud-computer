@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
 
-  traefik:
+  ingress:
     image: wemakeservices/caddy-gen:latest
     restart: always
     ports:
