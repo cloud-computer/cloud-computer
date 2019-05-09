@@ -2,7 +2,8 @@ attach: false
 name: dashboard
 on_project_exit: tmux -S $CLOUD_COMPUTER_TMUX/.tmux.sock select-pane -t dashboard:1.3
 on_project_first_start: tmux -S $CLOUD_COMPUTER_TMUX/.tmux.sock set-environment -g CLOUD_COMPUTER_TMUX_SESSION_ID $(date +%M%S)
-root: /cloud-computer/cloud-computer/infrastructure/cloud-computer
+pre_window: export DOCKER_HOST=unix:///var/run/docker.sock
+root: $CLOUD_COMPUTER_REPOSITORY/infrastructure/cloud-computer
 socket_path: $CLOUD_COMPUTER_TMUX/.tmux.sock
 
 windows:
