@@ -51,6 +51,7 @@ RUN apt-get update -qq && \
   tree \
   vcsh \
   vim \
+  wget \
   yarnpkg \
   zsh
 
