@@ -5,7 +5,7 @@
       "image_name": "{{user `CLOUD_COMPUTER_IMAGE` }}",
       "instance_name": "cloud-computer-packer-{{timestamp}}",
       "project_id": "{{user `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT` }}",
-      "source_image": "coreos-cloud/coreos-stable",
+      "source_image": "coreos-stable",
       "ssh_username": "root",
       "type": "googlecompute",
       "zone": "australia-southeast1-a"
