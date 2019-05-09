@@ -99,23 +99,13 @@ RUN curl -fsSL https://raw.githubusercontent.com/GoogleCloudPlatform/terraform-g
   mv $HOME/bin/terraform /usr/local/bin && \
   rm -rf $HOME/bin
 
-# Install tmuxinator
-RUN gem install tmuxinator
-
 # Install tmux plugin manager
 RUN git clone https://github.com/tmux-plugins/tpm /opt/tpm --depth 1 && \
   ln -s /opt/tpm/tpm /usr/local/bin
 
 # Install yarn based utilities
 RUN yarn global add \
-  @rafaelrinaldi/hn-cli \
-  clipboard-cli \
-  cloudflare-cli \
-  github-email \
-  imgur-uploader-cli \
-  kubebox \
-  rebase-editor \
-  tldr
+  clipboard-cli
 
 # Enable password-less sudo for the sudo group
 RUN echo "%sudo ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
