@@ -1,6 +1,9 @@
 # Export cloud computer shell environment
 eval "$(yarn --cwd ../cloud-computer environment)"
 
+printf XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+printf %s $CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS
+
 # Extract credentials from the environment or repository
 CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS=${CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS-$(cat $PWD/cloud-provider.json)}
 
