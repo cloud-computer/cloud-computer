@@ -37,6 +37,7 @@ RUN apt-get update -qq && \
   docker.io \
   figlet \
   git \
+  gnupg \
   gosu \
   iputils-ping \
   jq \
