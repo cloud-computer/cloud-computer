@@ -23,7 +23,7 @@ locals {
 }
 
 resource "google_compute_address" "cloud-computer" {
-  name = "ipv4-address"
+  name = "cloud-computer"
 }
 
 resource "google_compute_firewall" "cloud-computer" {
