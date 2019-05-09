@@ -101,8 +101,6 @@ resource "google_compute_instance" "cloud-computer" {
       "export CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS='${file("${var.cloud_provider_credentials_path}")}'",
       "export CLOUD_COMPUTER_HOST_ID=${var.CLOUD_COMPUTER_HOST_ID}",
 
-      "printf %s $CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS",
-
       "# Alias docker run",
       "alias docker_run=\"docker run --env CLOUD_COMPUTER_HOST_ID --env CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS --env DOCKER_HOST=localhost --interactive --rm --tty --user root --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_REPOSITORY ${var.CLOUD_COMPUTER_REGISTRY}/cloud-computer\"",
 

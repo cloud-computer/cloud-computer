@@ -9,6 +9,7 @@ yarn --cwd ../docker docker run \
   --env TF_CLI_ARGS_apply="-auto-approve -lock=false" \
   --env TF_CLI_ARGS_destroy="-auto-approve -lock=false" \
   --env TF_CLI_ARGS_init="-backend-config bucket=cloud-computer-$CLOUD_COMPUTER_HOST_USER -backend-config prefix=terraform -lock=false" \
+  --env TF_CLI_ARGS_output="-backend-config bucket=cloud-computer-$CLOUD_COMPUTER_HOST_USER -backend-config prefix=terraform -lock=false" \
   --env TF_CLI_ARGS_refresh="-lock=false" \
   --env TF_CLI_ARGS_taint="-lock=false" \
   --env TF_DATA_DIR=$CLOUD_COMPUTER_TERRAFORM \

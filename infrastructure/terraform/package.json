@@ -16,7 +16,7 @@
     "sync": "scripts/sync.sh",
     "taint": "yarn terraform taint google_compute_instance.cloud-computer",
     "terraform": "scripts/terraform.sh",
-    "workdir": "eval \"$(yarn --cwd ../cloud-computer environment)\"; $CLOUD_COMPUTER_REPOSITORY/infrastructure/terraform/cloud-computer"
+    "workdir": "eval \"$(yarn --cwd ../cloud-computer environment)\"; echo $CLOUD_COMPUTER_REPOSITORY/infrastructure/terraform/cloud-computer"
   },
   "version": "0.0.1"
 }
