@@ -12,18 +12,23 @@ yarn --cwd ../docker docker run \
   $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
   chown -R cloud:cloud $CLOUD_COMPUTER_TERRAFORM
 
-# Ensure the terraform backend storage bucket exists
-yarn --cwd ../docker docker run \
-  --entrypoint bash \
-  --rm \
-  --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
-  -it \
-  google/cloud-sdk:latest \
-  -c "\
-    gcloud auth activate-service-account --key-file $CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json; \
-    gcloud config set project $(yarn --cwd ../credentials project); \
-    gsutil mb gs://cloud-computer-$CLOUD_COMPUTER_HOST_USER 2>/dev/null || true; \
-  "
+# If we are on a cloud computer, skip creation of cloud computer state bucket
+if [ -z $CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS ]; then
+
+  # Ensure the terraform backend storage bucket exists
+  yarn --cwd ../docker docker run \
+    --entrypoint bash \
+    --rm \
+    --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
+    -it \
+    google/cloud-sdk:latest \
+    -c "\
+      gcloud auth activate-service-account --key-file $CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json; \
+      gcloud config set project $(yarn --cwd ../credentials project); \
+      gsutil mb gs://cloud-computer-$CLOUD_COMPUTER_HOST_USER 2>/dev/null || true; \
+    "
+
+fi
 
 # Sync with remote terraform state in cloud storage
 yarn sync
