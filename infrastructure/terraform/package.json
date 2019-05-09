@@ -10,7 +10,7 @@
     "clean": "scripts/clean.sh",
     "destroy": "yarn terraform destroy",
     "ip": "yarn output ip 2>/dev/null",
-    "output": "yarn terraform output",
+    "output": "scripts/output.sh",
     "recycle": "yarn destroy; yarn apply",
     "restart": "yarn taint; yarn apply",
     "sync": "scripts/sync.sh",
