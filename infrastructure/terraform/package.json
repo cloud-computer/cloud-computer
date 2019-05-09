@@ -8,14 +8,14 @@
     "apply": "scripts/apply.sh",
     "bootstrap": "scripts/bootstrap.sh",
     "clean": "scripts/clean.sh",
-    "destroy": "yarn terraform destroy",
-    "ip": "yarn output ip 2>/dev/null",
-    "output": "scripts/output.sh",
+    "destroy": "yarn terraform-workdir destroy",
+    "ip": "yarn terraform-workdir output ip 2>/dev/null",
     "recycle": "yarn destroy; yarn apply",
     "restart": "yarn taint; yarn apply",
     "sync": "scripts/sync.sh",
-    "taint": "yarn terraform taint google_compute_instance.cloud-computer",
+    "taint": "yarn terraform-workdir taint google_compute_instance.cloud-computer",
     "terraform": "scripts/terraform.sh",
+    "terraform-workdir": "scripts/terraform-workdir.sh",
     "workdir": "eval \"$(yarn --cwd ../cloud-computer environment)\"; echo $CLOUD_COMPUTER_REPOSITORY/infrastructure/terraform/cloud-computer"
   },
   "version": "0.0.1"
