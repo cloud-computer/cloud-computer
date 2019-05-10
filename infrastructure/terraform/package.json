@@ -11,7 +11,7 @@
     "destroy": "yarn terraform-workdir destroy",
     "ip": "yarn terraform-workdir output ip 2>/dev/null",
     "recycle": "yarn destroy; yarn apply",
-    "restart": "yarn taint; yarn terraform apply",
+    "restart": "yarn taint; yarn terraform-workdir apply",
     "sync": "scripts/sync.sh",
     "taint": "yarn terraform-workdir taint google_compute_instance.cloud-computer",
     "terraform": "scripts/terraform.sh",
