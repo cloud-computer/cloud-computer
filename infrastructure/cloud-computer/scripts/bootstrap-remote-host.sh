@@ -5,4 +5,4 @@ yarn bootstrap:infrastructure
 yarn --cwd ../docker-compose up:terminal
 
 # Bootstrap the cloud computer repository
-yarn exec:terminal yarn bootstrap
+# yarn exec:terminal yarn bootstrap

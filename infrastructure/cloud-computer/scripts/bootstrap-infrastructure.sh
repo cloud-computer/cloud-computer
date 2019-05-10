@@ -54,7 +54,7 @@ yarn --cwd ../docker docker run \
   $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
   chown -R cloud:cloud $CLOUD_COMPUTER_X11 &
 
-# Wait for ownership changes to complete in parallel
+# Wait for bootstraps to complete in parallel
 wait
 
 # Clone cloud computer repository into docker volume
