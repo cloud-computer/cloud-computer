@@ -8,6 +8,7 @@ export DOCKER_HOST=localhost
 yarn --cwd ../docker docker run \
   --env GOOGLE_APPLICATION_CREDENTIALS=$CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json \
   --env TF_CLI_ARGS_apply="-auto-approve -lock=false" \
+  --env TF_CLI_ARGS_destroy="-auto-approve -lock=false" \
   --env TF_CLI_ARGS_taint="-lock=false" \
   --env TF_DATA_DIR=$CLOUD_COMPUTER_TERRAFORM \
   --env TF_IN_AUTOMATION=true \
