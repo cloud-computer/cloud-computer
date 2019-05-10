@@ -13,7 +13,7 @@ yarn --cwd ../docker docker run \
   chown -R cloud:cloud $CLOUD_COMPUTER_CREDENTIALS
 
 # Extract credentials from the environment or local disk
-CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS="${CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS-$(cat $PWD/cloud-provider.json)}"
+CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS=${CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS-$(cat $PWD/cloud-provider.json)}
 
 # Copy cloud provider credentials to the CLOUD_COMPUTER_CREDENTIALS volume
 yarn --cwd ../docker docker run \
