@@ -60,7 +60,5 @@ wait
 # Clone cloud computer repository into docker volume
 yarn --cwd ../git clone
 
-echo XXXXXXXXXXXXX BEFORE XXXXXXXXXXXXXXXXXX
 # Bootstrap terraform configuration
 yarn --cwd ../terraform bootstrap
-echo XXXXXXXXXXXXX AFTER XXXXXXXXXXXXXXXXXX

@@ -4,8 +4,6 @@ eval "$(yarn --cwd ../cloud-computer environment)"
 # Point shell context to the local docker host
 export DOCKER_HOST=localhost
 
-echo 11111111111111111111111111111111
-
 # Create the CLOUD_COMPUTER_TERRAFORM volume and take ownership of it
 yarn --cwd ../docker docker run \
   --rm \
@@ -13,8 +11,6 @@ yarn --cwd ../docker docker run \
   --volume $CLOUD_COMPUTER_TERRAFORM_VOLUME:$CLOUD_COMPUTER_TERRAFORM \
   $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
   chown -R cloud:cloud $CLOUD_COMPUTER_TERRAFORM
-
-echo 222222222222222222222222222222222
 
 # If we are on a cloud computer, skip creation of cloud computer state bucket
 if [ -z "$CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS" ]; then
@@ -33,7 +29,9 @@ if [ -z "$CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS" ]; then
 
 fi
 
-echo 333333333333333333333333333333333
+echo XXXXXXXXXXXXX BEFORE XXXXXXXXXXXXXXXXXX
 
 # Sync with remote terraform state in cloud storage
 yarn sync
+
+echo XXXXXXXXXXXXX AFTER XXXXXXXXXXXXXXXXXX
