@@ -119,7 +119,7 @@ resource "google_compute_instance" "cloud-computer" {
       "docker_run --user root $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE ls -la $CLOUD_COMPUTER_REPOSITORY",
 
       "# Clone the cloud computer repository",
-      "docker_run $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer $CLOUD_COMPUTER_REPOSITORY",
+      "docker_run --user root $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer $CLOUD_COMPUTER_REPOSITORY",
 
       "# Create the CLOUD_COMPUTER_REPOSITORY volume",
       "docker_run --user root $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE ls -la $CLOUD_COMPUTER_REPOSITORY",
