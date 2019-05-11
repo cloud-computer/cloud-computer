@@ -12,3 +12,4 @@ yarn --cwd ../docker-compose up
 yarn exec:terminal yarn --cwd infrastructure/cloud-computer yarn tmux:gotty:start
 
 echo HOSTNAME $HOSTNAME
+yarn exec:terminal zsh -c 'echo $HOSTNAME'
