@@ -123,6 +123,7 @@ resource "google_compute_instance" "cloud-computer" {
 
       "# Start the cloud computer",
       "docker_run_non-root yarn --cwd infrastructure/cloud-computer start",
+      "echo YYYYYYYYYYYYYYYYYY INIT SCRIPT COMPLETE",
     ]
   }
 }
