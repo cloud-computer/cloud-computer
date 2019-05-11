@@ -111,18 +111,23 @@ resource "google_compute_instance" "cloud-computer" {
       "export CLOUD_COMPUTER_YARN_JAEGER_TRACE=${var.CLOUD_COMPUTER_YARN_JAEGER_TRACE}",
 
       "# Alias docker run with cloud computer environment",
-      "alias docker_run=\"docker run --env CLOUD_COMPUTER_HOST_ID --env CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS --env CLOUD_COMPUTER_YARN_JAEGER_TRACE --env DOCKER_HOST=localhost --interactive --rm --tty --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_REPOSITORY $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE\"",
+      "alias docker_run=\"docker run --env CLOUD_COMPUTER_HOST_ID --env CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS --env CLOUD_COMPUTER_YARN_JAEGER_TRACE --env DOCKER_HOST=localhost --interactive --rm --tty --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_REPOSITORY\"",
 
       "# Create the CLOUD_COMPUTER_REPOSITORY volume",
-      "docker run --rm --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY alpine ls -la $CLOUD_COMPUTER_REPOSITORY",
-      "docker run --rm --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY alpine chown -R 1000:1000 $CLOUD_COMPUTER_REPOSITORY",
-      "docker run --rm --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY alpine ls -la $CLOUD_COMPUTER_REPOSITORY",
+      "docker_run --user root $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE ls -la $CLOUD_COMPUTER_REPOSITORY",
+      "docker_run --user root $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE chown -R 1000:1000 $CLOUD_COMPUTER_REPOSITORY",
+      "docker_run --user root $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE ls -la $CLOUD_COMPUTER_REPOSITORY",
 
       "# Clone the cloud computer repository",
-      "docker_run git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer $CLOUD_COMPUTER_REPOSITORY",
+      "docker_run $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer $CLOUD_COMPUTER_REPOSITORY",
+
+      "# Create the CLOUD_COMPUTER_REPOSITORY volume",
+      "docker_run --user root $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE ls -la $CLOUD_COMPUTER_REPOSITORY",
+      "docker_run --user root $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE chown -R 1000:1000 $CLOUD_COMPUTER_REPOSITORY",
+      "docker_run --user root $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE ls -la $CLOUD_COMPUTER_REPOSITORY",
 
       "# Start the cloud computer",
-      "docker_run yarn --cwd infrastructure/cloud-computer start",
+      "docker_run $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE yarn --cwd infrastructure/cloud-computer start",
     ]
   }
 }
