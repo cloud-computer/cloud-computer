@@ -1,3 +1,6 @@
+# Export cloud computer shell environment
+eval "$(yarn --cwd ../cloud-computer environment)"
+
 echo 11111111111111111
 
 # Initialize backend
