@@ -13,6 +13,11 @@ services:
       PGID: 1000
     expose:
       - 19999
+    labels:
+      - virtual.host=netdata.$CLOUD_COMPUTER_HOST_DNS
+      - virtual.port=19999
+      - virtual.tls-email=jackson@cloud-computer.dev
+      - virtual.websockets
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro

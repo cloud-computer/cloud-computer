@@ -25,13 +25,14 @@
     "restart:terminal": "yarn down:terminal; yarn up:terminal",
     "restart:xpra": "yarn down:xpra; yarn up:xpra",
     "rm": "yarn --cwd ../docker docker rm -f \"$@\" 2>/dev/null",
-    "up": "yarn up:code & yarn up:docker & yarn up:grafana & yarn up:ingress & yarn up:jaeger & yarn up:terminal & yarn up:xpra",
+    "up": "yarn up:code & yarn up:docker & yarn up:grafana & yarn up:ingress & yarn up:jaeger & yarn up:terminal & yarn up:vnc & yarn up:xpra",
     "up:code": "yarn compose -f stacks/code.yaml up --detach --quiet-pull",
     "up:docker": "yarn compose -f stacks/docker.yaml up --detach --quiet-pull",
     "up:grafana": "yarn compose -f stacks/grafana.yaml up --detach --quiet-pull",
     "up:ingress": "yarn compose -f stacks/ingress.yaml up --detach --quiet-pull",
     "up:jaeger": "yarn compose -f stacks/jaeger.yaml up --detach --quiet-pull",
     "up:terminal": "yarn compose -f stacks/terminal.yaml up --detach --quiet-pull",
+    "up:vnc": "yarn compose -f stacks/vnc.yaml up --detach --quiet-pull",
     "up:xpra": "yarn compose -f stacks/xpra.yaml up --detach --quiet-pull"
   },
   "version": "0.0.1"
