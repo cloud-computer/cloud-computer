@@ -23,7 +23,7 @@ locals {
 }
 
 resource "google_compute_address" "cloud-computer" {
-  name = "cloud-computer"
+  name = "${local.environment_name}"
 }
 
 resource "google_compute_firewall" "cloud-computer" {
