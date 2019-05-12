@@ -29,9 +29,5 @@ if [ -z "$CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS" ]; then
 
 fi
 
-echo XXXXXXXXXXXXX BEFORE XXXXXXXXXXXXXXXXXX
-
 # Sync with remote terraform state in cloud storage
 yarn sync
-
-echo XXXXXXXXXXXXX AFTER XXXXXXXXXXXXXXXXXX
