@@ -5,7 +5,7 @@
   "name": "@cloud-computer/packer",
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
-    "bootstrap": "yarn --cwd ../cloud-computer bootstrap:local-host",
+    "bootstrap": "yarn --cwd ../credentials bootstrap",
     "build": "scripts/build.sh",
     "inspect": "yarn packer inspect cloud-computer.json",
     "packer": "scripts/packer.sh"

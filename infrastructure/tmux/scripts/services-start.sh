@@ -1,6 +1,3 @@
-# Export cloud computer shell environment
-eval "$(yarn environment)"
-
 # Start the jest tests
 yarn jest:start &
 

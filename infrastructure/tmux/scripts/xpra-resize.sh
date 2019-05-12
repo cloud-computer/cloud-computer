@@ -1,5 +1,5 @@
 # Export cloud computer shell environment
-eval "$(yarn environment)"
+eval "$(yarn --cwd ../cloud-computer environment)"
 
 # Apply wallpaper based on current resolution
 hsetroot -cover $HOME/.config/openbox/wallpaper.png
