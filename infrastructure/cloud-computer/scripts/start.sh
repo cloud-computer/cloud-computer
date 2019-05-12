@@ -9,14 +9,16 @@ yarn --cwd ../docker-compose up
 
 # Start the cloud computer services
 # yarn exec:terminal yarn --cwd infrastructure/cloud-computer yarn services:start
-# yarn exec:terminal yarn --cwd infrastructure/cloud-computer yarn tmux:gotty:start
+echo ZZZZZZZ PRE
+echo ZZZZZZZ PRE
+echo ZZZZZZZ PRE
+echo ZZZZZZZ PRE
+echo ZZZZZZZ PRE
+echo ZZZZZZZ PRE
+echo ZZZZZZZ PRE
+echo ZZZZZZZ PRE
+yarn exec:terminal yarn --cwd infrastructure/cloud-computer yarn tmux:gotty:start
 
-echo HOSTNAME $HOSTNAME
-echo HOSTNAME $HOSTNAME
-echo HOSTNAME $HOSTNAME
-echo HOSTNAME $HOSTNAME
-echo HOSTNAME $HOSTNAME
-yarn --cwd ../docker docker ps
 echo XXXXXXX DONE
 echo XXXXXXX DONE
 echo XXXXXXX DONE
