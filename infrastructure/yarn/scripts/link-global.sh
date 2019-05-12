@@ -10,7 +10,7 @@ if [ "$(yarn readlink-f $SYSTEM_YARN)" = "$(yarn readlink-f $CLOUD_COMPUTER_YARN
 fi
 
 # Ensure yarn shim source code is built
-yarn build:typescript
+yarn build
 
 # Symlink cloud computer yarn to system yarn location
 sudo ln -s "$CLOUD_COMPUTER_YARN" "$SYSTEM_YARN"

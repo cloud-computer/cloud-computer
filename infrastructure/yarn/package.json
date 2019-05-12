@@ -18,9 +18,8 @@
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
     "bootstrap": "scripts/bootstrap.sh",
-    "build": "yarn build:typescript",
-    "build:typescript": "tsc",
-    "build:watch": "yarn build:typescript --watch",
+    "build": "tsc",
+    "build:watch": "yarn build --watch",
     "clean": "scripts/clean.sh",
     "link:global": "scripts/link-global.sh",
     "logs": "scripts/logs.sh",

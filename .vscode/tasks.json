@@ -17,12 +17,12 @@
     },
     {
       "args": [
-        "build:local"
+        "build:watch"
       ],
       "auto": true,
       "command": "yarn",
       "isBackground": true,
-      "label": "Build Local Utilities",
+      "label": "Build Watch",
       "presentation": {
         "reveal": "never"
       },
