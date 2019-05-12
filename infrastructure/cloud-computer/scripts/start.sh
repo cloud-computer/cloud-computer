@@ -16,7 +16,9 @@ echo HOSTNAME $HOSTNAME
 echo HOSTNAME $HOSTNAME
 echo HOSTNAME $HOSTNAME
 echo HOSTNAME $HOSTNAME
-docker ps
-yarn exec:terminal zsh -c 'echo HOSTNAMEXXXXXXXX $HOSTNAME; hostname'
-yarn exec:terminal zsh -c hostname
+yarn --cwd ../docker docker ps
+echo XXXXXXX DONE
+echo XXXXXXX DONE
+echo XXXXXXX DONE
+echo XXXXXXX DONE
 echo XXXXXXX DONE
