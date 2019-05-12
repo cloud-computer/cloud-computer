@@ -17,7 +17,12 @@ echo ZZZZZZZ PRE
 echo ZZZZZZZ PRE
 echo ZZZZZZZ PRE
 echo ZZZZZZZ PRE
+
+set -x
+
 yarn exec:terminal yarn --cwd infrastructure/tmux yarn gotty:start
+
+set +x
 
 echo XXXXXXX DONE
 echo XXXXXXX DONE
