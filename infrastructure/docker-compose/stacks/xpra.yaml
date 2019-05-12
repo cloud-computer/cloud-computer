@@ -17,6 +17,11 @@ services:
       XPRA_HTML: 1
     expose:
       - 10000
+    labels:
+      - virtual.host=desktop.$CLOUD_COMPUTER_HOST_DNS
+      - virtual.port=10000
+      - virtual.tls-email=jackson@cloud-computer.dev
+      - virtual.websockets
     volumes:
       - CLOUD_COMPUTER_X11:$CLOUD_COMPUTER_X11
     healthcheck:

@@ -23,6 +23,11 @@ services:
       CLOUD_COMPUTER_TMUX: $CLOUD_COMPUTER_TMUX
     expose:
       - 8443
+    labels:
+      - virtual.host=code.$CLOUD_COMPUTER_HOST_DNS
+      - virtual.port=8443
+      - virtual.tls-email=jackson@cloud-computer.dev
+      - virtual.websockets
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY
