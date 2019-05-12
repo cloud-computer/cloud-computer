@@ -18,8 +18,8 @@ echo ZZZZZZZ PRE
 echo ZZZZZZZ PRE
 echo ZZZZZZZ PRE
 
-yarn exec:terminal yarn --cwd ../tmux yarn gotty:start
-yarn exec:terminal echo '$HOSTNAME'
+yarn exec:terminal yarn --cwd infrastructure/tmux gotty:start
+yarn exec:terminal zsh -c 'echo $HOSTNAME'
 
 echo XXXXXXX DONE
 echo XXXXXXX DONE
