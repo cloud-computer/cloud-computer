@@ -10,5 +10,5 @@ yarn --cwd ../docker docker run \
   --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY \
   --user root \
   --workdir $CLOUD_COMPUTER_REPOSITORY \
-  $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
+  $CLOUD_COMPUTER_IMAGE \
   zsh -c "git clone https://github.com/cloud-computer/cloud-computer.git --branch $GIT_BRANCH --single-branch .; chown -R cloud:cloud ." 2>/dev/null

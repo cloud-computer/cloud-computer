@@ -30,11 +30,7 @@ variable "CLOUD_COMPUTER_HOST_USER" {
 }
 
 variable "CLOUD_COMPUTER_IMAGE" {
-  description = "The cloud computer docker image name."
-}
-
-variable "CLOUD_COMPUTER_REGISTRY" {
-  description = "The cloud computer docker repository name."
+  description = "The cloud computer docker image."
 }
 
 variable "CLOUD_COMPUTER_REPOSITORY" {

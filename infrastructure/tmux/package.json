@@ -1,0 +1,29 @@
+{
+  "author": "Jackson Delahunt",
+  "description": "The Cloud Computer Tmux Configuration",
+  "license": "MIT",
+  "name": "@cloud-computer/tmux",
+  "repository": "git@github.com:cloud-computer/cloud-computer.git",
+  "scripts": {
+    "dashboard:attach": "scripts/dashboard-attach.sh",
+    "dashboard:start": "scripts/dashboard-start.sh",
+    "dashboard:stop": "yarn kill-clients; yarn tmux kill-session -t environment-dashboard 2>/dev/null",
+    "desktop:start": "scripts/desktop-start.sh",
+    "desktop:stop": "scripts/desktop-stop.sh",
+    "gotty:start": "yarn tmux new-session -d -s gotty gotty zsh -c 'yarn --cwd infrastructure/tmux dashboard:attach'",
+    "gotty:stop": "yarn tmux kill-session -t gotty 2>/dev/null",
+    "jest:attach": "scripts/jest-attach.sh",
+    "jest:start": "scripts/jest-start.sh",
+    "kill-clients": "scripts/kill-clients.sh",
+    "server": "yarn server:start; sleep infinity",
+    "server:start": "scripts/server-start.sh",
+    "server:stop": "yarn tmux kill-server 2>/dev/null || true",
+    "tmux": "eval $(yarn --cwd ../cloud-computer environment); touch $CLOUD_COMPUTER_TMUX/.tmux.sock; TMUX= tmux -S $CLOUD_COMPUTER_TMUX/.tmux.sock",
+    "weechat:attach": "scripts/weechat-attach.sh",
+    "weechat:start": "scripts/weechat-start.sh",
+    "xephyr:attach": "scripts/xephyr-attach.sh",
+    "xephyr:start": "scripts/xephyr-start.sh",
+    "xephyr:stop": "yarn tmux kill-session -t xephyr 2>/dev/null"
+  },
+  "version": "0.0.1"
+}

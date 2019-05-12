@@ -3,8 +3,8 @@ version: '3.5'
 services:
 
   terminal:
-    image: $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest
-    command: yarn --cwd infrastructure/cloud-computer tmux:server
+    image: $CLOUD_COMPUTER_IMAGE
+    command: yarn --cwd infrastructure/tmux server
     working_dir: $CLOUD_COMPUTER_REPOSITORY
     restart: always
     tty: true

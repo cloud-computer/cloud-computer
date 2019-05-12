@@ -5,5 +5,5 @@ yarn --cwd ../docker docker run \
   --rm \
   --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY \
   --workdir $CLOUD_COMPUTER_REPOSITORY \
-  $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
+  $CLOUD_COMPUTER_IMAGE \
   git "$@"

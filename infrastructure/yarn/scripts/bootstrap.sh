@@ -6,5 +6,5 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_YARN_VOLUME:$CLOUD_COMPUTER_YARN \
-  $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
+  $CLOUD_COMPUTER_IMAGE \
   chown -R cloud:cloud $CLOUD_COMPUTER_YARN

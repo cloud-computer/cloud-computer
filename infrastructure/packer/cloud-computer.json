@@ -2,7 +2,7 @@
   "builders": [
     {
       "account_file": "{{user `CLOUD_COMPUTER_CREDENTIALS` }}/cloud-provider.json",
-      "image_name": "{{user `CLOUD_COMPUTER_IMAGE` }}",
+      "image_name": "cloud-computer",
       "instance_name": "cloud-computer-packer-{{timestamp}}",
       "project_id": "{{user `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT` }}",
       "source_image_family": "coreos-stable",
@@ -14,7 +14,7 @@
   "provisioners": [
     {
       "inline": [
-        "docker pull {{user `CLOUD_COMPUTER_REGISTRY` }}/{{user `CLOUD_COMPUTER_IMAGE` }}"
+        "docker pull {{user `CLOUD_COMPUTER_IMAGE` }}"
       ],
       "type": "shell"
     }
@@ -22,7 +22,6 @@
   "variables": {
     "CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT": "{{env `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT`}}",
     "CLOUD_COMPUTER_CREDENTIALS": "{{env `CLOUD_COMPUTER_CREDENTIALS`}}",
-    "CLOUD_COMPUTER_IMAGE": "{{env `CLOUD_COMPUTER_IMAGE`}}",
-    "CLOUD_COMPUTER_REGISTRY": "{{env `CLOUD_COMPUTER_REGISTRY`}}"
+    "CLOUD_COMPUTER_IMAGE": "{{env `CLOUD_COMPUTER_IMAGE`}}"
   }
 }

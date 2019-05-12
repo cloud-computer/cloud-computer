@@ -9,7 +9,7 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
-  $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
+  $CLOUD_COMPUTER_IMAGE \
   chown -R cloud:cloud $CLOUD_COMPUTER_CREDENTIALS
 
 # Extract credentials from the environment or local disk
@@ -19,7 +19,7 @@ CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS=${CLOUD_COMPUTER_CLOUD_PROVIDER_CREDEN
 yarn --cwd ../docker docker run \
   --rm \
   --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
-  $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
+  $CLOUD_COMPUTER_IMAGE \
   zsh -c "printf %s '$CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS' > $CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json"
 
 # Exclude user credentials from being committed

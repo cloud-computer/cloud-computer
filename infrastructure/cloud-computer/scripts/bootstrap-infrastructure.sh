@@ -27,7 +27,7 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_HOME_VOLUME:$CLOUD_COMPUTER_HOME \
-  $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
+  $CLOUD_COMPUTER_IMAGE \
   chown -R cloud:cloud $CLOUD_COMPUTER_HOME &
 
 # Create the CLOUD_COMPUTER_NODEMON volume and take ownership of it
@@ -35,7 +35,7 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_NODEMON_VOLUME:$CLOUD_COMPUTER_NODEMON \
-  $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
+  $CLOUD_COMPUTER_IMAGE \
   chown -R cloud:cloud $CLOUD_COMPUTER_NODEMON &
 
 # Create the CLOUD_COMPUTER_TMUX volume and take ownership of it
@@ -43,7 +43,7 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_TMUX_VOLUME:$CLOUD_COMPUTER_TMUX \
-  $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
+  $CLOUD_COMPUTER_IMAGE \
   chown -R cloud:cloud $CLOUD_COMPUTER_TMUX &
 
 # Create the CLOUD_COMPUTER_X11 volume and take ownership of it
@@ -51,7 +51,7 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_X11_VOLUME:$CLOUD_COMPUTER_X11 \
-  $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
+  $CLOUD_COMPUTER_IMAGE \
   chown -R cloud:cloud $CLOUD_COMPUTER_X11 &
 
 # Wait for bootstraps to complete in parallel

@@ -9,7 +9,7 @@ yarn --cwd ../docker docker run \
   --rm \
   --user root \
   --volume $CLOUD_COMPUTER_TERRAFORM_VOLUME:$CLOUD_COMPUTER_TERRAFORM \
-  $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest \
+  $CLOUD_COMPUTER_IMAGE \
   chown -R cloud:cloud $CLOUD_COMPUTER_TERRAFORM
 
 # If we are on a cloud computer, skip creation of cloud computer state bucket

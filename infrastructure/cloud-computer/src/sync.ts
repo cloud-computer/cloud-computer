@@ -7,6 +7,7 @@ import { join, relative } from 'path';
 import { pack as tarStream } from 'tar-stream';
 
 const {
+  CLOUD_COMPUTER_IMAGE,
   COMPOSE_PROJECT_NAME = 'cloud-computer',
   DOCKER_HOST,
   HOSTNAME,
@@ -64,7 +65,7 @@ const createSyncContainer = async (repositoriesToSync: string[]) => {
   const syncContainer = await docker.container.create({
     Binds: repositoriesToSync.map(repositoryVolumeName),
     Cmd: ['sleep', 'infinity'],
-    Image: '$CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest',
+    Image: CLOUD_COMPUTER_IMAGE,
     name: syncContainerName,
   });
 
