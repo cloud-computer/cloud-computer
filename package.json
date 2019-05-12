@@ -26,7 +26,7 @@
     "bootstrap": "yarn; yarn lerna:link",
     "build": "yarn lerna run build --no-bail | tsc-path-prefix",
     "build:watch": "FORCE_COLOR=1 yarn lerna run build:watch --parallel | tsc-path-prefix",
-    "clean": "yarn lerna run clean --ignore @cloud-computer/yarn-shim --no-bail; yarn lerna clean --ignore @cloud-computer/yarn-shim --yes",
+    "clean": "DOCKER_HOST=localhost yarn lerna run clean --ignore @cloud-computer/yarn-shim --no-bail; yarn lerna clean --ignore @cloud-computer/yarn-shim --yes",
     "code:install-extensions": "cat .vscode/extensions.json | grep '    ' | tr -d , | xargs -n 1 code-server --install-extension",
     "create:cloud-computer": "yarn --cwd infrastructure/cloud-computer run create",
     "destroy:cloud-computer": "yarn --cwd infrastructure/cloud-computer destroy",
