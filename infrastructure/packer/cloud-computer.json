@@ -1,10 +1,10 @@
 {
   "builders": [
     {
-      "account_file": "{{user `CLOUD_COMPUTER_CREDENTIALS` }}/cloud-provider.json",
+      "account_file": "{{ user `CLOUD_COMPUTER_CREDENTIALS` }}/cloud-provider.json",
       "image_name": "cloud-computer",
-      "instance_name": "cloud-computer-packer-{{timestamp}}",
-      "project_id": "{{user `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT` }}",
+      "instance_name": "cloud-computer-packer-{{ timestamp }}",
+      "project_id": "{{ user `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT` }}",
       "source_image_family": "coreos-stable",
       "ssh_username": "core",
       "type": "googlecompute",
@@ -14,14 +14,14 @@
   "provisioners": [
     {
       "inline": [
-        "docker pull {{user `CLOUD_COMPUTER_IMAGE` }}"
+        "docker pull {{ user `CLOUD_COMPUTER_IMAGE` }}"
       ],
       "type": "shell"
     }
   ],
   "variables": {
-    "CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT": "{{env `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT`}}",
-    "CLOUD_COMPUTER_CREDENTIALS": "{{env `CLOUD_COMPUTER_CREDENTIALS`}}",
-    "CLOUD_COMPUTER_IMAGE": "{{env `CLOUD_COMPUTER_IMAGE`}}"
+    "CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT": "{{ env `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT` }}",
+    "CLOUD_COMPUTER_CREDENTIALS": "{{ env `CLOUD_COMPUTER_CREDENTIALS` }}",
+    "CLOUD_COMPUTER_IMAGE": "{{ env `CLOUD_COMPUTER_IMAGE` }}"
   }
 }
