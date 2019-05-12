@@ -99,6 +99,12 @@ RUN wget -O bat.deb -qnv https://github.com/sharkdp/bat/releases/download/v0.9.0
   dpkg -i bat.deb && \
   rm bat.deb
 
+# Install vs code
+RUN curl -fsSL https://github.com/cdr/code-server/releases/download/1.939-vsc1.33.1/code-server1.939-vsc1.33.1-linux-x64.tar.gz | \
+  tar -C /tmp -xzf - && \
+  mv /tmp/code-server*/code-server /usr/local/bin && \
+  rm -rf /tmp/code-server*
+
 # Install ctop
 RUN wget -O /usr/local/bin/ctop -qnv https://github.com/bcicen/ctop/releases/download/v0.7.2/ctop-0.7.2-linux-amd64 && \
   chmod +x /usr/local/bin/ctop

@@ -3,7 +3,7 @@ version: '3.5'
 services:
 
   code:
-    image: codercom/code-server:latest
+    image: $CLOUD_COMPUTER_IMAGE
     command: code-server --no-auth $CLOUD_COMPUTER_REPOSITORY
     restart: always
     tty: true
