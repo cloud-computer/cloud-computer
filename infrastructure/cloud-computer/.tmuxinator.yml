@@ -12,7 +12,7 @@ windows:
       panes:
         - yarn logs
         - yarn ctop
-        - cd ../..; clear; . $HOME/.zlogin
+        - cd ../..; clear; . $HOME/.zlogin; yarn links
   - jest:
       layout: main-vertical
       panes:

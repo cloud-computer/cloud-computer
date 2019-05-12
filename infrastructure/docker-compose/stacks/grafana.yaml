@@ -9,6 +9,7 @@ services:
       namespace: grafana
       tier: cloud-computer
     environment:
+      GF_AUTH_ANONYMOUS_ENABLED: 'true'
       GF_SERVER_ROOT_URL: https://grafana-$CLOUD_COMPUTER_HOST_DNS
     expose:
       - 3000
