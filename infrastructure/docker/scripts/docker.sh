@@ -1,7 +1,7 @@
 # Export cloud computer shell environment
 eval "$(yarn --cwd ../cloud-computer environment)"
 
-if [ "$DOCKER_HOST" = "localhost" ]; then
+if [ "$DOCKER_HOST" = "localhost" ] || [ "$DOCKER_HOST" = "unix:///var/run/docker.sock" ]; then
 
   # Always connect to localhost via the unix socket
   docker \
