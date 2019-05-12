@@ -3,3 +3,6 @@ yarn bootstrap:local-host
 
 # Create the cloud computer host
 yarn --cwd ../terraform apply
+
+# Print cloud computer endpoints
+yarn --cwd ../.. links
