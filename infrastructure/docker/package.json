@@ -8,9 +8,8 @@
     "clean": "yarn docker volume ls | grep CLOUD_COMPUTER_ | cut -b 15- | xargs yarn docker volume rm || true",
     "docker": "scripts/docker.sh",
     "environment": "scripts/environment.sh",
-    "ps": "yarn docker ps --filter name=${COMPOSE_PROJECT_NAME:-cloud-computer}",
+    "ps": "yarn ps:pretty",
     "ps:aq": "yarn ps -aq",
-    "ps:long": "echo; yarn ps --format 'table {{.Names}}\\t{{.Label \"namespace\"}}\\t{{.Label \"tier\"}}\\t{{.Status}}\\t{{.Image}}' | awk 'NR<2{print toupper($0);print \"\";next}{print $0| \"sort -k2,2\"}'; echo",
     "ps:pretty": "echo; yarn ps --format 'table {{.Names}}\\t{{.Label \"namespace\"}}\\t{{.Label \"tier\"}}\\t{{.Status}}' | awk 'NR<2{print toupper($0);print \"\";next}{print $0| \"sort -k3,3\"}'; echo",
     "ps:q": "yarn ps -q",
     "pull": "yarn docker images --format '{{.Repository}}' | xargs -n 1 -P $(cat /proc/cpuinfo | grep processor | wc -l) yarn docker pull"

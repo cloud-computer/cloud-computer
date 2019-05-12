@@ -2,7 +2,9 @@
   "tasks": [
     {
       "args": [
-        "docker:sync:watch"
+        "--cwd",
+        "infrastructure/cloud-computer",
+        "sync:watch"
       ],
       "auto": true,
       "command": "yarn",

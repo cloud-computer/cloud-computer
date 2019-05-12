@@ -34,7 +34,7 @@
     "hostname": "eval $(yarn environment); echo $CLOUD_COMPUTER_HOST_DNS",
     "inspect": "yarn --cwd ../docker docker inspect",
     "lint": "yarn tslint --project tsconfig.lint.json",
-    "logs:follow": "yarn --cwd ../docker docker logs --follow",
+    "logs": "yarn --cwd ../docker docker logs --follow",
     "logs:ingress": "yarn logs:follow ${COMPOSE_PROJECT_NAME:-cloud-computer}_ingress_1",
     "nodemon:restart": "yarn --cwd ../docker docker run --rm --volume $CLOUD_COMPUTER_NODEMON_VOLUME:$CLOUD_COMPUTER_NODEMON $CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE:latest touch $CLOUD_COMPUTER_NODEMON/restart",
     "recycle": "yarn --cwd ../terraform destroy; yarn run create",
