@@ -2,7 +2,7 @@
 eval "$(yarn environment)"
 
 # Stop the cloud computer terminal dashboard
-yarn tmux:dashboard:stop
+yarn dashboard:stop
 
 # Stop the cloud computer terminal web interface
-yarn tmux:gotty:stop
+yarn gotty:stop

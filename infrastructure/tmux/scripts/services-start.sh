@@ -2,19 +2,19 @@
 eval "$(yarn environment)"
 
 # Start the jest tests
-yarn tmux:jest:start &
+yarn jest:start &
 
 # Start the weechat client
-yarn tmux:weechat:start &
+yarn weechat:start &
 
 # Start the xephyr server
-yarn tmux:xephyr:start &
+yarn xephyr:start &
 
 # Wait for services to start in parallel
 wait
 
 # Start the cloud computer terminal dashboard
-yarn tmux:dashboard:start
+yarn dashboard:start
 
 # Start the cloud computer terminal web interface
-yarn tmux:gotty:start
+yarn gotty:start

@@ -16,7 +16,7 @@ windows:
   - jest:
       layout: main-vertical
       panes:
-        - yarn tmux:jest:attach
+        - yarn --cwd ../tmux jest:attach
         - yarn logs:jest
   - ingress:
       layout: tiled
@@ -25,7 +25,7 @@ windows:
   - communication:
       layout: tiled
       panes:
-        - yarn tmux:weechat:attach
+        - yarn --cwd ../tmux weechat:attach
   - git:
       layout: tiled
       panes:

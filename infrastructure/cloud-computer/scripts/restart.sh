@@ -5,4 +5,4 @@ yarn --cwd ../containers pull:cloud-computer
 yarn --cwd ../docker-compose restart
 
 # Start the cloud computer services
-yarn exec:terminal yarn --cwd infrastructure/cloud-computer yarn services:start
+yarn exec:terminal yarn --cwd infrastructure/tmux yarn services:start

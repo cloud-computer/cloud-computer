@@ -31,7 +31,7 @@
     "create:cloud-computer": "yarn --cwd infrastructure/cloud-computer run create",
     "destroy:cloud-computer": "yarn --cwd infrastructure/cloud-computer destroy",
     "docker": "yarn --cwd infrastructure/docker docker",
-    "dashboard": "yarn exec:terminal yarn --cwd infrastructure/cloud-computer tmux:dashboard:attach",
+    "dashboard": "yarn exec:terminal yarn --cwd infrastructure/tmux dashboard:attach",
     "exec": "yarn --cwd infrastructure/cloud-computer exec",
     "exec:terminal": "yarn --cwd infrastructure/cloud-computer exec:terminal",
     "logs": "yarn --cwd infrastructure/cloud-computer logs",
