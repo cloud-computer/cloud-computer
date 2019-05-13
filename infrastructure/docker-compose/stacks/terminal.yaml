@@ -25,12 +25,13 @@ services:
       CLOUD_COMPUTER_HOST_ID: $CLOUD_COMPUTER_HOST_ID
       CLOUD_COMPUTER_TMUX: $CLOUD_COMPUTER_TMUX
     expose:
+      - 5900
       - 8080
     labels:
-      - virtual.host=terminal.$CLOUD_COMPUTER_HOST_DNS
-      - virtual.port=8080
-      - virtual.tls-email=jackson@cloud-computer.dev
-      - virtual.websockets
+      - traefik.desktop.port=5900
+      - traefik.desktop.frontend.rule=Host:desktop.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.terminal.port=8080
+      - traefik.terminal.frontend.rule=Host:terminal.$CLOUD_COMPUTER_HOST_DNS
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - CLOUD_COMPUTER_CREDENTIALS:$CLOUD_COMPUTER_CREDENTIALS

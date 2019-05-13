@@ -22,6 +22,8 @@
     "services:start": "scripts/services-start.sh",
     "services:stop": "scripts/services-stop.sh",
     "tmux": "eval $(yarn --cwd ../cloud-computer environment); touch $CLOUD_COMPUTER_TMUX/.tmux.sock; TMUX= tmux -S $CLOUD_COMPUTER_TMUX/.tmux.sock",
+    "vnc:attach": "scripts/vnc-attach.sh",
+    "vnc:start": "scripts/vnc-start.sh",
     "weechat:attach": "scripts/weechat-attach.sh",
     "weechat:start": "scripts/weechat-start.sh",
     "xephyr:attach": "scripts/xephyr-attach.sh",

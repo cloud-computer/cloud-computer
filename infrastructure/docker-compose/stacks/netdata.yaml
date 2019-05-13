@@ -14,10 +14,9 @@ services:
     expose:
       - 19999
     labels:
-      - virtual.host=netdata.$CLOUD_COMPUTER_HOST_DNS
-      - virtual.port=19999
-      - virtual.tls-email=jackson@cloud-computer.dev
-      - virtual.websockets
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:netdata.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=19999
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro

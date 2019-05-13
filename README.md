@@ -26,7 +26,6 @@ The cloud computer is accessible via a URL. This requires a [domain name](infras
 
 The cloud computer is built on 100% open source technologies.
 
-- [Caddy](https://github.com/mholt/caddy)
 - [Docker](https://github.com/docker/docker-ce)
 - [Git](https://github.com/git/git)
 - [GoTTY](https://github.com/yudai/gotty)
@@ -38,10 +37,11 @@ The cloud computer is built on 100% open source technologies.
 - [Prometheus](https://github.com/prometheus/prometheus)
 - [Terraform](https://github.com/hashicorp/terraform)
 - [Tmux](https://github.com/tmux/tmux)
+- [Traefik](https://github.com/containous/traefik)
 - [TypeScript](https://github.com/Microsoft/TypeScript)
 - [VS Code](https://github.com/codercom/code-server)
+- [X11VNC](https://github.com/LibVNC/x11vnc)
 - [Xephyr](https://www.freedesktop.org/wiki/Software/Xephyr)
-- [Xpra](https://github.com/svn2github/Xpra)
 - [Yarn](https://github.com/cloud-computer/yarn)
 - [Zsh](https://github.com/zsh-users/zsh)
 

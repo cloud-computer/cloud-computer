@@ -14,9 +14,9 @@ services:
     expose:
       - 3000
     labels:
-      - virtual.host=grafana.$CLOUD_COMPUTER_HOST_DNS
-      - virtual.port=3000
-      - virtual.tls-email=jackson@cloud-computer.dev
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:grafana.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=3000
     volumes:
       - CLOUD_COMPUTER_GRAFANA:/var/lib/grafana
 
@@ -26,9 +26,9 @@ services:
     expose:
       - 3100
     labels:
-      - virtual.host=loki.$CLOUD_COMPUTER_HOST_DNS
-      - virtual.port=3100
-      - virtual.tls-email=jackson@cloud-computer.dev
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:loki.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=3100
 
   promtail:
     image: grafana/promtail:latest

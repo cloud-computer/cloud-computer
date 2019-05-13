@@ -5,7 +5,7 @@ eval "$(yarn --cwd ../cloud-computer environment)"
 hsetroot -cover $HOME/.config/openbox/wallpaper.png
 
 # X server window width
-SERVER_WIDTH=$(DISPLAY=$CLOUD_COMPUTER_XPRA_DISPLAY xdotool getdisplaygeometry | cut -f 1 -d\ )
+SERVER_WIDTH=$(DISPLAY=$CLOUD_COMPUTER_VNC_DISPLAY xdotool getdisplaygeometry | cut -f 1 -d\ )
 
 # Get the conky window id
 CONKY_ID=$(DISPLAY=$CLOUD_COMPUTER_XEPHYR_DISPLAY xdotool search --onlyvisible --name conky)

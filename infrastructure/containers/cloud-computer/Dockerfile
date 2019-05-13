@@ -79,12 +79,12 @@ RUN apt-get update -qq && \
   vim \
   weechat \
   wmctrl \
+  x11vnc \
   xauth \
   xdotool \
   xinput \
   xsel \
   xserver-xephyr \
-  xvfb \
   zsh
 
 # Install antigen
@@ -99,7 +99,7 @@ RUN wget -O bat.deb -qnv https://github.com/sharkdp/bat/releases/download/v0.9.0
   dpkg -i bat.deb && \
   rm bat.deb
 
-# Install vs code
+# Install code
 RUN curl -fsSL https://github.com/cdr/code-server/releases/download/1.939-vsc1.33.1/code-server1.939-vsc1.33.1-linux-x64.tar.gz | \
   tar -C /tmp -xzf - && \
   mv /tmp/code-server*/code-server /usr/local/bin && \
@@ -195,6 +195,10 @@ RUN git clone https://github.com/tmux-plugins/tpm /opt/tpm --depth 1 && \
 # Install tmux notify
 RUN wget -qnv -O /usr/local/bin/tmux-notify https://raw.githubusercontent.com/ssterling/tmux-notify/master/tmux-notify.sh && \
   chmod +x /usr/local/bin/tmux-notify
+
+# Install traefik
+RUN wget -O /usr/local/bin/traefik -nv https://github.com/containous/traefik/releases/download/v1.7.9/traefik_linux-amd64 && \
+  chmod +x /usr/local/bin/traefik
 
 # Install webhookrelay
 RUN wget -qnv -O /usr/local/bin/relay https://storage.googleapis.com/webhookrelay/downloads/relay-linux-amd64 && \

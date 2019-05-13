@@ -24,10 +24,9 @@ services:
     expose:
       - 8443
     labels:
-      - virtual.host=code.$CLOUD_COMPUTER_HOST_DNS
-      - virtual.port=8443
-      - virtual.tls-email=jackson@cloud-computer.dev
-      - virtual.websockets
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:code.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8443
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY

@@ -2,11 +2,31 @@ version: '3.5'
 
 services:
 
-  ingress:
-    image: wemakeservices/caddy-gen:latest
+  traefik:
+    image: traefik
+    command:
+      - --entrypoints=Name:http Address::80 Redirect.EntryPoint:https
+      - --entrypoints=Name:https Address::443 TLS
+      - --defaultentrypoints=http,https
+      - --acme
+      - --acme.email=jackson@cloud-computer.dev
+      - --acme.storage=/var/run/traefik/acme.json
+      - --acme.entryPoint=https
+      - --acme.onHostRule=true
+      - --acme.httpChallenge.entryPoint=http
+      - --docker
+      - --docker.endpoint=unix:///var/run/docker.sock
+      - --docker.domain=cloud-computer.dev
+      - --docker.watch=true
+      - --docker.exposedByDefault=false
+      - --logLevel=DEBUG
     restart: always
     ports:
       - 80:80
       - 443:443
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - CLOUD_COMPUTER_TRAEFIK:/var/run/traefik
+
+volumes:
+  CLOUD_COMPUTER_TRAEFIK:

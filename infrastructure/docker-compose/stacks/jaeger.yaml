@@ -13,6 +13,6 @@ services:
       - 14268
       - 16686
     labels:
-      - virtual.host=jaeger.$CLOUD_COMPUTER_HOST_DNS
-      - virtual.port=16686
-      - virtual.tls-email=jackson@cloud-computer.dev
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:jaeger.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=16686

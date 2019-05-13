@@ -15,3 +15,6 @@ yarn dashboard:start
 
 # Start the cloud computer terminal web interface
 yarn gotty:start
+
+# Start the cloud computer graphical web interface
+yarn vnc:start
