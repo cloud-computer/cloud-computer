@@ -8,7 +8,7 @@ yarn bootstrap:remote-host
 yarn --cwd ../docker-compose up
 
 # Start the cloud computer services
-# yarn exec:terminal yarn --cwd infrastructure/tmux yarn services:start
+# yarn exec:terminal yarn --cwd infrastructure/tmux services:start
 echo ZZZZZZZ PRE
 echo ZZZZZZZ PRE
 echo ZZZZZZZ PRE
@@ -18,8 +18,7 @@ echo ZZZZZZZ PRE
 echo ZZZZZZZ PRE
 echo ZZZZZZZ PRE
 
-# yarn exec:terminal yarn --cwd infrastructure/tmux gotty:start
-# yarn exec:terminal zsh -c 'echo $HOSTNAME'
+yarn exec:terminal yarn --cwd infrastructure/tmux services:start
 
 echo XXXXXXX DONE
 echo XXXXXXX DONE
