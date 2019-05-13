@@ -46,6 +46,16 @@ variable "CLOUD_COMPUTER_YARN_JAEGER_TRACE" {
   default = ""
 }
 
+variable "GIT_AUTHOR_EMAIL" {
+  description = "The current git user email."
+  default = ""
+}
+
+variable "GIT_AUTHOR_NAME" {
+  description = "The current git user name."
+  default = ""
+}
+
 output "ip" {
   value = "${google_compute_address.cloud-computer.address}"
 }

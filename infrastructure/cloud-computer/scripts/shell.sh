@@ -9,8 +9,6 @@ yarn --cwd ../docker docker run \
   --env DOCKER_HOST=unix:///var/run/docker.sock \
   --env GIT_AUTHOR_EMAIL \
   --env GIT_AUTHOR_NAME \
-  --env GIT_COMMITTER_EMAIL \
-  --env GIT_COMMITTER_NAME \
   --env CLOUD_COMPUTER_CREDENTIALS \
   --env CLOUD_COMPUTER_HOME \
   --env CLOUD_COMPUTER_HOST_DNS \
