@@ -2,13 +2,13 @@ version: '3.5'
 
 services:
 
-  loki:
-    image: dorowu/ubuntu-desktop-lxde-vnc:latest
+  vnc:
+    image: rjrivero/lxde-vnc:latest
+    environment:
+      GEOMETRY: 1440x900
     expose:
-      - 80
+      - 6080
     labels:
       - virtual.host=vnc.$CLOUD_COMPUTER_HOST_DNS
-      - virtual.port=80
+      - virtual.port=6080
       - virtual.tls-email=jackson@cloud-computer.dev
-    volumes:
-      - /dev/shm:/dev/shm
