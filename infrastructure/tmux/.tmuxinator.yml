@@ -17,7 +17,7 @@ windows:
       layout: main-vertical
       panes:
         - yarn --cwd ../tmux jest:attach
-        - yarn logs:jest
+        - tree
   - ingress:
       layout: tiled
       panes:
