@@ -20,10 +20,10 @@ const initJaegerTracer = (serviceName: string) => {
   const options = {
     logger: {
       info (msg: string) {
-        console.error(`INFO ${msg} [${serviceName}] [${process.pid}]`);
+        // console.error(`INFO ${msg} [${serviceName}] [${process.pid}]`);
       },
       error (msg: string) {
-        console.error('ERROR', msg);
+        // console.error('ERROR', msg);
       },
     },
   };
