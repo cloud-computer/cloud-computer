@@ -13,7 +13,7 @@ fi
 yarn build
 
 # Backup system yarn if installed
-if [ -f "$SYSTEM_YARN.cloud-computer.bak" ]; then
+if [ -f "$SYSTEM_YARN" ]; then
   sudo mv "$SYSTEM_YARN" "$SYSTEM_YARN.cloud-computer.bak"
 fi
 
