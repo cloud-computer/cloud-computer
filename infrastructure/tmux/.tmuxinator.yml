@@ -9,7 +9,7 @@ windows:
   - terminal:
       layout: tiled
       panes:
-        - yarn logs
+        - yarn logs:code
         - yarn ctop
         - cd ../..; clear; . $HOME/.zlogin; yarn links
   - jest:

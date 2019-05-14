@@ -16,3 +16,10 @@ services:
       - traefik.enable=true
       - traefik.frontend.rule=Host:desktop.$CLOUD_COMPUTER_HOST_DNS
       - traefik.port=80
+    volumes:
+      - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY
+      - CLOUD_COMPUTER_TMUX:$CLOUD_COMPUTER_TMUX
+
+volumes:
+  CLOUD_COMPUTER_REPOSITORY:
+  CLOUD_COMPUTER_TMUX:
