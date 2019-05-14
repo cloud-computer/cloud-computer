@@ -14,7 +14,9 @@
   "provisioners": [
     {
       "inline": [
-        "docker pull {{ user `CLOUD_COMPUTER_IMAGE` }}"
+        "docker pull {{ user `CLOUD_COMPUTER_IMAGE` }} &",
+        "docker pull dorowu/ubuntu-desktop-lxde-vnc:bionic &",
+        "wait"
       ],
       "type": "shell"
     }

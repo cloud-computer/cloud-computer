@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+
+  docker:
+    image: dorowu/ubuntu-desktop-lxde-vnc:bionic
+    restart: always
+    environment:
+      - VNC_PASSWORD=
+      - HTTP_PASSWORD=
+      - USER=cloud-computer
+      - PASSWORD=password
+    expose:
+      - 80
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:desktop.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=80
