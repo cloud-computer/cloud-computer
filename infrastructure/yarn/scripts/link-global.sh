@@ -12,8 +12,10 @@ fi
 # Ensure yarn shim source code is built
 yarn build
 
-# Backup system yarn
-sudo mv "$SYSTEM_YARN" "$SYSTEM_YARN.cloud-computer.bak"
+# Backup system yarn if installed
+if [ -f "$SYSTEM_YARN.cloud-computer.bak" ]; then
+  sudo mv "$SYSTEM_YARN" "$SYSTEM_YARN.cloud-computer.bak"
+fi
 
 # Symlink cloud computer yarn to system yarn location
 sudo ln -s "$CLOUD_COMPUTER_YARN" "$SYSTEM_YARN"
