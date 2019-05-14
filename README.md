@@ -2,7 +2,13 @@
 
 Repeatable. Reliable. Infinitely Scalable.
 
-The cloud computer is a one click deploy computer accessible through any web browser. It is composed of cloud native technologies, enabling infinite compute scale and 100% infrastructure as code.
+The cloud computer is a one click deploy computer accessible through any web browser. It is composed of cloud native technologies with 100% infrastructure as code.
+
+## Use Cases
+
+### Unified Production and Development Environment
+
+Environment differences between 'production' and 'development' are notorious for causing unexpected system failures. The cloud computer is infinitely scalable; deploy a 4 CPU 8GB RAM cloud computer for development, and scale it up to 120 CPU 256GB RAM for production. Same environment for development and production - no developer unfamiliarity.
 
 ## Getting Started
 
