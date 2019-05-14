@@ -2,9 +2,10 @@ version: '3.5'
 
 services:
 
-  traefik:
+  ingress:
     image: traefik
     command:
+      - --api
       - --entrypoints=Name:http Address::80 Redirect.EntryPoint:https
       - --entrypoints=Name:https Address::443 TLS
       - --defaultentrypoints=http,https
@@ -21,6 +22,12 @@ services:
       - --docker.exposedByDefault=false
       - --logLevel=DEBUG
     restart: always
+    expose:
+      - 8080
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:ingress.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8080
     ports:
       - 80:80
       - 443:443
