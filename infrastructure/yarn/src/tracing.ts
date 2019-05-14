@@ -1,10 +1,13 @@
 import { initTracer } from 'jaeger-client';
 
+const { CLOUD_COMPUTER_HOST_DNS } = process.env;
+
 // returns a Tracer instance that will be given to initGlobalTracer
 const initJaegerTracer = (serviceName: string) => {
 
   const config = {
     reporter: {
+      collectorEndpoint: `https://jaeger-collector.${CLOUD_COMPUTER_HOST_DNS}/api/traces`,
       logSpans: true,
     },
     serviceName,
@@ -17,10 +20,10 @@ const initJaegerTracer = (serviceName: string) => {
   const options = {
     logger: {
       info (msg: string) {
-        // console.error(`INFO ${msg} [${serviceName}] [${process.pid}]`);
+        console.error(`INFO ${msg} [${serviceName}] [${process.pid}]`);
       },
       error (msg: string) {
-        // console.error('ERROR', msg);
+        console.error('ERROR', msg);
       },
     },
   };

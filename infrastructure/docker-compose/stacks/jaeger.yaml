@@ -9,10 +9,12 @@ services:
       namespace: jaeger
       tier: cloud-computer
     expose:
-      - 5778
       - 14268
       - 16686
     labels:
-      - traefik.enable=true
-      - traefik.frontend.rule=Host:jaeger.$CLOUD_COMPUTER_HOST_DNS
-      - traefik.port=16686
+      - traefik.jaeger.enable=true
+      - traefik.jaeger.frontend.rule=Host:jaeger.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.jaeger.port=16686
+      - traefik.jaeger-collector.enable=true
+      - traefik.jaeger-collector.frontend.rule=Host:jaeger-collector.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.jaeger-collector.port=14268
