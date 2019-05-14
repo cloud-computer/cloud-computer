@@ -1,13 +1,16 @@
 # The cloud computer yarn shim
-CLOUD_COMPUTER_YARN=$(dirname $(yarn readlink-f $0))/../bin/cloud-computer-yarn.js
+CLOUD_COMPUTER_YARN=$(dirname $(./scripts/readlink-f.sh $0))/../bin/cloud-computer-yarn.js
 
-# Yarn installs to /usr/bin, so use /usr/local/bin to appear first in PATH
-SYSTEM_YARN=/usr/local/bin/yarn
+# The system yarn
+SYSTEM_YARN=/usr/bin/yarn
 
-# Early exit if yarn is not our symlink
-if [ "$(yarn readlink-f $SYSTEM_YARN)" != "$(yarn readlink-f $CLOUD_COMPUTER_YARN)" ]; then
+# Early exit if our yarn backup does not exist
+if [ ! -f "$SYSTEM_YARN.cloud-computer.bak" ]; then
   exit 0
 fi
 
 # Remove the yarn shim symlink
 sudo rm -f "$SYSTEM_YARN"
+
+# Restore the original yarn
+sudo mv "$SYSTEM_YARN.cloud-computer.bak" "$SYSTEM_YARN"

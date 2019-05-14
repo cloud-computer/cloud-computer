@@ -37,6 +37,7 @@ export async function shim () {
 
   // Propagate current span into the process environment
   process.env.CLOUD_COMPUTER_YARN_JAEGER_TRACE = JSON.stringify(outboundCarrier);
+  console.error(CLOUD_COMPUTER_YARN_JAEGER_TRACE);
 
   span.setTag('processID', process.pid);
   span.setTag('name', task.name);
