@@ -15,6 +15,7 @@
     "down:ingress": "STACK=ingress yarn compose:down",
     "down:jaeger": "STACK=jaeger yarn compose:down",
     "down:terminal": "STACK=terminal yarn compose:down",
+    "down:windows": "STACK=windows yarn compose:down",
     "restart": "yarn down:$1; yarn up:$1",
     "restart:code": "yarn down:code; yarn up:code",
     "restart:desktop": "yarn down:desktop; yarn up:desktop",
@@ -23,13 +24,15 @@
     "restart:istio": "yarn down:istio; yarn up:istio",
     "restart:jaeger": "yarn down:jaeger; yarn up:jaeger",
     "restart:terminal": "yarn down:terminal; yarn up:terminal",
-    "up": "yarn up:code & yarn up:desktop & yarn up:grafana & yarn up:ingress & yarn up:jaeger & yarn up:terminal",
+    "restart:windows": "yarn down:windows; yarn up:windows",
+    "up": "yarn up:code & yarn up:desktop & yarn up:grafana & yarn up:ingress & yarn up:jaeger & yarn up:terminal & yarn up:windows",
     "up:code": "STACK=code yarn compose:up",
     "up:desktop": "STACK=desktop yarn compose:up",
     "up:grafana": "STACK=grafana yarn compose:up",
     "up:ingress": "STACK=ingress yarn compose:up",
     "up:jaeger": "STACK=jaeger yarn compose:up",
-    "up:terminal": "STACK=terminal yarn compose:up"
+    "up:terminal": "STACK=terminal yarn compose:up",
+    "up:windows": "STACK=windows yarn compose:up"
   },
   "version": "0.0.1"
 }
