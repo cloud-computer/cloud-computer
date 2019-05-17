@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
 
-  docker:
+  desktop:
     image: dorowu/ubuntu-desktop-lxde-vnc:bionic
     restart: always
     environment:
