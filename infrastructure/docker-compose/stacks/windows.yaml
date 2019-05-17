@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+
+  docker:
+    image: cloudnativecomputer/windows-proxy:latest
+    restart: always
+    environment:
+      - REMOTE_HOST=52.156.172.128
+    expose:
+      - 8081
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:windows.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8081
