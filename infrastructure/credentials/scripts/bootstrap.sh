@@ -16,11 +16,13 @@ yarn --cwd ../docker docker run \
 CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS=${CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS-$(cat $PWD/cloud-provider.json)}
 
 # Copy cloud provider credentials to the CLOUD_COMPUTER_CREDENTIALS volume
-yarn --cwd ../docker docker run \
-  --rm \
-  --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
-  $CLOUD_COMPUTER_IMAGE \
-  zsh -c "printf %s '$CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS' > $CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json"
+printf %s "$CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS" | \
+  yarn --cwd ../docker docker run \
+    --rm \
+    --interactive \
+    --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
+    $CLOUD_COMPUTER_IMAGE \
+    zsh -c "cat > $CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json"
 
 # Exclude user credentials from being committed
 yarn --cwd ../git ignore-changes ../../infrastructure/credentials/cloud-provider.json
