@@ -1,0 +1,35 @@
+html,
+body {
+  margin: auto 0;
+  background-color: black;
+}
+
+/* MAIN2-GRID */
+.main2-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+  padding: 10px;
+  justify-content: center;
+}
+
+.grid > img {
+  width: 100%;
+}
+
+.grid {
+  margin: 20px;
+}
+
+.desktop {
+  border-radius: 10%;
+  background-color: white;
+}
+
+.github {
+  border-radius: 50%;
+  background-color: white;
+}
+
+a:hover {
+  border-bottom: 2px solid rgb(82, 15, 138);
+}
