@@ -1,0 +1,13 @@
+version: '3.5'
+
+services:
+
+  docker:
+    image: cloudnativecomputer/launcher:latest
+    restart: always
+    expose:
+      - 8080
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:launcher.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8080
