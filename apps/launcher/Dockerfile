@@ -2,7 +2,6 @@ FROM node:alpine
 
 RUN npm install -g http-server
 
-ADD index.html style.css ./
-ADD icon-images icon-images
+ADD src src
 
-CMD http-server .
+CMD http-server src
