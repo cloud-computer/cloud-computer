@@ -88,7 +88,7 @@ services:
       org.label-schema.group: "monitoring"
       traefik.enable: 'true'
       traefik.frontend.rule: 'Host:grafana.$CLOUD_COMPUTER_HOST_DNS'
-      traefik.port: 8081
+      traefik.port: 3000
 
   pushgateway:
     image: prom/pushgateway:v0.8.0
