@@ -9,5 +9,5 @@ services:
       - 8080
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:launcher.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:$CLOUD_COMPUTER_HOST_DNS
       - traefik.port=8080
