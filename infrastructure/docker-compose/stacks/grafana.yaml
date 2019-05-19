@@ -1,40 +1,104 @@
 version: '3.5'
 
+volumes:
+    prometheus_data:
+    grafana_data:
+
 services:
 
-  grafana:
-    image: grafana/grafana:latest
-    restart: always
+  prometheus:
+    image: prom/prometheus:v2.9.2
+    container_name: prometheus
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    expose:
+      - 9090
     labels:
-      namespace: grafana
-      tier: cloud-computer
+      org.label-schema.group: "monitoring"
+
+  alertmanager:
+    image: prom/alertmanager:v0.17.0
+    container_name: alertmanager
+    volumes:
+      - ./alertmanager/:/etc/alertmanager/
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+      - '--storage.path=/alertmanager'
+    restart: unless-stopped
+    expose:
+      - 9093
+    labels:
+      org.label-schema.group: "monitoring"
+
+  nodeexporter:
+    image: prom/node-exporter:v0.18.0
+    container_name: nodeexporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+    restart: unless-stopped
+    expose:
+      - 9100
+    labels:
+      org.label-schema.group: "monitoring"
+
+  cadvisor:
+    image: google/cadvisor:v0.33.0
+    container_name: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      #- /cgroup:/cgroup:ro #doesn't work on MacOS only for Linux
+    restart: unless-stopped
+    expose:
+      - 8080
+    labels:
+      org.label-schema.group: "monitoring"
+
+  grafana:
+    image: grafana/grafana:6.1.6
+    container_name: grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/datasources:/etc/grafana/datasources
+      - ./grafana/dashboards:/etc/grafana/dashboards
+      - ./grafana/setup.sh:/setup.sh
+    entrypoint: /setup.sh
     environment:
-      GF_AUTH_ANONYMOUS_ENABLED: 'true'
-      GF_SERVER_ROOT_URL: https://grafana-$CLOUD_COMPUTER_HOST_DNS
+      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    restart: unless-stopped
     expose:
       - 3000
     labels:
-      - traefik.enable=true
-      - traefik.frontend.rule=Host:grafana.$CLOUD_COMPUTER_HOST_DNS
-      - traefik.port=3000
-    volumes:
-      - CLOUD_COMPUTER_GRAFANA:/var/lib/grafana
+      org.label-schema.group: "monitoring"
+      traefik.enable: 'true'
+      traefik.frontend.rule: 'Host:grafana.$CLOUD_COMPUTER_HOST_DNS'
+      traefik.port: 8081
 
-  loki:
-    image: grafana/loki:latest
-    command: -config.file=/etc/loki/local-config.yaml
+  pushgateway:
+    image: prom/pushgateway:v0.8.0
+    container_name: pushgateway
+    restart: unless-stopped
     expose:
-      - 3100
+      - 9091
     labels:
-      - traefik.enable=true
-      - traefik.frontend.rule=Host:loki.$CLOUD_COMPUTER_HOST_DNS
-      - traefik.port=3100
-
-  promtail:
-    image: grafana/promtail:latest
-    command: -config.file=/etc/promtail/docker-config.yaml
-    volumes:
-      - /var/log:/var/log
-
-volumes:
-  CLOUD_COMPUTER_GRAFANA:
+      org.label-schema.group: "monitoring"
