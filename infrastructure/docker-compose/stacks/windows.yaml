@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
 
-  docker:
+  windows:
     image: cloudnativecomputer/windows-proxy:latest
     restart: always
     environment:
