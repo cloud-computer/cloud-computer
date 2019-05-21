@@ -22,11 +22,9 @@ The cloud computer requires zero human interaction to deploy once cloud access c
 
 ## Configuration
 
-To deploy the cloud computer you will need to provide two pieces of [user specific configuration](infrastructure/cloud-computer/scripts/environment.sh).
+The cloud computer is hosted in the public cloud. This requires [credentials](infrastructure/credentials/cloud-provider.json) for creating cloud resources. Currently only Google Cloud Platform is supported.
 
-The cloud computer is hosted in the public cloud. This requires a [cloud provider project](infrastructure/cloud-computer/scripts/environment.sh#L4) and [credentials](infrastructure/credentials/cloud-provider.json) for creating cloud resources. Currently only Google Cloud Platform is supported.
-
-The cloud computer is accessible via a URL. This requires a [domain name](infrastructure/cloud-computer/scripts/environment.sh#L14) and [credentials](infrastructure/credentials/scripts/environment.sh#L6) for configuring DNS. Currently only CloudFlare is supported.
+The cloud computer is accessible via a URL. This requires a [domain name and credentials](infrastructure/dns/scripts/environment.sh) for configuring DNS. Currently only CloudFlare is supported.
 
 ## Technologies
 
