@@ -8,8 +8,6 @@
     "dashboard:attach": "scripts/dashboard-attach.sh",
     "dashboard:start": "scripts/dashboard-start.sh",
     "dashboard:stop": "yarn kill-clients; yarn tmux kill-session -t environment-dashboard 2>/dev/null",
-    "desktop:start": "scripts/desktop-start.sh",
-    "desktop:stop": "scripts/desktop-stop.sh",
     "gotty:start": "yarn tmux new-session -d -s gotty gotty zsh -c 'yarn --cwd infrastructure/tmux dashboard:attach'",
     "gotty:stop": "yarn tmux kill-session -t gotty 2>/dev/null",
     "jest:attach": "scripts/jest-attach.sh",
@@ -22,13 +20,8 @@
     "services:start": "scripts/services-start.sh",
     "services:stop": "scripts/services-stop.sh",
     "tmux": "eval $(yarn --cwd ../cloud-computer environment); touch $CLOUD_COMPUTER_TMUX/.tmux.sock; TMUX= tmux -S $CLOUD_COMPUTER_TMUX/.tmux.sock",
-    "vnc:attach": "scripts/vnc-attach.sh",
-    "vnc:start": "scripts/vnc-start.sh",
     "weechat:attach": "scripts/weechat-attach.sh",
-    "weechat:start": "scripts/weechat-start.sh",
-    "xephyr:attach": "scripts/xephyr-attach.sh",
-    "xephyr:start": "scripts/xephyr-start.sh",
-    "xephyr:stop": "yarn tmux kill-session -t xephyr 2>/dev/null"
+    "weechat:start": "scripts/weechat-start.sh"
   },
   "version": "0.0.1"
 }

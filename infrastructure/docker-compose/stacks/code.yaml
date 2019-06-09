@@ -12,7 +12,6 @@ services:
       tier: cloud-computer
     environment:
       COMPOSE_PROJECT_NAME: $COMPOSE_PROJECT_NAME
-      DISPLAY: $CLOUD_COMPUTER_XEPHYR_DISPLAY
       DOCKER_HOST: unix:///var/run/docker.sock
       GIT_AUTHOR_EMAIL: $GIT_AUTHOR_EMAIL
       GIT_AUTHOR_NAME: $GIT_AUTHOR_NAME

@@ -3,7 +3,7 @@ version: '3.5'
 services:
 
   ingress:
-    image: traefik
+    image: traefik:latest
     command:
       - --api
       - --entrypoints=Name:http Address::80 Redirect.EntryPoint:https

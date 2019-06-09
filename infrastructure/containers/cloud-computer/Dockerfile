@@ -34,25 +34,21 @@ RUN apt-get update -qq && \
   DEBIAN_FRONTEND=noninteractive apt-get install -qq --fix-missing \
   asciinema \
   build-essential \
-  cloc \
   cmake \
   cmatrix \
-  conky \
   curl \
   dnsutils \
   docker.io \
-  feh \
   figlet \
   g++ \
   gcc \
   git \
+  gtk+3.0 \
   gosu \
-  hsetroot \
   htop \
   iftop \
   iputils-ping \
   jq \
-  keychain \
   libnss3-tools \
   lsb-core \
   make \
@@ -67,31 +63,24 @@ RUN apt-get update -qq && \
   openssl \
   perl \
   python \
-  python-pip \
-  rubygems \
   software-properties-common \
   ssh \
-  stress \
   sudo \
   tmux \
   tree \
   vcsh \
   vim \
-  weechat \
   wmctrl \
+  x11vnc \
   xauth \
   xdotool \
   xinput \
   xsel \
-  xserver-xephyr \
+  xvfb \
   zsh
 
 # Install antigen
 RUN curl -fsSL git.io/antigen > /usr/local/bin/antigen.zsh
-
-# Install arc
-RUN wget -O /usr/local/bin/arc -qnv https://github.com/mholt/archiver/releases/download/v3.1.1/arc_linux_amd64 && \
-  chmod +x /usr/local/bin/arc
 
 # Install bat
 RUN wget -O bat.deb -qnv https://github.com/sharkdp/bat/releases/download/v0.9.0/bat_0.9.0_amd64.deb && \
@@ -99,7 +88,7 @@ RUN wget -O bat.deb -qnv https://github.com/sharkdp/bat/releases/download/v0.9.0
   rm bat.deb
 
 # Install code
-RUN curl -fsSL https://github.com/cdr/code-server/releases/download/1.939-vsc1.33.1/code-server1.939-vsc1.33.1-linux-x64.tar.gz | \
+RUN curl -fsSL https://github.com/cdr/code-server/releases/download/1.1119-vsc1.33.1/code-server1.1119-vsc1.33.1-linux-x64.tar.gz | \
   tar -C /tmp -xzf - && \
   mv /tmp/code-server*/code-server /usr/local/bin && \
   rm -rf /tmp/code-server*
@@ -121,11 +110,6 @@ RUN wget -qnv -O dive.deb https://github.com/wagoodman/dive/releases/download/v0
 RUN curl -fsSL "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
   chmod +x /usr/local/bin/docker-compose
 
-# Install fd
-RUN wget -qnv -O fd.deb https://github.com/sharkdp/fd/releases/download/v7.3.0/fd_7.3.0_amd64.deb && \
-  dpkg -i fd.deb && \
-  rm fd.deb
-
 # Install fzf
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git /opt/fzf && \
   /opt/fzf/install --bin
@@ -134,44 +118,27 @@ RUN git clone --depth 1 https://github.com/junegunn/fzf.git /opt/fzf && \
 RUN curl -fsSL https://github.com/jesseduffield/lazygit/releases/download/v0.7.2/lazygit_0.7.2_Linux_x86_64.tar.gz | \
   tar -C /usr/local/bin -xzf -
 
-# Install github hub
-RUN curl -fsSL https://github.com/github/hub/releases/download/v2.7.0/hub-linux-amd64-2.7.0.tgz | \
-  tar -C /tmp -xzf - && \
-  /tmp/hub*/install && \
-  rm -rf /tmp/hub*
-
 # Install git stats viewer
 RUN git clone https://github.com/arzzen/git-quick-stats.git && \
   cd git-quick-stats && \
   make install && \
   rm -rf ../git-quick-stats
 
-# Install gotty
-RUN curl -fsSL https://github.com/yudai/gotty/releases/download/v2.0.0-alpha.3/gotty_2.0.0-alpha.3_linux_amd64.tar.gz | \
-  tar -C /usr/local/bin -xzf -
-
 # Install gotop
 RUN wget -qnv -O gotop-deb https://github.com/cjbassi/gotop/releases/download/3.0.0/gotop_3.0.0_linux_amd64.deb && \
   dpkg -i gotop-deb
-
-# Install istioctl
-RUN curl -fsSL https://github.com/istio/istio/releases/download/1.1.0-rc.2/istio-1.1.0-rc.2-linux.tar.gz | \
-  tar -C /usr/local/bin -xzf -
 
 # Install jump directory navigator
 RUN wget -qnv -O jump.deb https://github.com/gsamokovarov/jump/releases/download/v0.22.0/jump_0.22.0_amd64.deb && \
   dpkg -i jump.deb && \
   rm jump.deb
 
-# Install kube prompt
-RUN wget -qnv -O kube-prompt.zip https://github.com/c-bata/kube-prompt/releases/download/v1.0.5/kube-prompt_v1.0.5_linux_amd64.zip && \
-  unzip kube-prompt.zip && rm kube-prompt.zip && \
-  chmod +x kube-prompt && \
-  mv kube-prompt /usr/local/bin
-
 # Install node.js
 RUN curl -fsSL https://gist.githubusercontent.com/sabrehagen/b07846cdb0d373ad5e6a4c7567d5f390/raw/61b7273546d9b187c6ee77a902cd2d078de83fc7/install.sh | bash - && \
   apt-get install -qq nodejs
+
+# Install novnc
+RUN git clone --depth 1 https://github.com/cloud-computer/noVNC.git /opt/noVNC
 
 # Install packer
 RUN curl -fsSL https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_linux_amd64.zip > packer.zip && \
@@ -184,36 +151,9 @@ RUN curl -fsSL https://raw.githubusercontent.com/GoogleCloudPlatform/terraform-g
   mv $HOME/bin/terraform /usr/local/bin && \
   rm -rf $HOME/bin
 
-# Install tmuxinator
-RUN gem install tmuxinator
-
 # Install tmux plugin manager
 RUN git clone https://github.com/tmux-plugins/tpm /opt/tpm --depth 1 && \
   ln -s /opt/tpm/tpm /usr/local/bin
-
-# Install tmux notify
-RUN wget -qnv -O /usr/local/bin/tmux-notify https://raw.githubusercontent.com/ssterling/tmux-notify/master/tmux-notify.sh && \
-  chmod +x /usr/local/bin/tmux-notify
-
-# Install traefik
-RUN wget -O /usr/local/bin/traefik -nv https://github.com/containous/traefik/releases/download/v1.7.9/traefik_linux-amd64 && \
-  chmod +x /usr/local/bin/traefik
-
-# Install webhookrelay
-RUN wget -qnv -O /usr/local/bin/relay https://storage.googleapis.com/webhookrelay/downloads/relay-linux-amd64 && \
-  chmod +x /usr/local/bin/relay
-
-# Install weechat matrix plugin
-RUN mkdir -p $HOME/.weechat/lua/autoload && \
-  curl -fsSL "https://raw.githubusercontent.com/torhve/weechat-matrix-protocol-script/master/matrix.lua" -o $HOME/.weechat/lua/matrix.lua && \
-  ln -s $HOME/.weechat/lua/matrix.lua $HOME/.weechat/lua/autoload && \
-  apt-get install -qq lua-cjson
-
-# Install weechat slack plugin
-RUN mkdir -p $HOME/.weechat/python/autoload && \
-  curl -fsSL "https://raw.githubusercontent.com/rawdigits/wee-slack/master/wee_slack.py" -o $HOME/.weechat/python/wee_slack.py && \
-  ln -s $HOME/.weechat/python/wee_slack.py $HOME/.weechat/python/autoload && \
-  pip install websocket-client
 
 # Install xeventbind
 RUN wget -qnv -O /usr/local/bin/xeventbind https://github.com/sabrehagen/dotfiles-bin/raw/master/.bin/xeventbind && \
@@ -226,8 +166,6 @@ RUN curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 
 # Install yarn based utilities
 RUN yarn global add \
-  @rafaelrinaldi/hn-cli \
-  clipboard-cli \
   github-email \
   rebase-editor \
   tldr
@@ -259,6 +197,10 @@ RUN chown -R $USER:$USER $HOME /opt
 # Cache zsh plugins
 RUN gosu $USER zsh -c "source $HOME/.zshrc"
 
+# Ensure x server socket directory exists, owned by root, and world accessible
+RUN mkdir -p /tmp/.X11-unix && \
+   chmod 1777 /tmp/.X11-unix
+
 # Record container build metadata
 ARG CONTAINER_BUILD_DATE
 ARG CONTAINER_GIT_SHA
@@ -269,6 +211,9 @@ ENV CONTAINER_IMAGE_NAME cloud-computer/cloud-computer
 # Become non-root user
 USER $USER
 WORKDIR $HOME
+
+# Add application launchers
+ADD launcher-broadway.sh launcher-vnc.sh /cloud-computer/
 
 # Run indefinitely
 CMD sleep infinity

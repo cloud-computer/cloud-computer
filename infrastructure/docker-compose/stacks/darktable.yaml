@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+
+  darktable:
+    image: cloudnativecomputer/darktable:latest
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:darktable.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8080
+    volumes:
+      - CLOUD_COMPUTER_HOME:$CLOUD_COMPUTER_HOME
+
+volumes:
+  CLOUD_COMPUTER_HOME:

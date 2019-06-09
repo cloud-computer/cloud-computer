@@ -37,6 +37,7 @@ The cloud computer is built on 100% open source technologies.
 - [Istio](https://github.com/istio/istio)
 - [Jaeger](https://github.com/jaegertracing/jaeger)
 - [Let's Encrypt](https://github.com/letsencrypt)
+- [noVNC](https://github.com/novnc/noVNC)
 - [Packer](https://github.com/hashicorp/packer)
 - [Prometheus](https://github.com/prometheus/prometheus)
 - [Terraform](https://github.com/hashicorp/terraform)
@@ -45,7 +46,7 @@ The cloud computer is built on 100% open source technologies.
 - [TypeScript](https://github.com/Microsoft/TypeScript)
 - [VS Code](https://github.com/codercom/code-server)
 - [X11VNC](https://github.com/LibVNC/x11vnc)
-- [Xephyr](https://www.freedesktop.org/wiki/Software/Xephyr)
+- [Xvfb](https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml)
 - [Yarn](https://github.com/cloud-computer/yarn)
 - [Zsh](https://github.com/zsh-users/zsh)
 

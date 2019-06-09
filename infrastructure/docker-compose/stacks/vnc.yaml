@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+
+  vnc:
+    image: dougw/novnc:latest
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:vnc.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8081

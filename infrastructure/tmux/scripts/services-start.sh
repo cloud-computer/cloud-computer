@@ -4,9 +4,6 @@ yarn jest:start &
 # Start the weechat client
 yarn weechat:start &
 
-# Start the xephyr server
-yarn xephyr:start &
-
 # Wait for services to start in parallel
 wait
 

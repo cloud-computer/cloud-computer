@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+
+  spotify:
+    image: cloudnativecomputer/spotify:latest
+    shm_size: 6gb
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:spotify.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8080
+    volumes:
+      - CLOUD_COMPUTER_HOME:$CLOUD_COMPUTER_HOME
+
+volumes:
+  CLOUD_COMPUTER_HOME:

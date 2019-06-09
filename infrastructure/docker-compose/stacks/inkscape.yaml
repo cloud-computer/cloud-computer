@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+
+  inkscape:
+    image: cloudnativecomputer/inkscape:latest
+    shm_size: 6gb
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:inkscape.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8085
+    volumes:
+      - CLOUD_COMPUTER_HOME:$CLOUD_COMPUTER_HOME
+
+volumes:
+  CLOUD_COMPUTER_HOME:

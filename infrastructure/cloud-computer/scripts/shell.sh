@@ -18,7 +18,6 @@ yarn --cwd ../docker docker run \
   --env CLOUD_COMPUTER_TERRAFORM \
   --env CLOUD_COMPUTER_TMUX \
   --env CLOUD_COMPUTER_X11 \
-  --env CLOUD_COMPUTER_XEPHYR_DISPLAY \
   --env CLOUD_COMPUTER_YARN \
   --interactive \
   --name ${COMPOSE_PROJECT_NAME}_shell-$(date +%M%S) \
