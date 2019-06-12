@@ -5,7 +5,7 @@ eval "$(yarn environment)"
 yarn install
 
 # Install yarn shim
-yarn --cwd ../yarn link:global
+# yarn --cwd ../yarn link:global
 
 # Clear the shell resolve history to enable the yarn shim
 hash -r

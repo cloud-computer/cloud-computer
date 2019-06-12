@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+
+  onlyoffice-mysql-server:
+    container_name: onlyoffice-mysql-server
+    image: cloudnativecomputer/onlyofficemysql:latest
+    environment:
+     - MYSQL_ROOT_PASSWORD=my-secret-pw
+    stdin_open: true
+    tty: true
+    restart: always
+    volumes:
+     - mysql_data:/var/lib/mysql
+
+  onlyoffice-community-server:
+    container_name: onlyoffice-community-server
+    image: onlyoffice/communityserver:latest
+    depends_on:
+     - onlyoffice-mysql-server
+     - onlyoffice-document-server
+    environment:
+     - ONLYOFFICE_CORE_MACHINEKEY=core_secret
+     - DOCUMENT_SERVER_PORT_80_TCP_ADDR=onlyoffice-document-server
+     - MYSQL_SERVER_ROOT_PASSWORD=my-secret-pw
+     - MYSQL_SERVER_DB_NAME=onlyoffice
+     - MYSQL_SERVER_HOST=onlyoffice-mysql-server
+     - MYSQL_SERVER_USER=onlyoffice_user
+     - MYSQL_SERVER_PASS=onlyoffice_pass
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:office.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=80
+    ports:
+     - 5222:5222
+    stdin_open: true
+    tty: true
+    restart: always
+    volumes:
+     - community_data:/var/www/onlyoffice/Data
+     - community_log:/var/log/onlyoffice
+     - document_data:/var/www/onlyoffice/DocumentServerData
+
+  onlyoffice-document-server:
+    container_name: onlyoffice-document-server
+    image: onlyoffice/documentserver:latest
+    stdin_open: true
+    tty: true
+    restart: always
+    volumes:
+       - document_data:/var/www/onlyoffice/Data
+       - document_log:/var/log/onlyoffice
+       - document_forgotten:/var/lib/onlyoffice/documentserver/App_Data/cache/files/forgotten
+
+volumes:
+  document_data:
+  document_log:
+  document_forgotten:
+  community_data:
+  community_log:
+  mysql_data:

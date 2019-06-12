@@ -147,9 +147,10 @@ RUN curl -fsSL https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_linux_am
   rm packer.zip
 
 # Install terraform
-RUN curl -fsSL https://raw.githubusercontent.com/GoogleCloudPlatform/terraform-google-examples/master/terraform-install.sh | bash && \
-  mv $HOME/bin/terraform /usr/local/bin && \
-  rm -rf $HOME/bin
+RUN wget --quiet https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_amd64.zip && \
+  unzip terraform_0.11.3_linux_amd64.zip && \
+  mv terraform /usr/bin && \
+  rm terraform_0.11.3_linux_amd64.zip
 
 # Install tmux plugin manager
 RUN git clone https://github.com/tmux-plugins/tpm /opt/tpm --depth 1 && \
