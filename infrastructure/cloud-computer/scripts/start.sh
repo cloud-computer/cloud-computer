@@ -6,6 +6,3 @@ yarn bootstrap:remote-host
 
 # Deploy the cloud computer containers
 yarn --cwd ../docker-compose up
-
-# Start the cloud computer services
-yarn exec:terminal yarn --cwd infrastructure/tmux services:start

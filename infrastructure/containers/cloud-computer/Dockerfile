@@ -64,7 +64,6 @@ RUN apt-get update -qq && \
   perl \
   python \
   ruby \
-  ruby-gem \
   software-properties-common \
   ssh \
   sudo \
@@ -129,6 +128,10 @@ RUN git clone https://github.com/arzzen/git-quick-stats.git && \
 # Install gotop
 RUN wget -qnv -O gotop-deb https://github.com/cjbassi/gotop/releases/download/3.0.0/gotop_3.0.0_linux_amd64.deb && \
   dpkg -i gotop-deb
+
+# Install gotty
+RUN curl -fsSL https://github.com/yudai/gotty/releases/download/v2.0.0-alpha.3/gotty_2.0.0-alpha.3_linux_amd64.tar.gz | \
+  tar -C /usr/local/bin -xzf -
 
 # Install jump directory navigator
 RUN wget -qnv -O jump.deb https://github.com/gsamokovarov/jump/releases/download/v0.22.0/jump_0.22.0_amd64.deb && \

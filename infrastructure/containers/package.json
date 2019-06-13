@@ -17,7 +17,6 @@
     "build:skype": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/skype $PWD/skype",
     "build:slack": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/slack $PWD/slack",
     "build:spotify": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/spotify $PWD/spotify",
-    "build:terminal": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/terminal $PWD/terminal",
     "pull:cloud-computer": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker pull $CLOUD_COMPUTER_IMAGE",
     "push:cloud-computer": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker push $CLOUD_COMPUTER_IMAGE",
     "sync:cloud-computer": "yarn build:cloud-computer && yarn push:cloud-computer",
