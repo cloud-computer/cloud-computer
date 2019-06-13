@@ -71,6 +71,7 @@ RUN apt-get update -qq && \
   tree \
   vcsh \
   vim \
+  weechat \
   wmctrl \
   x11vnc \
   xauth \
@@ -163,10 +164,6 @@ RUN git clone https://github.com/tmux-plugins/tpm /opt/tpm --depth 1 && \
 
 # Install tmuxinator
 RUN gem install tmuxinator
-
-# Install xeventbind
-RUN wget -qnv -O /usr/local/bin/xeventbind https://github.com/sabrehagen/dotfiles-bin/raw/master/.bin/xeventbind && \
-  chmod +x /usr/local/bin/xeventbind
 
 # Install yarn
 RUN curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \

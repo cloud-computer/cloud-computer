@@ -17,8 +17,11 @@ x11vnc -display $DISPLAY_XVFB -many -nopw -shared &
 # Launch program on display
 DISPLAY=$DISPLAY_XVFB $PROGRAM_TO_LAUNCH &
 
-# Make the program window fullscreen
-DISPLAY=$DISPLAY_XVFB /cloud-computer/make-fullscreen.sh $PROGRAM_NAME
-
 # Start the vnc client
-/opt/noVNC/utils/launch.sh --listen 8080
+/opt/noVNC/utils/launch.sh --listen 8080 &
+
+# Make the program window fullscreen
+DISPLAY=$DISPLAY_XVFB /cloud-computer/make-fullscreen.sh $PROGRAM_NAME &
+
+# Wait on running programs to handle exit codes
+wait

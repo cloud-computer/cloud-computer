@@ -17,11 +17,12 @@ windows:
       panes:
         - yarn --cwd ../tmux jest:attach
         - git l
-  - ingress:
-      layout: tiled
-      panes:
-        - yarn logs:ingress
   - git:
-      layout: tiled
       panes:
         - cd ../..; lazygit
+  - gotop:
+      panes:
+        - gotop
+  - ingress:
+      panes:
+        - yarn logs:ingress
