@@ -17,14 +17,8 @@ x11vnc -display $DISPLAY_XVFB -many -nopw -shared &
 # Launch program on display
 DISPLAY=$DISPLAY_XVFB $PROGRAM_TO_LAUNCH &
 
-# Capture program window id
-PROGRAM_WIDS=$(DISPLAY=$DISPLAY_XVFB xdotool search --onlyvisible --sync --class $PROGRAM_NAME)
-
-# Align the program window to 0,0
-echo $PROGRAM_WIDS | DISPLAY=$DISPLAY_XVFB xargs -n 1 -I @ xdotool windowmove @ 0 0
-
 # Make the program window fullscreen
-echo $PROGRAM_WIDS | DISPLAY=$DISPLAY_XVFB xargs -n 1 -I @ xdotool windowsize @ 100% 100%
+DISPLAY=$DISPLAY_XVFB /cloud-computer/make-fullscreen.sh $PROGRAM_NAME
 
 # Start the vnc client
 /opt/noVNC/utils/launch.sh --listen 8080

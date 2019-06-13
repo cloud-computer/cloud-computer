@@ -5,20 +5,24 @@
   "name": "@cloud-computer/containers",
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
-    "build": "yarn build:cloud-computer",
+    "build": "yarn build:cloud-computer; yarn build:children",
     "build:blender": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/blender $PWD/blender",
+    "build:children": "cat package.json | grep build: | grep -v cloud-computer\\\" | grep -v children | cut -f2 -d\\\" | xargs -n 1 -P 8 yarn",
     "build:cloud-computer": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --build-arg CONTAINER_BUILD_DATE=$(date +%s) --build-arg CONTAINER_GIT_SHA=$(git rev-parse HEAD | cut -b 1-7) --tag $CLOUD_COMPUTER_IMAGE $PWD/cloud-computer",
     "build:darktable": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/darktable $PWD/darktable",
     "build:gnumeric": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/gnumeric $PWD/gnumeric",
-    "build:inkscape": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/inkscape $PWD/inkscape",
     "build:krita": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/krita $PWD/krita",
     "build:kicad": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/kicad $PWD/kicad",
+    "build:postman": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/postman $PWD/postman",
     "build:skype": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/skype $PWD/skype",
     "build:slack": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/slack $PWD/slack",
     "build:spotify": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/spotify $PWD/spotify",
+    "build:terminal": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/terminal $PWD/terminal",
     "pull:cloud-computer": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker pull $CLOUD_COMPUTER_IMAGE",
     "push:cloud-computer": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker push $CLOUD_COMPUTER_IMAGE",
-    "sync:cloud-computer": "yarn build:cloud-computer && yarn push:cloud-computer"
+    "sync:cloud-computer": "yarn build:cloud-computer && yarn push:cloud-computer",
+    "push": "docker images | grep cloudnativecomputer | cut -f 1 -d\\ | xargs -n 1 docker push",
+    "sync": "yarn build; yarn push"
   },
   "version": "0.0.1"
 }

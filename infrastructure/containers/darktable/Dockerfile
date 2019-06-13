@@ -5,7 +5,4 @@ RUN sudo apt-get update -qq && \
   sudo apt-get install -qq darktable
 
 # Use the broadway graphical environment
-ENTRYPOINT /cloud-computer/launcher-broadway.sh
-
-# Run darktable
-CMD darktable
+CMD /cloud-computer/launcher-broadway.sh darktable

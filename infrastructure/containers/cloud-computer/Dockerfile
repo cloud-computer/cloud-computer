@@ -214,7 +214,7 @@ USER $USER
 WORKDIR $HOME
 
 # Add application launchers
-ADD launcher-broadway.sh launcher-vnc.sh /cloud-computer/
+ADD launcher-broadway.sh launcher-vnc.sh make-fullscreen.sh /cloud-computer/
 
 # Run indefinitely
 CMD sleep infinity
