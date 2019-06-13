@@ -22,7 +22,7 @@
   "private": true,
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
-    "apps": "echo ingress terminal code desktop jaeger grafana windows",
+    "apps": "echo terminal code desktop jaeger grafana darktable blender krita kicad gnumeric skype slack spotify",
     "bootstrap": "yarn; yarn lerna:link",
     "build": "yarn lerna run build --no-bail | tsc-path-prefix",
     "build:watch": "FORCE_COLOR=1 yarn lerna run build:watch --parallel | tsc-path-prefix",
