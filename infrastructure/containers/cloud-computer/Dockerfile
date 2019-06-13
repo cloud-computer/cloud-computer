@@ -63,6 +63,8 @@ RUN apt-get update -qq && \
   openssl \
   perl \
   python \
+  ruby \
+  ruby-gem \
   software-properties-common \
   ssh \
   sudo \
@@ -155,6 +157,9 @@ RUN wget --quiet https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.
 # Install tmux plugin manager
 RUN git clone https://github.com/tmux-plugins/tpm /opt/tpm --depth 1 && \
   ln -s /opt/tpm/tpm /usr/local/bin
+
+# Install tmuxinator
+RUN gem install tmuxinator
 
 # Install xeventbind
 RUN wget -qnv -O /usr/local/bin/xeventbind https://github.com/sabrehagen/dotfiles-bin/raw/master/.bin/xeventbind && \
