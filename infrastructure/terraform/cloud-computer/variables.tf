@@ -10,7 +10,7 @@ variable "machine_region" {
 
 variable "machine_type" {
   description = "The machine type."
-  default = "custom-4-8192"
+  default = "custom-6-20480"
 }
 
 variable "CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT" {
