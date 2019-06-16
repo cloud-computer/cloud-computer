@@ -11,7 +11,7 @@ windows:
       panes:
         - yarn logs:code
         - yarn ctop
-        - cd ../..; clear; . $HOME/.zlogin; yarn links
+        - cd ../..; clear; . $HOME/.zlogin
   - gotop:
       panes:
         - gotop
