@@ -16,6 +16,17 @@
       "inline": [
         "docker pull {{ user `CLOUD_COMPUTER_IMAGE` }} &",
         "docker pull dorowu/ubuntu-desktop-lxde-vnc:bionic &",
+        "cloudnativecomputer/blender &",
+        "cloudnativecomputer/darktable &",
+        "cloudnativecomputer/gnumeric &",
+        "cloudnativecomputer/grafana &",
+        "cloudnativecomputer/kicad &",
+        "cloudnativecomputer/krita &",
+        "cloudnativecomputer/launcher &",
+        "cloudnativecomputer/postman &",
+        "cloudnativecomputer/prometheus &",
+        "cloudnativecomputer/skype &",
+        "cloudnativecomputer/slack &",
         "wait"
       ],
       "type": "shell"
