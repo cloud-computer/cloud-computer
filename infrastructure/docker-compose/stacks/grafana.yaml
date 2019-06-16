@@ -82,6 +82,7 @@ services:
       - GF_AUTH_ANONYMOUS_ORG_NAME=cloudcomputer
       - GF_AUTH_ANONYMOUS_ORG_ROLE=editor
       - GF_AUTH_DISABLE_LOGIN_FORM=true
+      - GF_AUTH_PROXY_ENABLED=true
       - GF_USERS_ALLOW_SIGN_UP=false
     restart: unless-stopped
     expose:
