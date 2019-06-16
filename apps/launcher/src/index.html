@@ -6,7 +6,7 @@
   <title>Cloud Computer App Launcher</title>
   <script type="text/javascript">
     function openApp(app) {
-      var subdomain = document.URL.split('https')[1];
+      var subdomain = document.URL.split('https://')[ 1 ];
       window.open("https://" + app + "." + subdomain, '_blank');
     }
   </script>
@@ -16,57 +16,52 @@
 
   <div class="grid-container">
     <div class="app-container">
-      <a href="#" onclick="openApp('blender')">
+      <a href="/" onclick="openApp('blender')">
         <img src="icon-images/icon-blender.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('code')">
+      <a href="/" onclick="openApp('code')">
         <img src="icon-images/icon-vs-code.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('slack')">
+      <a href="/" onclick="openApp('slack')">
         <img src="icon-images/icon-slack.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('gnumeric')">
+      <a href="/" onclick="openApp('gnumeric')">
         <img src="icon-images/icon-gnumeric.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('krita')">
+      <a href="/" onclick="openApp('krita')">
         <img src="icon-images/icon-krita.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('darktable')">
+      <a href="/" onclick="openApp('darktable')">
         <img src="icon-images/icon-darktable.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('postman')">
+      <a href="/" onclick="openApp('postman')">
         <img src="icon-images/icon-postman.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('terminal')">
+      <a href="/" onclick="openApp('terminal')">
         <img src="icon-images/icon-terminal.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('desktop')">
+      <a href="/" onclick="openApp('desktop')">
         <img src="icon-images/icon-linux.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('stemn_'b"lank">
-        <img src="icon-images/icon-stemn.png">
-      </a>
-    </div>
-    <div class="app-container">
-      <a href="#" onclick="openApp('grafana')">
+      <a href="/" onclick="openApp('grafana')">
         <img src="icon-images/icon-grafana.png">
       </a>
     </div>
