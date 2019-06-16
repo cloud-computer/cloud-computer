@@ -12,17 +12,14 @@ windows:
         - yarn logs:code
         - yarn ctop
         - cd ../..; clear; . $HOME/.zlogin; yarn links
-  - jest:
+  - gotop:
+      panes:
+        - gotop
+  - irc:
       layout: main-vertical
       panes:
-        - yarn --cwd ../tmux jest:attach
+        - yarn --cwd ../tmux weechat:attach
         - git l
   - git:
       panes:
         - cd ../..; lazygit
-  - gotop:
-      panes:
-        - gotop
-  - ingress:
-      panes:
-        - yarn logs:ingress
