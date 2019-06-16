@@ -117,7 +117,7 @@ resource "google_compute_instance" "cloud-computer" {
       "alias docker_run_non-root=\"docker_run $CLOUD_COMPUTER_IMAGE\"",
 
       "# Clone the cloud computer repository",
-      "docker_run_root git clone --branch master --depth 1 --quiet --single-branch https://github.com/cloud-computer/cloud-computer $CLOUD_COMPUTER_REPOSITORY",
+      "docker_run_root git clone --quiet https://github.com/cloud-computer/cloud-computer $CLOUD_COMPUTER_REPOSITORY",
 
       "# Set ownership of the CLOUD_COMPUTER_REPOSITORY volume",
       "docker_run_root chown -R 1000:1000 $CLOUD_COMPUTER_REPOSITORY",

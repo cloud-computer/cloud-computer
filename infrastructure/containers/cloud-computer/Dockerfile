@@ -121,7 +121,7 @@ RUN curl -fsSL https://github.com/jesseduffield/lazygit/releases/download/v0.7.2
   tar -C /usr/local/bin -xzf -
 
 # Install git stats viewer
-RUN git clone https://github.com/arzzen/git-quick-stats.git && \
+RUN git clone --depth 1 https://github.com/arzzen/git-quick-stats.git && \
   cd git-quick-stats && \
   make install && \
   rm -rf ../git-quick-stats
