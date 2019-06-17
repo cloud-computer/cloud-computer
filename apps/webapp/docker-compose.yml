@@ -1,0 +1,63 @@
+version: '3'
+services:
+  # Hasura
+  hasura:
+    image: hasura/graphql-engine:v1.0.0-beta.2
+    ports:
+    - "${HASURA_PORT}:8080"
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/${POSTGRES_DB}
+      HASURA_GRAPHQL_ENABLE_CONSOLE: ${HASURA_GRAPHQL_ENABLE_CONSOLE}
+      HASURA_GRAPHQL_ENABLE_TELEMETRY: ${HASURA_GRAPHQL_ENABLE_TELEMETRY}
+      HASURA_GRAPHQL_CORS_DOMAIN: ${HASURA_GRAPHQL_CORS_DOMAIN}
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
+    links:
+      - mail
+    depends_on:
+      - postgres
+      - mail
+  # Auth service
+  auth:
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile.dev
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      JSON_SECRET: ${JSON_SECRET}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      GOOGLE_CALLBACK: ${GOOGLE_CALLBACK}
+      REACT_APP: ${REACT_APP}
+    volumes:
+      - ./auth-service/:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "${AUTH_SERVICE_PORT}:3000"
+    depends_on:
+      - postgres
+  # Mail service
+  mail:
+    build:
+      context: ./mail-service
+      dockerfile: Dockerfile.dev
+    environment:
+      MAIL_SERVICE_DOMAIN: ${MAIL_SERVICE_DOMAIN}
+      MAIL_SERVICE_APIKEY: ${MAIL_SERVICE_APIKEY}
+    volumes:
+      - ./mail-service/:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "${MAIL_SERVICE_PORT}:3000"
+    depends_on:
+      - postgres
+  # Postgres
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}

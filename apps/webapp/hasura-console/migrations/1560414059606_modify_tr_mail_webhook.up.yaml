@@ -1,0 +1,16 @@
+- args:
+    enable_manual: false
+    headers: []
+    insert:
+      columns: '*'
+    name: mail
+    replace: true
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    table:
+      name: user
+      schema: public
+    webhook: http://localhost:9994/mail
+  type: create_event_trigger

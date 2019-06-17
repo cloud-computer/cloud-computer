@@ -1,0 +1,15 @@
+{
+  "name": "mail-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mailgun-js" : "^0.22.0"
+  },
+  "scripts": {
+    "start.dev": "nodemon"
+  }
+}
