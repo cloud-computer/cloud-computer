@@ -9,6 +9,7 @@ yarn --cwd ../docker docker run \
   --env CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT=$(yarn --cwd ../credentials project) \
   --env CLOUD_COMPUTER_CREDENTIALS \
   --env CLOUD_COMPUTER_IMAGE \
+  --env TMPDIR=/var/tmp \
   --rm \
   --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY \
   --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
