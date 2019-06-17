@@ -27,8 +27,6 @@ services:
   alertmanager:
     image: cloudnativecomputer/alertmanager:latest
     container_name: alertmanager
-    volumes:
-      - ./alertmanager/:/etc/alertmanager/
     command:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
