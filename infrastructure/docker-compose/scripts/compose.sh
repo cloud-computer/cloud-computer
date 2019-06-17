@@ -7,7 +7,7 @@ eval "$(yarn --cwd ../git environment)"
 yarn --cwd ../docker docker run \
   --env COMPOSE_HTTP_TIMEOUT=360 \
   --env COMPOSE_PROJECT_NAME \
-  --env DOCKER_CLIENT_TIMEOUT=360 \ 
+  --env DOCKER_CLIENT_TIMEOUT=360 \
   --env GIT_AUTHOR_EMAIL \
   --env GIT_AUTHOR_NAME \
   --env CLOUD_COMPUTER_CREDENTIALS \
