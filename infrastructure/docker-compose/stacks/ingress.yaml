@@ -10,14 +10,14 @@ services:
       - --entrypoints=Name:https Address::443 TLS
       - --defaultentrypoints=http,https
       - --acme
-      - --acme.email=jackson@cloud-computer.dev
+      - --acme.email=jackson@cloud-computer.net
       - --acme.storage=/var/run/traefik/acme.json
       - --acme.entryPoint=https
       - --acme.onHostRule=true
       - --acme.httpChallenge.entryPoint=http
       - --docker
       - --docker.endpoint=unix:///var/run/docker.sock
-      - --docker.domain=cloud-computer.dev
+      - --docker.domain=cloud-computer.net
       - --docker.watch=true
       - --docker.exposedByDefault=false
       - --logLevel=DEBUG
