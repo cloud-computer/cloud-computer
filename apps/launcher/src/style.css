@@ -1,8 +1,8 @@
 html,
 body {
   margin: auto 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background.jpg'), 2560px;
-  background-size: 1920px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background.jpg');
+  background-size: auto 120vh;
 }
 
 /* app-container */
