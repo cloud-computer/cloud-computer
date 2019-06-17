@@ -10,9 +10,6 @@ yarn install
 # Clear the shell resolve history to enable the yarn shim
 # hash -r
 
-# Bootstrap credentials configuration
-yarn --cwd ../credentials bootstrap &
-
 # Bootstrap dns configuration
 yarn --cwd ../dns bootstrap &
 
@@ -59,6 +56,9 @@ wait
 
 # Clone cloud computer repository into docker volume
 yarn --cwd ../git clone
+
+# Bootstrap credentials configuration in git repository docker volume
+yarn --cwd ../credentials bootstrap
 
 # Bootstrap terraform configuration
 yarn --cwd ../terraform bootstrap
