@@ -27,7 +27,7 @@
     "restart:launcher": "yarn down:launcher; yarn up:launcher",
     "restart:terminal": "yarn down:terminal; yarn up:terminal",
     "restart:windows": "yarn down:windows; yarn up:windows",
-    "up": "ls stacks | DOCKER_CLIENT_TIMEOUT=360 COMPOSE_HTTP_TIMEOUT=360 xargs -n 1 -I @ -P 8 yarn compose -f stacks/@ up --detach --quiet-pull",
+    "up": "ls stacks | xargs -n 1 -I @ -P 8 yarn compose -f stacks/@ up --detach --quiet-pull",
     "up:code": "STACK=code yarn compose:up",
     "up:desktop": "STACK=desktop yarn compose:up",
     "up:grafana": "STACK=grafana yarn compose:up",
