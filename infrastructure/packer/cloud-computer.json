@@ -5,8 +5,8 @@
       "image_name": "cloud-computer",
       "instance_name": "cloud-computer-packer-{{ timestamp }}",
       "project_id": "{{ user `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT` }}",
-      "source_image_family": "coreos-stable",
-      "ssh_username": "core",
+      "source_image_family": "ubuntu-minimal-1910",
+      "ssh_username": "ubuntu",
       "type": "googlecompute",
       "zone": "australia-southeast1-a"
     }
@@ -28,7 +28,6 @@
         "docker pull cloudnativecomputer/prometheus &",
         "docker pull cloudnativecomputer/skype &",
         "docker pull cloudnativecomputer/slack &",
-        "docker pull cloudnativecomputer/spotify &",
         "docker pull dorowu/ubuntu-desktop-lxde-vnc &",
         "docker pull dougw/novnc &",
         "docker pull gliderlabs/logspout &",
@@ -38,7 +37,6 @@
         "docker pull prom/node-exporter &",
         "docker pull prom/pushgateway &",
         "docker pull traefik &",
-        "docker pull ubuntu &",
         "docker pull wernight/docker-compose &",
         "wait"
       ],
