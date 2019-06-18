@@ -5,7 +5,7 @@
       "image_name": "cloud-computer",
       "instance_name": "cloud-computer-packer-{{ timestamp }}",
       "project_id": "{{ user `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT` }}",
-      "source_image_family": "ubuntu-minimal-1910",
+      "source_image_family": "ubuntu-minimal-1904",
       "ssh_username": "ubuntu",
       "type": "googlecompute",
       "zone": "australia-southeast1-a"
