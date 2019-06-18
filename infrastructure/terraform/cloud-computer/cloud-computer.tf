@@ -112,7 +112,7 @@ resource "google_compute_instance" "cloud-computer" {
       "export GIT_AUTHOR_NAME=${var.GIT_AUTHOR_NAME}",
 
       "# Take ownership of the cloud-computer docker group",
-      "getent group 999 | cut -d: -f1 | groupdel -f",
+      "getent group 999 | cut -d: -f1 | xargs groupdel -f",
       "groupmod -g 999 docker",
 
       "# Alias docker run with cloud computer environment",
