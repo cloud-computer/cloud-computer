@@ -6,7 +6,7 @@
       "instance_name": "cloud-computer-packer-{{ timestamp }}",
       "project_id": "{{ user `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT` }}",
       "source_image_family": "ubuntu-minimal-1904",
-      "ssh_username": "ubuntu",
+      "ssh_username": "root",
       "type": "googlecompute",
       "zone": "australia-southeast1-a"
     }
@@ -14,8 +14,8 @@
   "provisioners": [
     {
       "inline": [
-        "sudo apt-get update -qq",
-        "sudo apt-get install -qq docker.io",
+        "apt-get update -qq",
+        "apt-get install -qq docker.io",
         "docker pull {{ user `CLOUD_COMPUTER_IMAGE` }} &",
         "docker pull cloudnativecomputer/alertmanager &",
         "docker pull cloudnativecomputer/blender &",
