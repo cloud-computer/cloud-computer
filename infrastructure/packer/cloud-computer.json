@@ -2,6 +2,7 @@
   "builders": [
     {
       "account_file": "{{ user `CLOUD_COMPUTER_CREDENTIALS` }}/cloud-provider.json",
+      "disk_size": "100",
       "image_name": "cloud-computer",
       "instance_name": "cloud-computer-packer-{{ timestamp }}",
       "project_id": "{{ user `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT` }}",
