@@ -15,8 +15,15 @@
   "provisioners": [
     {
       "inline": [
+        "# Install docker",
         "apt-get update -qq",
         "apt-get install -qq docker.io",
+
+        "# Reserve the group id 999 for the docker group",
+        "getent group 999 | cut -d: -f1 | xargs groupdel -f",
+        "groupmod -g 999 docker",
+        
+        "# Cache cloud-computer docker images",
         "docker pull {{ user `CLOUD_COMPUTER_IMAGE` }} &",
         "docker pull cloudnativecomputer/alertmanager &",
         "docker pull cloudnativecomputer/blender &",
