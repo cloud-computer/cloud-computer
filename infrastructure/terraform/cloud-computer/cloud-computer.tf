@@ -101,6 +101,12 @@ resource "google_compute_instance" "cloud-computer" {
     }
 
     inline = [
+      "whoami",
+      "whoami",
+      "whoami",
+      "whoami",
+      "whoami",
+      "whoami",
       "# Set cloud computer environment",
       "export CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS='${file("${var.cloud_provider_credentials_path}")}'",
       "export CLOUD_COMPUTER_HOST_ID=${var.CLOUD_COMPUTER_HOST_ID}",
