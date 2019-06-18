@@ -1,8 +1,12 @@
 import {compose} from 'react-apollo';
-import {Form, Icon, Input, Button, Checkbox, Row, Col} from 'antd';
+import Link from 'next/link';
+import {Form, Icon, Input, Button, Checkbox, Row, Col, notification} from 'antd';
 
 /** libs **/
 import {withAuthClient} from '../lib/with-auth-client';
+
+/** constants **/
+import {AUTH_TOKEN} from '../constants';
 
 /** styles **/
 const styles = {
@@ -24,12 +28,26 @@ const styles = {
 
 const Login = (props) => {
     const {getFieldDecorator} = props.form;
+    const {authAPI} = props;
 
     const handleSubmit = e => {
         e.preventDefault();
-        this.props.form.validateFields((err, values) => {
+        props.form.validateFields(async (err, {username, password}) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                console.log('Received values of form: ', {username, password});
+                try {
+                    const result = await authAPI.post('/auth/login', {
+                        username,
+                        password
+                    });
+                    localStorage.setItem(AUTH_TOKEN,result.token);
+                    window.location = '/';
+                } catch (e) {
+                    notification.error({
+                        message: 'Oh no! Something went wrong',
+                        description: e.message
+                    });
+                }
             }
         });
     };
@@ -72,10 +90,7 @@ const Login = (props) => {
                         <Button icon="google" style={styles.loginGoogle} onClick={()=>window.open(process.env.GOOGLE_REDIRECT)}>
                             Sign-In with Google
                         </Button>
-                        {/*<Button icon="facebook" style={styles.loginGoogle} onClick={()=>window.open('http://localhost:9995/facebook')}>*/}
-                            {/*Sign-In with Facebook*/}
-                        {/*</Button>*/}
-                        Or <a href="">register now!</a>
+                        Or <Link href="/register"><a>register now!</a></Link>
                     </Form.Item>
                 </Form>
             </Col>

@@ -17,7 +17,9 @@ module.exports = () => {
     passport.deserializeUser((obj, cb) => cb(null, obj));
 
     /** Common callback **/
-    const callback = (accessToken, refreshToken, profile, cb) => cb(null, profile);
+    const callback = (accessToken, refreshToken, profile, cb) => {
+        cb(null, profile)
+    };
 
     /** Add google auth **/
     passport.use(new GoogleStrategy({
@@ -25,4 +27,4 @@ module.exports = () => {
         clientSecret: GOOGLE_CLIENT_SECRET,
         callbackURL: GOOGLE_CALLBACK
     }, callback));
-}
+};

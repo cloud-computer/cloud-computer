@@ -6056,6 +6056,12 @@ lodash.uniq@^4.5.0:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
 
+logdown@^3.2.8:
+  version "3.2.8"
+  resolved "https://registry.yarnpkg.com/logdown/-/logdown-3.2.8.tgz#0bfff0c260a4a55f289f6b4420daefec30479843"
+  dependencies:
+    chalk "^2.3.0"
+
 loglevel@^1.4.1:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.6.3.tgz#77f2eb64be55a404c9fd04ad16d57c1d6d6b1280"

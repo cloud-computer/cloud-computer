@@ -15,6 +15,7 @@
     "graphql-tag": "^2.10.1",
     "isomorphic-unfetch": "^3.0.0",
     "lodash": "^4.17.11",
+    "logdown": "^3.2.8",
     "next": "^8.1.0",
     "react": "^16.8.6",
     "react-apollo": "^2.5.6",
