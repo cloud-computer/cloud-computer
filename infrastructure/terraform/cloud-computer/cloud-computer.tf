@@ -111,6 +111,10 @@ resource "google_compute_instance" "cloud-computer" {
       "export GIT_AUTHOR_EMAIL=${var.GIT_AUTHOR_EMAIL}",
       "export GIT_AUTHOR_NAME=${var.GIT_AUTHOR_NAME}",
 
+      "# Take ownership of the cloud-computer docker group",
+      "getent group 999 | cut -d: -f1 | groupdel",
+      "groupmod -g 999 docker",
+
       "# Alias docker run with cloud computer environment",
       "alias docker_run=\"docker run --env CLOUD_COMPUTER_HOST_ID --env CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS --env CLOUD_COMPUTER_YARN_JAEGER_TRACE --env DOCKER_HOST=localhost --env GIT_AUTHOR_EMAIL --env GIT_AUTHOR_NAME --group-add docker --interactive --rm --tty --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_REPOSITORY\"",
       "alias docker_run_root=\"docker_run --user root $CLOUD_COMPUTER_IMAGE\"",
