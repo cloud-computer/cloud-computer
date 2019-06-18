@@ -112,7 +112,7 @@ resource "google_compute_instance" "cloud-computer" {
       "export GIT_AUTHOR_NAME=${var.GIT_AUTHOR_NAME}",
 
       "# Alias docker run with cloud computer environment",
-      "alias docker_run=\"docker run --env CLOUD_COMPUTER_HOST_ID --env CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS --env CLOUD_COMPUTER_YARN_JAEGER_TRACE --env DOCKER_HOST=localhost --env GIT_AUTHOR_EMAIL --env GIT_AUTHOR_NAME --group-add docker --interactive --rm --tty --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_REPOSITORY\"",
+      "alias docker_run=\"docker run --env CLOUD_COMPUTER_HOST_ID --env CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS --env CLOUD_COMPUTER_YARN_JAEGER_TRACE --env DOCKER_HOST=localhost --env GIT_AUTHOR_EMAIL --env GIT_AUTHOR_NAME --interactive --rm --tty --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_REPOSITORY\"",
       "alias docker_run_root=\"docker_run --user root $CLOUD_COMPUTER_IMAGE\"",
       "alias docker_run_non-root=\"docker_run $CLOUD_COMPUTER_IMAGE\"",
 
