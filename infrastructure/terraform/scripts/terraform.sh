@@ -1,6 +1,9 @@
 # Export cloud computer shell environment
 eval "$(yarn --cwd ../cloud-computer environment)"
 
+# Export cloud computer dns environment
+eval "$(yarn --cwd ../dns environment)"
+
 # Point shell context to the local docker host
 export DOCKER_HOST=localhost
 
@@ -12,6 +15,9 @@ yarn --cwd ../docker docker run \
   --env TF_DATA_DIR=$CLOUD_COMPUTER_TERRAFORM \
   --env TF_IN_AUTOMATION=true \
   --env TF_VAR_CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT=$(yarn --cwd ../credentials project) \
+  --env TF_VAR_CLOUD_COMPUTER_DNS_EMAIL=$CLOUD_COMPUTER_DNS_EMAIL \
+  --env TF_VAR_CLOUD_COMPUTER_DNS_TOKEN=$CLOUD_COMPUTER_DNS_TOKEN \
+  --env TF_VAR_CLOUD_COMPUTER_DNS_ZONE=$CLOUD_COMPUTER_DNS_ZONE \
   --env TF_VAR_CLOUD_COMPUTER_HOST_ID=$CLOUD_COMPUTER_HOST_ID \
   --env TF_VAR_CLOUD_COMPUTER_HOST_NAME=$CLOUD_COMPUTER_HOST_NAME \
   --env TF_VAR_CLOUD_COMPUTER_HOST_USER=$CLOUD_COMPUTER_HOST_USER \
