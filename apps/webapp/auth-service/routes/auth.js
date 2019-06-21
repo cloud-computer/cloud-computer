@@ -16,6 +16,7 @@ const {
 
 /** List all authenticate for third parties **/
 const googleAuth = passport.authenticate('google', {scope: ['profile', 'email']});
+const githubAuth = passport.authenticate('github');
 
 /** Common catcher for errors **/
 const shouldAbort = (err) => {
@@ -101,6 +102,86 @@ router.get('/google/callback', googleAuth, (err, req, res, next) => {
                         user.id,
                         user.name.givenName,
                         user.name.familyName,
+                        user.id,
+                        'user'
+                    ],
+                    (err, dbRes) => {
+                        if (shouldAbort(err)) {
+                            return res.status(500).send('DB: ERROR');
+                        }
+
+                        client.query('COMMIT', (err) => {
+                            if (shouldAbort(err)) {
+                                return res.status(500).send('DB: ERROR');
+                            }
+                            let user = dbRes.rows[0];
+                            return res.redirect(url.format({
+                                pathname: REACT_APP,
+                                query: {
+                                    token : jwtEncrypt(user),
+                                    firstname: user.first_name,
+                                    lastname: user.last_name,
+                                }
+                            }));
+                        });
+                    });
+            }
+        );
+    });
+});
+
+/** Github **/
+router.get('/github', githubAuth);
+router.get('/github/callback', githubAuth, (err, req, res, next) => {
+    console.log(err.name);
+    if (err.name === 'TokenError') {
+        console.log('error');
+        return res.redirect('/auth/github');
+    } else {
+        // Handle other errors here
+    }
+    next();
+}, (req, res) => {
+    client.query('BEGIN', (err) => {
+        if (shouldAbort(err)) return res.status(500).send('DB: ERROR');
+        const {user} = req;
+
+        /** If email exist then use the email for username if not then use id **/
+        let id = user.id;
+        if (user.emails && user.emails.length) {
+            id = user.emails[0].value;
+        }
+
+        /** Check if the user exist **/
+        client.query(
+            'SELECT * FROM public.user where github_id=$1',
+            [user.id],
+            (err, dbRes) => {
+                if (shouldAbort(err)) {
+                    return res.status(500).send('DB: ERROR');
+                }
+
+                if(dbRes.rows.length) {
+                    let user = dbRes.rows[0];
+                    return res.redirect(url.format({
+                        pathname: REACT_APP,
+                        query: {
+                            token : jwtEncrypt(user),
+                            firstname: user.first_name,
+                            lastname: user.last_name,
+                        }
+                    }));
+                }
+
+                let name = user.displayName.split(' ');
+                /** If not then create the user **/
+                client.query(
+                    'INSERT INTO public.user(username,password,first_name,last_name, github_id, role) values ($1,$2,$3,$4,$5,$6) RETURNING *',
+                    [
+                        id,
+                        user.id,
+                        name[0],
+                        name[1],
                         user.id,
                         'user'
                     ],

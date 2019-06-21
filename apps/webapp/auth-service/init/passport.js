@@ -1,5 +1,6 @@
 const passport = require('passport');
 const {Strategy: GoogleStrategy} = require('passport-google-oauth20');
+const {Strategy: GitHubStrategy} = require('passport-github');
 
 /** Get all credentials **/
 const {
@@ -7,7 +8,12 @@ const {
         /** Google **/
         GOOGLE_CLIENT_ID,
         GOOGLE_CLIENT_SECRET,
-        GOOGLE_CALLBACK
+        GOOGLE_CALLBACK,
+
+        /** Github **/
+        GITHUB_CLIENT_ID,
+        GITHUB_CLIENT_SECRET,
+        GITHUB_CALLBACK
     }
 } = process;
 
@@ -27,4 +33,11 @@ module.exports = () => {
         clientSecret: GOOGLE_CLIENT_SECRET,
         callbackURL: GOOGLE_CALLBACK
     }, callback));
+
+    /** Add github auth **/
+    passport.use(new GitHubStrategy({
+            clientID: GITHUB_CLIENT_ID,
+            clientSecret: GITHUB_CLIENT_SECRET,
+            callbackURL: GITHUB_CALLBACK
+        }, callback));
 };

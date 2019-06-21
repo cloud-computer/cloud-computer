@@ -22,6 +22,9 @@ const styles = {
     },
     loginGoogle: {
         width: '100%'
+    },
+    loginGithub: {
+        width: '100%'
     }
 };
 
@@ -87,8 +90,11 @@ const Login = (props) => {
                         <Button type="primary" htmlType="submit" style={styles.loginFormButton}>
                             Log in
                         </Button>
-                        <Button icon="google" style={styles.loginGoogle} onClick={()=>window.open(process.env.GOOGLE_REDIRECT)}>
+                        <Button icon="google" style={styles.loginGoogle} onClick={()=>window.location = process.env.GOOGLE_REDIRECT}>
                             Sign-In with Google
+                        </Button>
+                        <Button icon="github" style={styles.loginGithub} onClick={()=>window.location = process.env.GITHUB_REDIRECT}>
+                            Sign-In with Github
                         </Button>
                         Or <Link href="/register"><a>register now!</a></Link>
                     </Form.Item>
