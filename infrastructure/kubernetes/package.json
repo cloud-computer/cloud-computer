@@ -1,12 +1,13 @@
 {
   "author": "Jackson Delahunt <jackson@cloud-computer.dev>",
-  "description": "The Cloud Computer Environment Credentials",
+  "description": "The Cloud Computer Kubernetes Configuration",
   "license": "MIT",
-  "name": "@cloud-computer/credentials",
+  "name": "@cloud-computer/kubernetes",
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
     "bootstrap": "scripts/bootstrap.sh",
-    "project": "scripts/project.sh"
+    "kind": "scripts/kind.sh",
+    "kubectl": "scripts/kubectl.sh"
   },
   "version": "0.0.1"
 }

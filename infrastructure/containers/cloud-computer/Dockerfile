@@ -95,6 +95,11 @@ RUN curl -fsSL https://github.com/cdr/code-server/releases/download/1.1119-vsc1.
   mv /tmp/code-server*/code-server /usr/local/bin && \
   rm -rf /tmp/code-server*
 
+# Install compose-on-kubernetes
+RUN wget -O compose-on-kubernetes -qnv https://github.com/docker/compose-on-kubernetes/releases/download/v0.4.23/installer-linux && \
+  chmod +x compose-on-kubernetes && \
+  mv compose-on-kubernetes /usr/local/bin
+
 # Install ctop
 RUN wget -O /usr/local/bin/ctop -qnv https://github.com/bcicen/ctop/releases/download/v0.7.2/ctop-0.7.2-linux-amd64 && \
   chmod +x /usr/local/bin/ctop

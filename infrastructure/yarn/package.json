@@ -1,5 +1,5 @@
 {
-  "author": "Jackson Delahunt",
+  "author": "Jackson Delahunt <jackson@cloud-computer.dev>",
   "dependencies": {
     "@cloud-computer/yarn": "1.14.1",
     "fs-extra": "^7.0.1",

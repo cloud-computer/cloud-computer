@@ -1,5 +1,5 @@
 {
-  "author": "Jackson Delahunt",
+  "author": "Jackson Delahunt <jackson@cloud-computer.dev>",
   "description": "The Cloud Computer Tmux Configuration",
   "license": "MIT",
   "name": "@cloud-computer/tmux",

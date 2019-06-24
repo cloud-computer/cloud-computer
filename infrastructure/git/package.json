@@ -1,5 +1,5 @@
 {
-  "author": "Jackson Delahunt <jackson@jacksondelahunt.com>",
+  "author": "Jackson Delahunt <jackson@cloud-computer.dev>",
   "description": "The Cloud Computer Git Configuration",
   "license": "MIT",
   "name": "@cloud-computer/git",

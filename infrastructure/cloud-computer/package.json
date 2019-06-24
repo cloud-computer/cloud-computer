@@ -1,5 +1,5 @@
 {
-  "author": "Jackson Delahunt <jackson@jacksondelahunt.com>",
+  "author": "Jackson Delahunt <jackson@cloud-computer.dev>",
   "dependencies": {
     "chokidar": "3.0.0",
     "constant-case": "^2.0.0",

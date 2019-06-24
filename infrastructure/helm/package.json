@@ -1,12 +1,12 @@
 {
   "author": "Jackson Delahunt <jackson@cloud-computer.dev>",
-  "description": "The Cloud Computer Environment Credentials",
+  "description": "The Cloud Computer Helm Configuration",
   "license": "MIT",
-  "name": "@cloud-computer/credentials",
+  "name": "@cloud-computer/helm",
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
     "bootstrap": "scripts/bootstrap.sh",
-    "project": "scripts/project.sh"
+    "helm": "scripts/helm.sh"
   },
   "version": "0.0.1"
 }

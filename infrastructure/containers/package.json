@@ -1,5 +1,5 @@
 {
-  "author": "Jackson Delahunt",
+  "author": "Jackson Delahunt <jackson@cloud-computer.dev>",
   "description": "The Cloud Computer Docker Containers",
   "license": "MIT",
   "name": "@cloud-computer/containers",

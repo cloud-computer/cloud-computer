@@ -1,6 +1,6 @@
 {
   "contributors": [
-    "Jackson Delahunt <jackson@jacksondelahunt.com> (https://jacksondelahunt.com)"
+    "Jackson Delahunt <jackson@cloud-computer.dev> (https://jacksondelahunt.com)"
   ],
   "devDependencies": {
     "@cloud-computer/jest-config": "^0.0.1",
