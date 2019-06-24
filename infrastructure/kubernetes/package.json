@@ -6,7 +6,6 @@
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
     "bootstrap": "scripts/bootstrap.sh",
-    "kind": "scripts/kind.sh",
     "kubectl": "scripts/kubectl.sh"
   },
   "version": "0.0.1"
