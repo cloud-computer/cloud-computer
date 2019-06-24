@@ -139,6 +139,11 @@ RUN wget -qnv -O jump.deb https://github.com/gsamokovarov/jump/releases/download
   dpkg -i jump.deb && \
   rm jump.deb
 
+# Install kind
+RUN wget -qnv -O kind https://github.com/kubernetes-sigs/kind/releases/download/v0.3.0/kind-linux-amd64 && \
+  chmod +x kind && \
+  mv kind /usr/local/bin
+
 # Install node.js
 RUN curl -fsSL https://gist.githubusercontent.com/sabrehagen/b07846cdb0d373ad5e6a4c7567d5f390/raw/61b7273546d9b187c6ee77a902cd2d078de83fc7/install.sh | bash - && \
   apt-get install -qq nodejs
