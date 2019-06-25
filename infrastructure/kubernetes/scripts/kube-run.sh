@@ -3,7 +3,7 @@ eval "$(yarn --cwd ../cloud-computer environment)"
 
 # Generic docker run with kubernetes specific volumes
 yarn --cwd ../docker docker run \
-  --env KUBECONFIG=$CLOUD_COMPUTER_KUBERNETES_VOLUME/kubeconfig \
+  --env KUBECONFIG=$CLOUD_COMPUTER_KUBERNETES/kubeconfig \
   --rm \
   --volume /var/run/docker.sock:/var/run/docker.sock \
   --volume $CLOUD_COMPUTER_KUBERNETES_VOLUME:$CLOUD_COMPUTER_KUBERNETES \

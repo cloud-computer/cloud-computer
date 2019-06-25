@@ -1,12 +1,10 @@
 # Export cloud computer shell environment
 eval "$(yarn --cwd ../cloud-computer environment)"
 
-# Create a kind kubernetes cluster
-yarn kind create cluster \
-  --name cloud-computer
-
-# Move kind kubeconfig to CLOUD_COMPUTER_KUBERNETES_VOLUME
-yarn kube-run cp $HOME/.kube/kind-config-cloud-computer $CLOUD_COMPUTER_KUBERNETES/kubeconfig
+# Create a kind kubernetes cluster and move kubeconfig to CLOUD_COMPUTER_KUBERNETES_VOLUME
+yarn kube-run zsh -c "\
+  kind create cluster --name cloud-computer && \
+  mv $HOME/.kube/kind-config-cloud-computer $CLOUD_COMPUTER_KUBERNETES/kubeconfig"
 
 # Bootstrap helm
 yarn --cwd ../helm bootstrap
