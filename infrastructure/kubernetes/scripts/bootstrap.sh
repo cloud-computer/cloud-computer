@@ -6,7 +6,7 @@ yarn kind create cluster \
   --name cloud-computer
 
 # Move kind kubeconfig to CLOUD_COMPUTER_KUBERNETES_VOLUME
-yarn kube-env cp $HOME/.kube/kind-config-cloud-computer $CLOUD_COMPUTER_KUBERNETES/kubeconfig
+yarn kube-run cp $HOME/.kube/kind-config-cloud-computer $CLOUD_COMPUTER_KUBERNETES/kubeconfig
 
 # Bootstrap helm
 yarn --cwd ../helm bootstrap
