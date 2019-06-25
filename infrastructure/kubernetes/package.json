@@ -6,7 +6,10 @@
   "repository": "git@github.com:cloud-computer/cloud-computer.git",
   "scripts": {
     "bootstrap": "scripts/bootstrap.sh",
-    "kubectl": "scripts/kubectl.sh"
+    "compose-on-kubernetes": "yarn kube-run compose-on-kubernetes \"$@\"",
+    "kind": "yarn kube-run kind \"$@\"",
+    "kubectl": "yarn kube-run kubectl \"$@\"",
+    "kube-run": "scripts/kube-run.sh \"$@\""
   },
   "version": "0.0.1"
 }
