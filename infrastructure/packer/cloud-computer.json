@@ -9,7 +9,7 @@
       "source_image_family": "ubuntu-minimal-1904",
       "ssh_username": "root",
       "type": "googlecompute",
-      "zone": "australia-southeast1-a"
+      "zone": "us-west1-a"
     }
   ],
   "provisioners": [
