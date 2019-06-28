@@ -8,6 +8,7 @@
       "project_id": "{{ user `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT` }}",
       "source_image_family": "ubuntu-minimal-1904",
       "ssh_username": "root",
+      "ssh_wait_timeout": "10000s",
       "type": "googlecompute",
       "zone": "us-west1-a"
     }
