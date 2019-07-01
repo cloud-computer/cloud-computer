@@ -6,7 +6,7 @@
       "image_name": "cloud-computer",
       "instance_name": "cloud-computer-packer-{{ timestamp }}",
       "project_id": "{{ user `CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT` }}",
-      "source_image_family": "ubuntu-minimal-1810-lts",
+      "source_image_family": "ubuntu-minimal-1804-lts",
       "ssh_username": "root",
       "ssh_timeout": "10m",
       "type": "googlecompute",
