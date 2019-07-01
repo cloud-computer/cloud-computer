@@ -134,4 +134,8 @@ resource "google_compute_instance" "cloud-computer" {
       "docker_run_non-root yarn --cwd infrastructure/cloud-computer start",
     ]
   }
+
+  scheduling {
+    on_host_maintenance = "TERMINATE"
+  }
 }
