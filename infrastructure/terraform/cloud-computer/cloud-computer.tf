@@ -75,6 +75,11 @@ resource "google_compute_instance" "cloud-computer" {
     }
   }
 
+  guest_accelerator{
+    count = 1
+    type = "nvidia-tesla-k80"
+  }
+
   labels {
     owner_host = "${var.CLOUD_COMPUTER_HOST_NAME}"
     owner_user = "${var.CLOUD_COMPUTER_HOST_USER}"
