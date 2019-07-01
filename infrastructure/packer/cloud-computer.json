@@ -17,7 +17,7 @@
     {
       "inline": [
         "# Install docker",
-        "curl -fsSL https://get.docker.com | sh",
+        "curl -fsSL https://get.docker.com | sh || true",
 
         "# Reserve the group id 999 for the docker group",
         "getent group 999 | cut -d: -f1 | xargs -n 1 -I @ groupdel -f @ || true",
