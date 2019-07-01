@@ -16,21 +16,24 @@
   "provisioners": [
     {
       "inline": [
-        "# Install nvidia cuda",
+        "# Install docker",
         "apt-get update -qq",
+        "apt-get install -qq software-properties-common",
+        "add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\"",
+        "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -",
+        "apt-get install docker-ce",
+
+        "# Reserve the group id 999 for the docker group",
+        "getent group 999 | cut -d: -f1 | xargs -n 1 -I @ groupdel -f @ || true",
+        "groupmod -g 999 docker",
+
+        "# Install nvidia cuda",
         "apt-get install -qq gnupg2",
         "apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1810/x86_64/7fa2af80.pub",
         "wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1810/x86_64/cuda-repo-ubuntu1810_10.1.168-1_amd64.deb",
         "dpkg -i cuda-repo-ubuntu1810_10.1.168-1_amd64.deb",
         "apt-get -qq update",
         "DEBIAN_FRONTEND=noninteractive apt-get install -qq cuda",
-
-        "# Install docker",
-        "apt-get install -qq docker.io",
-
-        "# Reserve the group id 999 for the docker group",
-        "getent group 999 | cut -d: -f1 | xargs -n 1 -I @ groupdel -f @ || true",
-        "groupmod -g 999 docker",
 
         "# Install nvidia-docker2",
         "curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | apt-key add -",
