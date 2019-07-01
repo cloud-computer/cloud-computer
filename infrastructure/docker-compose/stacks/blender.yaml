@@ -5,6 +5,7 @@ services:
   blender:
     image: cloudnativecomputer/blender:latest
     shm_size: 6gb
+    runtime: nvidia
     restart: always
     labels:
       - traefik.enable=true
