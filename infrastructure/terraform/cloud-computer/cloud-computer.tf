@@ -75,7 +75,7 @@ resource "google_compute_instance" "cloud-computer" {
     }
   }
 
-  guest_accelerator{
+  guest_accelerator {
     count = 1
     type = "nvidia-tesla-p100"
   }
