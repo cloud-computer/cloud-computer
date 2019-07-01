@@ -23,10 +23,8 @@
         "add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\"",
         "apt-get install -qq docker-ce",
 
-        "# Reserve the group id 999 for the docker group",
-        "getent group 999 | cut -d: -f1 | xargs -n 1 -I @ groupdel -f @ || true",
-        "groupmod -g 999 docker",
-        "usermod -aG docker ubuntu",
+        "groupadd --gid 999 docker",
+        "usermod --append --gid docker ubuntu",
 
         "# Install nvidia cuda",
         "apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1810/x86_64/7fa2af80.pub",
