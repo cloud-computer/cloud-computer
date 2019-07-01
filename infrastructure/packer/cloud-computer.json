@@ -16,9 +16,11 @@
   "provisioners": [
     {
       "inline": [
-        "# Install docker",
-        "apt-get update -qq",
-        "apt-get install -qq docker.io",
+        "# Install nvidia-docker2",
+        "curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | apt-key add -",
+        "curl -s -L https://nvidia.github.io/nvidia-docker/$(. /etc/os-release;echo $ID$VERSION_ID)/nvidia-docker.list | tee /etc/apt/sources.list.d/nvidia-docker.list",
+        "apt-get -qq update",
+        "apt-get install -qq nvidia-docker2",
 
         "# Reserve the group id 999 for the docker group",
         "getent group 999 | cut -d: -f1 | xargs groupdel -f",
