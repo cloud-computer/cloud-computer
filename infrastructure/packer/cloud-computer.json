@@ -21,7 +21,7 @@
         "apt-get install -qq docker.io",
 
         "# Reserve the group id 999 for the docker group",
-        "getent group 999 | cut -d: -f1 | xargs groupdel -f",
+        "getent group 999 | cut -d: -f1 | xargs -n 1 -I @ groupdel -f @ || true",
         "groupmod -g 999 docker",
 
         "# Install nvidia cuda",
