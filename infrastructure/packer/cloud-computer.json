@@ -10,7 +10,7 @@
       "ssh_username": "root",
       "ssh_timeout": "10m",
       "type": "googlecompute",
-      "zone": "us-west1-a"
+      "zone": "australia-southeast1-a"
     }
   ],
   "provisioners": [
