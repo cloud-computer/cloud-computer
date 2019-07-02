@@ -4,6 +4,8 @@ import {AUTH_TOKEN} from '../constants';
 export const withProtectRoute = (BaseComponent) => withRouter(({...props}) => {
     if(process.browser && props.router.query && props.router.query.token ) {
         localStorage.setItem(AUTH_TOKEN,props.router.query.token);
+        window.location ='/';
+        return;
     }
 
     if(process.browser && !localStorage.getItem(AUTH_TOKEN)) {

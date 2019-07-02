@@ -81,6 +81,7 @@ app.get('/provision', (req, res) => {
                 'INSERT INTO public.build(user_id, code) values ($1, 99) RETURNING *',
                 [userId],
                 (err, dbRes) => {
+                    console.log(err);
                     const row = dbRes.rows[0];
                     queueJob(userId, row);
                     res.send({status: 'provisioning', build: row});

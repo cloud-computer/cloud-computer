@@ -63,7 +63,7 @@ const Stream = ({client, streamAPI}) => {
                     }
                 `}>
             {({data, loading}) => {
-                if (loading) {
+                if (loading || !data) {
                     return <div>
                         Fetching logs...
                     </div>
@@ -71,6 +71,7 @@ const Stream = ({client, streamAPI}) => {
                 const logs = data.log.map(({log}, index) => {
                     return <p key={index} style={{'white-space': 'pre', paddingLeft: '10px'}}>{log}</p>
                 });
+
                 return <div>
                     <div style={{
                         margin: '30px'
@@ -91,7 +92,6 @@ const Stream = ({client, streamAPI}) => {
                                          }
                                     `}>
                                     {({data, loading}) => {
-                                        console.log(data);
                                         if(data) {
                                             const buildCode = data.build[0].code;
                                             if(+buildCode == 0) {
