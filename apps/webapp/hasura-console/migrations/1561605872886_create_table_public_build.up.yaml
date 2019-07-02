@@ -1,0 +1,9 @@
+- args:
+    sql: CREATE TABLE "public"."build"("id" serial NOT NULL, "user_id" integer NOT
+      NULL, "code" text NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("user_id") REFERENCES
+      "public"."user"("id") ON UPDATE cascade ON DELETE cascade);
+  type: run_sql
+- args:
+    name: build
+    schema: public
+  type: add_existing_table_or_view

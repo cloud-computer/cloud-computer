@@ -1,0 +1,4 @@
+- args:
+    sql: ALTER TABLE "public"."user" ADD COLUMN "done_setup" boolean NOT NULL DEFAULT
+      false
+  type: run_sql

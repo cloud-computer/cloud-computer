@@ -10,9 +10,12 @@ import {AUTH_TOKEN} from '../constants';
 
 /** styles **/
 const styles = {
+    image : {
+      width: '300px'
+    },
     loginForm: {
         maxWidth: '300px',
-        margin: '45% auto'
+        margin: '12% auto'
     },
     loginFormForgot: {
         float: 'right'
@@ -58,6 +61,10 @@ const Login = (props) => {
         <Row>
             <Col offset={8} span={8}>
                 <Form onSubmit={handleSubmit} style={styles.loginForm}>
+                    <img
+                        style={styles.image}
+                        src="https://avatars3.githubusercontent.com/u/49678748?s=400&amp;u=23aa86cbd4f8d9a5b2c2a8cc744c4d364903a772"
+                        alt="Cloud Computer"/>
                     <Form.Item>
                         {getFieldDecorator('username', {
                             rules: [{required: true, message: 'Please input your username!'}],

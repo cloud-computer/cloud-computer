@@ -7,7 +7,9 @@ export const withProtectRoute = (BaseComponent) => withRouter(({...props}) => {
     }
 
     if(process.browser && !localStorage.getItem(AUTH_TOKEN)) {
-        return window.location = '/login';
+        window.location = '/login';
+        // Add loading...
+        return;
     }
 
     /** This is for handling the index page cause its being used
@@ -19,11 +21,7 @@ export const withProtectRoute = (BaseComponent) => withRouter(({...props}) => {
     }
 
     if(!token) {
-        return (
-            <div>
-                Loading...
-            </div>
-        )
+        return "Loading..."
     }
 
     return <BaseComponent {...props}/>

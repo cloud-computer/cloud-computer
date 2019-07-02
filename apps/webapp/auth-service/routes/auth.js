@@ -34,6 +34,7 @@ const shouldAbort = (err) => {
 
 /** Utils for token **/
 const jwtEncrypt = (user) => {
+
     /** For now make it admin just to have access **/
     return jwt.sign(
         {
@@ -82,12 +83,12 @@ router.get('/google/callback', googleAuth, (err, req, res, next) => {
                     return res.status(500).send('DB: ERROR');
                 }
 
-                if(dbRes.rows.length) {
+                if (dbRes.rows.length) {
                     let user = dbRes.rows[0];
                     return res.redirect(url.format({
                         pathname: REACT_APP,
                         query: {
-                            token : jwtEncrypt(user),
+                            token: jwtEncrypt(user),
                             firstname: user.first_name,
                             lastname: user.last_name,
                         }
@@ -118,7 +119,7 @@ router.get('/google/callback', googleAuth, (err, req, res, next) => {
                             return res.redirect(url.format({
                                 pathname: REACT_APP,
                                 query: {
-                                    token : jwtEncrypt(user),
+                                    token: jwtEncrypt(user),
                                     firstname: user.first_name,
                                     lastname: user.last_name,
                                 }
@@ -161,12 +162,12 @@ router.get('/github/callback', githubAuth, (err, req, res, next) => {
                     return res.status(500).send('DB: ERROR');
                 }
 
-                if(dbRes.rows.length) {
+                if (dbRes.rows.length) {
                     let user = dbRes.rows[0];
                     return res.redirect(url.format({
                         pathname: REACT_APP,
                         query: {
-                            token : jwtEncrypt(user),
+                            token: jwtEncrypt(user),
                             firstname: user.first_name,
                             lastname: user.last_name,
                         }
@@ -198,7 +199,7 @@ router.get('/github/callback', githubAuth, (err, req, res, next) => {
                             return res.redirect(url.format({
                                 pathname: REACT_APP,
                                 query: {
-                                    token : jwtEncrypt(user),
+                                    token: jwtEncrypt(user),
                                     firstname: user.first_name,
                                     lastname: user.last_name,
                                 }
@@ -215,7 +216,7 @@ router.post('/login', function (req, res) {
     client.query('SELECT * FROM public.user WHERE username=$1', [req.body.username], (err, dbRes) => {
         if (err) {
             res.status(401).send({
-                message : 'Oh no something went wrong!'
+                message: 'Oh no something went wrong!'
             });
         }
         if (dbRes.rows.length) {
@@ -225,23 +226,23 @@ router.post('/login', function (req, res) {
 
                 if (err) {
                     return res.status(401).send({
-                        message : 'Cant handle the request'
+                        message: 'Cant handle the request'
                     });
                 }
                 if (!match) {
                     return res.status(403).send({
-                        message : 'Passwords dont match.'
+                        message: 'Passwords dont match.'
                     });
                 }
                 res.send({
-                    token : jwtEncrypt(user),
+                    token: jwtEncrypt(user),
                     firstname: user.first_name,
                     lastname: user.last_name,
                 });
             });
         }
         res.status(404).send({
-            message : 'Hmm. We cant find your username'
+            message: 'Hmm. We cant find your username'
         });
     });
 });
@@ -276,7 +277,7 @@ router.post('/register', function (req, res) {
                 (err, dbRes) => {
                     if (shouldAbort(err)) {
                         return res.status(500).send({
-                            message : err.message
+                            message: err.message
                         });
                     }
 

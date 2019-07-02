@@ -36,8 +36,8 @@ module.exports = () => {
 
     /** Add github auth **/
     passport.use(new GitHubStrategy({
-            clientID: GITHUB_CLIENT_ID,
-            clientSecret: GITHUB_CLIENT_SECRET,
-            callbackURL: GITHUB_CALLBACK
-        }, callback));
+        clientID: GITHUB_CLIENT_ID,
+        clientSecret: GITHUB_CLIENT_SECRET,
+        callbackURL: GITHUB_CALLBACK
+    }, callback));
 };

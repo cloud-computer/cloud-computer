@@ -1,0 +1,40 @@
+- args:
+    name: user
+    table:
+      name: build
+      schema: public
+    using:
+      foreign_key_constraint_on: user_id
+  type: create_object_relationship
+- args:
+    name: logs
+    table:
+      name: build
+      schema: public
+    using:
+      foreign_key_constraint_on:
+        column: build_id
+        table:
+          name: log
+          schema: public
+  type: create_array_relationship
+- args:
+    name: build
+    table:
+      name: log
+      schema: public
+    using:
+      foreign_key_constraint_on: build_id
+  type: create_object_relationship
+- args:
+    name: builds
+    table:
+      name: user
+      schema: public
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: build
+          schema: public
+  type: create_array_relationship

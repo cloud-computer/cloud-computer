@@ -6,7 +6,7 @@ import {WebSocketLink} from 'apollo-link-ws';
 import {getMainDefinition} from 'apollo-utilities';
 import {setContext} from 'apollo-link-context';
 import Router from 'next/dist/client/router';
-
+import {AUTH_TOKEN} from '../constants';
 let apolloClient = null;
 
 // Polyfill fetch() on the server (used by apollo-client)
@@ -22,7 +22,7 @@ function create(initialState) {
                 reconnect: true,
                 connectionParams: {
                     headers: {
-                        Authorization: `Bearer ${localStorage.getItem(process.env.TOKEN)}`
+                        Authorization: `Bearer ${localStorage.getItem(AUTH_TOKEN)}`
                     }
                 }
             }
@@ -51,7 +51,7 @@ function create(initialState) {
     });
 
     const authLink = setContext((_, {headers}) => {
-        const token = localStorage.getItem(process.env.TOKEN);
+        const token = localStorage.getItem(AUTH_TOKEN);
         let baseHeaders = {
             ...headers
         };

@@ -6,9 +6,12 @@ import {withAuthClient} from '../lib/with-auth-client';
 
 /** styles **/
 const styles = {
+    image : {
+        width: '300px'
+    },
     registerForm: {
         maxWidth: '300px',
-        margin: '38% auto'
+        margin: '12% auto'
     },
     registerFormForgot: {
         float: 'right'
@@ -17,7 +20,6 @@ const styles = {
         width: '100%'
     }
 };
-
 
 const Register = (props) => {
     const {getFieldDecorator} = props.form;
@@ -50,6 +52,10 @@ const Register = (props) => {
         <Row>
             <Col offset={8} span={8}>
                 <Form onSubmit={handleSubmit} style={styles.registerForm}>
+                    <img
+                        style={styles.image}
+                        src="https://avatars3.githubusercontent.com/u/49678748?s=400&amp;u=23aa86cbd4f8d9a5b2c2a8cc744c4d364903a772"
+                        alt="Cloud Computer"/>
                     <h1>Register</h1>
                     <Form.Item>
                         {getFieldDecorator('username', {
