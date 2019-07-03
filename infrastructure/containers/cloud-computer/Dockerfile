@@ -144,6 +144,10 @@ RUN wget -qnv -O kind https://github.com/kubernetes-sigs/kind/releases/download/
   chmod +x kind && \
   mv kind /usr/local/bin
 
+# Install lazydocker
+RUN curl -fsSL https://github.com/jesseduffield/lazydocker/releases/download/v0.2.4/lazydocker_0.2.4_Linux_x86_64.tar.gz | \
+  tar -C /usr/local/bin -xzf -
+
 # Install node.js
 RUN curl -fsSL https://gist.githubusercontent.com/sabrehagen/b07846cdb0d373ad5e6a4c7567d5f390/raw/61b7273546d9b187c6ee77a902cd2d078de83fc7/install.sh | bash - && \
   apt-get install -qq nodejs
