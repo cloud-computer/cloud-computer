@@ -24,7 +24,7 @@
         "apt-get install -qq docker-ce",
 
         "groupmod --gid 999 docker",
-        "usermod --append --gid docker ubuntu",
+        "usermod --append --groups docker ubuntu",
 
         "# Install nvidia cuda",
         "apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1810/x86_64/7fa2af80.pub",
