@@ -27,6 +27,7 @@
   "scripts": {
     "start": "sh -ac '. ../.env; next start'",
     "build": "sh -ac '. ../.env; next build'",
+    "build:container": "docker build -t cloudnativecomputer/webapp-client:latest .",
     "dev": "next -p 9998",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"

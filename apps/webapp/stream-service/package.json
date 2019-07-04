@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "babel lib -d dist",
-    "start": "nodemon --exec babel-node lib/index.js"
+    "start": "nodemon --exec babel-node lib/index.js",
+    "build:container": "docker build -t cloudnativecomputer/webapp-stream:latest ."
   },
   "keywords": [],
   "author": "",
