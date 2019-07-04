@@ -1,12 +1,13 @@
-const {Client} = require('pg');
-const dotenv = require('dotenv');
-const path = require('path');
+import {Client} from 'pg';
+import dotenv from 'dotenv';
+import path from 'path';
 
+/** Get environment **/
 dotenv.config({path:path.resolve(__dirname, '../../.env')});
 
 let client;
 
-/** Get all credentials **/
+/** Get all environments **/
 const {
     env: {
         /** Postgres **/
@@ -18,9 +19,12 @@ const {
 } = process;
 
 module.exports = () => {
+
+    /** Cache client **/
     if (client) {
         return client;
     }
+
     /** Intialize DB **/
     client = new Client({
         user: POSTGRES_USER || 'postgres',

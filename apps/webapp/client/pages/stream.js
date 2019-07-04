@@ -36,7 +36,7 @@ const Stream = ({client, streamAPI}) => {
             if (!build.length) {
                 return streamAPI.get(`/provision?userId=${userId}`)
                     .then((data) => {
-                        if(data.redirect) {
+                        if (data.redirect) {
                             window.location = data.redirect;
                             return;
                         }
@@ -77,10 +77,10 @@ const Stream = ({client, streamAPI}) => {
                         margin: '30px'
                     }}>
                         <Subscription
-                                    variables={{
-                                        id: build
-                                    }}
-                                    subscription={gql`
+                            variables={{
+                                id: build
+                            }}
+                            subscription={gql`
                                         subscription getBuild($id : Int){
                                               build(where:{
                                                 id :{
@@ -91,23 +91,25 @@ const Stream = ({client, streamAPI}) => {
                                               }
                                          }
                                     `}>
-                                    {({data, loading}) => {
-                                        if(data) {
-                                            const buildCode = data.build[0].code;
-                                            if(+buildCode == 0) {
-                                                return <Button onClick={()=> window.location = 'https://gideon.cloudcomputer.dev' }type="primary">Go to cloud computer</Button>
-                                            }
-                                        }
-                                        return <div></div>
-                                    }}
+                            {({data, loading}) => {
+                                if (data) {
+                                    const buildCode = data.build[0].code;
+                                    if (+buildCode == 0) {
+                                        return <Button
+                                            onClick={() => window.location = 'https://gideon.cloudcomputer.dev'}
+                                            type="primary">Go to cloud computer</Button>
+                                    }
+                                }
+                                return <div></div>
+                            }}
                         </Subscription>
                     </div>
                     <div style={{
-                        overflow: 'hidden',
+                        'overflow-x': 'scroll',
                         margin: '30px',
                         background: '#2b2b2b',
                         paddingTop: '20px',
-                        paddingBottom : '20px',
+                        paddingBottom: '20px',
                         color: '#f1f1f1'
                     }}>
                         {logs}
