@@ -1,9 +1,11 @@
-version: '3.5'
+version: '2.3'
 
 services:
 
   desktop:
     image: dorowu/ubuntu-desktop-lxde-vnc:bionic
+    shm_size: 6gb
+    runtime: nvidia
     restart: always
     environment:
       - VNC_PASSWORD=

@@ -8,7 +8,7 @@
     "apply": "scripts/apply.sh",
     "bootstrap": "scripts/bootstrap.sh",
     "clean": "scripts/clean.sh",
-    "destroy": "yarn terraform-workdir destroy",
+    "destroy": "yarn bootstrap; yarn terraform-workdir destroy",
     "ip": "yarn terraform-workdir output ip 2>/dev/null",
     "recycle": "yarn destroy; yarn apply",
     "restart": "yarn taint; yarn terraform-workdir apply",

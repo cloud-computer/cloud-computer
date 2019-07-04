@@ -17,6 +17,18 @@ variable "CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT" {
   description = "The cloud provider project to create the machine in."
 }
 
+variable "CLOUD_COMPUTER_DNS_EMAIL" {
+  description = "The email address of the dns account."
+}
+
+variable "CLOUD_COMPUTER_DNS_TOKEN" {
+  description = "The token to access the dns account."
+}
+
+variable "CLOUD_COMPUTER_DNS_ZONE" {
+  description = "The dns account zone to update."
+}
+
 variable "CLOUD_COMPUTER_HOST_ID" {
   description = "The id of the machine that created the instance."
 }
