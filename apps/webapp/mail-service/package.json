@@ -10,6 +10,7 @@
     "mailgun-js" : "^0.22.0"
   },
   "scripts": {
+    "build:container": "docker build -t cloudnativecomputer/webapp-mail:latest .",
     "start.dev": "nodemon"
   }
 }

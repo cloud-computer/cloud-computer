@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:container": "docker build -t cloudnativecomputer/webapp-stream:latest .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
