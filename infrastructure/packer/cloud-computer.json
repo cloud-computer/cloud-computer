@@ -11,7 +11,7 @@
       "ssh_timeout": "10m",
       "state_timeout": "15m",
       "type": "googlecompute",
-      "zone": "australia-southeast1-a"
+      "zone": "us-west2-a"
     }
   ],
   "provisioners": [
