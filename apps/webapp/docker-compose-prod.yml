@@ -37,6 +37,8 @@ services:
     - traefik.enable=true
     - traefik.frontend.rule=Host:client.webapp.$CLOUD_COMPUTER_HOST_DNS
     - traefik.port=9998
+    ports:
+    - "9998:9998"
 
   # Auth service
   auth:
