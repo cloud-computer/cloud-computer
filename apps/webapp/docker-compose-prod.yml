@@ -33,6 +33,10 @@ services:
         - REACT_APP_WEBSOCKET_HOST=${REACT_APP_WEBSOCKET_HOST}
         - AUTH_SERVICE_HOST=${AUTH_SERVICE_HOST}
         - STREAM_HOST=${STREAM_HOST}
+        - GOOGLE_CALLBACK=${GOOGLE_CALLBACK}
+        - GOOGLE_REDIRECT=${GOOGLE_REDIRECT}
+        - GITHUB_CALLBACK=${GITHUB_CALLBACK}
+        - GITHUB_REDIRECT=${GITHUB_REDIRECT}
     labels:
     - traefik.enable=true
     - traefik.frontend.rule=Host:client.webapp.$CLOUD_COMPUTER_HOST_DNS
