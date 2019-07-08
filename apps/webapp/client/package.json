@@ -25,7 +25,7 @@
     "subscriptions-transport-ws": "^0.9.16"
   },
   "scripts": {
-    "start": "next start",
+    "start": "next start -p 9998",
     "build": "next build",
     "build:container": "docker build -t cloudnativecomputer/webapp-client:latest .",
     "dev": "next -p 9998",

@@ -13,5 +13,8 @@ COPY . .
 # Building app
 RUN npm run build
 
+# Expose
+EXPOSE 9998
+
 # Running the app
 CMD [ "npm", "start" ]
