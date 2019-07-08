@@ -27,12 +27,12 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile.dev
-    environment:
-      REACT_APP: ${REACT_APP}
-      REACT_APP_HOST: ${REACT_APP_HOST}
-      REACT_APP_WEBSOCKET_HOST: ${REACT_APP_WEBSOCKET_HOST}
-      AUTH_SERVICE_HOST: ${AUTH_SERVICE_HOST}
-      STREAM_HOST: ${STREAM_HOST}
+      args:
+        - REACT_APP=${REACT_APP}
+        - REACT_APP_HOST=${REACT_APP_HOST}
+        - REACT_APP_WEBSOCKET_HOST=${REACT_APP_WEBSOCKET_HOST}
+        - AUTH_SERVICE_HOST=${AUTH_SERVICE_HOST}
+        - STREAM_HOST=${STREAM_HOST}
     labels:
     - traefik.enable=true
     - traefik.frontend.rule=Host:client.webapp.$CLOUD_COMPUTER_HOST_DNS
