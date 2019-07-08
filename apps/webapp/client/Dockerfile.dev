@@ -26,10 +26,10 @@ RUN npm install
 COPY . .
 
 # Building app
-RUN npm run build
+# RUN npm run build
 
 # Expose
 EXPOSE 9998
 
 # Running the app
-CMD [ "npm", "start" ]
+CMD [ "npm", "dev" ]
