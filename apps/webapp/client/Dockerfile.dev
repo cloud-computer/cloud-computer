@@ -32,4 +32,4 @@ COPY . .
 EXPOSE 9998
 
 # Running the app
-CMD [ "npm", "dev" ]
+CMD [ "npm", "run", "dev" ]
