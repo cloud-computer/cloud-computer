@@ -60,9 +60,6 @@ services:
     - traefik.enable=true
     - traefik.frontend.rule=Host:auth.webapp.$CLOUD_COMPUTER_HOST_DNS
     - traefik.port=3000
-    volumes:
-    - /var/lib/docker/volumes/CLOUD_COMPUTER_REPOSITORY/_data/apps/webapp/auth-service/:/usr/src/app
-    - /usr/src/app/node_modules
     ports:
     - "${AUTH_SERVICE_PORT}:3000"
     depends_on:
@@ -83,9 +80,6 @@ services:
     - traefik.enable=true
     - traefik.frontend.rule=Host:stream.webapp.$CLOUD_COMPUTER_HOST_DNS
     - traefik.port=3000
-    volumes:
-    -  /var/lib/docker/volumes/CLOUD_COMPUTER_REPOSITORY/_data/apps/webapp/stream-service/:/usr/src/app
-    - /usr/src/app/node_modules
     ports:
     - "${STREAM_PORT}:3000"
     depends_on:
@@ -103,9 +97,6 @@ services:
     - traefik.enable=true
     - traefik.frontend.rule=Host:mail.webapp.$CLOUD_COMPUTER_HOST_DNS
     - traefik.port=3000
-    volumes:
-    - /var/lib/docker/volumes/CLOUD_COMPUTER_REPOSITORY/_data/apps/webapp/mail-service:/usr/src/app
-    - /usr/src/app/node_modules
     ports:
     - "${MAIL_SERVICE_PORT}:3000"
     depends_on:
