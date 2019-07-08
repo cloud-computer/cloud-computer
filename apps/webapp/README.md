@@ -29,3 +29,6 @@
 
 ### Dev
 1. `cd client && yarn storybook`
+
+### Keys
+1. https://gist.github.com/sabrehagen/3a23320706dc30bf6a4e99a1e69efd9d

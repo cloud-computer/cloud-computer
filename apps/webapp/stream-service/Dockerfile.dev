@@ -1,0 +1,17 @@
+FROM node:10.16.0-alpine
+
+### Create directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+### Copy package.json
+COPY package.json .
+RUN npm install
+
+### Copy all files
+COPY . .
+
+### Expose default port
+EXPOSE 3000
+
+CMD ["npm", "run", "start"]

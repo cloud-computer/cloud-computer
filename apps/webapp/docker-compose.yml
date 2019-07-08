@@ -42,6 +42,24 @@ services:
       - "${AUTH_SERVICE_PORT}:3000"
     depends_on:
       - postgres
+  # Auth service
+  stream:
+    build:
+      context: ./stream-service
+      dockerfile: Dockerfile.dev
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      REDIS_HOST: ${REDIS_HOST}
+    volumes:
+    - ./stream-service/:/usr/src/app
+    - /usr/src/app/node_modules
+    ports:
+    - "${STREAM_PORT}:3000"
+    depends_on:
+    - postgres
   # Mail service
   mail:
     build:
@@ -57,6 +75,12 @@ services:
       - "${MAIL_SERVICE_PORT}:3000"
     depends_on:
       - postgres
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - "${REDIS_PORT}:6379"
+
   # Postgres
   postgres:
     image: postgres

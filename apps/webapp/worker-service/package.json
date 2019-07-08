@@ -1,21 +1,16 @@
 {
-  "name": "stream-service",
+  "name": "worker-service",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "license": "MIT",
   "scripts": {
     "build": "babel lib -d dist",
     "start": "nodemon --exec babel-node lib/index.js",
     "build:container": "docker build -t cloudnativecomputer/webapp-stream:latest ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "redis": "^2.8.0",
-    "cors": "^2.8.5",
     "dotenv": "^8.0.0",
-    "express": "^4.17.1",
     "pg": "^7.11.0"
   },
   "devDependencies": {
