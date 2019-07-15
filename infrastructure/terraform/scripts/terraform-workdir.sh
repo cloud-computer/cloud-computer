@@ -4,6 +4,9 @@ eval "$(yarn --cwd ../cloud-computer environment)"
 # Export cloud computer dns environment
 eval "$(yarn --cwd ../dns environment)"
 
+# Export cloud computer git environment
+eval "$(yarn --cwd ../git environment)"
+
 # Point shell context to the local docker host
 export DOCKER_HOST=localhost
 
@@ -25,6 +28,8 @@ yarn --cwd ../docker docker run \
   --env TF_VAR_CLOUD_COMPUTER_IMAGE=$CLOUD_COMPUTER_IMAGE \
   --env TF_VAR_CLOUD_COMPUTER_REPOSITORY=$CLOUD_COMPUTER_REPOSITORY \
   --env TF_VAR_CLOUD_COMPUTER_REPOSITORY_VOLUME=$CLOUD_COMPUTER_REPOSITORY_VOLUME \
+  --env TF_VAR_GIT_AUTHOR_EMAIL=$GIT_AUTHOR_EMAIL \
+  --env TF_VAR_GIT_AUTHOR_NAME=$GIT_AUTHOR_NAME \
   --rm \
   --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
   --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY \
