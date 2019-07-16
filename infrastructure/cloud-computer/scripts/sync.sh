@@ -1,8 +1,8 @@
 # Export cloud computer shell environment
 eval "$(yarn --cwd ../cloud-computer environment)"
 
-# The local git branch
-GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+# Export cloud computer git environment
+eval "$(yarn --cwd ../git environment)"
 
 # Create a unique sync identifier
 SYNC_CONTAINER=${COMPOSE_PROJECT_NAME}-sync-$HOSTNAME-$(date +%M%S)
@@ -26,7 +26,7 @@ if [ "$1" = "--clean" ]; then
       git fetch; \
       git cln; \
       git checkout .; \
-      git checkout $GIT_BRANCH; \
+      git checkout $CLOUD_COMPUTER_GIT_BRANCH; \
       git pull"
 fi
 
