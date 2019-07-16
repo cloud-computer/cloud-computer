@@ -68,6 +68,11 @@ variable "GIT_AUTHOR_NAME" {
   default = ""
 }
 
+variable "GIT_BRANCH" {
+  description = "The current git branch."
+  default = "master"
+}
+
 output "ip" {
   value = "${google_compute_address.cloud-computer.address}"
 }
