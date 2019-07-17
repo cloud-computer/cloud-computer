@@ -29,6 +29,14 @@ variable "CLOUD_COMPUTER_DNS_ZONE" {
   description = "The dns account zone to update."
 }
 
+variable "CLOUD_COMPUTER_GIT_BRANCH" {
+  description = "The current git branch."
+}
+
+variable "CLOUD_COMPUTER_GIT_URL" {
+  description = "The current git url."
+}
+
 variable "CLOUD_COMPUTER_HOST_ID" {
   description = "The id of the machine that created the instance."
 }
