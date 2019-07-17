@@ -1,8 +1,11 @@
-import {Fragment} from 'react';
-import {compose} from 'react-apollo';
+import {compose, withApollo} from 'react-apollo';
 import Router from 'next/router';
 import {withProtectRoute} from '../lib/with-protect-route';
-import {Col, Row} from "antd";
+import {Col, Input, Modal, notification, Row} from "antd";
+import {useState} from "react";
+import gql from "graphql-tag";
+import {AUTH_TOKEN, HASURA_CLAIM, HASURA_USER_ID} from "../constants";
+import jwt_decode from "jwt-decode";
 
 /** styles **/
 const styles = {
@@ -28,9 +31,99 @@ const styles = {
     }
 };
 
-const Index = () => {
+const Index = ({client}) => {
+    const [visible, setVisible] = useState(false);
+    const [cloudUser, setCloudUser] = useState(null);
+
+    const handleOk = async () => {
+        try {
+            const token = localStorage[AUTH_TOKEN];
+            const userId = jwt_decode(token)[HASURA_CLAIM][HASURA_USER_ID];
+
+            const {data:{user}} = await client.query({
+                query: gql`
+                    query CheckIfExist($cloudUser : String){
+                        user(where:{
+                            cloud_user : {
+                                _eq :$cloudUser
+                            }
+                        }){
+                            id
+                            cloud_url
+                            cloud_user
+                        }
+                    }
+                `,
+                variables : {
+                    cloudUser : cloudUser
+                }
+            });
+
+            if( user.length ) {
+                return notification.error({
+                    message: 'Something went wrong',
+                    description: 'You cant use this cloud computer name its existing already',
+                });
+            }
+
+            await client.mutate({
+                mutation : gql`
+                    mutation UpdateCloudUrl($userId: bigint,  $cloudUrl : String, $cloudUser : String) {
+                        update_user(where:{
+                            id: {
+                                _eq : $userId
+                            }
+                        }, _set :{
+                            cloud_url : $cloudUrl,
+                            cloud_user : $cloudUser
+                        }) {
+                            returning {
+                                id
+                            }
+                        }
+                    }
+                `,
+                variables : {
+                    cloudUrl : `https://${cloudUser}.cloud-computer.dev`,
+                    cloudUser
+                }
+            });
+
+            notification.success({
+                message: 'Nice! its available',
+                description: 'Time to build your server. Be patient :). Let me just redirect you',
+            });
+            setTimeout(()=>{
+                Router.push({
+                    pathname : '/stream',
+                    query : {
+                        cloudUser
+                    }
+                })
+            }, 500);
+        } catch(e) {
+            notification.error({
+                message: 'Something went wrong',
+                description: 'I cant seem to process this request',
+            });
+        }
+    };
+    const handleCancel = () => {
+        setVisible(false);
+    };
+
     return (
             <Row style={styles.container}>
+                <Modal
+                    title="Cloud computer"
+                    visible={visible}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                >
+                    <p>Please enter the name of you cloud computer:</p>
+                    <p><Input placeholder="jacksonwizard" value={cloudUser} onChange={(cloudUser)=> setCloudUser(cloudUser.currentTarget.value)}/></p>
+                </Modal>
+
                 <Col xs={24} style={styles.title}>
                     <h1>CHOOSE PROVIDER</h1>
                 </Col>
@@ -39,9 +132,7 @@ const Index = () => {
                         style={styles.image}
                         src="https://avatars3.githubusercontent.com/u/49678748?s=400&amp;u=23aa86cbd4f8d9a5b2c2a8cc744c4d364903a772"
                         alt="Cloud Computer"
-                        onClick={()=>{
-                            Router.push('/stream')
-                        }}
+                        onClick={()=>setVisible(true)}
                     />
                 </Col>
                 <Col xs={12} style={styles.gcpImageContainer}>
@@ -59,5 +150,6 @@ const Index = () => {
 
 /** add HOC's need for the component **/
 export default compose(
-    withProtectRoute
+    withProtectRoute,
+    withApollo
 )(Index);

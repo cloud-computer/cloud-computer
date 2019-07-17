@@ -35,6 +35,7 @@ app.get('/provision', async (req, res) => {
     const userId = req.query.userId;
 
     try {
+        const userInfo = await client.query('SELECT FROM public.user where id=$1', [userId]);
         const foundBuild = await client.query('SELECT FROM public.build where user_id=$1', [userId]);
 
         /** Check if there is an existing build **/
@@ -54,7 +55,8 @@ app.get('/provision', async (req, res) => {
         /** Queue the job **/
         publisher.publish('build:provision',JSON.stringify({
             userId,
-            row
+            row,
+            cloudUrl : userInfo.rows[0].cloud_url
         }));
 
         /** Return the build for reference **/

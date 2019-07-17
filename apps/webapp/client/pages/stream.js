@@ -1,13 +1,18 @@
 import jwt_decode from 'jwt-decode';
+import {Button} from "antd";
+import gql from "graphql-tag";
 import {compose, Subscription, withApollo} from 'react-apollo';
 import {useEffect, useState} from 'react';
 import {AUTH_TOKEN, HASURA_CLAIM, HASURA_USER_ID} from '../constants';
 import {withProtectRoute} from '../lib/with-protect-route';
-import gql from "graphql-tag";
 import {withStreamClient} from "../lib/with-stream-client";
-import {Button} from "antd";
+import {withRouter} from "next/router";
+import AnsiUp from 'ansi_up';
 
-const Stream = ({client, streamAPI}) => {
+const ansi_up = new AnsiUp();
+
+const Stream = ({client, streamAPI, router}) => {
+
     const [provisioning, setProvisioning] = useState(false);
     const [build, setBuild] = useState(null);
     /**
@@ -69,7 +74,7 @@ const Stream = ({client, streamAPI}) => {
                     </div>
                 }
                 const logs = data.log.map(({log}, index) => {
-                    return <p key={index} style={{'white-space': 'pre', paddingLeft: '10px'}}>{log}</p>
+                    return <p><div dangerouslySetInnerHTML={{__html: ansi_up.ansi_to_html(log)}}></div></p>
                 });
 
                 return <div>
@@ -92,7 +97,7 @@ const Stream = ({client, streamAPI}) => {
                                          }
                                     `}>
                             {({data, loading}) => {
-                                if (data) {
+                                if (data && data.build[0]) {
                                     const buildCode = data.build[0].code;
                                     if (+buildCode == 0) {
                                         return <Button
@@ -100,7 +105,7 @@ const Stream = ({client, streamAPI}) => {
                                             type="primary">Go to cloud computer</Button>
                                     }
                                 }
-                                return <div></div>
+                                return <div>Building...</div>
                             }}
                         </Subscription>
                     </div>
@@ -130,5 +135,6 @@ const Stream = ({client, streamAPI}) => {
 export default compose(
     withProtectRoute,
     withApollo,
-    withStreamClient
+    withStreamClient,
+    withRouter
 )(Stream);
