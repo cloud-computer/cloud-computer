@@ -5,7 +5,7 @@ variable "cloud_provider_credentials_path" {
 
 variable "machine_region" {
   description = "The zone to create the machine in."
-  default = "us-west2"
+  default = "australia-southeast1"
 }
 
 variable "machine_type" {
@@ -27,6 +27,14 @@ variable "CLOUD_COMPUTER_DNS_TOKEN" {
 
 variable "CLOUD_COMPUTER_DNS_ZONE" {
   description = "The dns account zone to update."
+}
+
+variable "CLOUD_COMPUTER_GIT_BRANCH" {
+  description = "The current git branch."
+}
+
+variable "CLOUD_COMPUTER_GIT_URL" {
+  description = "The current git url."
 }
 
 variable "CLOUD_COMPUTER_HOST_ID" {

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
+    "ansi_up": "^4.0.3",
     "antd": "^3.19.4",
     "apollo-boost": "^0.4.2",
     "apollo-client": "^2.6.0",

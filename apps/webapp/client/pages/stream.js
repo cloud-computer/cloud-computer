@@ -1,23 +1,29 @@
 import jwt_decode from 'jwt-decode';
+import {Button} from "antd";
+import gql from "graphql-tag";
 import {compose, Subscription, withApollo} from 'react-apollo';
 import {useEffect, useState} from 'react';
 import {AUTH_TOKEN, HASURA_CLAIM, HASURA_USER_ID} from '../constants';
 import {withProtectRoute} from '../lib/with-protect-route';
-import gql from "graphql-tag";
 import {withStreamClient} from "../lib/with-stream-client";
-import {Button} from "antd";
+import {withRouter} from "next/router";
+import AnsiUp from 'ansi_up';
+
+const ansi_up = new AnsiUp();
 
 const Stream = ({client, streamAPI}) => {
+
+    const token = localStorage[AUTH_TOKEN];
+    const userId = jwt_decode(token)[HASURA_CLAIM][HASURA_USER_ID];
     const [provisioning, setProvisioning] = useState(false);
     const [build, setBuild] = useState(null);
+
     /**
      * 1. Check if there is an existing build
      * 2. If none then provision the box
      * 3. If existing just redirect to the new box but check the build if it is successful
      */
     useEffect(() => {
-        const token = localStorage[AUTH_TOKEN];
-        const userId = jwt_decode(token)[HASURA_CLAIM][HASURA_USER_ID];
         client.query({
             query: gql`
                 query GetLatestBuild($id : Int){
@@ -50,6 +56,31 @@ const Stream = ({client, streamAPI}) => {
         });
     }, []);
 
+    const redirect = () => {
+        client.query({
+            query: gql`
+                query getCloudUrl($userId : bigint){
+                    user(where :{
+                        id : {
+                            _eq :$userId
+                        }
+                    }) {
+                        cloud_url
+                    }
+                }
+
+            `,
+            variables: {
+                userId: userId
+            }
+        })
+        .then(({data: {user}}) => {
+            setTimeout(() => {
+                window.location = user[0].cloud_url;
+            }, 2000);
+        });
+    };
+
     if (provisioning) {
         return <Subscription
             variables={{
@@ -69,7 +100,10 @@ const Stream = ({client, streamAPI}) => {
                     </div>
                 }
                 const logs = data.log.map(({log}, index) => {
-                    return <p key={index} style={{'white-space': 'pre', paddingLeft: '10px'}}>{log}</p>
+                    return <p key={`log-${index}`} style={{padding: '0 15px'}}>
+                        <div styles={{'white-space': 'pre-wrap'}}
+                             dangerouslySetInnerHTML={{__html: ansi_up.ansi_to_html(log).replace(/\n/g, "<br />")}}></div>
+                    </p>
                 });
 
                 return <div>
@@ -91,21 +125,22 @@ const Stream = ({client, streamAPI}) => {
                                               }
                                          }
                                     `}>
-                            {({data, loading}) => {
-                                if (data) {
+                            {({data}) => {
+
+                                if (data && data.build[0]) {
                                     const buildCode = data.build[0].code;
                                     if (+buildCode == 0) {
-                                        return <Button
-                                            onClick={() => window.location = 'https://gideon.cloudcomputer.dev'}
-                                            type="primary">Go to cloud computer</Button>
+                                        redirect();
+                                        return <div>Redirecting...</div>
                                     }
                                 }
-                                return <div></div>
+
+                                return <div>Building...</div>
                             }}
                         </Subscription>
                     </div>
                     <div style={{
-                        'overflow-x': 'scroll',
+                        overflowX: 'scroll',
                         margin: '30px',
                         background: '#2b2b2b',
                         paddingTop: '20px',
@@ -130,5 +165,6 @@ const Stream = ({client, streamAPI}) => {
 export default compose(
     withProtectRoute,
     withApollo,
-    withStreamClient
+    withStreamClient,
+    withRouter
 )(Stream);

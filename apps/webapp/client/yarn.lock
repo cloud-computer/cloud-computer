@@ -1777,6 +1777,10 @@ ansi-styles@^3.2.0, ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
+ansi_up@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/ansi_up/-/ansi_up-4.0.3.tgz#7cc6683304c71f4dcd83725b7e8d313089e369a7"
+
 antd@^3.19.4:
   version "3.19.4"
   resolved "https://registry.yarnpkg.com/antd/-/antd-3.19.4.tgz#43e6285459b359e1bf48a649b109b7083ab21f18"
