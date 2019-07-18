@@ -56,7 +56,7 @@ app.get('/provision', async (req, res) => {
         publisher.publish('build:provision',JSON.stringify({
             userId,
             row,
-            cloudUrl : userInfo.rows[0].cloud_url
+            cloudUser : userInfo.rows[0].cloud_user
         }));
 
         /** Return the build for reference **/

@@ -43,10 +43,10 @@ const saveLogs = (fn) => {
 /** In memory queue for jobs **/
 const jobs = [];
 
-const runJob = (userId, row, cloudUrl) => {
-    return (cb) => {
-        const command = '/test-scripts/test.sh';
-        const child = spawn('bash', [__dirname + command]);
+const runJob = (userId, row, cloudUser) => {
+    return () => {
+        const command = '/scripts/run.sh';
+        const child = spawn('bash', [__dirname + command, cloudUser]);
 
         child.stdout.on('data', async (data) => {
             console.log(data.toString());
@@ -101,8 +101,8 @@ const queueJob = (userId, row) => {
 subscriber.on('message', function(channel, message) {
     console.log("Message '" + message + "' on channel '" + channel + "' arrived!");
     if(channel === 'build:provision') {
-        const {userId,row,cloudUrl} = JSON.parse(message);
-        queueJob(userId,row,cloudUrl);
+        const {userId,row,cloudUser} = JSON.parse(message);
+        queueJob(userId,row,cloudUser);
     }
 });
 
