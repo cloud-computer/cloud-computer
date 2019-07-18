@@ -1,5 +1,7 @@
 FROM node:10.16.0-alpine
 
+RUN npm config set unsafe-perm true
+
 ARG REACT_APP
 ENV REACT_APP=$REACT_APP
 
