@@ -35,14 +35,14 @@ app.get('/provision', async (req, res) => {
     const userId = req.query.userId;
 
     try {
-        const userInfo = await client.query('SELECT FROM public.user where id=$1', [userId]);
-        const foundBuild = await client.query('SELECT FROM public.build where user_id=$1', [userId]);
+        const userInfo = await client.query('SELECT * FROM public.user where id=$1', [userId]);
+        const foundBuild = await client.query('SELECT * FROM public.build where user_id=$1', [userId]);
 
         /** Check if there is an existing build **/
         if (foundBuild.rows.length) {
             return res.send({
                 status: 'Have already provisioned',
-                redirect: 'https://gideonairex.cloudcomputer.dev'
+                redirect: userInfo.rows[0].cloud_url
             })
         }
 
