@@ -92,8 +92,8 @@ const queueRunner = () => {
 };
 
 /** Queue job then try to run job **/
-const queueJob = (userId, row) => {
-    jobs.push(runJob(userId, row));
+const queueJob = (userId, row, cloudUser) => {
+    jobs.push(runJob(userId, row, cloudUser));
     queueRunner();
 };
 
