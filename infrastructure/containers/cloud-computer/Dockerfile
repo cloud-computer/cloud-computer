@@ -11,6 +11,18 @@ ENV SHELL /bin/zsh
 ENV TERM xterm-256color
 ENV TZ Australia/Sydney
 
+# Create the docker group with the host os group id
+ENV DOCKER_GROUP 999
+RUN groupadd --gid $DOCKER_GROUP docker
+
+# Create a non-root user for safe operation
+RUN useradd \
+  --create-home \
+  --groups $DOCKER_GROUP,sudo \
+  --password $USER \
+  --shell /bin/zsh \
+  $USER
+
 # Restore minimized distribution content e.g. man pages
 RUN yes | unminimize
 
@@ -40,6 +52,7 @@ RUN apt-get update -qq && \
   dnsutils \
   docker.io \
   figlet \
+  fzf \
   g++ \
   gcc \
   git \
@@ -81,6 +94,9 @@ RUN apt-get update -qq && \
   xvfb \
   zsh
 
+# Enable password-less sudo for the sudo group
+RUN echo "%sudo ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
+
 # Install antigen
 RUN curl -fsSL git.io/antigen > /usr/local/bin/antigen.zsh
 
@@ -111,10 +127,6 @@ RUN wget -qnv -O dive.deb https://github.com/wagoodman/dive/releases/download/v0
 # Install docker-compose
 RUN curl -fsSL "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
   chmod +x /usr/local/bin/docker-compose
-
-# Install fzf
-RUN git clone --depth 1 https://github.com/junegunn/fzf.git /opt/fzf && \
-  /opt/fzf/install --bin
 
 # Install git dashboard
 RUN curl -fsSL https://github.com/jesseduffield/lazygit/releases/download/v0.7.2/lazygit_0.7.2_Linux_x86_64.tar.gz | \
@@ -167,12 +179,11 @@ RUN wget --quiet https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.
   mv terraform /usr/bin && \
   rm terraform_0.11.3_linux_amd64.zip
 
-# Install tmux plugin manager
-RUN git clone https://github.com/tmux-plugins/tpm /opt/tpm --depth 1 && \
-  ln -s /opt/tpm/tpm /usr/local/bin
-
 # Install tmuxinator
 RUN gem install tmuxinator
+
+# Install tmux plugin manager
+RUN git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 
 # Install yarn
 RUN curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
@@ -185,32 +196,11 @@ RUN yarn global add \
   rebase-editor \
   tldr
 
-# Enable password-less sudo for the sudo group
-RUN echo "%sudo ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
-
-# Create the docker group with the host os group id
-ENV DOCKER_GROUP 999
-RUN groupmod --gid $DOCKER_GROUP docker
-
-# Create a non-root user for safe operation
-RUN useradd \
-  --create-home \
-  --groups $DOCKER_GROUP,sudo \
-  --password $USER \
-  --shell /bin/zsh \
-  $USER
-
 # Clone dotfiles
 RUN vcsh clone https://github.com/cloud-computer/dotfiles
 
 # Cache tmux plugins
-RUN /opt/tpm/bin/install_plugins
-
-# Take ownership of user's home and applications directory
-RUN chown -R $USER:$USER $HOME /opt
-
-# Cache zsh plugins
-RUN gosu $USER zsh -c "source $HOME/.zshrc"
+RUN zsh -c $HOME/.tmux/plugins/tpm/bin/install_plugins
 
 # Ensure x server socket directory exists, owned by root, and world accessible
 RUN mkdir -p /tmp/.X11-unix && \
@@ -223,12 +213,18 @@ ENV CONTAINER_BUILD_DATE $CONTAINER_BUILD_DATE
 ENV CONTAINER_GIT_SHA $CONTAINER_GIT_SHA
 ENV CONTAINER_IMAGE_NAME cloud-computer/cloud-computer
 
+# Add application launchers
+ADD launcher-broadway.sh launcher-vnc.sh make-fullscreen.sh /cloud-computer/
+
+# Take ownership of user's home and applications directory
+RUN chown -R $USER:$USER $HOME /opt
+
+# Cache zsh plugins
+RUN $USER zsh -c "source $HOME/.zshrc"
+
 # Become non-root user
 USER $USER
 WORKDIR $HOME
-
-# Add application launchers
-ADD launcher-broadway.sh launcher-vnc.sh make-fullscreen.sh /cloud-computer/
 
 # Run indefinitely
 CMD sleep infinity
