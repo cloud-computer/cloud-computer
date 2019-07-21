@@ -52,7 +52,6 @@ RUN apt-get update -qq && \
   dnsutils \
   docker.io \
   figlet \
-  fzf \
   g++ \
   gcc \
   git \
@@ -127,6 +126,10 @@ RUN wget -qnv -O dive.deb https://github.com/wagoodman/dive/releases/download/v0
 # Install docker-compose
 RUN curl -fsSL "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
   chmod +x /usr/local/bin/docker-compose
+
+# Install fzf
+RUN git clone --depth 1 https://github.com/junegunn/fzf.git /opt/fzf && \
+  /opt/fzf/install --bin
 
 # Install git dashboard
 RUN curl -fsSL https://github.com/jesseduffield/lazygit/releases/download/v0.7.2/lazygit_0.7.2_Linux_x86_64.tar.gz | \
