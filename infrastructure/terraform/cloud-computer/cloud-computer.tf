@@ -111,11 +111,11 @@ resource "google_compute_instance" "cloud-computer" {
       "export CLOUD_COMPUTER_REPOSITORY=${var.CLOUD_COMPUTER_REPOSITORY}",
       "export CLOUD_COMPUTER_REPOSITORY_VOLUME=${var.CLOUD_COMPUTER_REPOSITORY_VOLUME}",
       "export CLOUD_COMPUTER_YARN_JAEGER_TRACE=${var.CLOUD_COMPUTER_YARN_JAEGER_TRACE}",
-      "export GIT_AUTHOR_EMAIL=${var.GIT_AUTHOR_EMAIL}",
-      "export GIT_AUTHOR_NAME=${var.GIT_AUTHOR_NAME}",
+      "export GIT_COMMITTER_EMAIL=${var.GIT_COMMITTER_EMAIL}",
+      "export GIT_COMMITTER_NAME=${var.GIT_COMMITTER_NAME}",
 
       "# Alias docker run with cloud computer environment",
-      "alias docker_run=\"docker run --env CLOUD_COMPUTER_DNS_EMAIL --env CLOUD_COMPUTER_DNS_TOKEN --env CLOUD_COMPUTER_DNS_ZONE --env CLOUD_COMPUTER_HOST_ID --env CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS --env CLOUD_COMPUTER_YARN_JAEGER_TRACE --env DOCKER_HOST=localhost --env GIT_AUTHOR_EMAIL --env GIT_AUTHOR_NAME --interactive --rm --tty --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_REPOSITORY\"",
+      "alias docker_run=\"docker run --env CLOUD_COMPUTER_DNS_EMAIL --env CLOUD_COMPUTER_DNS_TOKEN --env CLOUD_COMPUTER_DNS_ZONE --env CLOUD_COMPUTER_HOST_ID --env CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS --env CLOUD_COMPUTER_YARN_JAEGER_TRACE --env DOCKER_HOST=localhost --env GIT_COMMITTER_EMAIL --env GIT_COMMITTER_NAME --interactive --rm --tty --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_REPOSITORY\"",
       "alias docker_run_root=\"docker_run --user root $CLOUD_COMPUTER_IMAGE\"",
       "alias docker_run_non-root=\"docker_run $CLOUD_COMPUTER_IMAGE\"",
 
