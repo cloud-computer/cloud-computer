@@ -66,12 +66,12 @@ variable "CLOUD_COMPUTER_YARN_JAEGER_TRACE" {
   default = ""
 }
 
-variable "GIT_AUTHOR_EMAIL" {
+variable "GIT_COMMITTER_EMAIL" {
   description = "The current git user email."
   default = ""
 }
 
-variable "GIT_AUTHOR_NAME" {
+variable "GIT_COMMITTER_NAME" {
   description = "The current git user name."
   default = ""
 }

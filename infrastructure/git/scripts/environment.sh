@@ -7,7 +7,7 @@ if [ "${CLOUD_COMPUTER_GIT_URL#*'git@github.com'}" != "$CLOUD_COMPUTER_GIT_URL" 
   CLOUD_COMPUTER_GIT_URL=$(echo $CLOUD_COMPUTER_GIT_URL | sed 's;git@github.com:;https://github.com/;')
 fi
 
-echo export GIT_AUTHOR_EMAIL=${GIT_AUTHOR_EMAIL-$GIT_EMAIL}
-echo export GIT_AUTHOR_NAME=${GIT_AUTHOR_NAME-$GIT_NAME}
+echo export GIT_COMMITTER_EMAIL=${GIT_COMMITTER_EMAIL-$GIT_EMAIL}
+echo export GIT_COMMITTER_NAME=${GIT_COMMITTER_NAME-$GIT_NAME}
 echo export CLOUD_COMPUTER_GIT_BRANCH=$(git branch --contains HEAD | cut -c 3-)
 echo export CLOUD_COMPUTER_GIT_URL=$CLOUD_COMPUTER_GIT_URL
