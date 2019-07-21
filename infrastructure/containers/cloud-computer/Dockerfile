@@ -204,7 +204,7 @@ RUN mkdir -p /tmp/.X11-unix && \
    chmod 1777 /tmp/.X11-unix
 
 # Add application launchers
-ADD launcher-broadway.sh launcher-vnc.sh make-fullscreen.sh /cloud-computer/
+ADD launcher-broadway.sh launcher-vnc.sh fullscreen-activewindow.sh fullscreen-always.sh /cloud-computer/
 
 # Take ownership of user's home and applications directory
 RUN chown -R $USER:$USER $HOME /opt
