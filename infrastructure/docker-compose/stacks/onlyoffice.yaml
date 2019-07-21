@@ -1,0 +1,36 @@
+version: '3.5'
+
+services:
+
+  word:
+    image: cloudnativecomputer/onlyoffice-word:latest
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:word.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8080
+    volumes:
+      - CLOUD_COMPUTER_HOME:$CLOUD_COMPUTER_HOME
+
+  excel:
+    image: cloudnativecomputer/onlyoffice-excel:latest
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:excel.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8080
+    volumes:
+      - CLOUD_COMPUTER_HOME:$CLOUD_COMPUTER_HOME
+
+  powerpoint:
+    image: cloudnativecomputer/onlyoffice-powerpoint:latest
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:powerpoint.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8080
+    volumes:
+      - CLOUD_COMPUTER_HOME:$CLOUD_COMPUTER_HOME
+
+volumes:
+  CLOUD_COMPUTER_HOME:

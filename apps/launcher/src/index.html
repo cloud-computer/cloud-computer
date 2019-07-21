@@ -6,8 +6,12 @@
   <title>Cloud Computer App Launcher</title>
   <script type="text/javascript">
     function openApp(app) {
-      var subdomain = document.URL.split('https://')[ 1 ];
-      window.open("https://" + app + "." + subdomain, '_blank');
+      var subdomain = document.URL.split('https://')[1];
+      if (app === 'marketplace') {
+        window.location = "https://" + app + "." + subdomain;
+      } else {
+        window.open("https://" + app + "." + subdomain, Date.now(), 'scrollbars=1,menubar=0,resizable=1');
+      }
     }
   </script>
 </head>
@@ -16,8 +20,28 @@
 
   <div class="grid-container">
     <div class="app-container">
-      <a href="/" onclick="openApp('blender')">
-        <img src="icon-images/icon-blender.png">
+      <a href="/" onclick="openApp('chrome')">
+        <img src="icon-images/icon-chrome.png">
+      </a>
+    </div>
+    <div class="app-container">
+      <a href="/" onclick="openApp('word')">
+        <img src="icon-images/icon-word.png">
+      </a>
+    </div>
+    <div class="app-container">
+      <a href="/" onclick="openApp('excel')">
+        <img src="icon-images/icon-excel.png">
+      </a>
+    </div>
+    <div class="app-container">
+      <a href="/" onclick="openApp('powerpoint')">
+        <img src="icon-images/icon-powerpoint.png">
+      </a>
+    </div>
+    <div class="app-container">
+      <a href="/" onclick="openApp('photoshop')">
+        <img src="icon-images/icon-photoshop3.png">
       </a>
     </div>
     <div class="app-container">
@@ -31,48 +55,8 @@
       </a>
     </div>
     <div class="app-container">
-      <a href="/" onclick="openApp('notion')">
-        <img src="icon-images/icon-notion.png">
-      </a>
-    </div>
-    <div class="app-container">
-      <a href="/" onclick="openApp('kicad')">
-        <img src="icon-images/icon-kicad.png">
-      </a>
-    </div>
-    <div class="app-container">
-      <a href="/" onclick="openApp('gnumeric')">
-        <img src="icon-images/icon-gnumeric.png">
-      </a>
-    </div>
-    <div class="app-container">
-      <a href="/" onclick="openApp('krita')">
-        <img src="icon-images/icon-krita.png">
-      </a>
-    </div>
-    <div class="app-container">
-      <a href="/" onclick="openApp('darktable')">
-        <img src="icon-images/icon-darktable.png">
-      </a>
-    </div>
-    <div class="app-container">
-      <a href="/" onclick="openApp('postman')">
-        <img src="icon-images/icon-postman.png">
-      </a>
-    </div>
-    <div class="app-container">
-      <a href="/" onclick="openApp('terminal')">
-        <img src="icon-images/icon-terminal.png">
-      </a>
-    </div>
-    <div class="app-container">
-      <a href="/" onclick="openApp('desktop')">
-        <img src="icon-images/icon-linux.png">
-      </a>
-    </div>
-    <div class="app-container">
-      <a href="/" onclick="openApp('grafana')">
-        <img src="icon-images/icon-grafana.png">
+      <a href="/" onclick="openApp('marketplace')">
+        <img src="icon-images/icon-plus.png">
       </a>
     </div>
   </div>

@@ -7,6 +7,7 @@
   "scripts": {
     "build": "yarn build:cloud-computer; yarn build:children",
     "build:blender": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/blender $PWD/blender",
+    "build:chrome": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/chrome $PWD/chrome",
     "build:children": "cat package.json | grep build: | grep -v cloud-computer\\\" | grep -v children | cut -f2 -d\\\" | xargs -n 1 -P 8 yarn",
     "build:cloud-computer": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --build-arg CONTAINER_BUILD_DATE=$(date +%s) --build-arg CONTAINER_GIT_SHA=$(git rev-parse HEAD | cut -b 1-7) --tag $CLOUD_COMPUTER_IMAGE $PWD/cloud-computer",
     "build:darktable": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/darktable $PWD/darktable",
@@ -14,6 +15,9 @@
     "build:krita": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/krita $PWD/krita",
     "build:kicad": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/kicad $PWD/kicad",
     "build:notion": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/notion $PWD/notion",
+    "build:onlyoffice-word": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/onlyoffice-word $PWD/onlyoffice-word",
+    "build:onlyoffice-excel": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/onlyoffice-excel $PWD/onlyoffice-excel",
+    "build:onlyoffice-powerpoint": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/onlyoffice-powerpoint $PWD/onlyoffice-powerpoint",
     "build:postman": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/postman $PWD/postman",
     "build:skype": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/skype $PWD/skype",
     "build:slack": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/slack $PWD/slack",
