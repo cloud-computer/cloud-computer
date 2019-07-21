@@ -196,22 +196,9 @@ RUN yarn global add \
   rebase-editor \
   tldr
 
-# Clone dotfiles
-RUN vcsh clone https://github.com/cloud-computer/dotfiles
-
-# Cache tmux plugins
-RUN zsh -c $HOME/.tmux/plugins/tpm/bin/install_plugins
-
 # Ensure x server socket directory exists, owned by root, and world accessible
 RUN mkdir -p /tmp/.X11-unix && \
    chmod 1777 /tmp/.X11-unix
-
-# Record container build metadata
-ARG CONTAINER_BUILD_DATE
-ARG CONTAINER_GIT_SHA
-ENV CONTAINER_BUILD_DATE $CONTAINER_BUILD_DATE
-ENV CONTAINER_GIT_SHA $CONTAINER_GIT_SHA
-ENV CONTAINER_IMAGE_NAME cloud-computer/cloud-computer
 
 # Add application launchers
 ADD launcher-broadway.sh launcher-vnc.sh make-fullscreen.sh /cloud-computer/
@@ -219,12 +206,25 @@ ADD launcher-broadway.sh launcher-vnc.sh make-fullscreen.sh /cloud-computer/
 # Take ownership of user's home and applications directory
 RUN chown -R $USER:$USER $HOME /opt
 
-# Cache zsh plugins
-RUN $USER zsh -c "source $HOME/.zshrc"
-
 # Become non-root user
 USER $USER
 WORKDIR $HOME
+
+# Clone dotfiles
+RUN vcsh clone https://github.com/cloud-computer/dotfiles
+
+# Cache tmux plugins
+RUN zsh -c $HOME/.tmux/plugins/tpm/bin/install_plugins
+
+# Cache zsh plugins
+RUN zsh -c "source $HOME/.zshrc"
+
+# Record container build metadata
+ARG CONTAINER_BUILD_DATE
+ARG CONTAINER_GIT_SHA
+ENV CONTAINER_BUILD_DATE $CONTAINER_BUILD_DATE
+ENV CONTAINER_GIT_SHA $CONTAINER_GIT_SHA
+ENV CONTAINER_IMAGE_NAME cloud-computer/cloud-computer
 
 # Run indefinitely
 CMD sleep infinity
