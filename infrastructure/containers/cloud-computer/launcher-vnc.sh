@@ -6,7 +6,7 @@ PROGRAM_NAME=${2-$1}
 DISPLAY_XVFB=:$( (cd /tmp/.X11-unix && (for x in X*; do echo "${x#X}"; done) && echo 1) | awk '{s+=$1} END {print s}')
 
 # Start an xvfb server
-Xvfb -ac -nocursor -screen $DISPLAY_XVFB 1366x768x24 $DISPLAY_XVFB &
+Xvfb -ac -nocursor -screen $DISPLAY_XVFB 1366x742x24 $DISPLAY_XVFB &
 
 # Wait until xvfb server is running before proceeding
 until DISPLAY=$DISPLAY_XVFB xdpyinfo | grep -m 1 available >/dev/null; do sleep 1; done

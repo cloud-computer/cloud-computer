@@ -10,7 +10,7 @@
       if (app === 'marketplace') {
         window.location = "https://" + app + "." + subdomain;
       } else {
-        window.open("https://" + app + "." + subdomain, Date.now(), 'scrollbars=1,menubar=0,resizable=1');
+        window.open("https://" + app + "." + subdomain, Date.now(), `height=${screen.height},width=${screen.width},scrollbars=1,menubar=0,resizable=1`);
       }
     }
   </script>
