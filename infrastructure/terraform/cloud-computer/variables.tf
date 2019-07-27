@@ -5,12 +5,12 @@ variable "cloud_provider_credentials_path" {
 
 variable "machine_region" {
   description = "The zone to create the machine in."
-  default = "australia-southeast1"
+  default = "europe-west3"
 }
 
 variable "machine_type" {
   description = "The machine type."
-  default = "custom-6-20480"
+  default = "custom-4-12288"
 }
 
 variable "CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT" {
