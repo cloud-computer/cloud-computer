@@ -16,8 +16,8 @@ RUN apt-get update -qq && \
   pkg-config
 
 # Install DriveFS
-RUN git clone https://github.com/thejinx0r/DriveFS.git && \
-  cd DriveFS && \
+RUN git clone https://github.com/thejinx0r/DriveFS.git /opt/drivefs && \
+  cd /opt/drivefs && \
   git submodule init && \
   git submodule update && \
   mkdir build && \
@@ -25,5 +25,5 @@ RUN git clone https://github.com/thejinx0r/DriveFS.git && \
   DUSE_FUSE3=1 cmake .. && \
   make -j 8
 
-# Start the application in vnc
-CMD ./DriveFS
+# Start the application
+CMD /opt/drivefs/build/DriveFS
