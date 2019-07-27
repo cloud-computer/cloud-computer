@@ -12,7 +12,8 @@ RUN apt-get update -qq && \
   libfuse3-dev \
   libjemalloc-dev \
   libmongoc-dev \
-  mongodb
+  mongodb \
+  pkg-config
 
 # Install DriveFS
 RUN git clone https://github.com/thejinx0r/DriveFS.git && \
