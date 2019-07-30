@@ -26,7 +26,7 @@ services:
   client:
     build:
       context: ./client
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       args:
         - REACT_APP=${REACT_APP}
         - REACT_APP_HOST=${REACT_APP_HOST}
@@ -48,7 +48,7 @@ services:
   auth:
     build:
       context: ./auth-service
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -75,7 +75,7 @@ services:
   stream:
     build:
       context: ./stream-service
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -95,7 +95,7 @@ services:
   mail:
     build:
       context: ./mail-service
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     environment:
       MAIL_SERVICE_DOMAIN: ${MAIL_SERVICE_DOMAIN}
       MAIL_SERVICE_APIKEY: ${MAIL_SERVICE_APIKEY}
