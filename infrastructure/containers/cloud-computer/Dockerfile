@@ -11,6 +11,18 @@ ENV SHELL /bin/zsh
 ENV TERM xterm-256color
 ENV TZ Australia/Sydney
 
+# Create the docker group with the host os group id
+ENV DOCKER_GROUP 999
+RUN groupadd --gid $DOCKER_GROUP docker
+
+# Create a non-root user for safe operation
+RUN useradd \
+  --create-home \
+  --groups $DOCKER_GROUP,sudo \
+  --password $USER \
+  --shell /bin/zsh \
+  $USER
+
 # Restore minimized distribution content e.g. man pages
 RUN yes | unminimize
 
@@ -80,6 +92,9 @@ RUN apt-get update -qq && \
   xsel \
   xvfb \
   zsh
+
+# Enable password-less sudo for the sudo group
+RUN echo "%sudo ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
 
 # Install antigen
 RUN curl -fsSL git.io/antigen > /usr/local/bin/antigen.zsh
@@ -167,12 +182,11 @@ RUN wget --quiet https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.
   mv terraform /usr/bin && \
   rm terraform_0.11.3_linux_amd64.zip
 
-# Install tmux plugin manager
-RUN git clone https://github.com/tmux-plugins/tpm /opt/tpm --depth 1 && \
-  ln -s /opt/tpm/tpm /usr/local/bin
-
 # Install tmuxinator
 RUN gem install tmuxinator
+
+# Install tmux plugin manager
+RUN git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 
 # Install yarn
 RUN curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
@@ -185,36 +199,28 @@ RUN yarn global add \
   rebase-editor \
   tldr
 
-# Enable password-less sudo for the sudo group
-RUN echo "%sudo ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
+# Ensure x server socket directory exists, owned by root, and world accessible
+RUN mkdir -p /tmp/.X11-unix && \
+   chmod 1777 /tmp/.X11-unix
 
-# Create the docker group with the host os group id
-ENV DOCKER_GROUP 999
-RUN groupmod --gid $DOCKER_GROUP docker
+# Add application launchers
+ADD launcher-broadway.sh launcher-vnc.sh fullscreen-activewindow.sh fullscreen-always.sh /cloud-computer/
 
-# Create a non-root user for safe operation
-RUN useradd \
-  --create-home \
-  --groups $DOCKER_GROUP,sudo \
-  --password $USER \
-  --shell /bin/zsh \
-  $USER
+# Take ownership of user's home and applications directory
+RUN chown -R $USER:$USER $HOME /opt
+
+# Become non-root user
+USER $USER
+WORKDIR $HOME
 
 # Clone dotfiles
 RUN vcsh clone https://github.com/cloud-computer/dotfiles
 
 # Cache tmux plugins
-RUN /opt/tpm/bin/install_plugins
-
-# Take ownership of user's home and applications directory
-RUN chown -R $USER:$USER $HOME /opt
+RUN zsh -c $HOME/.tmux/plugins/tpm/bin/install_plugins
 
 # Cache zsh plugins
-RUN gosu $USER zsh -c "source $HOME/.zshrc"
-
-# Ensure x server socket directory exists, owned by root, and world accessible
-RUN mkdir -p /tmp/.X11-unix && \
-   chmod 1777 /tmp/.X11-unix
+RUN zsh -c "source $HOME/.zshrc"
 
 # Record container build metadata
 ARG CONTAINER_BUILD_DATE
@@ -222,13 +228,6 @@ ARG CONTAINER_GIT_SHA
 ENV CONTAINER_BUILD_DATE $CONTAINER_BUILD_DATE
 ENV CONTAINER_GIT_SHA $CONTAINER_GIT_SHA
 ENV CONTAINER_IMAGE_NAME cloud-computer/cloud-computer
-
-# Become non-root user
-USER $USER
-WORKDIR $HOME
-
-# Add application launchers
-ADD launcher-broadway.sh launcher-vnc.sh make-fullscreen.sh /cloud-computer/
 
 # Run indefinitely
 CMD sleep infinity

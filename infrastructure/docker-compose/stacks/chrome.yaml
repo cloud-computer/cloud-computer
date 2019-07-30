@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+
+  chrome:
+    image: cloudnativecomputer/chrome:latest
+    shm_size: 6gb
+    restart: always
+    security_opt:
+      - seccomp:$CLOUD_COMPUTER_REPOSITORY/infrastructure/containers/chrome/seccomp.json
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:chrome.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8080
+    volumes:
+      - CLOUD_COMPUTER_HOME:$CLOUD_COMPUTER_HOME
+
+volumes:
+  CLOUD_COMPUTER_HOME:

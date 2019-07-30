@@ -1,0 +1,10 @@
+{
+  "name": "@cloud-computer/launcher",
+  "version": "0.0.1",
+  "description": "Cloud Computer Launcher",
+  "main": "build",
+  "repository": "git@github.com:cloud-computer/cloud-computer.git",
+  "author": "Jackson Delahunt",
+  "license": "MIT",
+  "private": false
+}
