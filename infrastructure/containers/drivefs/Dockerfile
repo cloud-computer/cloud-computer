@@ -8,6 +8,7 @@ RUN apt-get update -qq && \
   git \
   fuse3 \
   libboost-all-dev \
+  libfuse-dev \
   libfuse3-3 \
   libfuse3-dev \
   libjemalloc-dev \
