@@ -16,7 +16,7 @@ services:
       - mail
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:hasura.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:dev.hasura.webapp.$CLOUD_COMPUTER_HOST_DNS
       - traefik.port=8080
 
   auth:
@@ -41,7 +41,7 @@ services:
       - ./auth-service/:/app
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:auth.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:dev.auth.webapp.$CLOUD_COMPUTER_HOST_DNS
       - traefik.port=8080
     depends_on:
       - postgres
@@ -61,7 +61,7 @@ services:
       - ./stream-service/:/app
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:stream.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:dev.stream.webapp.$CLOUD_COMPUTER_HOST_DNS
       - traefik.port=3000
     depends_on:
       - postgres
@@ -79,7 +79,7 @@ services:
       - /app/node_modules
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:mail.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:dev.mail.webapp.$CLOUD_COMPUTER_HOST_DNS
       - traefik.port=3000
     depends_on:
       - postgres
@@ -97,5 +97,5 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:postgres.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:dev.postgres.webapp.$CLOUD_COMPUTER_HOST_DNS
       - traefik.port=5432
