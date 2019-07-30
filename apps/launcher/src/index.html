@@ -6,11 +6,12 @@
   <title>Cloud Computer App Launcher</title>
   <script type="text/javascript">
     function openApp(app) {
-      var subdomain = document.URL.split('https://')[1];
+      const subdomain = document.URL.split('https://')[1];
+      const url = `https://${app}.${subdomain}`;
       if (app === 'marketplace') {
-        window.location = "https://" + app + "." + subdomain;
+        window.location = url;
       } else {
-        window.open("https://" + app + "." + subdomain, Date.now(), `height=${screen.height},width=${screen.width},scrollbars=1,menubar=0,resizable=1`);
+        window.open(url, Date.now(), `height=${screen.height},width=${screen.width},scrollbars=1,menubar=0,resizable=1`);
       }
     }
   </script>
