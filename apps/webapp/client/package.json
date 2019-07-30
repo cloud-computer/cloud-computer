@@ -1,7 +1,16 @@
 {
-  "name": "client",
-  "version": "0.1.0",
-  "private": true,
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ]
+  },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "ansi_up": "^4.0.3",
@@ -18,34 +27,25 @@
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.11",
     "logdown": "^3.2.8",
-    "next": "^8.1.0",
+    "next": "^9.0.2",
     "react": "^16.8.6",
     "react-apollo": "^2.5.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
     "subscriptions-transport-ws": "^0.9.16"
   },
-  "scripts": {
-    "start": "next start -p 9998",
-    "build": "next build",
-    "build:container": "docker build -t cloudnativecomputer/webapp-client:latest .",
-    "dev": "next -p 9998",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "name": "client",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "build-storybook": "build-storybook -s public",
+    "build:container": "docker build -t cloudnativecomputer/webapp-client:latest .",
+    "dev": "next -p 9998",
+    "start": "next start -p 9998",
+    "storybook": "start-storybook -p 9009 -s public"
+  },
+  "version": "0.1.0"
 }

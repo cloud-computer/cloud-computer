@@ -1,14 +1,22 @@
 {
-  "name": "mantra",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "docz:dev": "docz dev",
-    "docz:build": "docz build"
-  },
   "devDependencies": {
     "docz": "^1.2.0",
     "docz-theme-default": "^1.2.0"
-  }
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "name": "mantra",
+  "private": true,
+  "scripts": {
+    "docz:build": "docz build",
+    "docz:dev": "docz dev"
+  },
+  "version": "1.0.0",
+  "workspaces": [
+    "auth-service",
+    "client",
+    "mail-service",
+    "stream-service",
+    "worker-service"
+  ]
 }

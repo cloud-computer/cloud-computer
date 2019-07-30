@@ -1,20 +1,11 @@
 FROM node:10.16.0-alpine
+WORKDIR /app
 
 RUN npm config set unsafe-perm true
 
-### Create directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-
-### Copy package.json
 COPY package.json .
-RUN npm install
-RUN npm install -g nodemon
+RUN yarn
 
-### Copy all files
 COPY . .
 
-### Expose default port
-EXPOSE 3000
-
-CMD ["npm", "run", "start.dev"]
+CMD yarn dev

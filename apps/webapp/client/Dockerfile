@@ -1,4 +1,5 @@
 FROM node:10.16.0-alpine
+WORKDIR /app
 
 RUN npm config set unsafe-perm true
 
@@ -29,21 +30,12 @@ ENV GITHUB_CALLBACK=$GITHUB_CALLBACK
 ARG GITHUB_REDIRECT
 ENV GITHUB_REDIRECT=$GITHUB_REDIRECT
 
-# Setting working directory. All the path will be relative to WORKDIR
-WORKDIR /usr/src/app
+COPY package.json yarn.lock .
+RUN yarn
 
-# Installing dependencies
-COPY package*.json ./
-RUN npm install
-
-# Copying source files
 COPY . .
 
 # Building app
 # RUN npm run build
 
-# Expose
-EXPOSE 9998
-
-# Running the app
-CMD [ "npm", "run", "dev" ]
+CMD yarn dev

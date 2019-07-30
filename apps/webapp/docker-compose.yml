@@ -1,6 +1,7 @@
 version: '3'
+
 services:
-  # Hasura
+
   hasura:
     image: hasura/graphql-engine:v1.0.0-beta.2
     ports:
@@ -17,11 +18,12 @@ services:
     depends_on:
       - postgres
       - mail
-  # Auth service
+
   auth:
+    command: yarn dev
     build:
       context: ./auth-service
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -36,17 +38,18 @@ services:
       GITHUB_CALLBACK: ${GITHUB_CALLBACK}
       REACT_APP: ${REACT_APP}
     volumes:
-      - ./auth-service/:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./auth-service/:/app
+      - /app/node_modules
     ports:
       - "${AUTH_SERVICE_PORT}:3000"
     depends_on:
       - postgres
-  # Auth service
+
   stream:
+    command: yarn dev
     build:
       context: ./stream-service
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -54,23 +57,24 @@ services:
       POSTGRES_HOST: ${POSTGRES_HOST}
       REDIS_HOST: ${REDIS_HOST}
     volumes:
-    - ./stream-service/:/usr/src/app
-    - /usr/src/app/node_modules
+    - ./stream-service/:/app
+    - /app/node_modules
     ports:
     - "${STREAM_PORT}:3000"
     depends_on:
     - postgres
-  # Mail service
+
   mail:
+    command: yarn dev
     build:
       context: ./mail-service
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     environment:
       MAIL_SERVICE_DOMAIN: ${MAIL_SERVICE_DOMAIN}
       MAIL_SERVICE_APIKEY: ${MAIL_SERVICE_APIKEY}
     volumes:
-      - ./mail-service/:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./mail-service/:/app
+      - /app/node_modules
     ports:
       - "${MAIL_SERVICE_PORT}:3000"
     depends_on:
@@ -81,7 +85,6 @@ services:
     ports:
       - "${REDIS_PORT}:6379"
 
-  # Postgres
   postgres:
     image: postgres
     restart: always

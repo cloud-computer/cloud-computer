@@ -1,17 +1,8 @@
 {
-  "name": "worker-service",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "build": "babel lib -d dist",
-    "start": "nodemon --exec babel-node lib/index.js",
-    "build:container": "docker build -t cloudnativecomputer/webapp-stream:latest ."
-  },
   "dependencies": {
-    "redis": "^2.8.0",
     "dotenv": "^8.0.0",
-    "pg": "^7.11.0"
+    "pg": "^7.11.0",
+    "redis": "^2.8.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -20,5 +11,14 @@
     "@babel/plugin-transform-async-to-generator": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "nodemon": "^1.19.1"
-  }
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "name": "worker-service",
+  "scripts": {
+    "build": "babel lib -d dist",
+    "build:container": "docker build -t cloudnativecomputer/webapp-stream:latest .",
+    "start": "nodemon --exec babel-node lib/index.js"
+  },
+  "version": "1.0.0"
 }

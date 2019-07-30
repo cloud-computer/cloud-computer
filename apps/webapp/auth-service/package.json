@@ -16,6 +16,9 @@
   },
   "scripts": {
     "build:container": "docker build -t cloudnativecomputer/webapp-auth:latest .",
-    "start.dev": "nodemon"
+    "dev": "nodemon"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }

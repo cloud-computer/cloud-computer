@@ -49,6 +49,7 @@
   },
   "version": "0.0.1",
   "workspaces": [
+    "apps/*",
     "infrastructure/*"
   ]
 }
