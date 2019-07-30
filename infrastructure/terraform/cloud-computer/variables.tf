@@ -5,7 +5,7 @@ variable "cloud_provider_credentials_path" {
 
 variable "machine_region" {
   description = "The zone to create the machine in."
-  default = "europe-west3"
+  default = "australia-southeast1"
 }
 
 variable "machine_type" {
