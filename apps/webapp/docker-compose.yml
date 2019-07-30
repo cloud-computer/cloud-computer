@@ -4,8 +4,6 @@ services:
 
   hasura:
     image: hasura/graphql-engine:v1.0.0-beta.2
-    ports:
-    - "${HASURA_PORT}:8080"
     environment:
       HASURA_GRAPHQL_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/${POSTGRES_DB}
       HASURA_GRAPHQL_ENABLE_CONSOLE: ${HASURA_GRAPHQL_ENABLE_CONSOLE}
@@ -13,11 +11,13 @@ services:
       HASURA_GRAPHQL_CORS_DOMAIN: ${HASURA_GRAPHQL_CORS_DOMAIN}
       HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
       HASURA_GRAPHQL_JWT_SECRET: "{\"type\":\"HS256\",\"key\":\"${JSON_SECRET}\"}"
-    links:
-      - mail
     depends_on:
       - postgres
       - mail
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:hasura.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8080
 
   auth:
     command: yarn dev
@@ -39,9 +39,10 @@ services:
       REACT_APP: ${REACT_APP}
     volumes:
       - ./auth-service/:/app
-      - /app/node_modules
-    ports:
-      - "${AUTH_SERVICE_PORT}:3000"
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:auth.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8080
     depends_on:
       - postgres
 
@@ -57,12 +58,13 @@ services:
       POSTGRES_HOST: ${POSTGRES_HOST}
       REDIS_HOST: ${REDIS_HOST}
     volumes:
-    - ./stream-service/:/app
-    - /app/node_modules
-    ports:
-    - "${STREAM_PORT}:3000"
+      - ./stream-service/:/app
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:stream.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=3000
     depends_on:
-    - postgres
+      - postgres
 
   mail:
     command: yarn dev
@@ -75,22 +77,25 @@ services:
     volumes:
       - ./mail-service/:/app
       - /app/node_modules
-    ports:
-      - "${MAIL_SERVICE_PORT}:3000"
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:mail.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=3000
     depends_on:
       - postgres
+
   redis:
     image: redis
     restart: always
-    ports:
-      - "${REDIS_PORT}:6379"
 
   postgres:
     image: postgres
     restart: always
-    ports:
-    - "5432:5432"
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:postgres.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=5432

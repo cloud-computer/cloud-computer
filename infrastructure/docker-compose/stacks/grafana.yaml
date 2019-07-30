@@ -19,8 +19,6 @@ services:
       - '--storage.tsdb.retention.time=200h'
       - '--web.enable-lifecycle'
     restart: unless-stopped
-    expose:
-      - 9090
     labels:
       org.label-schema.group: "monitoring"
 
@@ -31,8 +29,6 @@ services:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
     restart: unless-stopped
-    expose:
-      - 9093
     labels:
       org.label-schema.group: "monitoring"
 
@@ -49,8 +45,6 @@ services:
       - '--path.sysfs=/host/sys'
       - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
     restart: unless-stopped
-    expose:
-      - 9100
     labels:
       org.label-schema.group: "monitoring"
 
@@ -64,8 +58,6 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
       - /cgroup:/cgroup:ro
     restart: unless-stopped
-    expose:
-      - 8080
     labels:
       org.label-schema.group: "monitoring"
 
@@ -81,8 +73,6 @@ services:
       - GF_AUTH_ANONYMOUS_ORG_ROLE=editor
       - GF_AUTH_PROXY_ENABLED=false
     restart: unless-stopped
-    expose:
-      - 3000
     labels:
       org.label-schema.group: "monitoring"
       traefik.enable: 'true'
@@ -93,7 +83,5 @@ services:
     image: prom/pushgateway:v0.8.0
     container_name: pushgateway
     restart: unless-stopped
-    expose:
-      - 9091
     labels:
       org.label-schema.group: "monitoring"
