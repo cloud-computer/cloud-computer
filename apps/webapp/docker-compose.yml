@@ -59,7 +59,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:dev.auth.webapp.$CLOUD_COMPUTER_HOST_DNS
-      - traefik.port=8080
+      - traefik.port=3000
     depends_on:
       - postgres
 
