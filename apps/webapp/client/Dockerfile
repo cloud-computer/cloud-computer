@@ -31,7 +31,7 @@ ARG GITHUB_REDIRECT
 ENV GITHUB_REDIRECT=$GITHUB_REDIRECT
 
 COPY package.json package.json
-RUN yarn
+RUN yarn --pure-lockfile
 
 COPY . .
 
