@@ -4,7 +4,6 @@ WORKDIR /app
 RUN npm config set unsafe-perm true
 
 COPY package.json package.json
-COPY yarn.lock yarn.lock
 RUN yarn
 
 COPY . .
