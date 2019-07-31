@@ -26,7 +26,7 @@ module.exports = () => {
     const callback = (accessToken, refreshToken, profile, cb) => {
         cb(null, profile)
     };
-
+    console.log(process.env)
     /** Add google auth **/
     passport.use(new GoogleStrategy({
         clientID: GOOGLE_CLIENT_ID,

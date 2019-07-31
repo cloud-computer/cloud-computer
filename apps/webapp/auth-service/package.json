@@ -1,8 +1,4 @@
 {
-  "name": "auth-service",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -14,11 +10,15 @@
     "passport-google-oauth20": "^2.0.0",
     "pg": "^7.11.0"
   },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "license": "MIT",
+  "main": "src",
+  "name": "auth-service",
   "scripts": {
     "build:container": "docker build -t cloudnativecomputer/webapp-auth:latest .",
     "dev": "nodemon"
   },
-  "devDependencies": {
-    "nodemon": "^1.19.1"
-  }
+  "version": "1.0.0"
 }

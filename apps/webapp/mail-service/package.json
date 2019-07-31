@@ -9,7 +9,7 @@
     "nodemon": "^1.19.1"
   },
   "license": "MIT",
-  "main": "index.js",
+  "main": "src",
   "name": "mail-service",
   "scripts": {
     "build:container": "docker build -t cloudnativecomputer/webapp-mail:latest .",

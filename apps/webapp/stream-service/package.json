@@ -14,16 +14,17 @@
     "@babel/node": "^7.4.5",
     "@babel/plugin-transform-async-to-generator": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
+    "babel-cli": "^6.26.0",
     "nodemon": "^1.19.1"
   },
   "keywords": [],
   "license": "ISC",
-  "main": "index.js",
+  "main": "src",
   "name": "stream-service",
   "scripts": {
     "build": "babel lib -d dist",
     "build:container": "docker build -t cloudnativecomputer/webapp-stream:latest .",
-    "dev": "nodemon --exec babel-node lib/index.js"
+    "dev": "nodemon --exec babel-node src"
   },
   "version": "1.0.0"
 }

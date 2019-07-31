@@ -30,8 +30,8 @@ ENV GITHUB_CALLBACK=$GITHUB_CALLBACK
 ARG GITHUB_REDIRECT
 ENV GITHUB_REDIRECT=$GITHUB_REDIRECT
 
-COPY package.json .
-COPY yarn.lock .
+COPY package.json package.json
+COPY yarn.lock yarn.lock
 RUN yarn
 
 COPY . .

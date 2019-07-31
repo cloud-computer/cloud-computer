@@ -40,11 +40,11 @@
   "name": "client",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "yarn next build",
     "build-storybook": "build-storybook -s public",
     "build:container": "docker build -t cloudnativecomputer/webapp-client:latest .",
-    "dev": "next -p 9998",
-    "start": "next start -p 9998",
+    "dev": "yarn next -p 9998",
+    "start": "yarn next start -p 9998",
     "storybook": "start-storybook -p 9009 -s public"
   },
   "version": "0.1.0"

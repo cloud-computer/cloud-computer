@@ -56,8 +56,6 @@ services:
       GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET}
       GITHUB_CALLBACK: ${GITHUB_CALLBACK}
       REACT_APP: ${REACT_APP}
-    volumes:
-      - ./auth-service/:/app
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:dev.auth.webapp.$CLOUD_COMPUTER_HOST_DNS
@@ -76,8 +74,6 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_HOST: ${POSTGRES_HOST}
       REDIS_HOST: ${REDIS_HOST}
-    volumes:
-      - ./stream-service/:/app
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:dev.stream.webapp.$CLOUD_COMPUTER_HOST_DNS
@@ -93,9 +89,6 @@ services:
     environment:
       MAIL_SERVICE_DOMAIN: ${MAIL_SERVICE_DOMAIN}
       MAIL_SERVICE_APIKEY: ${MAIL_SERVICE_APIKEY}
-    volumes:
-      - ./mail-service/:/app
-      - /app/node_modules
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:dev.mail.webapp.$CLOUD_COMPUTER_HOST_DNS
