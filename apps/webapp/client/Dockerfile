@@ -1,8 +1,6 @@
 FROM node:10.16.0-alpine
 WORKDIR /app
 
-RUN npm config set unsafe-perm true
-
 ARG REACT_APP
 ENV REACT_APP=$REACT_APP
 
@@ -34,8 +32,5 @@ COPY package.json package.json
 RUN yarn --pure-lockfile
 
 COPY . .
-
-# Building app
-# RUN npm run build
 
 CMD yarn dev
