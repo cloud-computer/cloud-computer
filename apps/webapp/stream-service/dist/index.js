@@ -17,7 +17,7 @@ console.log(__dirname);
 dotenv.config({
   path: path.resolve(__dirname, '../../.env')
 });
-var STREAM_PORT = process.env.STREAM_PORT;
+var STREAM_PORT = process.env.STREAM_PORT || 3000;
 var app = express();
 var jobs = [];
 
