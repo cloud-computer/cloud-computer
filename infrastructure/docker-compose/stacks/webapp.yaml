@@ -31,11 +31,11 @@ services:
       JSON_SECRET: '3xQftRWq,~-8g>d&[FjVLJsXDuAYt.w:'
       GOOGLE_CLIENT_ID: 820336721515-df68p28g744u9cls3m9sipi7fu52or70.apps.googleusercontent.com
       GOOGLE_CLIENT_SECRET: A2D3oGjc5LgVciktZPl_fof2
-      GOOGLE_CALLBACK: http://localhost:9995/auth/google/callback
+      GOOGLE_CALLBACK: https://auth.webapp.$CLOUD_COMPUTER_HOST_DNS/auth/google/callback
       GITHUB_CLIENT_ID: Iv1.33d7572b0ba5c40a
       GITHUB_CLIENT_SECRET: 2c78b2f15715c34647498d1573467bbe1646cf43
-      GITHUB_CALLBACK: http://localhost:9995/auth/github/callback
-      REACT_APP: http://localhost:9998
+      GITHUB_CALLBACK: https://auth.webapp.$CLOUD_COMPUTER_HOST_DNS/auth/github/callback
+      REACT_APP: https://client.webapp.$CLOUD_COMPUTER_HOST_DNS
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:auth.webapp.$CLOUD_COMPUTER_HOST_DNS
