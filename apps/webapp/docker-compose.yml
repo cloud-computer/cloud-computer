@@ -3,6 +3,7 @@ version: '3'
 services:
 
   client:
+    command: yarn dev
     build:
       context: ./client
       dockerfile: Dockerfile
@@ -39,6 +40,15 @@ services:
       - traefik.port=8081
       - traefik.frontend.rule=Host:dev.console.hasura.webapp.$CLOUD_COMPUTER_HOST_DNS
       - traefik.port=8080
+
+  hasura-migrations:
+    image: hasura/graphql-engine:v1.0.0-alpha42.cli-migrations
+    depends_on:
+      - hasura
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/${POSTGRES_DB}
+    volumes:
+      - ./hasura-console/migrations:/hasura-migrations
 
   auth:
     command: yarn dev

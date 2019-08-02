@@ -9,7 +9,9 @@
   "private": true,
   "scripts": {
     "docz:build": "docz build",
-    "docz:dev": "docz dev"
+    "docz:dev": "docz dev",
+    "environment": "scripts/environment.sh",
+    "start": "scripts/start.sh"
   },
   "version": "1.0.0",
   "workspaces": [
