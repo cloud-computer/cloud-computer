@@ -7,6 +7,7 @@ RUN apt-get update -qq && \
   curl \
   g++ \
   git \
+  libcurl4-openssl-dev \
   libfuse3-dev \
   libjsoncpp-dev \
   libmicrohttpd-dev \
@@ -21,5 +22,5 @@ RUN apt-get update -qq && \
 RUN git clone https://github.com/lemourin/libcloudstorage && \
   cd libcloudstorage && \
   ./bootstrap && \
-  ./configure && \
+  ./configure --with-curl --with-microhttpd --with-fuse && \
   make
