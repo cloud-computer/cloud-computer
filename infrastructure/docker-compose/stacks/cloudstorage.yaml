@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+
+  cloudstorage:
+    image: cloudnativecomputer/cloudstorage:latest
+    command: cloudstorage-fuse $CLOUD_COMPUTER_STORAGE
+    restart: always
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - /dev/fuse
+    security_opt:
+      - apparmor:unconfined
+    environment:
+      CLOUD_COMPUTER_STORAGE: $CLOUD_COMPUTER_STORAGE
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:cloudstorage.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=12345
+    volumes:
+      - CLOUD_COMPUTER_STORAGE:$CLOUD_COMPUTER_STORAGE
+
+volumes:
+  CLOUD_COMPUTER_STORAGE:

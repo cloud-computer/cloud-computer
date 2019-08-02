@@ -23,4 +23,5 @@ RUN git clone https://github.com/lemourin/libcloudstorage && \
   cd libcloudstorage && \
   ./bootstrap && \
   ./configure --with-curl --with-microhttpd --with-fuse && \
-  make
+  make && \
+  make install

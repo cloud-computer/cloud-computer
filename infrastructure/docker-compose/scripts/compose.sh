@@ -22,6 +22,7 @@ yarn --cwd ../docker docker run \
   --env CLOUD_COMPUTER_IMAGE \
   --env CLOUD_COMPUTER_NODEMON \
   --env CLOUD_COMPUTER_REPOSITORY \
+  --env CLOUD_COMPUTER_STORAGE \
   --env CLOUD_COMPUTER_TERRAFORM \
   --env CLOUD_COMPUTER_TMUX \
   --env CLOUD_COMPUTER_X11 \
