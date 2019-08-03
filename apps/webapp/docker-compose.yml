@@ -37,9 +37,6 @@ services:
     depends_on:
       - postgres
       - mail
-    ports:
-      - 8080:8080
-      - 8081:8081
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:dev.hasura.webapp.$CLOUD_COMPUTER_HOST_DNS
