@@ -23,7 +23,7 @@ services:
       - traefik.port=3000
 
   hasura:
-    image: hasura/graphql-engine:v1.0.0-beta.2
+    image: hasura/graphql-engine:v1.0.0-beta.4
     environment:
       HASURA_GRAPHQL_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/${POSTGRES_DB}
       HASURA_GRAPHQL_ENABLE_CONSOLE: ${HASURA_GRAPHQL_ENABLE_CONSOLE}
@@ -31,8 +31,9 @@ services:
       HASURA_GRAPHQL_CORS_DOMAIN: ${HASURA_GRAPHQL_CORS_DOMAIN}
       HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
       HASURA_GRAPHQL_JWT_SECRET: "{\"type\":\"HS256\",\"key\":\"${JSON_SECRET}\"}"
+      HASURA_GRAPHQL_MIGRATIONS_DIR: $CLOUD_COMPUTER_REPOSITORY/apps/webapp/hasura-console/migrations
     volumes:
-      - ./hasura-console/migrations:/hasura-migrations
+      - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY
     depends_on:
       - postgres
       - mail
@@ -113,3 +114,6 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
+
+volumes:
+  CLOUD_COMPUTER_REPOSITORY:
