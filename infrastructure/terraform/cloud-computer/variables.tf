@@ -3,11 +3,6 @@ variable "cloud_provider_credentials_path" {
   default = "/cloud-computer/credentials/cloud-provider.json"
 }
 
-variable "machine_region" {
-  description = "The zone to create the machine in."
-  default = "australia-southeast1"
-}
-
 variable "machine_type" {
   description = "The machine type."
   default = "custom-4-12288"
@@ -56,6 +51,12 @@ variable "CLOUD_COMPUTER_IMAGE" {
 variable "CLOUD_COMPUTER_REPOSITORY" {
   description = "The cloud computer repoisitory path."
 }
+
+variable "CLOUD_COMPUTER_REGION" {
+  description = "The region to create the cloud computer virtual machine in."
+  default = "australia-southeast1"
+}
+
 
 variable "CLOUD_COMPUTER_REPOSITORY_VOLUME" {
   description = "The cloud computer repoisitory volume name."
