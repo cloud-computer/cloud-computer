@@ -4,15 +4,23 @@ The cloud computer is a one click deploy computer accessible through any web bro
 
 ## Supported Applications
 
-The following applications are currently supported.
+|||||||
+|-|-|-|-|-|-|
+| VS Code | Blender | Chrome | Krita | Darktable | Slack |
+| <a href="https://code.visualstudio.com"><img src="apps/launcher/src/icon-images/icon-vs-code.png" width="50" height="50" /></a> | <a href="https://www.blender.org"><img src="apps/launcher/src/icon-images/icon-blender.png" width="50" height="50" /></a> | <a href="https://www.google.com/chrome/"><img src="apps/launcher/src/icon-images/icon-chrome.png" width="50" height="50" /></a> | <a href="https://krita.org"><img src="apps/launcher/src/icon-images/icon-krita.png" width="50" height="50" /></a> | <a href="https://www.darktable.org"><img src="apps/launcher/src/icon-images/icon-darktable.png" width="50" height="50" /></a> | <a href="https://slack.com/"><img src="apps/launcher/src/icon-images/icon-slack.png" width="50" height="50" /></a>
+| Postman | KiCad | Notion | Sheets | Documents | Presentations |
+| <a href="https://www.getpostman.com"><img src="apps/launcher/src/icon-images/icon-postman.png" width="50" height="50" /></a> | <a href="http://www.kicad-pcb.org"><img src="apps/launcher/src/icon-images/icon-kicad.png" width="50" height="50" /></a> | <a href="https://www.notion.so"><img src="apps/launcher/src/icon-images/icon-notion.png" width="50" height="50" /></a> | <a href="https://www.onlyoffice.com/spreadsheet-editor.aspx"><img src="apps/launcher/src/icon-images/icon-excel.png" width="50" height="50" /></a> | <a href="https://www.onlyoffice.com/document-editor.aspx"><img src="apps/launcher/src/icon-images/icon-word.png" width="50" height="50" /></a> |<a href="https://www.onlyoffice.com/presentation-editor.aspx"><img src="apps/launcher/src/icon-images/icon-powerpoint.png" width="50" height="50" /></a>
+| Terminal | Gnumeric | Grafana ||||
+<a href="https://github.com/yudai/gotty"><img src="apps/launcher/src/icon-images/icon-terminal.png" width="50" height="50" /></a> | <a href="http://www.gnumeric.org"><img src="apps/launcher/src/icon-images/icon-gnumeric.png" width="50" height="50" /></a> | <a href="https://grafana.com"><img src="apps/launcher/src/icon-images/icon-grafana.png" width="50" height="50" /></a>
 
-| Tables | Are | Cool |
-| ------------- |-------------| -----|
-| <img src="apps/launcher/src/icon-images/icon-blender.png" width="50" height="50" /> | right-aligned | $1600 |
-| col 2 is | centered | $12 |
-| zebra stripes | are neat | $1 |
+## Supported Storage
 
-## Use Cases
+Access to the following storage sources is in development.
+
+||||
+|-|-|-|
+| Drive | Dropbox | OneDrive | Krita | Darktable | Slack |
+| <a href="https://www.google.com/drive"><img src="apps/launcher/src/icon-images/icon-google-drive.png" width="50" height="50" /></a> | <a href="https://www.dropbox.com"><img src="apps/launcher/src/icon-images/icon-dropbox.png" width="50" height="50" /></a> | <a href="https://onedrive.live.com"><img src="apps/launcher/src/icon-images/icon-onedrive.png" width="50" height="50" /></a>
 
 ## Getting Started
 
