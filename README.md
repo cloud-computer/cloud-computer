@@ -8,7 +8,7 @@ The following applications are currently supported.
 
 | Tables | Are | Cool |
 | ------------- |-------------| -----|
-| ![](apps/launcher/src/icon-images/icon-blender.png =100x100) | right-aligned | $1600 |
+| <img src="apps/launcher/src/icon-images/icon-blender.png" width="50" height="50" /> | right-aligned | $1600 |
 | col 2 is | centered | $12 |
 | zebra stripes | are neat | $1 |
 
