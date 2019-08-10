@@ -15,7 +15,7 @@ The cloud computer is a one click deploy computer accessible through any web bro
 
 ## Supported Storage
 
-Access to the following storage sources is in development.
+Access to cloud storage is [in development](https://github.com/cloud-computer/cloud-computer/tree/libcloudstorage).
 
 ||||
 |-|-|-|
