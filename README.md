@@ -64,6 +64,8 @@ The cloud computer is built on 100% open source technologies.
 
 ## Screenshots
 
+![Blender](https://user-images.githubusercontent.com/1094600/62818442-a3d46f00-bb8a-11e9-9828-59350f11cb7d.png)
+![OnlyOffice Sheets](https://user-images.githubusercontent.com/1094600/62818492-51e01900-bb8b-11e9-83ce-dc2f2a5db5db.png)
 ![Desktop](https://user-images.githubusercontent.com/1094600/56347945-c2dc7900-6208-11e9-8ed2-0bbff2fee6a8.png)
 ![Terminal](https://user-images.githubusercontent.com/1094600/56299607-b2c88900-6177-11e9-912b-40ea25d690e3.png)
 ![Jaeger](https://raw.githubusercontent.com/kawing-ho/kawing-ho.github.io/master/assets/images/startup-yarn-2.png)
