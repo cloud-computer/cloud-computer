@@ -1,18 +1,22 @@
 # Cloud Computer
 
-Repeatable. Reliable. Infinitely Scalable.
+The cloud computer is a one click deploy computer accessible through any web browser. It is composed of cloud native technologies utilizing infrastructure as code.
 
-The cloud computer is a one click deploy computer accessible through any web browser. It is composed of cloud native technologies with 100% infrastructure as code.
+## Supported Applications
+
+The following applications are currently supported.
+
+| Tables | Are | Cool |
+| ------------- |-------------| -----|
+| ![](apps/launcher/src/icon-images/icon-blender.png =100x100) | right-aligned | $1600 |
+| col 2 is | centered | $12 |
+| zebra stripes | are neat | $1 |
 
 ## Use Cases
 
-### Unified Production and Development Environment
-
-Environment differences between 'production' and 'development' are notorious for causing unexpected system failures. The cloud computer is infinitely scalable; deploy a 4 CPU 8GB RAM cloud computer for development, and scale it up to 120 CPU 256GB RAM for production. Same environment for development and production - no developer unfamiliarity.
-
 ## Getting Started
 
-The cloud computer requires zero human interaction to deploy once cloud access configuration is supplied.
+The cloud computer deploys with one command once cloud provider credentials are supplied.
 
 1. Supply your cloud provider and domain name [configuration](#configuration).
 
@@ -49,12 +53,6 @@ The cloud computer is built on 100% open source technologies.
 - [Xvfb](https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml)
 - [Yarn](https://github.com/cloud-computer/yarn)
 - [Zsh](https://github.com/zsh-users/zsh)
-
-### Why Yarn?
-
-Yarn is the package manager for the web. It is also a task runner. It could be seen as overkill to use Yarn instead of shell scripts to automate the cloud computer operations. Yarn was chosen for its ability to leverage open source utilities in the JavaScript ecosystem, and for the modular structure it imposes using `package.json` files. These features solve two of the greatest pain points experienced in modern web development; frictionless reuse of open source code, and a maintainable project structure that can be navigated and automated programmatically.
-
-Using Yarn creates a single point of entry for all automated operations. This single point of entry greatly simplifies tracing of cloud computer operations. To provide visibility on these operations, Jaeger visualizes OpenTracing data captured using the shim in `@cloud-computer/yarn-shim`. A Screenshot of trace output is below.
 
 ## Screenshots
 
