@@ -12,8 +12,12 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.5",
+    "@types/express": "^4.17.0",
     "@types/jsonwebtoken": "^8.3.3",
     "@types/passport": "^1.0.0",
+    "@types/passport-github": "^1.1.5",
+    "@types/passport-google-oauth20": "^2.0.2",
     "@types/pg": "^7.4.14",
     "nodemon": "^1.19.1",
     "ts-node": "^8.3.0",

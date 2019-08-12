@@ -6,6 +6,10 @@
     "mailgun-js": "^0.22.0"
   },
   "devDependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/cors": "^2.8.5",
+    "@types/express": "^4.17.0",
+    "@types/mailgun-js": "^0.22.3",
     "nodemon": "^1.19.1"
   },
   "license": "MIT",
@@ -13,7 +17,7 @@
   "name": "mail-service",
   "scripts": {
     "build:container": "docker build -t cloudnativecomputer/webapp-mail:latest .",
-    "dev": "nodemon"
+    "dev": "nodemon -e ts -x ts-node src"
   },
   "version": "1.0.0"
 }
