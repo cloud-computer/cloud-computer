@@ -4,8 +4,8 @@ services:
 
   client:
     image: node:10.16.0-alpine
-    working_dir: $CLOUD_COMPUTER_REPOSITORY/apps/webapp/client
     command: yarn dev
+    working_dir: $CLOUD_COMPUTER_REPOSITORY/apps/webapp/client
     environment:
       AUTH_SERVICE_HOST: $AUTH_SERVICE_HOST
       REACT_APP: $REACT_APP
@@ -44,8 +44,9 @@ services:
       - traefik.port=8080
 
   auth:
-    command: yarn dev
     image: node:10.16.0-alpine
+    command: yarn dev
+    working_dir: $CLOUD_COMPUTER_REPOSITORY/apps/webapp/client
     environment:
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
@@ -69,8 +70,9 @@ services:
       - postgres
 
   stream:
-    command: yarn dev
     image: node:10.16.0-alpine
+    command: yarn dev
+    working_dir: $CLOUD_COMPUTER_REPOSITORY/apps/webapp/client
     environment:
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
@@ -85,8 +87,9 @@ services:
       - postgres
 
   mail:
-    command: yarn dev
     image: node:10.16.0-alpine
+    command: yarn dev
+    working_dir: $CLOUD_COMPUTER_REPOSITORY/apps/webapp/client
     environment:
       MAIL_SERVICE_DOMAIN: $MAIL_SERVICE_DOMAIN
       MAIL_SERVICE_APIKEY: $MAIL_SERVICE_APIKEY
