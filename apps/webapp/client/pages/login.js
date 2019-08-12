@@ -103,7 +103,7 @@ const Login = (props) => {
                         <Button icon="github" style={styles.loginGithub} onClick={()=>window.location = process.env.GITHUB_REDIRECT}>
                             Sign-In with Github
                         </Button>
-                        Or <Link href="/register"><a>register now!</a></Link>
+                        Or <Link href="/register"><a>enquire now!</a></Link>
                     </Form.Item>
                 </Form>
             </Col>
