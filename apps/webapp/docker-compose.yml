@@ -45,9 +45,7 @@ services:
 
   auth:
     command: yarn dev
-    build:
-      context: ./auth-service
-      dockerfile: Dockerfile
+    image: node:10.16.0-alpine
     environment:
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
@@ -61,6 +59,8 @@ services:
       GITHUB_CLIENT_SECRET: $GITHUB_CLIENT_SECRET
       GITHUB_CALLBACK: $GITHUB_CALLBACK
       REACT_APP: $REACT_APP
+    volumes:
+      - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:dev.auth.webapp.$CLOUD_COMPUTER_HOST_DNS
@@ -70,9 +70,7 @@ services:
 
   stream:
     command: yarn dev
-    build:
-      context: ./stream-service
-      dockerfile: Dockerfile
+    image: node:10.16.0-alpine
     environment:
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
@@ -88,12 +86,12 @@ services:
 
   mail:
     command: yarn dev
-    build:
-      context: ./mail-service
-      dockerfile: Dockerfile
+    image: node:10.16.0-alpine
     environment:
       MAIL_SERVICE_DOMAIN: $MAIL_SERVICE_DOMAIN
       MAIL_SERVICE_APIKEY: $MAIL_SERVICE_APIKEY
+    volumes:
+      - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:dev.mail.webapp.$CLOUD_COMPUTER_HOST_DNS
