@@ -6,19 +6,15 @@ import * as redis from 'redis';
 
 import { getClient } from './db';
 
-/** Get the env **/
 dotenv.config({ path: resolve(__dirname, '../../.env') });
 
-/** Get all environments **/
 const {
   REDIS_HOST = 'redis',
   REDIS_PORT = 6379,
 } = process.env;
 
-/** Initialize db **/
 const client = getClient();
 
-/** Initialize redis **/
 const publisher = redis.createClient({
   host: REDIS_HOST,
   port: REDIS_PORT as any,
@@ -26,7 +22,6 @@ const publisher = redis.createClient({
 
 const app = express();
 
-/** Add cors **/
 app.use(cors());
 
 app.get('/provision', async (req, res) => {

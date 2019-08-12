@@ -5,21 +5,19 @@
     "redis": "^2.8.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/node": "^7.4.5",
-    "@babel/plugin-transform-async-to-generator": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "babel-cli": "^6.26.0",
-    "nodemon": "^1.19.1"
+    "@types/dotenv": "^6.1.1",
+    "@types/pg": "^7.4.14",
+    "@types/redis": "^2.8.13",
+    "nodemon": "^1.19.1",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
   },
   "license": "MIT",
   "main": "src",
   "name": "worker-service",
   "scripts": {
-    "build": "babel lib -d dist",
     "build:container": "docker build -t cloudnativecomputer/webapp-stream:latest .",
-    "start": "nodemon --exec babel-node src"
+    "dev": "nodemon -e ts -x ts-node src"
   },
   "version": "1.0.0"
 }

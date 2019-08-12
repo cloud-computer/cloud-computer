@@ -9,13 +9,10 @@
   },
   "description": "",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/node": "^7.4.5",
-    "@babel/plugin-transform-async-to-generator": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
     "@types/cors": "^2.8.5",
     "@types/dotenv": "^6.1.1",
+    "@types/express": "^4.17.0",
+    "@types/pg": "^7.4.14",
     "@types/redis": "^2.8.13",
     "nodemon": "^1.19.1",
     "ts-node": "^8.3.0",
@@ -26,7 +23,6 @@
   "main": "src",
   "name": "stream-service",
   "scripts": {
-    "build": "babel lib -d dist",
     "build:container": "docker build -t cloudnativecomputer/webapp-stream:latest .",
     "dev": "nodemon -e ts -x ts-node src"
   },
