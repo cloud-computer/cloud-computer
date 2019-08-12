@@ -1,4 +1,8 @@
+import * as dotenv from 'dotenv';
+import { resolve } from 'path';
 import { Client } from 'pg';
+
+dotenv.config({ path: resolve(__dirname, '../../.env') });
 
 let client;
 
@@ -6,7 +10,7 @@ const {
   POSTGRES_USER = 'postgres',
   POSTGRES_HOST = 'localhost',
   POSTGRES_DB = 'mantra',
-  POSTGRES_PASSWORD = 'password',
+  POSTGRES_PASSWORD = 'password'
 } = process.env;
 
 export const getClient = () => {
