@@ -42,8 +42,6 @@ const runJob = (userId, row, cloudUser) => {
     const child = spawn('bash', [__dirname + command, cloudUser]);
 
     child.stdout.on('data', async (data) => {
-      console.log(data.toString());
-      /** logs all stdout **/
       saveLogs(async (cb) => {
         await client.query(
           'INSERT INTO public.log(build_id, log, command) values ($1, $2, $3) RETURNING *',
@@ -84,18 +82,13 @@ const queueRunner = () => {
   }
 };
 
-/** Queue job then try to run job **/
-const queueJob = (userId, row, cloudUser) => {
-  jobs.push(runJob(userId, row, cloudUser));
-  queueRunner();
-};
-
 /** Listen to jobs **/
 subscriber.on('message', function (channel, message) {
   console.log("Message '" + message + "' on channel '" + channel + "' arrived!");
   if (channel === 'build:provision') {
     const { userId, row, cloudUser } = JSON.parse(message);
-    queueJob(userId, row, cloudUser);
+    jobs.push(runJob(userId, row, cloudUser));
+    queueRunner();
   }
 });
 
