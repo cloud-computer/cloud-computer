@@ -30,28 +30,28 @@ app.get('/provision', async (req, res) => {
   const userId = req.query.userId;
 
   try {
-    const userInfo = await client.query('SELECT * FROM public.user where id=$1', [ userId ]);
-    const foundBuild = await client.query('SELECT * FROM public.build where user_id=$1', [ userId ]);
+    const userInfo = await client.query('SELECT * FROM public.user where id=$1', [userId]);
+    const foundBuild = await client.query('SELECT * FROM public.build where user_id=$1', [userId]);
 
     /** Check if there is an existing build **/
     if (foundBuild.rows.length) {
       return res.send({
         status: 'Have already provisioned',
-        redirect: userInfo.rows[ 0 ].cloud_url
+        redirect: userInfo.rows[0].cloud_url
       })
     }
 
     /** If there is no existing build then create one **/
-    const newBuild = await client.query('INSERT INTO public.build(user_id, code) values ($1, 99) RETURNING *', [ userId ]);
+    const newBuild = await client.query('INSERT INTO public.build(user_id, code) values ($1, 99) RETURNING *', [userId]);
 
     /** Extract the new build row **/
-    const row = newBuild.rows[ 0 ];
+    const row = newBuild.rows[0];
 
     /** Queue the job **/
     publisher.publish('build:provision', JSON.stringify({
       userId,
       row,
-      cloudUser: userInfo.rows[ 0 ].cloud_user
+      cloudUser: userInfo.rows[0].cloud_user
     }));
 
     /** Return the build for reference **/

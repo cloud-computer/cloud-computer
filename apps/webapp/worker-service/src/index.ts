@@ -43,7 +43,7 @@ const jobs = [];
 const runJob = (userId, row, cloudUser) => {
   return () => {
     const command = '/scripts/run.sh';
-    const child = spawn('bash', [ __dirname + command, cloudUser ]);
+    const child = spawn('bash', [__dirname + command, cloudUser]);
 
     child.stdout.on('data', async (data) => {
       console.log(data.toString());
@@ -51,7 +51,7 @@ const runJob = (userId, row, cloudUser) => {
       saveLogs(async (cb) => {
         await client.query(
           'INSERT INTO public.log(build_id, log, command) values ($1, $2, $3) RETURNING *',
-          [ row.id, data.toString(), command ]);
+          [row.id, data.toString(), command]);
         cb();
       });
     });
@@ -70,7 +70,7 @@ const runJob = (userId, row, cloudUser) => {
       saveLogs(async (cb) => {
         await client.query(
           'UPDATE public.build set code=$1 where id=$2',
-          [ code, row.id ]);
+          [code, row.id]);
         cb();
       });
     });

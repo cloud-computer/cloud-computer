@@ -1,5 +1,3 @@
-echo export NODE_DEBUG=*
-
 ### COMMON
 echo export JSON_SECRET=cloud-computer-json-secret-$(date +%s)
 
@@ -37,6 +35,3 @@ echo export REACT_APP_WEBSOCKET_HOST=wss://dev.hasura.webapp.$CLOUD_COMPUTER_HOS
 
 ### Stream service
 echo export STREAM_HOST=https://dev.stream.webapp.$CLOUD_COMPUTER_HOST_DNS
-
-## Redis
-echo export REDIS_HOST=

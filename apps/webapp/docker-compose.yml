@@ -46,7 +46,7 @@ services:
   auth:
     image: node:10.16.0-alpine
     command: yarn dev
-    working_dir: $CLOUD_COMPUTER_REPOSITORY/apps/webapp/client
+    working_dir: $CLOUD_COMPUTER_REPOSITORY/apps/webapp/auth-service
     environment:
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
@@ -72,13 +72,15 @@ services:
   stream:
     image: node:10.16.0-alpine
     command: yarn dev
-    working_dir: $CLOUD_COMPUTER_REPOSITORY/apps/webapp/client
+    working_dir: $CLOUD_COMPUTER_REPOSITORY/apps/webapp/stream-service
     environment:
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
       POSTGRES_DB: $POSTGRES_DB
       POSTGRES_HOST: $POSTGRES_HOST
       REDIS_HOST: $REDIS_HOST
+    volumes:
+      - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:dev.stream.webapp.$CLOUD_COMPUTER_HOST_DNS
@@ -89,7 +91,7 @@ services:
   mail:
     image: node:10.16.0-alpine
     command: yarn dev
-    working_dir: $CLOUD_COMPUTER_REPOSITORY/apps/webapp/client
+    working_dir: $CLOUD_COMPUTER_REPOSITORY/apps/webapp/mail-service
     environment:
       MAIL_SERVICE_DOMAIN: $MAIL_SERVICE_DOMAIN
       MAIL_SERVICE_APIKEY: $MAIL_SERVICE_APIKEY
