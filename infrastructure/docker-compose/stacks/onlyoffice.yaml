@@ -3,7 +3,7 @@ version: '3.5'
 services:
 
   word:
-    image: cloudnativecomputer/office-word:latest
+    image: cloudnativecomputer/onlyoffice-word:latest
     restart: always
     labels:
       - traefik.enable=true
@@ -13,7 +13,7 @@ services:
       - CLOUD_COMPUTER_HOME:$CLOUD_COMPUTER_HOME
 
   excel:
-    image: cloudnativecomputer/office-excel:latest
+    image: cloudnativecomputer/onlyoffice-excel:latest
     restart: always
     labels:
       - traefik.enable=true
@@ -23,7 +23,7 @@ services:
       - CLOUD_COMPUTER_HOME:$CLOUD_COMPUTER_HOME
 
   powerpoint:
-    image: cloudnativecomputer/office-powerpoint:latest
+    image: cloudnativecomputer/onlyoffice-powerpoint:latest
     restart: always
     labels:
       - traefik.enable=true

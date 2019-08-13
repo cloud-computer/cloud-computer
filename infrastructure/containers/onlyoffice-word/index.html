@@ -1,29 +1,31 @@
 <html style="overflow-y: hidden">
 <div style="margin: -8px">
-  <div id="placeholder"></div>
+  <div id="onlyoffice-editor"></div>
 </div>
 <script>
   window.onload = () => {
     // get the url of the onlyoffice server
-    const subdomain = document.URL.split('.cloud-computer.dev')[ 0 ].split('.').pop().replace('https://', '');
+    const subdomain = document.URL.split('.cloud-computer.dev')[0].split('.').pop().replace('https://', '');
 
     // load the onlyoffice api from onlyoffice server
-    const api = document.createElement('onlyoffice-api');
-    api.src = `https://onlyoffice.${subdomain}/web-apps/apps/api/documents/api.js`;
+    const api = document.createElement('script');
+    api.src = `https://onlyoffice.${subdomain}.cloud-computer.dev/web-apps/apps/api/documents/api.js`;
 
     api.onload = () => {
       // create an onlyoffice editing client
-      new DocsAPI.DocEditor('placeholder', {
+      new DocsAPI.DocEditor('onlyoffice-editor', {
         type: 'desktop',
         document: {
           fileType: 'docx',
-          key: Date.now(),
+          key: Date.now().toString(),
           title: 'New Document.docx',
           url: 'https://calibre-ebook.com/downloads/demos/demo.docx'
         },
         documentType: 'text'
       });
     };
+
+    document.body.appendChild(api);
   };
 </script>
 
