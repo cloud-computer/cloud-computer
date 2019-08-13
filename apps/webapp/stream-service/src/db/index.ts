@@ -1,8 +1,4 @@
-import * as dotenv from 'dotenv';
-import { resolve } from 'path';
 import { Client } from 'pg';
-
-dotenv.config({ path: resolve(__dirname, '../../.env') });
 
 let client;
 

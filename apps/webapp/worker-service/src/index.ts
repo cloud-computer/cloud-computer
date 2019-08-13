@@ -1,11 +1,7 @@
 import { spawn } from 'child_process';
-import * as dotenv from 'dotenv';
-import { resolve } from 'path';
 import * as redis from 'redis';
 
 import { getClient } from './db';
-
-dotenv.config({ path: resolve(__dirname, '../../.env') });
 
 const {
   REDIS_HOST = 'redis',

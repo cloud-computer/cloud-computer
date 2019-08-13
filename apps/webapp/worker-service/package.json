@@ -1,11 +1,9 @@
 {
   "dependencies": {
-    "dotenv": "^8.0.0",
     "pg": "^7.11.0",
     "redis": "^2.8.0"
   },
   "devDependencies": {
-    "@types/dotenv": "^6.1.1",
     "@types/pg": "^7.4.14",
     "@types/redis": "^2.8.13",
     "nodemon": "^1.19.1",
