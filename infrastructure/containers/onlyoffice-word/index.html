@@ -1,0 +1,30 @@
+<html style="overflow-y: hidden">
+<div style="margin: -8px">
+  <div id="placeholder"></div>
+</div>
+<script>
+  window.onload = () => {
+    // get the url of the onlyoffice server
+    const subdomain = document.URL.split('.cloud-computer.dev')[ 0 ].split('.').pop().replace('https://', '');
+
+    // load the onlyoffice api from onlyoffice server
+    const api = document.createElement('onlyoffice-api');
+    api.src = `https://onlyoffice.${subdomain}/web-apps/apps/api/documents/api.js`;
+
+    api.onload = () => {
+      // create an onlyoffice editing client
+      new DocsAPI.DocEditor('placeholder', {
+        type: 'desktop',
+        document: {
+          fileType: 'docx',
+          key: Date.now(),
+          title: 'New Document.docx',
+          url: 'https://calibre-ebook.com/downloads/demos/demo.docx'
+        },
+        documentType: 'text'
+      });
+    };
+  };
+</script>
+
+</html>
