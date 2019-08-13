@@ -5,19 +5,18 @@ import * as redis from 'redis';
 import { getClient } from './db';
 
 const {
-  REDIS_HOST = 'redis',
-  REDIS_PORT = 6379,
+  REDIS_HOST,
+  REDIS_PORT,
 } = process.env;
+
+const publisher = redis.createClient({
+  host: REDIS_HOST || 'redis',
+  port: REDIS_PORT as any || 6379,
+});
 
 const client = getClient();
 
-const publisher = redis.createClient({
-  host: REDIS_HOST,
-  port: REDIS_PORT as any,
-});
-
 const app = express();
-
 app.use(cors());
 
 app.get('/provision', async (req, res) => {

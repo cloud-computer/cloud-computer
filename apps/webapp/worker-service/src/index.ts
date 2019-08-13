@@ -4,15 +4,15 @@ import * as redis from 'redis';
 import { getClient } from './db';
 
 const {
-  REDIS_HOST = 'redis',
-  REDIS_PORT = 6379
+  REDIS_HOST,
+  REDIS_PORT,
 } = process.env;
 
 const client = getClient();
 
 const subscriber = redis.createClient({
-  host: REDIS_HOST,
-  port: REDIS_PORT as any,
+  host: REDIS_HOST || 'redis',
+  port: REDIS_PORT as any || 6379,
 });
 
 const logs = [];
