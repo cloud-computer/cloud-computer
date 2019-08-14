@@ -19,7 +19,7 @@ RUN apt-get update -qq && \
   wget
 
 # Build application
-RUN git clone https://github.com/lemourin/libcloudstorage && \
+RUN git clone https://github.com/cloud-computer/libcloudstorage && \
   cd libcloudstorage && \
   ./bootstrap && \
   ./configure --with-curl --with-microhttpd --with-fuse && \
