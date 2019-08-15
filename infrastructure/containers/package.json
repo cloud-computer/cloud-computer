@@ -8,6 +8,7 @@
     "build": "yarn build:cloud-computer; yarn build:children",
     "build:blender": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/blender $PWD/blender",
     "build:chrome": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/chrome $PWD/chrome",
+    "build:code": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/code $PWD/code",
     "build:children": "cat package.json | grep build: | grep -v cloud-computer\\\" | grep -v children | cut -f2 -d\\\" | xargs -n 1 -P 8 yarn",
     "build:cloud-computer": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --build-arg CONTAINER_BUILD_DATE=$(date +%s) --build-arg CONTAINER_GIT_SHA=$(git rev-parse HEAD | cut -b 1-7) --tag $CLOUD_COMPUTER_IMAGE $PWD/cloud-computer",
     "build:darktable": "eval \"$(yarn --cwd ../cloud-computer environment)\"; yarn --cwd ../docker docker build --tag $CLOUD_COMPUTER_REGISTRY/darktable $PWD/darktable",

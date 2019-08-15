@@ -3,7 +3,7 @@ version: '3.5'
 services:
 
   code:
-    image: cloudnativecomputer/code-server:latest
+    image: cloudnativecomputer/code:latest
     command: code-server $CLOUD_COMPUTER_REPOSITORY
     restart: always
     tty: true
