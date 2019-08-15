@@ -7,4 +7,5 @@ RUN curl -fsSL https://github.com/cdr/code-server/releases/download/2.preview.4-
   rm -rf /tmp/code-server*
 
 # Clone dotfiles configuration
-RUN vcsh clone https://sabrehagen@github.com/sabrehagen/dotfiles-code.git
+RUN vcsh clone https://sabrehagen@github.com/sabrehagen/dotfiles-code.git && \
+  rsync -a $HOME/.config/Code/* $HOME/.config/code-server
