@@ -33,6 +33,7 @@
     "restart:windows": "yarn down:windows; yarn up:windows",
     "up": "ls stacks | xargs -n 1 -I @ -P 8 yarn compose -f stacks/@ up --detach --quiet-pull",
     "up:chrome": "STACK=chrome yarn compose:up",
+    "up:cloudstorage": "STACK=cloudstorage yarn compose:up",
     "up:code": "STACK=code yarn compose:up",
     "up:desktop": "STACK=desktop yarn compose:up",
     "up:grafana": "STACK=grafana yarn compose:up",

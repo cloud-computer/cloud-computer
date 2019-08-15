@@ -5,6 +5,7 @@ RUN apt-get update -qq && \
   apt-get install -qq \
   autoconf \
   curl \
+  fuse3 \
   g++ \
   git \
   libcurl4-openssl-dev \
@@ -25,3 +26,5 @@ RUN git clone https://github.com/cloud-computer/libcloudstorage && \
   ./configure --with-curl --with-microhttpd --with-fuse && \
   make && \
   make install
+
+ENV LD_LIBRARY_PATH=/usr/local/lib

@@ -22,8 +22,6 @@ services:
       - --docker.exposedByDefault=false
       - --logLevel=DEBUG
     restart: always
-    expose:
-      - 8080
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:ingress.$CLOUD_COMPUTER_HOST_DNS

@@ -5,8 +5,6 @@ services:
   marketplace:
     image: cloudnativecomputer/marketplace:latest
     restart: always
-    expose:
-      - 8080
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:marketplace.$CLOUD_COMPUTER_HOST_DNS

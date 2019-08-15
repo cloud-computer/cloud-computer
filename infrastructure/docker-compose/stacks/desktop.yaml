@@ -12,8 +12,6 @@ services:
       - HTTP_PASSWORD=
       - USER=cloud-computer
       - PASSWORD=password
-    expose:
-      - 80
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:desktop.$CLOUD_COMPUTER_HOST_DNS

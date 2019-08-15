@@ -4,7 +4,7 @@ services:
 
   cloudstorage:
     image: cloudnativecomputer/cloudstorage:latest
-    command: cloudstorage-fuse $CLOUD_COMPUTER_CLOUDSTORAGE
+    command: cloudstorage-fuse -f $CLOUD_COMPUTER_CLOUDSTORAGE
     restart: always
     cap_add:
       - SYS_ADMIN
