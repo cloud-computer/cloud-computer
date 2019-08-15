@@ -5,8 +5,6 @@ services:
   launcher:
     image: cloudnativecomputer/launcher:latest
     restart: always
-    expose:
-      - 8080
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:$CLOUD_COMPUTER_HOST_DNS

@@ -4,7 +4,7 @@ services:
 
   cloudstorage:
     image: cloudnativecomputer/cloudstorage:latest
-    command: cloudstorage-fuse $CLOUD_COMPUTER_STORAGE
+    command: cloudstorage-fuse -f $CLOUD_COMPUTER_CLOUDSTORAGE
     restart: always
     cap_add:
       - SYS_ADMIN
@@ -12,14 +12,12 @@ services:
       - /dev/fuse
     security_opt:
       - apparmor:unconfined
-    environment:
-      CLOUD_COMPUTER_STORAGE: $CLOUD_COMPUTER_STORAGE
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:cloudstorage.$CLOUD_COMPUTER_HOST_DNS
       - traefik.port=12345
     volumes:
-      - CLOUD_COMPUTER_STORAGE:$CLOUD_COMPUTER_STORAGE
+      - CLOUD_COMPUTER_CLOUDSTORAGE:$CLOUD_COMPUTER_CLOUDSTORAGE
 
 volumes:
-  CLOUD_COMPUTER_STORAGE:
+  CLOUD_COMPUTER_CLOUDSTORAGE:

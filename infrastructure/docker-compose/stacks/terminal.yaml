@@ -26,8 +26,6 @@ services:
       CLOUD_COMPUTER_HOST_DNS: $CLOUD_COMPUTER_HOST_DNS
       CLOUD_COMPUTER_HOST_ID: $CLOUD_COMPUTER_HOST_ID
       CLOUD_COMPUTER_TMUX: $CLOUD_COMPUTER_TMUX
-    expose:
-      - 8080
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:terminal.$CLOUD_COMPUTER_HOST_DNS

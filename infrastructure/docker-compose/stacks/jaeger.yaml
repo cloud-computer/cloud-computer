@@ -8,9 +8,6 @@ services:
     labels:
       namespace: jaeger
       tier: cloud-computer
-    expose:
-      - 14268
-      - 16686
     labels:
       - traefik.jaeger.enable=true
       - traefik.jaeger.frontend.rule=Host:jaeger.$CLOUD_COMPUTER_HOST_DNS
