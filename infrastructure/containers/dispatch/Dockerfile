@@ -7,4 +7,4 @@ RUN wget -O dispatch.tar.gz --quiet https://release.khlieng.com/khlieng/dispatch
   rm dispatch.tar.gz
 
 # Start the application
-CMD dispatch
+CMD dispatch --port 8080
