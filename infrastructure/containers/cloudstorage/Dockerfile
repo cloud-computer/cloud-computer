@@ -24,7 +24,9 @@ RUN git clone https://github.com/cloud-computer/libcloudstorage && \
   cd libcloudstorage && \
   ./bootstrap && \
   ./configure --with-curl --with-microhttpd --with-fuse && \
-  make && \
+  make -j$(nproc) && \
   make install
 
 ENV LD_LIBRARY_PATH=/usr/local/lib
+ADD entrypoint.sh .
+CMD bash ./entrypoint.sh
