@@ -27,6 +27,7 @@ RUN git clone https://github.com/cloud-computer/libcloudstorage && \
   make -j$(nproc) && \
   make install
 
-ENV LD_LIBRARY_PATH=/usr/local/lib
 ADD entrypoint.sh .
+
+ENV LD_LIBRARY_PATH=/usr/local/lib
 CMD bash ./entrypoint.sh
