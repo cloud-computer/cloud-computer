@@ -3,18 +3,26 @@ body {
   margin: auto 0;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background.jpg');
   background-size: auto 120vh;
+  overflow-y: hidden;
 }
 
 /* app-container */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   padding: 50px;
   grid-gap: 50px;
 }
 
 .app-container {
   width: 100%;
+}
+
+.storage-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 150px);
+  padding: 110px 33%;
+  grid-gap: 82px;
 }
 
 a {
@@ -38,4 +46,18 @@ img {
   padding: 10px;
   width: 60px;
   height: 60px;
+}
+
+.spacer {
+  padding-top: 300px;
+}
+
+.divider {
+  margin: auto;
+  width: 30rem;
+  height: 6px;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, .15);
+  backdrop-filter: blur(5px);
 }
