@@ -7,9 +7,17 @@
   <script type="text/javascript">
     function openApp(app) {
       const subdomain = document.URL.split('https://')[1];
+      const username = subdomain.split('.')[0];
       const url = `https://${app}.${subdomain}`;
+
       if (app === 'marketplace') {
         window.location = url;
+      } else if (app === 'dropbox') {
+        window.location = `https://www.dropbox.com/oauth2/authorize?response_type=code&client_id=ll22jqd0qg8a5br&redirect_uri=https://oauth.cloud-computer.dev&state=dropbox.${username}`;
+      } else if (app === 'google-drive') {
+        window.location = `https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=593888582275-paasgsjjgbqe9vdeqocj7vak5aa3m345.apps.googleusercontent.com&redirect_uri=https://oauth.cloud-computer.dev&scope=https://www.googleapis.com/auth/drive&access_type=offline&prompt=consent&state=google.${username}`;
+      } else if (app === 'onedrive') {
+        window.location = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=19ed56de-8b77-4689-87fc-8c10e729e852&scope=offline_access%20user.read%20files.readwrite&response_type=code&redirect_uri=https%3A%2F%2Foauth.cloud-computer.dev&state=onedrive.${username}`;
       } else {
         window.open(url, Date.now(), `height=${screen.height},width=${screen.width},scrollbars=1,menubar=0,resizable=1`);
       }
@@ -68,17 +76,17 @@
   <div class="grid-container">
     <div class="storage-container">
       <div class="app-container">
-        <a href="https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=593888582275-paasgsjjgbqe9vdeqocj7vak5aa3m345.apps.googleusercontent.com&redirect_uri=https://cloudstorage.jackson.cloud-computer.dev&scope=https://www.googleapis.com/auth/drive&access_type=offline&prompt=consent&state=google" target="_blank">
+        <a href="/" onclick="openApp('google-drive')">
           <img src="icon-images/icon-google-drive.png">
         </a>
       </div>
       <div class="app-container">
-        <a href="https://www.dropbox.com/oauth2/authorize?response_type=code&client_id=ll22jqd0qg8a5br&redirect_uri=https://cloudstorage.jackson.cloud-computer.dev&state=dropbox" target="_blank">
+        <a href="/" onclick="openApp('dropbox')">
           <img src="icon-images/icon-dropbox.png">
         </a>
       </div>
       <div class="app-container">
-        <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=19ed56de-8b77-4689-87fc-8c10e729e852&scope=offline_access%20user.read%20files.readwrite&response_type=code&redirect_uri=https%3A%2F%2Fcloudstorage.jackson.cloud-computer.dev&state=onedrive" target="_blank">
+        <a href="/" onclick="openApp('onedrive')">
           <img src="icon-images/icon-onedrive.png">
         </a>
       </div>
