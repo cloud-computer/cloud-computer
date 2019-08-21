@@ -21,6 +21,9 @@
       } else {
         window.open(url, Date.now(), `height=${screen.height},width=${screen.width},scrollbars=1,menubar=0,resizable=1`);
       }
+
+      // prevent a.href navigation
+      return false;
     }
   </script>
 </head>
@@ -29,42 +32,42 @@
 
   <div class="grid-container">
     <div class="app-container">
-      <a href="/" onclick="openApp('chrome')">
+      <a href="#" onclick="openApp('chrome')">
         <img src="icon-images/icon-chrome.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="/" onclick="openApp('word')">
+      <a href="#" onclick="openApp('word')">
         <img src="icon-images/icon-word.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="/" onclick="openApp('excel')">
+      <a href="#" onclick="openApp('excel')">
         <img src="icon-images/icon-excel.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="/" onclick="openApp('powerpoint')">
+      <a href="#" onclick="openApp('powerpoint')">
         <img src="icon-images/icon-powerpoint.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="/" onclick="openApp('photoshop')">
+      <a href="#" onclick="openApp('photoshop')">
         <img src="icon-images/icon-photoshop3.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="/" onclick="openApp('code')">
+      <a href="#" onclick="openApp('code')">
         <img src="icon-images/icon-vs-code.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="/" onclick="openApp('slack')">
+      <a href="#" onclick="openApp('slack')">
         <img src="icon-images/icon-slack.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="/" onclick="openApp('marketplace')">
+      <a href="#" onclick="openApp('marketplace')">
         <img src="icon-images/icon-plus.png">
       </a>
     </div>
@@ -76,17 +79,17 @@
   <div class="grid-container">
     <div class="storage-container">
       <div class="app-container">
-        <a href="/" onclick="openApp('google-drive')">
+        <a href="#" onclick="openApp('google-drive')">
           <img src="icon-images/icon-google-drive.png">
         </a>
       </div>
       <div class="app-container">
-        <a href="/" onclick="openApp('dropbox')">
+        <a href="#" onclick="openApp('dropbox')">
           <img src="icon-images/icon-dropbox.png">
         </a>
       </div>
       <div class="app-container">
-        <a href="/" onclick="openApp('onedrive')">
+        <a href="#" onclick="openApp('onedrive')">
           <img src="icon-images/icon-onedrive.png">
         </a>
       </div>
