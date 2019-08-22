@@ -5,7 +5,7 @@ cloudstorage-fuse --add= &
 sleep 5
 
 # Start the fuse mount whose http server fails silently
-cloudstorage-fuse -f /cloud-computer/cloudstorage &
+cloudstorage-fuse -f $CLOUD_COMPUTER_CLOUDSTORAGE &
 
 # Wait until either process exits
 wait -n

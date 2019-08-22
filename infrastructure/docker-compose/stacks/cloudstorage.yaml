@@ -9,6 +9,10 @@ services:
       - SYS_ADMIN
     devices:
       - /dev/fuse
+    environment:
+      CLOUD_COMPUTER_CLOUDSTORAGE: $CLOUD_COMPUTER_CLOUDSTORAGE
+      CLOUD_COMPUTER_HOST_ID: $CLOUD_COMPUTER_HOST_ID
+      CLOUD_COMPUTER_REDIRECT_URI: https://oauth.cloud-computer.dev
     security_opt:
       - apparmor:unconfined
     labels:

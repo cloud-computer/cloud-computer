@@ -26,6 +26,7 @@ services:
       - traefik.port=8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - CLOUD_COMPUTER_STORAGE:$CLOUD_COMPUTER_STORAGE
       - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY
       - CLOUD_COMPUTER_TMUX:$CLOUD_COMPUTER_TMUX
 
