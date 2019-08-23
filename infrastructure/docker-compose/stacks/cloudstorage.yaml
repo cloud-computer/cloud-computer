@@ -20,7 +20,8 @@ services:
       - traefik.frontend.rule=Host:cloudstorage.$CLOUD_COMPUTER_HOST_DNS
       - traefik.port=12345
     volumes:
-      - CLOUD_COMPUTER_CLOUDSTORAGE:$CLOUD_COMPUTER_CLOUDSTORAGE
-
-volumes:
-  CLOUD_COMPUTER_CLOUDSTORAGE:
+      - type: bind
+        source: /var/lib/docker/volumes/${COMPOSE_PROJECT_NAME}_CLOUD_COMPUTER_CLOUDSTORAGE/_data/cloud-storage
+        target: $CLOUD_COMPUTER_CLOUDSTORAGE
+        bind:
+          propagation: rshared

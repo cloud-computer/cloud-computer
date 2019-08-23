@@ -27,6 +27,10 @@ RUN git clone https://github.com/cloud-computer/libcloudstorage && \
   make -j$(nproc) && \
   make install
 
+# Configure fuse
+RUN echo user_allow_other >> /etc/fuse.conf
+
+# Add cloudstorage control script
 ADD entrypoint.sh .
 
 ENV LD_LIBRARY_PATH=/usr/local/lib

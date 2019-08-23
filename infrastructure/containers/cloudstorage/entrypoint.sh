@@ -1,11 +1,25 @@
-# Start the oauth http server and background it
-cloudstorage-fuse --add= &
+# Restart the cloudstorage process whene
+while true; do
 
-# Wait for oauth http server to start
-sleep 5
+  # Start the oauth http server and background it
+  cloudstorage-fuse --add= &
 
-# Start the fuse mount whose http server fails silently
-cloudstorage-fuse -f $CLOUD_COMPUTER_CLOUDSTORAGE &
+  # Wait for oauth http server to start
+  sleep 3
 
-# Wait until either process exits
-wait -n
+  # Start the fuse mount whose http server fails silently
+  mkdir -p $CLOUD_COMPUTER_CLOUDSTORAGE/accounts
+  cloudstorage-fuse -o allow_other,auto_unmount $CLOUD_COMPUTER_CLOUDSTORAGE/accounts
+
+  # Wait until the oauth process exits
+  wait -n
+
+  # Gracefully terminate the cloudstorage fuse process
+  kill -TERM $(pgrep cloudstorage)
+
+  # Wait for cloudstorage fuse processes to exit
+  while [ ! -z "$(pgrep cloudstorage)" ]; do
+    sleep 1
+  done
+
+done
