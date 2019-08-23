@@ -7,18 +7,20 @@ while true; do
   # Wait for oauth http server to start
   sleep 3
 
-  # Start the fuse mount whose http server fails silently
+  # Start the fuse mount
   mkdir -p $CLOUD_COMPUTER_CLOUDSTORAGE/accounts
+  umount -l $CLOUD_COMPUTER_CLOUDSTORAGE/accounts
   cloudstorage-fuse -o allow_other,auto_unmount $CLOUD_COMPUTER_CLOUDSTORAGE/accounts
 
   # Wait until the oauth process exits
   wait -n
 
-  # Gracefully terminate the cloudstorage fuse process
-  kill -TERM $(pgrep cloudstorage)
-
   # Wait for cloudstorage fuse processes to exit
   while [ ! -z "$(pgrep cloudstorage)" ]; do
+    # Gracefully terminate the cloudstorage fuse process
+    pgrep cloudstorage | xargs -n 1 -I @ kill -TERM @
+
+    # Give cloudstorage process time to exit
     sleep 1
   done
 
