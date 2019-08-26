@@ -143,6 +143,9 @@ RUN wget -qnv -O gotop-deb https://github.com/cjbassi/gotop/releases/download/3.
 RUN curl -fsSL https://github.com/yudai/gotty/releases/download/v2.0.0-alpha.3/gotty_2.0.0-alpha.3_linux_amd64.tar.gz | \
   tar -C /usr/local/bin -xzf -
 
+# Install gotty-client
+RUN go get github.com/moul/gotty-client/cmd/gotty-client
+
 # Install jump directory navigator
 RUN wget -qnv -O jump.deb https://github.com/gsamokovarov/jump/releases/download/v0.22.0/jump_0.22.0_amd64.deb && \
   dpkg -i jump.deb && \
