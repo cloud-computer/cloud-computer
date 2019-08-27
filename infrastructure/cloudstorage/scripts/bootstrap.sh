@@ -7,7 +7,7 @@ yarn --cwd ../docker docker run \
   --user root \
   --volume $CLOUD_COMPUTER_CLOUDSTORAGE_VOLUME:$CLOUD_COMPUTER_CLOUDSTORAGE \
   $CLOUD_COMPUTER_IMAGE \
-  chown -R cloud:cloud $CLOUD_COMPUTER_CLOUDSTORAGE
+  chown cloud:cloud $CLOUD_COMPUTER_CLOUDSTORAGE
 
 # Copy cloud provider credentials to the CLOUD_COMPUTER_CLOUDSTORAGE volume
 yarn --cwd ../docker docker run \
