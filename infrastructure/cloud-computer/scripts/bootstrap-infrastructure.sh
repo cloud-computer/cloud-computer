@@ -10,6 +10,9 @@ yarn install
 # Clear the shell resolve history to enable the yarn shim
 # hash -r
 
+# Bootstrap cloudstorage configuration
+yarn --cwd ../cloudstorage bootstrap &
+
 # Bootstrap dns configuration
 yarn --cwd ../dns bootstrap &
 
