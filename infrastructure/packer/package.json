@@ -7,7 +7,7 @@
   "scripts": {
     "bootstrap": "yarn --cwd ../credentials bootstrap",
     "build": "scripts/build.sh",
-    "inspect": "yarn packer inspect cloud-computer.json",
+    "inspect": "yarn packer inspect providers/$CLOUD_COMPUTER_CLOUD_PROVIDER/cloud-computer.json",
     "packer": "scripts/packer.sh"
   },
   "version": "0.0.1"
