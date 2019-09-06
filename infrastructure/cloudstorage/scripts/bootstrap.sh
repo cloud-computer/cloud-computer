@@ -15,4 +15,4 @@ yarn --cwd ../docker docker run \
   --interactive \
   --volume $CLOUD_COMPUTER_CLOUDSTORAGE_VOLUME:$CLOUD_COMPUTER_CLOUDSTORAGE \
   $CLOUD_COMPUTER_IMAGE \
-  zsh -c "mkdir $CLOUD_COMPUTER_CLOUDSTORAGE/cloud-storage"
+  zsh -c "mkdir -p $CLOUD_COMPUTER_CLOUDSTORAGE/cloud-storage"
