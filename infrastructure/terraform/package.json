@@ -16,7 +16,7 @@
     "taint": "yarn terraform-workdir taint google_compute_instance.cloud-computer",
     "terraform": "scripts/terraform.sh",
     "terraform-workdir": "scripts/terraform-workdir.sh",
-    "workdir": "eval \"$(yarn --cwd ../cloud-computer environment)\"; echo $CLOUD_COMPUTER_REPOSITORY/infrastructure/terraform/cloud-computer"
+    "workdir": "eval \"$(yarn --cwd ../cloud-computer environment)\"; echo $CLOUD_COMPUTER_REPOSITORY/infrastructure/terraform/providers/$CLOUD_COMPUTER_CLOUD_PROVIDER"
   },
   "version": "0.0.1"
 }
