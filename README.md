@@ -62,6 +62,7 @@ The cloud computer is built on 100% open source technologies.
 
 ## Screenshots
 
+![Launcher](https://user-images.githubusercontent.com/1094600/64403150-dfdfee80-d0ba-11e9-84e1-0041c8544424.png)
 ![Blender](https://user-images.githubusercontent.com/1094600/62818442-a3d46f00-bb8a-11e9-9828-59350f11cb7d.png)
 ![OnlyOffice Sheets](https://user-images.githubusercontent.com/1094600/62818492-51e01900-bb8b-11e9-83ce-dc2f2a5db5db.png)
 ![Desktop](https://user-images.githubusercontent.com/1094600/56347945-c2dc7900-6208-11e9-8ed2-0bbff2fee6a8.png)
