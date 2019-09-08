@@ -32,7 +32,7 @@ The cloud computer deploys with one command once cloud provider credentials are 
 
 ## Configuration
 
-The cloud computer is hosted in the public cloud. This requires [credentials](infrastructure/credentials/cloud-provider.json) for creating cloud resources. Currently only Google Cloud Platform is supported.
+The cloud computer can be hosted in the public cloud or on-prem. Public hosting requires [credentials](infrastructure/credentials/cloud-provider.json) for creating cloud resources. Currently only Google Cloud Platform is supported. On-prem requires only Docker and Yarn to be installed.
 
 The cloud computer is accessible via a URL. This requires a [domain name and credentials](infrastructure/dns/scripts/environment.sh) for configuring DNS. Currently only CloudFlare is supported.
 
