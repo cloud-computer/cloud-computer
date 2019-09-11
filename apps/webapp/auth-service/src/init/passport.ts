@@ -12,23 +12,19 @@ const {
 } = process.env;
 
 export const init = () => {
-  /** Serializers for passport **/
   passport.serializeUser((user, cb) => cb(null, user));
   passport.deserializeUser((obj, cb) => cb(null, obj));
 
-  /** Common callback **/
   const callback = (accessToken, refreshToken, profile, cb) => {
     cb(null, profile)
   };
 
-  /** Add google auth **/
   passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
     callbackURL: GOOGLE_CALLBACK
   }, callback));
 
-  /** Add github auth **/
   passport.use(new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
