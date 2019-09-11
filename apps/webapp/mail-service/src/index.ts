@@ -5,7 +5,10 @@ import * as mailgun from 'mailgun-js';
 
 const app = express();
 
-const { MAIL_SERVICE_DOMAIN, MAIL_SERVICE_APIKEY } = process.env;
+const {
+  MAIL_SERVICE_DOMAIN,
+  MAIL_SERVICE_APIKEY,
+} = process.env;
 
 app.use(bodyParser.json());
 app.use(cors());
