@@ -7,7 +7,7 @@ services:
     command:
       - --api
       - --entrypoints=Name:http Address::80 Redirect.EntryPoint:https
-      - --entrypoints=Name:https Address::443 TLS
+      - --entrypoints=Name:https Address::443 TLS Auth.Basic.Users:jackson:$$apr1$$M.nuDCpU$$W4Cx8DZpoe6jhgU7K9XSY0
       - --defaultentrypoints=http,https
       - --acme
       - --acme.email=jackson@cloud-computer.dev

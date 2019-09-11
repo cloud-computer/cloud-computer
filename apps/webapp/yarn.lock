@@ -1538,6 +1538,15 @@
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
 
+"@types/express@^4.16.0":
+  version "4.17.1"
+  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.1.tgz#4cf7849ae3b47125a567dfee18bfca4254b88c5c"
+  integrity sha512-VfH/XCP0QbQk5B5puLqTLEeFgR8lfCJHZJKkInZ9mkYd+u8byX0kztXEQxEk4wZXJs8HI+7km2ALXjn4YKcX9w==
+  dependencies:
+    "@types/body-parser" "*"
+    "@types/express-serve-static-core" "*"
+    "@types/serve-static" "*"
+
 "@types/glob@^7.1.1":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.1.tgz#aa59a1c6e3fbc421e07ccd31a944c30eba521575"
@@ -1602,6 +1611,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.51.tgz#80600857c0a47a8e8bafc2dae6daed6db58e3627"
   integrity sha512-cArrlJp3Yv6IyFT/DYe+rlO8o3SIHraALbBW/+CcCYW/a9QucpLI+n2p4sRxAvl2O35TiecpX2heSZtJjvEO+Q==
 
+"@types/node@^8.10.36":
+  version "8.10.53"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.53.tgz#5fa08eef810b08b2c03073e360b54f7bad899db1"
+  integrity sha512-aOmXdv1a1/vYUn1OT1CED8ftbkmmYbKhKGSyMDeJiidLvKRKvZUQOdXwG/wcNY7T1Qb0XTlVdiYjIq00U7pLrQ==
+
 "@types/oauth@*":
   version "0.9.1"
   resolved "https://registry.yarnpkg.com/@types/oauth/-/oauth-0.9.1.tgz#e17221e7f7936b0459ae7d006255dff61adca305"
@@ -1649,6 +1663,14 @@
   integrity sha512-WdIiQmE347LGc1Vq3Ki8sk3iyCuLgnccqVzgxek6gEHp2H0p3MQ3jniIHt+bRODXKju4kNQ+mp53lmP5+/9moQ==
   dependencies:
     moment ">=2.14.0"
+
+"@types/pg@^7.11.1":
+  version "7.11.1"
+  resolved "https://registry.yarnpkg.com/@types/pg/-/pg-7.11.1.tgz#3b0b53e8be0fd44579f1cdbd27b64a67a7434e03"
+  integrity sha512-ayO8XV0xuJV3cEY4wySyD/7MA1HL75UpvJ5JAme00kNWA5pddlGtN4BRG97xgGe2NHgwxN8AkdjTQUEDypM8Uw==
+  dependencies:
+    "@types/node" "*"
+    "@types/pg-types" "*"
 
 "@types/pg@^7.4.14":
   version "7.4.14"
@@ -5530,6 +5552,15 @@ expect@^24.8.0:
     jest-matcher-utils "^24.8.0"
     jest-message-util "^24.8.0"
     jest-regex-util "^24.3.0"
+
+express-async-router@^0.1.15:
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/express-async-router/-/express-async-router-0.1.15.tgz#a58ab77f9e92c9b251f5d87479e15ef11ad5ec4f"
+  integrity sha512-fV4AwVHOCtYyECvfSqUcWoKC4leRSjkP+OTv8TLNUByZDk40lfE2Ptky77ZVUctTVnel1nwdAaGTrUuzVWz+Fw==
+  dependencies:
+    "@types/express" "^4.16.0"
+    "@types/node" "^8.10.36"
+    express "^4.16.4"
 
 express@^4.16.2, express@^4.16.3, express@^4.16.4, express@^4.17.1:
   version "4.17.1"

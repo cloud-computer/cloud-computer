@@ -1,12 +1,12 @@
 import * as bcrypt from 'bcryptjs';
-import * as express from 'express';
 import * as jwt from 'jsonwebtoken';
 import * as passport from 'passport';
 import * as url from 'url';
+import { AsyncRouter } from 'express-async-router';
 
-import { getClient } from '../db';
+import { getClient } from './db';
 
-export const router = express.Router();
+export const router = AsyncRouter();
 
 const client = getClient();
 
@@ -17,20 +17,6 @@ const {
 
 const googleAuth = passport.authenticate('google', { scope: ['profile', 'email'] });
 const githubAuth = passport.authenticate('github');
-
-const errorHandler = async (err, _req, res, _next) => {
-  // cancel any in progress queries
-  await client.query('ROLLBACK');
-
-  console.log(err.name);
-  if (err.name === 'TokenError') {
-    return res.redirect('/auth/google');
-  } else {
-    return res.status(500).json({ error: err.message });
-  }
-}
-
-router.use(errorHandler);
 
 const jwtEncrypt = ({ id, first_name, last_name }) => jwt.sign(
   {
@@ -144,17 +130,17 @@ router.get('/github/callback', githubAuth, async ({ user }, res) => {
   }));
 });
 
-router.post('/login', async function (req, res) {
-  const getUser = await client.query('SELECT * FROM public.user WHERE username=$1', [req.body.username]);
-  const [existingUser] = getUser.rows.shift();
+router.post('/login', async ({ body }, res) => {
+  const getUser = await client.query('SELECT * FROM public.user WHERE username=$1', [body.username]);
+  const [existingUser] = getUser.rows;
 
   if (!existingUser) {
     res.status(404).send({
-      message: 'Hmm. We cant find your username'
+      message: 'Hmm. We cant find your username.'
     });
   }
 
-  const passwordsMatch = bcrypt.compareSync(req.body.password, existingUser.password);
+  const passwordsMatch = bcrypt.compareSync(body.password, existingUser.password);
   if (!passwordsMatch) {
     return res.status(401).send({
       message: 'Password does not match.'
@@ -168,7 +154,7 @@ router.post('/login', async function (req, res) {
   });
 });
 
-router.post('/register', async function ({ body }, res) {
+router.post('/register', async ({ body }, res) => {
   const { username, password, firstname, lastname, role = 'user' } = body;
   const newUser = {
     username,
@@ -189,4 +175,15 @@ router.post('/register', async function ({ body }, res) {
 
   const [createdUser] = createUser.rows;
   res.send(createdUser);
+});
+
+router.use(async (err, _req, res, _next) => {
+  // cancel any in progress queries
+  await client.query('ROLLBACK');
+
+  if (err.name === 'TokenError') {
+    return res.redirect('/login');
+  } else {
+    return res.status(500).json({ error: err.message });
+  }
 });

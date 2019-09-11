@@ -9,7 +9,7 @@ const {
   POSTGRES_PASSWORD = 'password',
 } = process.env;
 
-export const getClient = async () => {
+export const getClient = () => {
   if (client) {
     return client;
   }
@@ -22,7 +22,7 @@ export const getClient = async () => {
     port: 5432
   });
 
-  await client.connect();
+  client.connect();
 
   return client;
 };

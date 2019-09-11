@@ -3,8 +3,8 @@ import * as cors from 'cors';
 import * as express from 'express';
 import * as passport from 'passport';
 
-import { init as initPassport } from './init/passport';
-import { router as authRouter } from './routes/auth';
+import { initPassport } from './passport';
+import { router } from './routes';
 
 initPassport();
 
@@ -13,5 +13,5 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(passport.initialize());
-app.use('/auth', authRouter);
+app.use('/auth', router);
 app.listen(3000);
