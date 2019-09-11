@@ -6,7 +6,7 @@ export DOCKER_HOST=localhost
 
 yarn --cwd ../docker docker run \
   --env HOME=$CLOUD_COMPUTER_REPOSITORY \
-  --env CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT=$(yarn --cwd ../credentials project) \
+  --env CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT="$(yarn --cwd ../credentials project)" \
   --env CLOUD_COMPUTER_CREDENTIALS \
   --env CLOUD_COMPUTER_IMAGE \
   --env TMPDIR=/var/tmp \

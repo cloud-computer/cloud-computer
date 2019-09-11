@@ -1,0 +1,11 @@
+{
+  "author": "Jackson Delahunt <jackson@jacksondelahunt.com>",
+  "description": "The Cloud Computer Cloud Storage Configuration",
+  "license": "MIT",
+  "name": "@cloud-computer/cloudstorage",
+  "repository": "git@github.com:cloud-computer/cloud-computer.git",
+  "scripts": {
+    "bootstrap": "scripts/bootstrap.sh"
+  },
+  "version": "0.0.1"
+}

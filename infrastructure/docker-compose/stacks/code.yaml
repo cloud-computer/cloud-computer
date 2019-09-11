@@ -3,15 +3,18 @@ version: '3.5'
 services:
 
   code:
-    image: $CLOUD_COMPUTER_IMAGE
-    command: code-server --no-auth $CLOUD_COMPUTER_REPOSITORY
+    image: cloudnativecomputer/code:latest
+    command: code-server $CLOUD_COMPUTER_REPOSITORY
     restart: always
     tty: true
     labels:
       namespace: code
       tier: cloud-computer
     environment:
+      CLOUD_COMPUTER_HOST_DNS: $CLOUD_COMPUTER_HOST_DNS
+      CLOUD_COMPUTER_HOST_ID: $CLOUD_COMPUTER_HOST_ID
       COMPOSE_PROJECT_NAME: $COMPOSE_PROJECT_NAME
+      CLOUD_COMPUTER_TMUX: $CLOUD_COMPUTER_TMUX
       DOCKER_HOST: unix:///var/run/docker.sock
       GIT_COMMITTER_EMAIL: $GIT_COMMITTER_EMAIL
       GIT_COMMITTER_NAME: $GIT_COMMITTER_NAME
@@ -23,12 +26,14 @@ services:
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:code.$CLOUD_COMPUTER_HOST_DNS
-      - traefik.port=8443
+      - traefik.port=8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - CLOUD_COMPUTER_CLOUDSTORAGE:$CLOUD_COMPUTER_CLOUDSTORAGE
       - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY
       - CLOUD_COMPUTER_TMUX:$CLOUD_COMPUTER_TMUX
 
 volumes:
+  CLOUD_COMPUTER_CLOUDSTORAGE:
   CLOUD_COMPUTER_REPOSITORY:
   CLOUD_COMPUTER_TMUX:

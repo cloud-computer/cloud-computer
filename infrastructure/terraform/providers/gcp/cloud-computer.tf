@@ -5,7 +5,7 @@ terraform {
 provider "google" {
   credentials = "${file("${var.cloud_provider_credentials_path}")}"
   project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
-  region = "${var.machine_region}"
+  region = "${var.CLOUD_COMPUTER_REGION}"
 }
 
 resource "tls_private_key" "cloud-computer" {
@@ -65,7 +65,7 @@ resource "google_compute_instance" "cloud-computer" {
   name = "${local.environment_name}"
   project = "${var.CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT}"
   tags = ["${local.environment_name}"]
-  zone = "${var.machine_region}-c"
+  zone = "${var.CLOUD_COMPUTER_REGION}-c"
 
   boot_disk {
     initialize_params {

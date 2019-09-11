@@ -9,5 +9,5 @@ fi
 
 echo export GIT_COMMITTER_EMAIL=${GIT_COMMITTER_EMAIL-$GIT_EMAIL}
 echo export GIT_COMMITTER_NAME=${GIT_COMMITTER_NAME-$GIT_NAME}
-echo export CLOUD_COMPUTER_GIT_BRANCH=$(git branch --contains HEAD | cut -c 3-)
+echo export CLOUD_COMPUTER_GIT_BRANCH=$(git branch --contains $(git describe --always) | grep \* | cut -c 3-)
 echo export CLOUD_COMPUTER_GIT_URL=$CLOUD_COMPUTER_GIT_URL

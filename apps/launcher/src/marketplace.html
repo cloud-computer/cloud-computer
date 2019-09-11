@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Marketplace</title>
+  <script type="text/javascript">
+    function openApp(app) {
+      const subdomain = document.URL.split('.cloud-computer.dev')[ 0 ].split('.').pop().replace('https://', '');
+      const url = `https://${app}.${subdomain}.cloud-computer.dev`;
+      if (app === 'marketplace') {
+        window.location = url;
+      } else {
+        window.open(url, Date.now(), `heaight=${screen.height},width=${screen.width},scrollbars=1,menubar=0,resizable=1`);
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <div class="grid-container">
+    <div class="app-container">
+      <a href="/" onclick="openApp('notion')">
+        <img src="icon-images/icon-notion.png">
+      </a>
+    </div>
+    <div class="app-container">
+      <a href="/" onclick="openApp('postman')">
+        <img src="icon-images/icon-postman.png">
+      </a>
+    </div>
+    <div class="app-container">
+      <a href="/" onclick="openApp('blender')">
+        <img src="icon-images/icon-blender.png">
+      </a>
+    </div>
+    <div class="app-container">
+      <a href="/" onclick="openApp('kicad')">
+        <img src="icon-images/icon-kicad.png">
+      </a>
+    </div>
+    <div class="app-container">
+      <a href="/" onclick="openApp('gnumeric')">
+        <img src="icon-images/icon-gnumeric.png">
+      </a>
+    </div>
+    <div class="app-container">
+      <a href="/" onclick="openApp('grafana')">
+        <img src="icon-images/icon-metrics.png">
+      </a>
+    </div>
+    <div class="app-container">
+      <a href="/" onclick="openApp('terminal')">
+        <img src="icon-images/icon-terminal.png">
+      </a>
+    </div>
+    <div class="app-container">
+      <a href="/" onclick="openApp('darktable')">
+        <img src="icon-images/icon-darktable.png">
+      </a>
+    </div>
+    <div class="app-container">
+      <a href="/" onclick="openApp('desktop')">
+        <img src="icon-images/icon-linux.png">
+      </a>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

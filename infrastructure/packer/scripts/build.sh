@@ -5,4 +5,4 @@ eval "$(yarn --cwd ../cloud-computer environment)"
 yarn bootstrap
 
 # Build the packer image
-yarn packer build -force cloud-computer.json
+yarn packer build -force providers/$CLOUD_COMPUTER_CLOUD_PROVIDER.json

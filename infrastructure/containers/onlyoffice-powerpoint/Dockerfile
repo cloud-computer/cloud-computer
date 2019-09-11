@@ -1,11 +1,7 @@
-FROM cloudnativecomputer/cloud-computer:latest
+FROM node:latest
+WORKDIR /app
 
-# Install onlyoffice
-RUN wget --quiet https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb && \
-  sudo apt-get update -qq && \
-  sudo dpkg -i onlyoffice-desktopeditors_amd64.deb || \
-  sudo apt-get install --fix-broken -qq && \
-  rm onlyoffice-desktopeditors_amd64.deb
+RUN yarn global add http-server
+ADD index.html index.html
 
-# Start the application in vnc
-CMD /cloud-computer/launcher-vnc.sh "onlyoffice-desktopeditors --new:slide"
+CMD http-server .

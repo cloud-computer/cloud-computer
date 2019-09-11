@@ -1,0 +1,11 @@
+version: '2.3'
+
+services:
+
+  dispatch:
+    image: cloudnativecomputer/dispatch:latest
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:irc.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8080

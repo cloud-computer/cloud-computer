@@ -104,12 +104,6 @@ RUN wget -O bat.deb -qnv https://github.com/sharkdp/bat/releases/download/v0.9.0
   dpkg -i bat.deb && \
   rm bat.deb
 
-# Install code
-RUN curl -fsSL https://github.com/cdr/code-server/releases/download/1.1119-vsc1.33.1/code-server1.1119-vsc1.33.1-linux-x64.tar.gz | \
-  tar -C /tmp -xzf - && \
-  mv /tmp/code-server*/code-server /usr/local/bin && \
-  rm -rf /tmp/code-server*
-
 # Install ctop
 RUN wget -O /usr/local/bin/ctop -qnv https://github.com/bcicen/ctop/releases/download/v0.7.2/ctop-0.7.2-linux-amd64 && \
   chmod +x /usr/local/bin/ctop
@@ -141,6 +135,11 @@ RUN git clone --depth 1 https://github.com/arzzen/git-quick-stats.git && \
   make install && \
   rm -rf ../git-quick-stats
 
+# Install go
+RUN add-apt-repository ppa:longsleep/golang-backports && \
+  apt-get update -qq && \
+  apt-get install -qq golang-go
+
 # Install gotop
 RUN wget -qnv -O gotop-deb https://github.com/cjbassi/gotop/releases/download/3.0.0/gotop_3.0.0_linux_amd64.deb && \
   dpkg -i gotop-deb
@@ -148,6 +147,9 @@ RUN wget -qnv -O gotop-deb https://github.com/cjbassi/gotop/releases/download/3.
 # Install gotty
 RUN curl -fsSL https://github.com/yudai/gotty/releases/download/v2.0.0-alpha.3/gotty_2.0.0-alpha.3_linux_amd64.tar.gz | \
   tar -C /usr/local/bin -xzf -
+
+# Install gotty-client
+RUN go get github.com/moul/gotty-client/cmd/gotty-client
 
 # Install jump directory navigator
 RUN wget -qnv -O jump.deb https://github.com/gsamokovarov/jump/releases/download/v0.22.0/jump_0.22.0_amd64.deb && \
@@ -221,6 +223,11 @@ RUN zsh -c $HOME/.tmux/plugins/tpm/bin/install_plugins
 
 # Cache zsh plugins
 RUN zsh -c "source $HOME/.zshrc"
+
+# Symlink cloud storage
+RUN ln -s /cloud-computer/cloudstorage/cloud-storage/accounts/dropbox $HOME/Dropbox && \
+  ln -s /cloud-computer/cloudstorage/cloud-storage/accounts/google $HOME/Google\ Drive && \
+  ln -s /cloud-computer/cloudstorage/cloud-storage/accounts/onedrive $HOME/OneDrive
 
 # Record container build metadata
 ARG CONTAINER_BUILD_DATE

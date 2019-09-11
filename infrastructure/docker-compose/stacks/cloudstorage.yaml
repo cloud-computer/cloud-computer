@@ -1,0 +1,27 @@
+version: '3.5'
+
+services:
+
+  cloudstorage:
+    image: cloudnativecomputer/cloudstorage:latest
+    restart: always
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - /dev/fuse
+    environment:
+      CLOUD_COMPUTER_CLOUDSTORAGE: $CLOUD_COMPUTER_CLOUDSTORAGE
+      CLOUD_COMPUTER_HOST_ID: $CLOUD_COMPUTER_HOST_ID
+      CLOUD_COMPUTER_REDIRECT_URI: https://oauth.cloud-computer.dev
+    security_opt:
+      - apparmor:unconfined
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:cloudstorage.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=12345
+    volumes:
+      - type: bind
+        source: /var/lib/docker/volumes/${COMPOSE_PROJECT_NAME}_CLOUD_COMPUTER_CLOUDSTORAGE/_data/cloud-storage
+        target: $CLOUD_COMPUTER_CLOUDSTORAGE
+        bind:
+          propagation: rshared

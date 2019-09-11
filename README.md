@@ -1,18 +1,28 @@
 # Cloud Computer
 
-Repeatable. Reliable. Infinitely Scalable.
+The cloud computer is a one click deploy computer accessible through any web browser. It is composed of cloud native technologies utilizing infrastructure as code.
 
-The cloud computer is a one click deploy computer accessible through any web browser. It is composed of cloud native technologies with 100% infrastructure as code.
+## Supported Applications
 
-## Use Cases
+|||||||
+|-|-|-|-|-|-|
+| VS Code | Blender | Chrome | Krita | Darktable | Slack |
+| <a href="https://code.visualstudio.com"><img src="apps/launcher/src/icon-images/icon-vs-code.png" width="50" height="50" /></a> | <a href="https://www.blender.org"><img src="apps/launcher/src/icon-images/icon-blender.png" width="50" height="50" /></a> | <a href="https://www.google.com/chrome/"><img src="apps/launcher/src/icon-images/icon-chrome.png" width="50" height="50" /></a> | <a href="https://krita.org"><img src="apps/launcher/src/icon-images/icon-krita.png" width="50" height="50" /></a> | <a href="https://www.darktable.org"><img src="apps/launcher/src/icon-images/icon-darktable.png" width="50" height="50" /></a> | <a href="https://slack.com/"><img src="apps/launcher/src/icon-images/icon-slack.png" width="50" height="50" /></a>
+| Postman | KiCad | Notion | OnlyOffice | Terminal | Gnumeric |
+| <a href="https://www.getpostman.com"><img src="apps/launcher/src/icon-images/icon-postman.png" width="50" height="50" /></a> | <a href="http://www.kicad-pcb.org"><img src="apps/launcher/src/icon-images/icon-kicad.png" width="50" height="50" /></a> | <a href="https://www.notion.so"><img src="apps/launcher/src/icon-images/icon-notion.png" width="50" height="50" /></a> | <a href="https://www.onlyoffice.com"><img src="apps/launcher/src/icon-images/icon-onlyoffice.png" width="50" height="50" /></a> | <a href="https://github.com/yudai/gotty"><img src="apps/launcher/src/icon-images/icon-terminal.png" width="50" height="50" /></a> | <a href="http://www.gnumeric.org"><img src="apps/launcher/src/icon-images/icon-gnumeric.png" width="50" height="50" /></a>
+| Grafana ||||
+| <a href="https://grafana.com"><img src="apps/launcher/src/icon-images/icon-grafana.png" width="50" height="50" /></a>
 
-### Unified Production and Development Environment
+## Supported Storage
 
-Environment differences between 'production' and 'development' are notorious for causing unexpected system failures. The cloud computer is infinitely scalable; deploy a 4 CPU 8GB RAM cloud computer for development, and scale it up to 120 CPU 256GB RAM for production. Same environment for development and production - no developer unfamiliarity.
+||||
+|-|-|-|
+| Drive | Dropbox | OneDrive | Krita | Darktable | Slack |
+| <a href="https://www.google.com/drive"><img src="apps/launcher/src/icon-images/icon-google-drive.png" width="50" height="50" /></a> | <a href="https://www.dropbox.com"><img src="apps/launcher/src/icon-images/icon-dropbox.png" width="50" height="50" /></a> | <a href="https://onedrive.live.com"><img src="apps/launcher/src/icon-images/icon-onedrive.png" width="50" height="50" /></a>
 
 ## Getting Started
 
-The cloud computer requires zero human interaction to deploy once cloud access configuration is supplied.
+The cloud computer deploys with one command once cloud provider credentials are supplied.
 
 1. Supply your cloud provider and domain name [configuration](#configuration).
 
@@ -50,14 +60,11 @@ The cloud computer is built on 100% open source technologies.
 - [Yarn](https://github.com/cloud-computer/yarn)
 - [Zsh](https://github.com/zsh-users/zsh)
 
-### Why Yarn?
-
-Yarn is the package manager for the web. It is also a task runner. It could be seen as overkill to use Yarn instead of shell scripts to automate the cloud computer operations. Yarn was chosen for its ability to leverage open source utilities in the JavaScript ecosystem, and for the modular structure it imposes using `package.json` files. These features solve two of the greatest pain points experienced in modern web development; frictionless reuse of open source code, and a maintainable project structure that can be navigated and automated programmatically.
-
-Using Yarn creates a single point of entry for all automated operations. This single point of entry greatly simplifies tracing of cloud computer operations. To provide visibility on these operations, Jaeger visualizes OpenTracing data captured using the shim in `@cloud-computer/yarn-shim`. A Screenshot of trace output is below.
-
 ## Screenshots
 
+![Launcher](https://user-images.githubusercontent.com/1094600/64403150-dfdfee80-d0ba-11e9-84e1-0041c8544424.png)
+![Blender](https://user-images.githubusercontent.com/1094600/62818442-a3d46f00-bb8a-11e9-9828-59350f11cb7d.png)
+![OnlyOffice Sheets](https://user-images.githubusercontent.com/1094600/62818492-51e01900-bb8b-11e9-83ce-dc2f2a5db5db.png)
 ![Desktop](https://user-images.githubusercontent.com/1094600/56347945-c2dc7900-6208-11e9-8ed2-0bbff2fee6a8.png)
 ![Terminal](https://user-images.githubusercontent.com/1094600/56299607-b2c88900-6177-11e9-912b-40ea25d690e3.png)
 ![Jaeger](https://raw.githubusercontent.com/kawing-ho/kawing-ho.github.io/master/assets/images/startup-yarn-2.png)
