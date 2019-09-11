@@ -93,6 +93,7 @@ services:
     command: yarn dev
     working_dir: $CLOUD_COMPUTER_REPOSITORY/apps/webapp/worker-service
     environment:
+      CLOUD_COMPUTER_REPOSITORY: $CLOUD_COMPUTER_REPOSITORY
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
       POSTGRES_DB: $POSTGRES_DB

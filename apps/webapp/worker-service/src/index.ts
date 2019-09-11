@@ -4,6 +4,7 @@ import * as redis from 'redis';
 import { getClient } from './db';
 
 const {
+  CLOUD_COMPUTER_REPOSITORY,
   REDIS_HOST,
   REDIS_PORT,
 } = process.env;
@@ -38,14 +39,13 @@ const jobs = [];
 
 const runJob = (userId, row, cloudUser) => {
   return () => {
-    const command = '/scripts/run.sh';
-    const child = spawn('bash', [__dirname + command, cloudUser]);
+    const child = spawn('bash', ['-e', 'yarn create:cloud-computer'], { env: { CLOUD_COMPUTER_HOST_ID: cloudUser }, cwd: CLOUD_COMPUTER_REPOSITORY });
 
     child.stdout.on('data', async (data) => {
       saveLogs(async (cb) => {
         await client.query(
           'INSERT INTO public.log(build_id, log, command) values ($1, $2, $3) RETURNING *',
-          [row.id, data.toString(), command]);
+          [row.id, data.toString(), 'yarn create:cloud-computer']);
         cb();
       });
     });
