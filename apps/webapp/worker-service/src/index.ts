@@ -34,6 +34,7 @@ const saveLogs = (fn) => {
   logs.push(fn);
   runLogSaver();
 };
+
 /** In memory queue for jobs **/
 const jobs = [];
 
