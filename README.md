@@ -1,6 +1,6 @@
 # Cloud Computer
 
-The cloud computer is a one click deploy computer accessible through any web browser. It is composed of cloud native technologies utilizing infrastructure as code.
+The cloud computer is a one click deploy computer accessible through any web browser. It can be run on-premises, or on a cloud provider. It can be thought of as an open source [Citrix Receiver](https://user-images.githubusercontent.com/1094600/64485122-9f6da580-d25f-11e9-83a0-e6a63a9fe9fa.png).
 
 ## Supported Applications
 
@@ -32,7 +32,7 @@ The cloud computer deploys with one command once cloud provider credentials are 
 
 ## Configuration
 
-The cloud computer is hosted in the public cloud. This requires [credentials](infrastructure/credentials/cloud-provider.json) for creating cloud resources. Currently only Google Cloud Platform is supported.
+The cloud computer can be hosted in the public cloud or on-prem. Public hosting requires [credentials](infrastructure/credentials/cloud-provider.json) for creating cloud resources. Currently only Google Cloud Platform is supported. On-prem requires only Docker and Yarn to be installed.
 
 The cloud computer is accessible via a URL. This requires a [domain name and credentials](infrastructure/dns/scripts/environment.sh) for configuring DNS. Currently only CloudFlare is supported.
 
