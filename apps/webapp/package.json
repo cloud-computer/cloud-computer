@@ -14,11 +14,16 @@
     "start": "scripts/start.sh"
   },
   "version": "1.0.0",
-  "workspaces": [
-    "auth-service",
-    "client",
-    "mail-service",
-    "stream-service",
-    "worker-service"
-  ]
+  "workspaces": {
+    "nohoist": [
+      "**"
+    ],
+    "packages": [
+      "auth-service",
+      "client",
+      "mail-service",
+      "stream-service",
+      "worker-service"
+    ]
+  }
 }

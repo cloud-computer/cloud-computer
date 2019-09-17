@@ -43,6 +43,7 @@
     "build-storybook": "build-storybook -s public",
     "build:container": "docker build -t cloudnativecomputer/webapp-client:latest .",
     "dev": "yarn next -p 3000",
+    "next": "./node_modules/.bin/next",
     "start": "yarn next start -p 3000",
     "storybook": "start-storybook -p 9009 -s public"
   },
