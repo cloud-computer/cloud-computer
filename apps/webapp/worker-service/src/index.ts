@@ -40,7 +40,7 @@ const jobs = [];
 
 const runJob = (userId, row, cloudUser) => {
   return () => {
-    const child = spawn('bash', ['-e', 'yarn create:cloud-computer'], { env: { CLOUD_COMPUTER_HOST_ID: cloudUser }, cwd: CLOUD_COMPUTER_REPOSITORY });
+    const child = spawn('bash', ['-c', 'yarn', 'create:cloud-computer'], { env: { CLOUD_COMPUTER_HOST_ID: cloudUser }, cwd: CLOUD_COMPUTER_REPOSITORY });
 
     child.stdout.on('data', async (data) => {
       saveLogs(async (cb) => {
