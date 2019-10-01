@@ -16,7 +16,7 @@ while true; do
   # Make the program window fullscreen
   echo $PROGRAM_WIDS | xargs -n 1 -I @ xdotool windowsize @ 100% 100%
 
-  # Be reasonable
-  sleep 5
+  # Refresh regularly
+  sleep 0.2
 
 done

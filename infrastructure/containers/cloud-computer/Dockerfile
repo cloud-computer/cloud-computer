@@ -79,13 +79,13 @@ RUN apt-get update -qq && \
   software-properties-common \
   ssh \
   sudo \
+  tigervnc-standalone-server \
   tmux \
   tree \
   vcsh \
   vim \
   weechat \
   wmctrl \
-  x11vnc \
   xauth \
   xdotool \
   xinput \
