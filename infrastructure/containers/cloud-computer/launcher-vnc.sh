@@ -2,8 +2,12 @@
 PROGRAM_TO_LAUNCH=$1
 PROGRAM_NAME=${2-$1}
 
+# Prepare vnc application
+mkdir $HOME/.vnc
+echo $PROGRAM_TO_LAUNCH > $HOME/.vnc/xstartup
+
 # Start vnc server
-tigervncserver -SecurityTypes none -xstartup $1
+tigervncserver -SecurityTypes none
 
 # Start the vnc client
 /opt/noVNC/utils/launch.sh --listen 8080 &
