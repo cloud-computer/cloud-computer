@@ -3,8 +3,7 @@ version: '2.3'
 services:
 
   desktop:
-    image: sabrehagen/desktop-environment:latest
-    command: sleep infinity
+    image: cloudnativecomputer/desktop:latest
     shm_size: 6gb
     restart: always
     environment:
@@ -19,10 +18,8 @@ services:
       - CLOUD_COMPUTER_CLOUDSTORAGE:$CLOUD_COMPUTER_CLOUDSTORAGE
       - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY
       - CLOUD_COMPUTER_TMUX:$CLOUD_COMPUTER_TMUX
-      - CLOUD_COMPUTER_X11:$CLOUD_COMPUTER_X11
 
 volumes:
   CLOUD_COMPUTER_CLOUDSTORAGE:
   CLOUD_COMPUTER_REPOSITORY:
   CLOUD_COMPUTER_TMUX:
-  CLOUD_COMPUTER_X11:
