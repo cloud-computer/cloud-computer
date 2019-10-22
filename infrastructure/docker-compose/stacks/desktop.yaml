@@ -3,19 +3,18 @@ version: '2.3'
 services:
 
   desktop:
-    image: dorowu/ubuntu-desktop-lxde-vnc:bionic
+    image: sabrehagen/desktop-environment:latest
+    command: sleep infinity
     shm_size: 6gb
-    runtime: nvidia
     restart: always
     environment:
-      - VNC_PASSWORD=
-      - HTTP_PASSWORD=
-      - USER=cloud-computer
-      - PASSWORD=password
+      - DESKTOP_ENVIRONMENT_USER=$CLOUD_COMPUTER_HOST_USER
+    security_opt:
+      - seccomp:unconfined
     labels:
       - traefik.enable=true
       - traefik.frontend.rule=Host:desktop.$CLOUD_COMPUTER_HOST_DNS
-      - traefik.port=80
+      - traefik.port=8080
     volumes:
       - CLOUD_COMPUTER_CLOUDSTORAGE:$CLOUD_COMPUTER_CLOUDSTORAGE
       - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY

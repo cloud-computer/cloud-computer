@@ -90,7 +90,6 @@ RUN apt-get update -qq && \
   xdotool \
   xinput \
   xsel \
-  xvfb \
   zsh
 
 # Enable password-less sudo for the sudo group
