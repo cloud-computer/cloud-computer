@@ -10,7 +10,7 @@ echo $PROGRAM_TO_LAUNCH > $HOME/.vnc/xstartup
 tigervncserver -SecurityTypes none
 
 # Start the vnc client
-/opt/noVNC/utils/launch.sh --listen 8080 &
+/opt/noVNC/utils/launch.sh --listen 8080 --vnc localhost:5901 &
 
 # Make the program window fullscreen
 DISPLAY=:1 /cloud-computer/fullscreen-always.sh $PROGRAM_NAME &
