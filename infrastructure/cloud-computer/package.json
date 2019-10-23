@@ -34,7 +34,7 @@
     "inspect": "yarn --cwd ../docker docker inspect",
     "lint": "yarn tslint --project tsconfig.lint.json",
     "logs:code": "yarn --cwd ../docker docker logs --follow ${COMPOSE_PROJECT_NAME:-cloud-computer}_code_1",
-    "logs:ingress": "yarn --cwd ../docker docker logs --follow ${COMPOSE_PROJECT_NAME:-cloud-computer}_ingress_1",
+    "logs:traefik": "yarn --cwd ../docker docker logs --follow ${COMPOSE_PROJECT_NAME:-cloud-computer}_traefik_1",
     "nodemon:restart": "yarn --cwd ../docker docker run --rm --volume $CLOUD_COMPUTER_NODEMON_VOLUME:$CLOUD_COMPUTER_NODEMON $CLOUD_COMPUTER_IMAGE touch $CLOUD_COMPUTER_NODEMON/restart",
     "recycle": "yarn --cwd ../terraform destroy; yarn run create",
     "recycle:clean": "scripts/recycle-clean.sh",

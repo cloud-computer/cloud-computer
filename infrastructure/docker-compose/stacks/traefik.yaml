@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
 
-  ingress:
+  traefik:
     image: traefik:latest
     command:
       - --api
@@ -24,7 +24,7 @@ services:
     restart: always
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:ingress.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:traefik.$CLOUD_COMPUTER_HOST_DNS
       - traefik.port=8080
     ports:
       - 80:80
@@ -32,6 +32,25 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - CLOUD_COMPUTER_TRAEFIK:/var/run/traefik
+
+  traefik-auth:
+    image: thomseddon/traefik-forward-auth
+    environment:
+      - CLIENT_ID=your-client-id
+      - CLIENT_SECRET=your-client-secret
+      - OIDC_ISSUER=https://accounts.google.com
+      - SECRET=traefik-auth-secret
+      - AUTH_HOST=auth.example.com
+    labels:
+      - traefik.frontend.rule=Host:auth.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.auth.forward.address=http://traefik-auth:8080
+      - traefik.frontend.auth.forward.trustForwardHeader=true
+      - traefik.enable=true
+      - traefik.port=8080
+      - traefik.backend=traefik-auth
+      - traefik.redirectorservice.frontend.entryPoints=http
+      - traefik.redirectorservice.frontend.redirect.entryPoint=https
+      - traefik.webservice.frontend.entryPoints=https
 
 volumes:
   CLOUD_COMPUTER_TRAEFIK:
