@@ -58,10 +58,6 @@ variable "CLOUD_COMPUTER_REGION" {
 }
 
 
-variable "CLOUD_COMPUTER_REPOSITORY_VOLUME" {
-  description = "The cloud computer repoisitory volume name."
-}
-
 variable "CLOUD_COMPUTER_YARN_JAEGER_TRACE" {
   description = "The current cloud computer jaeger trace id."
   default = ""

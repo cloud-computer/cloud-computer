@@ -7,7 +7,7 @@ eval "$(yarn --cwd ../git environment)"
 # Clone cloud-computer backend repository (unknown issue: git clone causes root ownership of repository volume)
 yarn --cwd ../docker docker run \
   --rm \
-  --volume $CLOUD_COMPUTER_REPOSITORY_VOLUME:$CLOUD_COMPUTER_REPOSITORY \
+  --volume CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY \
   --user root \
   --workdir $CLOUD_COMPUTER_REPOSITORY \
   $CLOUD_COMPUTER_IMAGE \

@@ -5,7 +5,7 @@ eval "$(yarn --cwd ../cloud-computer environment)"
 yarn --cwd ../docker docker run \
   --rm \
   --user root \
-  --volume $CLOUD_COMPUTER_CLOUDSTORAGE_VOLUME:$CLOUD_COMPUTER_CLOUDSTORAGE \
+  --volume CLOUD_COMPUTER_CLOUDSTORAGE:$CLOUD_COMPUTER_CLOUDSTORAGE \
   $CLOUD_COMPUTER_IMAGE \
   chown cloud:cloud $CLOUD_COMPUTER_CLOUDSTORAGE
 
@@ -13,6 +13,6 @@ yarn --cwd ../docker docker run \
 yarn --cwd ../docker docker run \
   --rm \
   --interactive \
-  --volume $CLOUD_COMPUTER_CLOUDSTORAGE_VOLUME:$CLOUD_COMPUTER_CLOUDSTORAGE \
+  --volume CLOUD_COMPUTER_CLOUDSTORAGE:$CLOUD_COMPUTER_CLOUDSTORAGE \
   $CLOUD_COMPUTER_IMAGE \
   zsh -c "mkdir -p $CLOUD_COMPUTER_CLOUDSTORAGE/cloud-storage"

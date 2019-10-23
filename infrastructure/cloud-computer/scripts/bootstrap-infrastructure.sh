@@ -26,7 +26,7 @@ yarn --cwd ../yarn bootstrap &
 yarn --cwd ../docker docker run \
   --rm \
   --user root \
-  --volume $CLOUD_COMPUTER_HOME_VOLUME:$CLOUD_COMPUTER_HOME \
+  --volume CLOUD_COMPUTER_HOME:$CLOUD_COMPUTER_HOME \
   $CLOUD_COMPUTER_IMAGE \
   chown -R cloud:cloud $CLOUD_COMPUTER_HOME &
 
@@ -34,7 +34,7 @@ yarn --cwd ../docker docker run \
 yarn --cwd ../docker docker run \
   --rm \
   --user root \
-  --volume $CLOUD_COMPUTER_NODEMON_VOLUME:$CLOUD_COMPUTER_NODEMON \
+  --volume CLOUD_COMPUTER_NODEMON:$CLOUD_COMPUTER_NODEMON \
   $CLOUD_COMPUTER_IMAGE \
   chown -R cloud:cloud $CLOUD_COMPUTER_NODEMON &
 
@@ -42,7 +42,7 @@ yarn --cwd ../docker docker run \
 yarn --cwd ../docker docker run \
   --rm \
   --user root \
-  --volume $CLOUD_COMPUTER_TMUX_VOLUME:$CLOUD_COMPUTER_TMUX \
+  --volume CLOUD_COMPUTER_TMUX:$CLOUD_COMPUTER_TMUX \
   $CLOUD_COMPUTER_IMAGE \
   chown -R cloud:cloud $CLOUD_COMPUTER_TMUX &
 
@@ -50,7 +50,7 @@ yarn --cwd ../docker docker run \
 yarn --cwd ../docker docker run \
   --rm \
   --user root \
-  --volume $CLOUD_COMPUTER_X11_VOLUME:$CLOUD_COMPUTER_X11 \
+  --volume CLOUD_COMPUTER_X11:$CLOUD_COMPUTER_X11 \
   $CLOUD_COMPUTER_IMAGE \
   chown -R cloud:cloud $CLOUD_COMPUTER_X11 &
 

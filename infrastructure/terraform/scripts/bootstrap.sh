@@ -8,7 +8,7 @@ export DOCKER_HOST=localhost
 yarn --cwd ../docker docker run \
   --rm \
   --user root \
-  --volume $CLOUD_COMPUTER_TERRAFORM_VOLUME:$CLOUD_COMPUTER_TERRAFORM \
+  --volume CLOUD_COMPUTER_TERRAFORM:$CLOUD_COMPUTER_TERRAFORM \
   $CLOUD_COMPUTER_IMAGE \
   chown -R cloud:cloud $CLOUD_COMPUTER_TERRAFORM
 
@@ -19,7 +19,7 @@ if [ -z "$CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS" ]; then
   yarn --cwd ../docker docker run \
     --entrypoint bash \
     --rm \
-    --volume $CLOUD_COMPUTER_CREDENTIALS_VOLUME:$CLOUD_COMPUTER_CREDENTIALS \
+    --volume CLOUD_COMPUTER_CREDENTIALS:$CLOUD_COMPUTER_CREDENTIALS \
     google/cloud-sdk:latest \
     -c "\
       gcloud auth activate-service-account --key-file $CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json; \
