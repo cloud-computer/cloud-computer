@@ -33,21 +33,21 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - CLOUD_COMPUTER_TRAEFIK:/var/run/traefik
 
-  traefik-auth:
+  traefik-forward-auth:
     image: thomseddon/traefik-forward-auth
     environment:
       - CLIENT_ID=your-client-id
       - CLIENT_SECRET=your-client-secret
       - OIDC_ISSUER=https://accounts.google.com
-      - SECRET=traefik-auth-secret
+      - SECRET=traefik-forward-auth-secret
       - AUTH_HOST=auth.example.com
     labels:
       - traefik.frontend.rule=Host:auth.$CLOUD_COMPUTER_HOST_DNS
-      - traefik.frontend.auth.forward.address=http://traefik-auth:8080
+      - traefik.frontend.auth.forward.address=http://traefik-forward-auth:8080
       - traefik.frontend.auth.forward.trustForwardHeader=true
       - traefik.enable=true
       - traefik.port=8080
-      - traefik.backend=traefik-auth
+      - traefik.backend=traefik-forward-auth
       - traefik.redirectorservice.frontend.entryPoints=http
       - traefik.redirectorservice.frontend.redirect.entryPoint=https
       - traefik.webservice.frontend.entryPoints=https
