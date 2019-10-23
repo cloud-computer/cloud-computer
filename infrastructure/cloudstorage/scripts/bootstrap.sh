@@ -9,7 +9,7 @@ yarn --cwd ../docker docker run \
   $CLOUD_COMPUTER_IMAGE \
   chown cloud:cloud $CLOUD_COMPUTER_CLOUDSTORAGE
 
-# Copy cloud provider credentials to the CLOUD_COMPUTER_CLOUDSTORAGE volume
+# Make the cloudstorage fuse mount directory in the CLOUD_COMPUTER_CLOUDSTORAGE volume
 yarn --cwd ../docker docker run \
   --rm \
   --interactive \
