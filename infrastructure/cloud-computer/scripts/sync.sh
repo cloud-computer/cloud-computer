@@ -5,7 +5,7 @@ eval "$(yarn --cwd ../cloud-computer environment)"
 eval "$(yarn --cwd ../git environment)"
 
 # Create a unique sync identifier
-SYNC_CONTAINER=${COMPOSE_PROJECT_NAME}-sync-$HOSTNAME-$(date +%M%S)
+SYNC_CONTAINER=cloud-computer-sync-$HOSTNAME-$(date +%M%S)
 
 # Sync to the CLOUD_COMPUTER_REPOSITORY volume using a temporary container
 yarn --cwd ../docker docker run \

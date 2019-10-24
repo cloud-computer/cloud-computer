@@ -6,7 +6,6 @@ eval "$(yarn --cwd ../git environment)"
 
 yarn --cwd ../docker docker run \
   --env COMPOSE_HTTP_TIMEOUT=360 \
-  --env COMPOSE_PROJECT_NAME \
   --env DOCKER_CLIENT_TIMEOUT=360 \
   --env GIT_COMMITTER_EMAIL \
   --env GIT_COMMITTER_NAME \

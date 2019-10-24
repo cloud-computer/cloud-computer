@@ -21,7 +21,7 @@ services:
       - traefik.port=12345
     volumes:
       - type: bind
-        source: /var/lib/docker/volumes/${COMPOSE_PROJECT_NAME}_CLOUD_COMPUTER_CLOUDSTORAGE/_data/cloud-storage
+        source: /var/lib/docker/volumes/CLOUD_COMPUTER_CLOUDSTORAGE/_data/cloud-storage
         target: $CLOUD_COMPUTER_CLOUDSTORAGE
         bind:
           propagation: rshared

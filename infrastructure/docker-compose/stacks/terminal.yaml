@@ -13,7 +13,6 @@ services:
       namespace: terminal
       tier: cloud-computer
     environment:
-      COMPOSE_PROJECT_NAME: $COMPOSE_PROJECT_NAME
       DOCKER_HOST: unix:///var/run/docker.sock
       GIT_COMMITTER_EMAIL: $GIT_COMMITTER_EMAIL
       GIT_COMMITTER_NAME: $GIT_COMMITTER_NAME

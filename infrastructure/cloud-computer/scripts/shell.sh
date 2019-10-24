@@ -5,7 +5,6 @@ eval "$(yarn environment)"
 eval "$(yarn --cwd ../git environment)"
 
 yarn --cwd ../docker docker run \
-  --env COMPOSE_PROJECT_NAME \
   --env DOCKER_HOST=unix:///var/run/docker.sock \
   --env GIT_COMMITTER_EMAIL \
   --env GIT_COMMITTER_NAME \
@@ -20,11 +19,10 @@ yarn --cwd ../docker docker run \
   --env CLOUD_COMPUTER_X11 \
   --env CLOUD_COMPUTER_YARN \
   --interactive \
-  --name ${COMPOSE_PROJECT_NAME}_shell-$(date +%M%S) \
+  --name cloud-computer-shell-$(date +%M%S) \
   --rm \
   --tty \
   --volume /var/run/docker.sock:/var/run/docker.sock \
-  --volume $HOME/.ssh:$CLOUD_COMPUTER_HOME/.ssh \
   --volume CLOUD_COMPUTER_CREDENTIALS:$CLOUD_COMPUTER_CREDENTIALS \
   --volume CLOUD_COMPUTER_HOME:$CLOUD_COMPUTER_HOME \
   --volume CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY \

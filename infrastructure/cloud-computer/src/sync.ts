@@ -8,7 +8,6 @@ import { pack as tarStream } from 'tar-stream';
 
 const {
   CLOUD_COMPUTER_IMAGE,
-  COMPOSE_PROJECT_NAME = 'cloud-computer',
   DOCKER_HOST,
   HOSTNAME,
 } = process.env;
@@ -23,7 +22,7 @@ const repositories: string[] = [
 ];
 
 const repositoriesFolder = `${__dirname}/../../../..`;
-const syncContainerName = `${COMPOSE_PROJECT_NAME}_cloud-computer-sync-${HOSTNAME}`;
+const syncContainerName = `cloud-computer-sync-${HOSTNAME}`;
 
 const watchOptions = {
   ignored: /.git|build\/|node_modules/,
@@ -59,7 +58,7 @@ const createSyncContainer = async (repositoriesToSync: string[]) => {
   }
 
   // Map a repository name to its docker volume mount format
-  const repositoryVolumeName = (repository: string) => `${COMPOSE_PROJECT_NAME}_${constantCase(repository)}:/cloud-computer/${repository}`;
+  const repositoryVolumeName = (repository: string) => `${constantCase(repository)}:/cloud-computer/${repository}`;
 
   // Create the sync container that will house the tar extraction streams
   const syncContainer = await docker.container.create({

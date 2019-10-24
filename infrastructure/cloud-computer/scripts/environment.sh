@@ -1,9 +1,5 @@
 sanitise () { echo "$1" | tr '[:upper:]' '[:lower:]' | sed -E 's;[^a-z0-9_-];;g'; }
 
-# Set the docker compose environment
-COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME-cloud-computer}
-echo export COMPOSE_PROJECT_NAME=$COMPOSE_PROJECT_NAME
-
 # Set the cloud computer environment
 CLOUD_COMPUTER_CLOUD_PROVIDER=${CLOUD_COMPUTER_CLOUD_PROVIDER-gcp}
 CLOUD_COMPUTER_DOMAIN_NAME=${CLOUD_COMPUTER_DOMAIN_NAME-cloud-computer.dev}
