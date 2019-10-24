@@ -25,3 +25,4 @@ services:
         target: $CLOUD_COMPUTER_CLOUDSTORAGE
         bind:
           propagation: rshared
+        external: true

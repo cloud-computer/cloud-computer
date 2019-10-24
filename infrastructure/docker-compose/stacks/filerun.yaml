@@ -35,4 +35,6 @@ services:
 
 volumes:
   CLOUD_COMPUTER_CLOUDSTORAGE:
+    external: true
   CLOUD_COMPUTER_FILERUN_DB:
+    external: true

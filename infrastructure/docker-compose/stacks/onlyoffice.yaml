@@ -44,3 +44,4 @@ services:
 
 volumes:
   CLOUD_COMPUTER_HOME:
+    external: true

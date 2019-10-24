@@ -58,14 +58,26 @@ services:
 
 volumes:
   CLOUD_COMPUTER_CACHE_YARN:
+    external: true
   CLOUD_COMPUTER_CACHE_ZSH:
+    external: true
   CLOUD_COMPUTER_CREDENTIALS:
+    external: true
   CLOUD_COMPUTER_HOME:
+    external: true
   CLOUD_COMPUTER_NODEMON:
+    external: true
   CLOUD_COMPUTER_REPOSITORY:
+    external: true
   CLOUD_COMPUTER_CLOUDSTORAGE:
+    external: true
   CLOUD_COMPUTER_STATE_JUMP:
+    external: true
   CLOUD_COMPUTER_TERRAFORM:
+    external: true
   CLOUD_COMPUTER_TMUX:
+    external: true
   CLOUD_COMPUTER_X11:
+    external: true
   CLOUD_COMPUTER_YARN:
+    external: true

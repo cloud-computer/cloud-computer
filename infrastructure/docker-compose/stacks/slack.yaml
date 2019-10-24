@@ -17,5 +17,8 @@ services:
 
 volumes:
   CLOUD_COMPUTER_CLOUDSTORAGE:
+    external: true
   CLOUD_COMPUTER_HOME:
+    external: true
   CLOUD_COMPUTER_STATE_SLACK:
+    external: true

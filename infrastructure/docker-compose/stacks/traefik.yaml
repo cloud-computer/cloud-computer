@@ -54,3 +54,4 @@ services:
 
 volumes:
   CLOUD_COMPUTER_TRAEFIK:
+    name: CLOUD_COMPUTER_TRAEFIK
