@@ -42,7 +42,7 @@
     "restart:traefik": "yarn down:traefik; yarn up:traefik",
     "restart:webapp": "yarn down:webapp; yarn up:webapp",
     "restart:windows": "yarn down:windows; yarn up:windows",
-    "up": "ls stacks | grep -E 'blender|chrome|cloudstorage|code|desktop|krita|launcher|marketplace|onlyoffice|skype|terminal|traefik' | xargs -n 1 -I @ -P 8 yarn compose -f stacks/@ up --detach --quiet-pull",
+    "up": "ls stacks | grep -E 'blender|chrome|cloudstorage|code|desktop|filerun|krita|launcher|marketplace|onlyoffice|skype|terminal|traefik' | xargs -n 1 -I @ -P 8 yarn compose -f stacks/@ up --detach --quiet-pull",
     "up:blender": "STACK=blender yarn compose:up",
     "up:chrome": "STACK=chrome yarn compose:up",
     "up:cloudstorage": "STACK=cloudstorage yarn compose:up",

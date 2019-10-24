@@ -8,7 +8,6 @@ services:
     restart: always
     environment:
       - DESKTOP_ENVIRONMENT_USER=$CLOUD_COMPUTER_HOST_USER
-      - DISPLAY=:1
     security_opt:
       - seccomp:unconfined
     labels:

@@ -48,6 +48,7 @@ RUN apt-get update -qq && \
   build-essential \
   cmake \
   cmatrix \
+  ctop \
   curl \
   dnsutils \
   docker.io \
