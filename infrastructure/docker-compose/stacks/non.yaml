@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+
+  krita:
+    image: cloudnativecomputer/non:latest
+    shm_size: 6gb
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:non.$CLOUD_COMPUTER_HOST_DNS,daw.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8080
+    volumes:
+      - CLOUD_COMPUTER_CLOUDSTORAGE:$CLOUD_COMPUTER_CLOUDSTORAGE
+
+volumes:
+  CLOUD_COMPUTER_CLOUDSTORAGE:
+    external: true

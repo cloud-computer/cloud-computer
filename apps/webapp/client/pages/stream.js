@@ -1,13 +1,13 @@
-import jwt_decode from 'jwt-decode';
-import {Button} from "antd";
-import gql from "graphql-tag";
-import {compose, Subscription, withApollo} from 'react-apollo';
-import {useEffect, useState} from 'react';
-import {AUTH_TOKEN, HASURA_CLAIM, HASURA_USER_ID} from '../constants';
-import {withProtectRoute} from '../lib/with-protect-route';
-import {withStreamClient} from "../lib/with-stream-client";
-import {withRouter} from "next/router";
 import AnsiUp from 'ansi_up';
+import gql from 'graphql-tag';
+import jwt_decode from 'jwt-decode';
+import { withRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { compose, Subscription, withApollo } from 'react-apollo';
+
+import { AUTH_TOKEN, HASURA_CLAIM, HASURA_USER_ID } from '../constants';
+import { withProtectRoute } from '../lib/with-protect-route';
+import { withStreamClient } from '../lib/with-stream-client';
 
 const ansi_up = new AnsiUp();
 

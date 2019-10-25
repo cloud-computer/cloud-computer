@@ -11,8 +11,8 @@ yarn --cwd ../docker docker run \
   --env CLOUD_COMPUTER_IMAGE \
   --env TMPDIR=/var/tmp \
   --rm \
-  --volume CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY \
   --volume CLOUD_COMPUTER_CREDENTIALS:$CLOUD_COMPUTER_CREDENTIALS \
+  --volume CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY \
   --workdir $CLOUD_COMPUTER_REPOSITORY/infrastructure/packer \
   $CLOUD_COMPUTER_IMAGE \
   packer "$@"
