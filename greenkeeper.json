@@ -1,0 +1,28 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "apps/launcher/package.json",
+        "apps/webapp/auth-service/package.json",
+        "apps/webapp/client/package.json",
+        "apps/webapp/mail-service/package.json",
+        "apps/webapp/package.json",
+        "apps/webapp/stream-service/package.json",
+        "apps/webapp/worker-service/package.json",
+        "infrastructure/cloud-computer/package.json",
+        "infrastructure/cloudstorage/package.json",
+        "infrastructure/containers/package.json",
+        "infrastructure/credentials/package.json",
+        "infrastructure/dns/package.json",
+        "infrastructure/docker-compose/package.json",
+        "infrastructure/docker/package.json",
+        "infrastructure/git/package.json",
+        "infrastructure/packer/package.json",
+        "infrastructure/terraform/package.json",
+        "infrastructure/tmux/package.json",
+        "infrastructure/yarn/package.json",
+        "package.json"
+      ]
+    }
+  }
+}
