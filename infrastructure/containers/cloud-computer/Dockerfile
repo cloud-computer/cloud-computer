@@ -185,7 +185,7 @@ RUN wget --quiet https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.
   rm terraform_0.11.3_linux_amd64.zip
 
 # Install tmuxinator
-RUN gem install tmuxinator
+RUN gem install tmuxinator:1.1.1
 
 # Install tmux plugin manager
 RUN git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm

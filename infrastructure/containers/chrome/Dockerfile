@@ -31,4 +31,4 @@ RUN apt-get update -qq && \
 USER cloud
 
 # Start the application in vnc
-CMD /cloud-computer/launcher-vnc.sh "google-chrome --no-default-browser-check --no-first-run" google-chrome
+CMD /cloud-computer/launcher-vnc.sh "google-chrome --disable-gpu --no-default-browser-check --no-first-run" google-chrome
