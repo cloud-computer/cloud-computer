@@ -3,7 +3,7 @@ version: '3.5'
 services:
 
   traefik:
-    image: traefik:latest
+    image: traefik:1.7
     command:
       - --api
       - --entrypoints=Name:http Address::80 Redirect.EntryPoint:https
