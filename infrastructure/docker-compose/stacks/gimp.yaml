@@ -1,0 +1,22 @@
+version: '2.3'
+
+services:
+
+  gimp:
+    image: cloudnativecomputer/gimp:latest
+    shm_size: 6gb
+    runtime: nvidia
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:gimp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.port=8080
+    volumes:
+      - CLOUD_COMPUTER_CLOUDSTORAGE:$CLOUD_COMPUTER_CLOUDSTORAGE
+      - CLOUD_COMPUTER_HOME:$CLOUD_COMPUTER_HOME
+
+volumes:
+  CLOUD_COMPUTER_CLOUDSTORAGE:
+    external: true
+  CLOUD_COMPUTER_HOME:
+    external: true

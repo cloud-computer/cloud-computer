@@ -1,7 +1,11 @@
 FROM cloudnativecomputer/cloud-computer:latest
 
-# Install unrealengine
-RUN git clone https://sabrehagen:fd6bb37484a2cf61f98d71a34bb48d1087908015@github.com/EpicGames/UnrealEngine.git --depth 1 && \
+# Add key required to clone unreal engine
+ADD id_rsa $HOME/.ssh/id_rsa
+# RUN sudo chmod 600 $HOME/.ssh/id_rsa
+
+# Install unreal engine
+RUN git clone git@github.com:EpicGames/UnrealEngine.git --depth 1 && \
   cd UnrealEngine && \
   sudo apt-get update && \
   ./Setup.sh && \
