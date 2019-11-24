@@ -10,8 +10,8 @@ services:
       tier: cloud-computer
     labels:
       - traefik.jaeger.enable=true
-      - traefik.jaeger.frontend.rule=Host:jaeger.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.jaeger.frontend.rule=Host:jaeger.$CLOUD_COMPUTER_DNS_NAME
       - traefik.jaeger.port=16686
       - traefik.jaeger-collector.enable=true
-      - traefik.jaeger-collector.frontend.rule=Host:jaeger-collector.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.jaeger-collector.frontend.rule=Host:jaeger-collector.$CLOUD_COMPUTER_DNS_NAME
       - traefik.jaeger-collector.port=14268

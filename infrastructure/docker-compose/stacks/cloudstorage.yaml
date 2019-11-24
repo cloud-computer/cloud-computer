@@ -17,7 +17,7 @@ services:
       - apparmor:unconfined
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:cloudstorage.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:cloudstorage.$CLOUD_COMPUTER_DNS_NAME
       - traefik.port=12345
     volumes:
       - type: bind

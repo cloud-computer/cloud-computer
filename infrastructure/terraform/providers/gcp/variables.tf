@@ -12,8 +12,8 @@ variable "CLOUD_COMPUTER_CLOUD_PROVIDER_PROJECT" {
   description = "The cloud provider project to create the machine in."
 }
 
-variable "CLOUD_COMPUTER_DNS_EMAIL" {
-  description = "The email address of the dns account."
+variable "CLOUD_COMPUTER_DNS_DOMAIN" {
+  description = "The domain name of the dns account."
 }
 
 variable "CLOUD_COMPUTER_DNS_TOKEN" {
