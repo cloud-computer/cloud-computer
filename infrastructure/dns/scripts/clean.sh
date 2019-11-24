@@ -1,7 +1,7 @@
-# Export cloud computer shell environment
-eval "$(yarn --cwd ../cloud-computer environment)"
+# Export cloud computer dns environment
+eval "$(yarn environment)"
 
-DNS_RECORDS=$(yarn list-records | grep $CLOUD_COMPUTER_HOST_DNS)
+DNS_RECORDS=$(yarn list-records | grep $CLOUD_COMPUTER_DNS_NAME)
 
 # Delete each dns record
 for DNS_RECORD in $DNS_RECORDS; do

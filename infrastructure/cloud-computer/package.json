@@ -30,7 +30,6 @@
     "destroy": "yarn --cwd ../terraform destroy",
     "environment": "scripts/environment.sh",
     "exec:terminal": "eval $(yarn environment); yarn --cwd ../docker docker exec --env COMPOSE_PROJECT_NAME --env CLOUD_COMPUTER_HOST_ID --env DOCKER_HOST --interactive --tty ${COMPOSE_PROJECT_NAME:-cloud-computer}_terminal_1",
-    "hostname": "eval $(yarn environment); echo $CLOUD_COMPUTER_HOST_DNS",
     "inspect": "yarn --cwd ../docker docker inspect",
     "lint": "yarn tslint --project tsconfig.lint.json",
     "logs:code": "yarn --cwd ../docker docker logs --follow ${COMPOSE_PROJECT_NAME:-cloud-computer}_code_1",

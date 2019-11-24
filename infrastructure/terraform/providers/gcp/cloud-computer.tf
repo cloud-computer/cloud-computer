@@ -45,7 +45,6 @@ resource "google_compute_firewall" "cloud-computer" {
     protocol = "tcp"
   }
 }
-
 resource "google_compute_network" "cloud-computer" {
   auto_create_subnetworks = false
   name = "${local.environment_name}"
@@ -103,7 +102,7 @@ resource "google_compute_instance" "cloud-computer" {
     inline = [
       "# Set cloud computer environment",
       "export CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS='${file("${var.cloud_provider_credentials_path}")}'",
-      "export CLOUD_COMPUTER_DNS_EMAIL=${var.CLOUD_COMPUTER_DNS_EMAIL}",
+      "export CLOUD_COMPUTER_DNS_DOMAIN=${var.CLOUD_COMPUTER_DNS_DOMAIN}",
       "export CLOUD_COMPUTER_DNS_TOKEN=${var.CLOUD_COMPUTER_DNS_TOKEN}",
       "export CLOUD_COMPUTER_DNS_ZONE=${var.CLOUD_COMPUTER_DNS_ZONE}",
       "export CLOUD_COMPUTER_HOST_ID=${var.CLOUD_COMPUTER_HOST_ID}",
@@ -114,7 +113,7 @@ resource "google_compute_instance" "cloud-computer" {
       "export GIT_COMMITTER_NAME=${var.GIT_COMMITTER_NAME}",
 
       "# Alias docker run with cloud computer environment",
-      "alias docker_run=\"docker run --env CLOUD_COMPUTER_DNS_EMAIL --env CLOUD_COMPUTER_DNS_TOKEN --env CLOUD_COMPUTER_DNS_ZONE --env CLOUD_COMPUTER_HOST_ID --env CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS --env CLOUD_COMPUTER_YARN_JAEGER_TRACE --env DOCKER_HOST=localhost --env GIT_COMMITTER_EMAIL --env GIT_COMMITTER_NAME --interactive --rm --tty --volume CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_REPOSITORY\"",
+      "alias docker_run=\"docker run --env CLOUD_COMPUTER_DNS_DOMAIN --env CLOUD_COMPUTER_DNS_TOKEN --env CLOUD_COMPUTER_DNS_ZONE --env CLOUD_COMPUTER_HOST_ID --env CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS --env CLOUD_COMPUTER_YARN_JAEGER_TRACE --env DOCKER_HOST=localhost --env GIT_COMMITTER_EMAIL --env GIT_COMMITTER_NAME --interactive --rm --tty --volume CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY --volume /var/run/docker.sock:/var/run/docker.sock --workdir $CLOUD_COMPUTER_REPOSITORY\"",
       "alias docker_run_root=\"docker_run --user root $CLOUD_COMPUTER_IMAGE\"",
       "alias docker_run_non-root=\"docker_run $CLOUD_COMPUTER_IMAGE\"",
 

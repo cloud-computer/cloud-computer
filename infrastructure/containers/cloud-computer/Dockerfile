@@ -18,7 +18,7 @@ RUN groupadd --gid $DOCKER_GROUP docker
 # Create a non-root user for safe operation
 RUN useradd \
   --create-home \
-  --groups $DOCKER_GROUP,sudo \
+  --groups $DOCKER_GROUP,shadow,sudo \
   --password $USER \
   --shell /bin/zsh \
   $USER

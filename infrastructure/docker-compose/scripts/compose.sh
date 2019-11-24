@@ -1,6 +1,9 @@
 # Export cloud computer shell environment
 eval "$(yarn --cwd ../cloud-computer environment)"
 
+# Export cloud computer dns environment
+eval "$(yarn --cwd ../dns environment)"
+
 # Export local git config
 eval "$(yarn --cwd ../git environment)"
 
@@ -17,11 +20,11 @@ yarn --cwd ../docker docker run \
   --env CLOUD_COMPUTER_CACHE_ZSH \
   --env CLOUD_COMPUTER_CLOUDSTORAGE \
   --env CLOUD_COMPUTER_CREDENTIALS \
-  --env CLOUD_COMPUTER_DNS_EMAIL \
+  --env CLOUD_COMPUTER_DNS_DOMAIN \
+  --env CLOUD_COMPUTER_DNS_NAME \
   --env CLOUD_COMPUTER_DNS_TOKEN \
   --env CLOUD_COMPUTER_DNS_ZONE \
   --env CLOUD_COMPUTER_HOME \
-  --env CLOUD_COMPUTER_HOST_DNS \
   --env CLOUD_COMPUTER_HOST_ID \
   --env CLOUD_COMPUTER_HOST_NAME \
   --env CLOUD_COMPUTER_HOST_USER \
