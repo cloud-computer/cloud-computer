@@ -16,6 +16,16 @@ USER $USER
 RUN ls -d ~/.config/vcsh/repo.d/* | \
   xargs -n 1 -I @ sed -i "s/$DESKTOP_ENVIRONMENT_USER/$USER/" @/config
 
+# Rebuild tmux extensions for cloud user
+RUN ls -d ~/.tmux/plugins/* | \
+  grep -v tpm | \
+  xargs -n 1 -I @ rm -rf @; \
+  zsh -c $HOME/.tmux/plugins/tpm/bin/install_plugins
+
+# Rebuild zsh extensions for cloud user
+RUN rm -f $HOME/.zcompdump && \
+  zsh -c "source $HOME/.zshrc"
+
 # Remap i3 modifiers for web access
 RUN sed -i 's/Mod4/Mod1/' $HOME/.config/i3/config
 
@@ -30,4 +40,4 @@ RUN sed -i '/lastDownload/d' $HOME/.config/Code/User/syncLocalSettings.json
 COPY --from=cloudnativecomputer/cloud-computer:latest /cloud-computer/launcher-vnc.sh /launcher-vnc.sh
 
 # Start the application in vnc
-CMD /launcher-vnc.sh /usr/bin/i3
+CMD /launcher-vnc.sh "zsh -c /usr/bin/i3"

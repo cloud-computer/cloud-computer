@@ -7,5 +7,5 @@ services:
     restart: always
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:irc.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:irc.$CLOUD_COMPUTER_DNS_NAME
       - traefik.port=8080

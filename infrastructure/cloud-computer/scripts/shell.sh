@@ -10,7 +10,6 @@ yarn --cwd ../docker docker run \
   --env GIT_COMMITTER_NAME \
   --env CLOUD_COMPUTER_CREDENTIALS \
   --env CLOUD_COMPUTER_HOME \
-  --env CLOUD_COMPUTER_HOST_DNS \
   --env CLOUD_COMPUTER_HOST_ID \
   --env CLOUD_COMPUTER_NODEMON \
   --env CLOUD_COMPUTER_REPOSITORY \

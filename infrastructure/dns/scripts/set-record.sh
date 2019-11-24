@@ -9,8 +9,7 @@ IP=$2
 create_record () {
   curl "https://api.cloudflare.com/client/v4/zones/$CLOUD_COMPUTER_DNS_ZONE/dns_records" \
     --data '{"type":"A","name":'\"$HOSTNAME\"',"content":'\"$IP\"',"ttl":120,"priority":10,"proxied":false}' \
-    --header "X-Auth-Email: $CLOUD_COMPUTER_DNS_EMAIL" \
-    --header "X-Auth-Key: $CLOUD_COMPUTER_DNS_TOKEN" \
+    --header "Authorization: Bearer $CLOUD_COMPUTER_DNS_TOKEN" \
     --header "Content-Type: application/json" \
     --output /dev/null \
     --request POST \
@@ -22,8 +21,7 @@ update_record () {
   RECORD_ID=$1
   curl "https://api.cloudflare.com/client/v4/zones/$CLOUD_COMPUTER_DNS_ZONE/dns_records/$RECORD_ID" \
     --data '{"type":"A","name":'\"$HOSTNAME\"',"content":'\"$IP\"',"ttl":120,"priority":10,"proxied":false}' \
-    --header "X-Auth-Email: $CLOUD_COMPUTER_DNS_EMAIL" \
-    --header "X-Auth-Key: $CLOUD_COMPUTER_DNS_TOKEN" \
+    --header "Authorization: Bearer $CLOUD_COMPUTER_DNS_TOKEN" \
     --header "Content-Type: application/json" \
     --output /dev/null \
     --request PUT \

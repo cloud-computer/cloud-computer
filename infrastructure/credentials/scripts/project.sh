@@ -4,7 +4,7 @@ eval "$(yarn --cwd ../cloud-computer environment)"
 # Point shell context to the local docker host
 export DOCKER_HOST=localhost
 
-# Copy cloud provider credentials to the CLOUD_COMPUTER_CREDENTIALS volume
+# Extract cloud provider project from credentials
 yarn --cwd ../docker docker run \
   --rm \
   --volume CLOUD_COMPUTER_CREDENTIALS:$CLOUD_COMPUTER_CREDENTIALS \

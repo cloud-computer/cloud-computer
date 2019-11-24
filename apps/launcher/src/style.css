@@ -20,9 +20,10 @@ body {
 
 .storage-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 150px);
-  padding: 110px 33%;
-  grid-gap: 82px;
+  grid-template-columns: repeat(auto-fit, 120px);
+  padding: 10px 13%;
+  grid-gap: 90px;
+  justify-content: center;
 }
 
 a {
@@ -54,10 +55,11 @@ img {
 
 .divider {
   margin: auto;
-  width: 30rem;
+  width: 35rem;
   height: 6px;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
   border-radius: 15px;
   background-color: rgba(255, 255, 255, .15);
   backdrop-filter: blur(5px);
+  margin-bottom: 20px;
 }

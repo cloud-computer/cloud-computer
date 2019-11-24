@@ -20,7 +20,7 @@ services:
       - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:dev.client.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:dev.client.webapp.$CLOUD_COMPUTER_DNS_NAME
       - traefik.port=3000
 
   hasura:
@@ -40,7 +40,7 @@ services:
       - mail
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:dev.hasura.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:dev.hasura.webapp.$CLOUD_COMPUTER_DNS_NAME
       - traefik.port=8080
 
   auth:
@@ -64,7 +64,7 @@ services:
       - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:dev.auth.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:dev.auth.webapp.$CLOUD_COMPUTER_DNS_NAME
       - traefik.port=3000
     depends_on:
       - postgres
@@ -83,7 +83,7 @@ services:
       - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:dev.stream.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:dev.stream.webapp.$CLOUD_COMPUTER_DNS_NAME
       - traefik.port=3000
     depends_on:
       - postgres
@@ -115,7 +115,7 @@ services:
       - CLOUD_COMPUTER_REPOSITORY:$CLOUD_COMPUTER_REPOSITORY
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:dev.mail.webapp.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:dev.mail.webapp.$CLOUD_COMPUTER_DNS_NAME
       - traefik.port=3000
     depends_on:
       - postgres
