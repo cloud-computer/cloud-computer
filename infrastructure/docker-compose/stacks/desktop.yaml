@@ -12,7 +12,7 @@ services:
       - seccomp:unconfined
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:desktop.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:desktop.$CLOUD_COMPUTER_DNS_NAME
       - traefik.port=8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

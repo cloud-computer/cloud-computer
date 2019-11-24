@@ -1,13 +1,13 @@
 import { initTracer } from 'jaeger-client';
 
-const { CLOUD_COMPUTER_HOST_DNS } = process.env;
+const { CLOUD_COMPUTER_DNS_NAME } = process.env;
 
 // returns a Tracer instance that will be given to initGlobalTracer
 const initJaegerTracer = (serviceName: string) => {
 
   const config = {
     reporter: {
-      collectorEndpoint: `https://jaeger-collector.${CLOUD_COMPUTER_HOST_DNS}/api/traces`,
+      collectorEndpoint: `https://jaeger-collector.${CLOUD_COMPUTER_DNS_NAME}/api/traces`,
       logSpans: true,
     },
     serviceName,

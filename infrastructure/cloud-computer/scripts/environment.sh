@@ -1,6 +1,6 @@
 sanitise () { echo "$1" | tr '[:upper:]' '[:lower:]' | sed -E 's;[^a-z0-9_-];;g'; }
 
-# Set the cloud computer environment
+# Inherit or set the cloud computer environment
 CLOUD_COMPUTER_CLOUD_PROVIDER=${CLOUD_COMPUTER_CLOUD_PROVIDER-gcp}
 CLOUD_COMPUTER_DOMAIN_NAME=${CLOUD_COMPUTER_DOMAIN_NAME-cloud-computer.dev}
 CLOUD_COMPUTER_HOST_NAME=${CLOUD_COMPUTER_HOST_NAME-$(sanitise $HOSTNAME)}
@@ -12,23 +12,23 @@ CLOUD_COMPUTER_REGION=${CLOUD_COMPUTER_REGION-australia-southeast1}
 CLOUD_COMPUTER_REGISTRY=${CLOUD_COMPUTER_REGISTRY-cloudnativecomputer}
 CLOUD_COMPUTER_USER_HOME=$HOME/$CLOUD_COMPUTER_HOST_USER
 
-# Cloud computer application cache volumes
+# Cloud computer desktop application cache volumes
 echo export CLOUD_COMPUTER_CACHE_CHROME=$CLOUD_COMPUTER_USER_HOME/.cache/google-chrome
 echo export CLOUD_COMPUTER_CACHE_CODE=$CLOUD_COMPUTER_USER_HOME/.vscode
 echo export CLOUD_COMPUTER_CACHE_TMUX=$CLOUD_COMPUTER_USER_HOME/.tmux
 echo export CLOUD_COMPUTER_CACHE_YARN=$CLOUD_COMPUTER_USER_HOME/.cache/yarn
 echo export CLOUD_COMPUTER_CACHE_ZSH=$CLOUD_COMPUTER_USER_HOME/.cache/zsh
 
-# Cloud computer application state volumes
+# Cloud computer desktop application state volumes
 echo export CLOUD_COMPUTER_STATE_CHROME=$CLOUD_COMPUTER_USER_HOME/.config/google-chrome
 echo export CLOUD_COMPUTER_STATE_CODE=$CLOUD_COMPUTER_USER_HOME/.config/Code
 echo export CLOUD_COMPUTER_STATE_I3=$CLOUD_COMPUTER_USER_HOME/.i3
 echo export CLOUD_COMPUTER_STATE_JUMP=$CLOUD_COMPUTER_USER_HOME/.jump
 echo export CLOUD_COMPUTER_STATE_SLACK=$CLOUD_COMPUTER_USER_HOME/.config/Slack
 
+# Cloud computer configuration
 echo export CLOUD_COMPUTER_CLOUD_PROVIDER=$CLOUD_COMPUTER_CLOUD_PROVIDER
 echo export CLOUD_COMPUTER_DOMAIN_NAME=$CLOUD_COMPUTER_DOMAIN_NAME
-echo export CLOUD_COMPUTER_HOST_DNS=$CLOUD_COMPUTER_HOST_ID.$CLOUD_COMPUTER_DOMAIN_NAME
 echo export CLOUD_COMPUTER_HOST_ID=$CLOUD_COMPUTER_HOST_ID
 echo export CLOUD_COMPUTER_HOST_NAME=$CLOUD_COMPUTER_HOST_NAME
 echo export CLOUD_COMPUTER_HOST_USER=$CLOUD_COMPUTER_HOST_USER
@@ -36,6 +36,7 @@ echo export CLOUD_COMPUTER_IMAGE=$CLOUD_COMPUTER_REGISTRY/$CLOUD_COMPUTER_IMAGE_
 echo export CLOUD_COMPUTER_REGION=$CLOUD_COMPUTER_REGION
 echo export CLOUD_COMPUTER_REGISTRY=$CLOUD_COMPUTER_REGISTRY
 
+# Cloud computer volumes
 echo export CLOUD_COMPUTER_CLOUDSTORAGE=/cloud-computer/cloudstorage
 echo export CLOUD_COMPUTER_CREDENTIALS=/cloud-computer/credentials
 echo export CLOUD_COMPUTER_HOME=/cloud-computer/home

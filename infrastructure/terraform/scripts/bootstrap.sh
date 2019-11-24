@@ -24,7 +24,7 @@ if [ -z "$CLOUD_COMPUTER_CLOUD_PROVIDER_CREDENTIALS" ]; then
     -c "\
       gcloud auth activate-service-account --key-file $CLOUD_COMPUTER_CREDENTIALS/cloud-provider.json; \
       gcloud config set project $(yarn --cwd ../credentials project); \
-      gsutil mb gs://cloud-computer-$CLOUD_COMPUTER_HOST_ID || true; \
+      gsutil mb gs://cloud-computer-$CLOUD_COMPUTER_HOST_ID || true \
     "
 
 fi
