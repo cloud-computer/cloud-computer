@@ -24,7 +24,7 @@ services:
     restart: always
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:traefik.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:traefik.$CLOUD_COMPUTER_DNS_NAME
       - traefik.port=8080
     ports:
       - 80:80
@@ -42,7 +42,7 @@ services:
       - SECRET=traefik-forward-auth-secret
       - AUTH_HOST=auth.example.com
     labels:
-      - traefik.frontend.rule=Host:auth.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:auth.$CLOUD_COMPUTER_DNS_NAME
       - traefik.frontend.auth.forward.address=http://traefik-forward-auth:8080
       - traefik.frontend.auth.forward.trustForwardHeader=true
       - traefik.enable=true

@@ -28,7 +28,7 @@ services:
       - filerun-db
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:files.$CLOUD_COMPUTER_HOST_DNS
+      - traefik.frontend.rule=Host:files.$CLOUD_COMPUTER_DNS_NAME
       - traefik.port=80
     volumes:
       - CLOUD_COMPUTER_CLOUDSTORAGE:/user-files/.cloudstorage
