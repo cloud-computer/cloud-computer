@@ -6,6 +6,9 @@ PROGRAM_NAME=${2-$1}
 mkdir $HOME/.vnc
 echo $PROGRAM_TO_LAUNCH > $HOME/.vnc/xstartup
 
+# Clear previous X server sockets and locks
+rm -rf /tmp/.X*
+
 # Start vnc server
 tigervncserver -SecurityTypes none
 

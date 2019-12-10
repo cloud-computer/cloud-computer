@@ -3,24 +3,13 @@
 
 <head>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <title>Cloud Computer App Launcher</title>
+  <title>Marketplace</title>
   <script type="text/javascript">
     function openApp(app) {
-      const subdomain = document.URL.split('https://')[1];
-      const username = subdomain.split('.')[0];
+      const subdomain = document.URL.split('https://')[1].split('.').slice(1).join('.');
       const url = `https://${app}.${subdomain}`;
 
-      if (app === 'marketplace') {
-        window.location = url;
-      } else if (app === 'dropbox') {
-        window.location = `https://www.dropbox.com/oauth2/authorize?response_type=code&client_id=ll22jqd0qg8a5br&redirect_uri=https://oauth.cloud-computer.dev&state=dropbox.${username}`;
-      } else if (app === 'google-drive') {
-        window.location = `https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=593888582275-paasgsjjgbqe9vdeqocj7vak5aa3m345.apps.googleusercontent.com&redirect_uri=https://oauth.cloud-computer.dev&scope=https://www.googleapis.com/auth/drive&access_type=offline&prompt=consent&state=google.${username}`;
-      } else if (app === 'onedrive') {
-        window.location = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=19ed56de-8b77-4689-87fc-8c10e729e852&scope=offline_access%20user.read%20files.readwrite&response_type=code&redirect_uri=https%3A%2F%2Foauth.cloud-computer.dev&state=onedrive.${username}`;
-      } else {
-        window.open(url, Date.now(), `height=${screen.height},width=${screen.width},scrollbars=1,menubar=0,resizable=1`);
-      }
+      window.open(url, Date.now(), `height=${screen.height},width=${screen.width},scrollbars=1,menubar=0,resizable=1`);
 
       // prevent a.href navigation
       return false;
@@ -32,75 +21,51 @@
 
   <div class="grid-container">
     <div class="app-container">
-      <a href="#" onclick="openApp('chrome')">
-        <img src="icon-images/icon-chrome.png">
+      <a href="/" onclick="openApp('notion')">
+        <img src="icon-images/icon-notion.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('word')">
-        <img src="icon-images/icon-word.png">
+      <a href="/" onclick="openApp('postman')">
+        <img src="icon-images/icon-postman.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('excel')">
-        <img src="icon-images/icon-excel.png">
+      <a href="/" onclick="openApp('blender')">
+        <img src="icon-images/icon-blender.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('powerpoint')">
-        <img src="icon-images/icon-powerpoint.png">
+      <a href="/" onclick="openApp('kicad')">
+        <img src="icon-images/icon-kicad.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('files')">
-        <img src="icon-images/icon-files.png">
+      <a href="/" onclick="openApp('gnumeric')">
+        <img src="icon-images/icon-gnumeric.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('code')">
-        <img src="icon-images/icon-vs-code.png">
+      <a href="/" onclick="openApp('grafana')">
+        <img src="icon-images/icon-metrics.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('photoshop')">
-        <img src="icon-images/icon-photoshop3.png">
+      <a href="/" onclick="openApp('terminal')">
+        <img src="icon-images/icon-terminal.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('slack')">
-        <img src="icon-images/icon-slack.png">
+      <a href="/" onclick="openApp('darktable')">
+        <img src="icon-images/icon-darktable.png">
       </a>
     </div>
     <div class="app-container">
-      <a href="#" onclick="openApp('marketplace')">
-        <img src="icon-images/icon-plus.png">
+      <a href="/" onclick="openApp('desktop')">
+        <img src="icon-images/icon-linux.png">
       </a>
     </div>
   </div>
-
-  <div class="spacer"></div>
-  <div class="divider"></div>
-
-  <div class="grid-container">
-    <div class="storage-container">
-      <div class="app-container">
-        <a href="#" onclick="openApp('google-drive')">
-          <img src="icon-images/icon-google-drive.png">
-        </a>
-      </div>
-      <div class="app-container">
-        <a href="#" onclick="openApp('dropbox')">
-          <img src="icon-images/icon-dropbox.png">
-        </a>
-      </div>
-      <div class="app-container">
-        <a href="#" onclick="openApp('onedrive')">
-          <img src="icon-images/icon-onedrive.png">
-        </a>
-      </div>
-    </div>
-  </div>
-
 
 </body>
 

@@ -4,12 +4,11 @@
 </div>
 <script>
   window.onload = () => {
-    // get the url of the onlyoffice server
-    const subdomain = document.URL.split('.cloud-computer.dev')[0].split('.').pop().replace('https://', '');
+    const subdomain = document.URL.split('/')[ 2 ].split('.').slice(1, 4).join('.');
 
     // load the onlyoffice api from onlyoffice server
     const api = document.createElement('script');
-    api.src = `https://onlyoffice.${subdomain}.cloud-computer.dev/web-apps/apps/api/documents/api.js`;
+    api.src = `https://onlyoffice.${subdomain}/web-apps/apps/api/documents/api.js`;
 
     api.onload = () => {
       // create an onlyoffice editing client
