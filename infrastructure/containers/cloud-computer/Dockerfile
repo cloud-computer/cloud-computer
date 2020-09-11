@@ -17,7 +17,7 @@ RUN sed -i -re 's/([a-z]{2}\.)?archive.ubuntu.com|security.ubuntu.com/old-releas
 # Create a non-root user for safe operation
 RUN useradd \
   --create-home \
-  --groups $DOCKER_GROUP,shadow,sudo \
+  --groups docker,shadow,sudo \
   --password $USER \
   --shell /bin/zsh \
   $USER
