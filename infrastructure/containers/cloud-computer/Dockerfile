@@ -11,9 +11,8 @@ ENV SHELL /bin/zsh
 ENV TERM xterm-256color
 ENV TZ Australia/Sydney
 
-# Create the docker group with the host os group id
-ENV DOCKER_GROUP 999
-RUN groupadd --gid $DOCKER_GROUP docker
+# Ensure container image sources are always available by using 'old' repositories
+RUN sed -i -re 's/([a-z]{2}\.)?archive.ubuntu.com|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
 
 # Create a non-root user for safe operation
 RUN useradd \
